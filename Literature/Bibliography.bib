@@ -121,22 +121,6 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Url                      = {http://crpit.com/confpapers/CRPITV32Brumen.pdf}
 }
 
-@Article{BrumenEtal2007,
-  Title                    = {Assessment of Classification Models with Small Amounts of Data},
-  Author                   = {Brumen, Bostjan and Juric, Matjaz B. and Welzer, Tatjana and Rozman, Ivan and Jaakkola, Hannu and Papadopoulos, Apostolos},
-  Journal                  = {Informatica, Lith. Acad. Sci.},
-  Year                     = {2007},
-  Number                   = {3},
-  Pages                    = {343--362},
-  Volume                   = {18},
-
-  Abstract                 = {One of the tasks of data mining is classification, which provides a mapping from attributes (observations) to pre-specified classes. Classification models are built by using underlying data. In principle, the models built with more data yield better results. However, the relationship between the available data and the performance is not well understood, except that the accuracy of a classification model has diminishing improvements as a function of data size. In this paper, we present an approach for an early assessment of the extracted knowledge (classification models) in the terms of performance (accuracy), based on the amount of data used. The assessment is based on the observation of the performance on smaller sample sizes. The solution is formally defined and used in an experiment. In experiments we show the correctness and utility of the approach.},
-  Bibsource                = {dblp computer science bibliography, http://dblp.org},
-  Biburl                   = {http://dblp.uni-trier.de/rec/bib/journals/informaticaLT/BrumenJWRJP07},
-  Timestamp                = {2015.08.22},
-  Url                      = {http://www.mii.lt/informatica/pdf/INFO675.pdf}
-}
-
 @PhdThesis{Cortes1994,
   Title                    = {Prediction of generalization ability in learning machines},
   Author                   = {Cortes, Corinna},
@@ -154,7 +138,7 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Booktitle                = {Neural Information Processing Systems},
   Year                     = {1993},
 
-  Abstract                 = {Training classifiers on large databases is computationally demanding. It is desirable to develop efficient procedures for a reliable prediction of a classifier's suitability for implementing a given task, so that resources can be assigned to the most promising candidates or freed for exploring new classifier candidates. We propose such a practical and principled predictive method. Practical because it avoids the costly procedure of training poor classifiers on the whole training set, and principled because of its theoretical foundation. The effectiveness of the proposed procedure is demonstrated for both singleand multilayer networks.},
+  Abstract                 = {Training classifiers on large databases is computationally demanding. It is desirable to develop efficient procedures for a reliable prediction of a classifier's suitability for implementing a given task, so that resources can be assigned to the most promising candidates or freed for exploring new classifier candidates. We propose such a practical and principled predictive method. Practical because it avoids the costly procedure of training poor classifiers on the whole training set, and principled because of its theoretical foundation. The effectiveness of the proposed procedure is demonstrated for both single and multilayer networks.},
   Timestamp                = {2015.05.12},
   Url                      = {http://papers.nips.cc/paper/803-learning-curves-asymptotic-values-and-rate-of-convergence.pdf}
 }
@@ -274,7 +258,7 @@ This paper describes a simple and effective sample size prediction algorithm tha
 
   Abstract                 = {The research presented here focuses on modeling machine-learning performance. The thesis introduces Seer, a system that generates empirical observations of classification-learning performance and then uses those observations to create statistical models. The models can be used to predict the number of training examples needed to achieve a desired level and the maximum accuracy possible given an unlimited number of training examples. Seer advances the state of the art with 1) models that embody the best constraints for classification learning and most useful parameters, 2) algorithms that efficiently find maximum-likelihood models, and 3) a demonstration on real-world data from three domains of a practicable application of such modeling. The first part of the thesis gives an overview of the requirements for a good maximum-likelihood model of classification-learning performance. Next, reasonable design choices for such models are explored. Selection among such models is a task of nonlinear programming, but by exploiting appropriate problem constraints, the task is reduced to a nonlinear regression task that can be solved with an efficient iterative algorithm. The latter part of the thesis describes almost 100 experiments in the domains of soybean disease, heart disease, and audiological problems. The tests show that Seer is excellent at characterizing learning-performance and that it seems to be as good as possible at predicting learning},
   Timestamp                = {2015.08.26},
-  Url                      = {http://research.microsoft.com/apps/pubs/default.aspx?id=68280}
+  Url                      = {http://research.microsoft.com/en-us/um/people/carlk/papers/kadiephdfull.htm}
 }
 
 @InCollection{KroghVedelsby1995,
@@ -318,6 +302,26 @@ This paper describes a simple and effective sample size prediction algorithm tha
   Owner                    = {Florian},
   Timestamp                = {2015.08.27},
   Url                      = {http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=5693996&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D5693996}
+}
+
+@Article{RodriguezEtAl2013,
+  Title                    = {A general framework for the statistical analysis of the sources of variance for classification error estimators},
+  Author                   = {Rodríguez, Juan D. and Pérez, Aritz and Lozano, Jose A.},
+  Journal                  = {Pattern Recognition},
+  Year                     = {2013},
+
+  Month                    = {March},
+  Number                   = {3},
+  Pages                    = {855-864},
+  Volume                   = {46},
+
+  Abstract                 = {Estimating the prediction error of classifiers induced by supervised learning algorithms is important not only to predict its future error, but also to choose a classifier from a given set (model selection). If the goal is to estimate the prediction error of a particular classifier, the desired estimator should have low bias and low variance. However, if the goal is the model selection, in order to make fair comparisons the chosen estimator should have low variance assuming that the bias term is independent from the considered classifier.
+
+This paper follows the analysis proposed in [1] about the statistical properties of k-fold cross-validation estimators and extends it to the most popular error estimators: resubstitution, holdout, repeated holdout, simple bootstrap and 0.632 bootstrap estimators, without and with stratification. We present a general framework to analyze the decomposition of the variance of different error estimators considering the nature of the variance (irreducible/reducible variance) and the different sources of sensitivity (internal/external sensitivity).
+
+An extensive empirical study has been performed for the previously mentioned estimators with naive Bayes and C4.5 classifiers over training sets obtained from assorted probability distributions. The empirical analysis consists of decomposing the variances following the proposed framework and checking the independence assumption between the bias and the considered classifier. Based on the obtained results, we propose the most appropriate error estimations for model selection under different experimental conditions.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.02}
 }
 
 @InProceedings{RoyMcCallum2001,

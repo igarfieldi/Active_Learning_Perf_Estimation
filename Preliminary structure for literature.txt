@@ -1,0 +1,21 @@
+2. Literature/Related Works/Background
+    2.1 Was zu Classification und Active Learning allgemein; gehört das jetzt auch zur Literatur oder zu Background?
+    2.2 Generalization Performance
+        2.2.1 (Expected) Prediction error vs. training error, accuracy
+            Warum ist das 2. "schlecht" bzw. optimistisch, Unterschied expected vs. "normalen" prediction error.
+            Was hat das mit accuracy zu tun (ich weiß nicht recht, ob das hier reingehört oder auch zum Background)
+        2.2.2 Bias and variance
+            kurz ein bisschen aus dem Paper für das framework zur Varianzanalyse
+    2.3 Classificator-based estimators
+        2.3.1 AIC, BIC und Minimum Description Length
+        2.3.2 VC-Dimension bzw. SRM
+    2.4 Data-based estimators (hold-out)
+        2.4.1 Cross-Validation
+            K-Fold, repeated K-fold usw.
+        2.4.2 Bootstrap
+            Nativ, .632, ...
+    2.5 Learning curves and regression models
+        2.5.1 Function families
+            Pow2/3, Log, Exp usw.
+        2.5.2 Algoriths
+            Maximum Likelihood Regression
