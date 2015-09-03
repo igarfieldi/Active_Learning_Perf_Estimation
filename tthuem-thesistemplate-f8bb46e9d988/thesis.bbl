@@ -1,0 +1,47 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{KCH{\etalchar{+}}90}
+
+\bibitem[Beu03]{B:PHD03}
+Danilo Beuche.
+\newblock {\em {Composition and Construction of Embedded Software Families}}.
+\newblock PhD thesis, University of Magdeburg, Germany, 2003.
+
+\bibitem[CDT09]{Coq:website}
+The Coq Development~Team.
+\newblock {The Coq Proof Assistant}.
+\newblock Website, September 2009.
+\newblock Available online at \url{http://coq.inria.fr/}; visited on November
+  9th, 2009.
+
+\bibitem[CE00]{CE:BOOK00}
+Krzysztof Czarnecki and Ulrich~W. Eisenecker.
+\newblock {\em {Generative Programming: Methods, Tools, and Applications}}.
+\newblock ACM Press/Addison-Wesley, 2000.
+
+\bibitem[KAK09]{KAK:GPCE09}
+Christian K\"astner, Sven Apel, and Martin Kuhlemann.
+\newblock {A Model of Refactoring Physically and Virtually Separated Features}.
+\newblock In {\em Proceedings of the International Conference on Generative
+  Programming and Component Engineering (GPCE)}, pages 157--166. ACM, October
+  2009.
+
+\bibitem[KCH{\etalchar{+}}90]{KCHNP:TR90}
+Kyo~C. Kang, Sholom~G. Cohen, James~A. Hess, William~E. Novak, and A.~Spencer
+  Peterson.
+\newblock {Feature-Oriented Domain Analysis (FODA) Feasibility Study}.
+\newblock Technical Report CMU/SEI-90-TR-21, Software Engineering Institute,
+  1990.
+
+\bibitem[KG06]{KG:SME06}
+Cory~J. Kapser and Michael~W. Godfrey.
+\newblock {Supporting the Analysis of Clones in Software Systems: A Case
+  Study}.
+\newblock {\em Journal of Software Maintenance and Evolution}, 18(2):61--82,
+  2006.
+
+\bibitem[Ros09]{R:MT09}
+Malte Rosenthal.
+\newblock {Alternative Features in Colored Featherweight Java}.
+\newblock Diplomarbeit, University of Passau, Germany, July 2009.
+
+\end{thebibliography}
