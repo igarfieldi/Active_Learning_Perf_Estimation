@@ -1,4 +1,4 @@
-\ifgerman{\chapter{Grundlagen}}{\chapter{Background}}
+\ifgerman{\chapter{Grundlagen und verwandte Arbeit}}{\chapter{Background and Related Work}}
 \label{background}
 
 %- Allgemeine Wissensgrundlagen des Fachgebiets
@@ -12,4 +12,53 @@
 %- keine Inhalte aus Lehrbüchern, außer
 %- diese werden benötigt, um Problemstellung oder Lösungsweg zu definieren.
 
-\todots
+The main focus of our work is the estimation of classifier performance in the special case of an active learning scenario. To help better understand the problem setting, we will give a brief overview of the concepts of active learning as well as an in-depth look of existing methods for said estimation. We also establish parts of the notation that will be used for the remainder of this work.
+
+\section{Classification and Active Learning}
+Many problems to be solved encompass the differentiation between certain "classes" to which their inputs can be assigned. To explain the concept of \textbf{classification} we assume the example of a thermostat. Its purpose is to monitor the temperature in a certain area and fire up a heating unit to raise the temperature if necessary. But for that to happen, the thermostat has to \textit{classify} the measured temperature in the categories "too low" and "warm enough". In this special case a simple threshold usually suffices. Generally, however, a \textit{classifier} $C$ is defined as a mapping of a \textit{feature vector}, also called an \textit{instance}, to its corresponding \textit{class label} $y \in Y = \{y_1, ..., y_m\}$. It is convenient to describe said vector as an n-tuple of \textit{feature values}: $\vec{x} = (f_{a_1,1}, ..., f_{a_n, n})$ with $f_{i,j} \in F_j$ $\forall i = \{1, ..., |F_j|\}, j = \{1, ..., n\}$ and $F_j$ as a \textit{feature}. A classifier can then be written as
+\begin{equation}
+C: F_1 \times ... \times F_n \rightarrow Y
+\end{equation}
+\cite{RodriguezEtAl2013}
+This definition makes it clear that classification is not restricted to single-variable problems. To stick with our example of a thermostat, you may want to consider the humidity, temperature outdoors or whether any windows are open to decide if heating is necessary.
+
+To obtain a classifier for a specific problem, one makes use of what we will call a \textit{learning algorithm} $A$. In a process called \textit{training} they take a set of instances, the \textit{training data} $X_T = \{\vec{x}_1, ..., \vec{x}_n\}$, and create such a mapping $C$ using an optimization criterion. The training set is a subset of all expected data and ideally independently and identically distributed \cite{RodriguezEtAl2013}. While all learning algorithms are being fed feature vectors to create a classifier, they can be separated into three categories, depending on their requirement for labeling:
+\begin{itemize}
+\item \textbf{Supervised:}
+This type of algorithm requires all of their input data to be labeled as well as a list of all possible class labels. While it may seem like the best option, its drawbacks include the potential cost of the labeling. If the correct class labels are not inherently known, usually a human is required to assign the correct labels manually. With unlabeled data readily available for problems like speech recognition, this is a very expensive part of the process. Another issue is the propagation of errors; any mistake made during labeling is carried over into the modeling of the classifier.
+
+\item \textbf{Unsupervised:}
+Instead of requiring all data to be labeled, unsupervised algorithms ignore class labels completely. This saves the cost of labeling the data, but many algorithms require some sort of tuning parameters (e.g. the cardinality of $Y$ and shape of underlying probability distribution). It is similar to the process of density estimation from statistics.
+
+\item \textbf{Semi-supervised:}
+As a compromise of the two extremes, semi-supervised techniques operate with a mix of labeled and unlabeled data. This way it seeks to combine the low effort for labeling with the advantages of supervised learning.
+\end{itemize}
+
+Regardless of their category, all learning methods make assumptions about the distribution of the data: feature vectors close to each other tend to belong to the same class and, consequently, data points are likely to form group-like structures.
+
+\textbf{Active learning} is the name of a subgroup of semi-supervised methods which will be a center point of this work. To reduce the amount of labeled data needed, they choose one or more data points to be labeled, commonly with the intent to incrementally improve the built classifier's performance by adding more labeled data every iteration. Various methods to select the next data point(s) to be labeled exist; we will briefly introduce two of them: \textit{Uncertainty sampling} and \textit{Probabilistic Active Learning (PAL)}. The \textit{uncertainty} of a classifier with regard to a data point describes how unsure it is about its assigned class label. This can be either seen as the distance to a \textit{decision boundary}, that is the entity separating data points of different classes \cite{SchefferEtAl2001}, or as the posterior probability estimation for the class assignment of your classifier \cite{ZhuEtAl2008}. The probabilistic approach doesn't rely on uncertainty, instead it maximizes the expected performance gain in all data point neighbourhoods \cite{KremplEtAl2014}. A more in-depth description is given in \ref{evaluation}.
+
+\section{Generalization Performance}
+When a learning algorithm is used to induce a classifier, an obvious question is how well said classifier performs. This can be used to select an algorithm when multiple are available or to simply get an estimate on how often the classifier will misclassify data.
+
+To facilitate the calculations further down a closer look at the training set $X_T$ is helpful. As earlier stated, the individual instances are supposed to be independently and identically distributed, which means the set can be seen as a random variable. Now the probability of a specific set depends on the probabilities to draw each of the instances and, in case of supervised and semi-supervised learning, their associated labels. Due to their independence, we can write it as 
+\begin{equation}
+p(X_T) = p(\vec{x}_1, y_1) \cdot ... \cdot p(\vec{x}_n, y_n) = \prod_{i=1}^{n} p(\vec{x}_i, y_i)
+\end{equation}
+\cite{RodriguezEtAl2013}. A similar formula applies for unsupervised learning.
+
+\subsection{(Expected) prediction error, training error and accuracy}
+An intuitive metric for classifier performance is the so-called \textit{training error}. After the training phase on a training set $X_T$ is finished, one could classify every training element with the built classifier and use the ratio of correctly classified data points to the size of the training set, also known as \textit{accuracy}. This way, classifiers of most algorithms will start with near-zero values when provided few instances and converge towards an accuracy of 100\%. In reality however, judging a classifier solely based on the training error leads to \textit{overfitting}; while the classifier operates well on the training set, at a certain point the performance on different data sets suffers \cite{Dietterich1995}.
+\subsection{Bias and variance}
+
+\subsection{Classificator-based estimators}
+
+\subsection{Cross-Validation}
+
+\subsection{Bootstrapping}
+
+\section{Learning Curves and Regression Models}
+
+\subsection{Function families}
+
+\subsection{Algorithms}

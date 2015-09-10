@@ -13,4 +13,12 @@ The style file: alpha.bst
 A level-1 auxiliary file: tex/erklaerung.aux
 Database file #1: literature/IEEEfull.bib
 Database file #2: literature/MYfull.bib
-Database file #3: literature/literature.bib
+Database file #3: literature/Bibliography.bib
+Warning--I didn't find a database entry for "KAK:GPCE09"
+Warning--I didn't find a database entry for "KG:SME06"
+Warning--I didn't find a database entry for "CE:BOOK00"
+Warning--I didn't find a database entry for "KCHNP:TR90"
+Warning--I didn't find a database entry for "Coq:website"
+Warning--I didn't find a database entry for "B:PHD03"
+Warning--I didn't find a database entry for "R:MT09"
+(There were 7 warnings)

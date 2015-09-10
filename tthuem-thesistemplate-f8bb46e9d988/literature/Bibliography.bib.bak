@@ -143,6 +143,21 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Url                      = {http://papers.nips.cc/paper/803-learning-curves-asymptotic-values-and-rate-of-convergence.pdf}
 }
 
+@Article{Dietterich1995,
+  Title                    = {Overfitting and undercomputing in machine learning},
+  Author                   = {Dietterich, Tom},
+  Journal                  = {ACM Computing Surveys},
+  Year                     = {1995},
+
+  Month                    = {September},
+  Number                   = {3},
+  Pages                    = {326-327},
+  Volume                   = {27},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.09}
+}
+
 @Article{FigueroaEtal2012,
   Title                    = {Predicting sample size required for classification performance},
   Author                   = {Figueroa, Rosa L. and Zeng-Treitler, Qing and Kandula, Sasikiran and Ngo, Long H.},
@@ -261,6 +276,20 @@ This paper describes a simple and effective sample size prediction algorithm tha
   Url                      = {http://research.microsoft.com/en-us/um/people/carlk/papers/kadiephdfull.htm}
 }
 
+@InProceedings{KremplEtAl2014,
+  Title                    = {Probabilistic Active Learning: Toward Combining Versatility, Optimality and Efficiency},
+  Author                   = {Krempl, Georg and Kottke, Daniel and Spiliopoulou, Myra},
+  Booktitle                = {Proceedings of the 17th International Conference on Discovery Science},
+  Year                     = {2014},
+  Month                    = {October},
+
+  Abstract                 = {Mining data with minimal annotation costs requires efficient active approaches, that ideally select the optimal candidate for labelling under a user-specified classification performance measure. Common generic approaches, that are usable with any classifier and any performance measure, are either slow like error reduction, or heuristics like uncertainty sampling. In contrast, our Probabilistic Active Learning (PAL) approach offers versatility, direct optimisation of a performance measure and computational efficiency. Given a labelling candidate from a pool, PAL models both the candidate’s label and the true posterior in its neighbourhood as random variables. By computing the expectation of the gain in classification performance over both random variables, PAL then selects the candidate that in expectation will improve the classification performance the most. Extending our recent poster, we discuss the properties of PAL and perform a thorough experimental evaluation on several synthetic and real-world data sets of different sizes. Results show comparable or better classification performance
+than error reduction and uncertainty sampling, yet PAL has the same asymptotic time complexity as uncertainty sampling and is faster than error reduction.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.08},
+  Url                      = {https://kmd.cs.ovgu.de/teaching/hli/KremplKottkeSpiliopoulou2014DS_FULL.pdf}
+}
+
 @InCollection{KroghVedelsby1995,
   Title                    = {Neural Network Ensembles, Cross Validation, and Active Learning},
   Author                   = {Krogh, Anders and Vedelsby, Jesper},
@@ -321,7 +350,8 @@ This paper follows the analysis proposed in [1] about the statistical properties
 
 An extensive empirical study has been performed for the previously mentioned estimators with naive Bayes and C4.5 classifiers over training sets obtained from assorted probability distributions. The empirical analysis consists of decomposing the variances following the proposed framework and checking the independence assumption between the bias and the considered classifier. Based on the obtained results, we propose the most appropriate error estimations for model selection under different experimental conditions.},
   Owner                    = {Florian},
-  Timestamp                = {2015.09.02}
+  Timestamp                = {2015.09.02},
+  Url                      = {http://www.sciencedirect.com/science/article/pii/S0031320312003998}
 }
 
 @InProceedings{RoyMcCallum2001,
@@ -360,6 +390,16 @@ An extensive empirical study has been performed for the previously mentioned est
   Owner                    = {Florian},
   Timestamp                = {2015.08.21},
   Url                      = {http://machinelearning.wustl.edu/mlpapers/paper_files/icml2010_SawadeLBS10.pdf}
+}
+
+@InProceedings{SchefferEtAl2001,
+  Title                    = {Active Hidden Markov Models for Information Extraction},
+  Author                   = {Scheffer, Tobias and Decomain, Christian and Wrobel, Stefan},
+  Booktitle                = {Proceedings of the Internation Symposium on Intelligent Data Analysis},
+  Year                     = {2001},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.08}
 }
 
 @InCollection{SeoEtAl2000,
@@ -464,5 +504,19 @@ An extensive empirical study has been performed for the previously mentioned est
   Owner                    = {Florian},
   Timestamp                = {2015.08.21},
   Url                      = {http://dl.acm.org/citation.cfm?id=1753784}
+}
+
+@InProceedings{ZhuEtAl2008,
+  Title                    = {Active Learning with Sampling by Uncertainty and Density for Word Sense Disambiguation and Text Classification},
+  Author                   = {Zhu, Jingbo and Wang, Huizhen and Yao, Tianshun and Tsou, Benjamin K.},
+  Booktitle                = {Proceedings of the 22nd International Conference on Computational Linguistics},
+  Year                     = {2008},
+  Month                    = {August},
+  Pages                    = {1137-1144},
+
+  Abstract                 = {This paper addresses two issues of active learning. Firstly, to solve a problem of uncertainty sampling that it often fails by selecting outliers, this paper presents a new selective sampling technique, sampling by uncertainty and density (SUD), in which a k-Nearest-Neighbor-based density measure is adopted to determine whether an unlabeled example is an outlier. Secondly, a technique of sampling by clustering (SBC) is applied to build a representative initial training data set for active learning. Finally, we implement a new algorithm of active learning with SUD and SBC techniques. The experimental results from three real-world data sets show that our method outperforms competing methods, particularly at the early stages of active learning.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.08},
+  Url                      = {https://www.aclweb.org/anthology/C/C08/C08-1143.pdf}
 }
 
