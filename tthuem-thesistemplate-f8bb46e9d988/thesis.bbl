@@ -5,6 +5,11 @@ Tom Dietterich.
 \newblock Overfitting and undercomputing in machine learning.
 \newblock {\em ACM Computing Surveys}, 27(3):326--327, September 1995.
 
+\bibitem[HTF09]{HastieEtAl2009}
+Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
+\newblock {\em The Elements of Statistical Learning}.
+\newblock Springer Series in Statistics. Springer, 2 edition, 2009.
+
 \bibitem[KKS14]{KremplEtAl2014}
 Georg Krempl, Daniel Kottke, and Myra Spiliopoulou.
 \newblock Probabilistic active learning: Toward combining versatility,
@@ -23,6 +28,12 @@ Tobias Scheffer, Christian Decomain, and Stefan Wrobel.
 \newblock Active hidden markov models for information extraction.
 \newblock In {\em Proceedings of the Internation Symposium on Intelligent Data
   Analysis}, 2001.
+
+\bibitem[ZG09]{ZhuEtAl2009}
+Xiaojin Zhu and Andrew~B Goldberg.
+\newblock Introduction to semi-supervised learning.
+\newblock {\em Synthesis lectures on artificial intelligence and machine
+  learning}, 3(1):1--130, 2009.
 
 \bibitem[ZWYT08]{ZhuEtAl2008}
 Jingbo Zhu, Huizhen Wang, Tianshun Yao, and Benjamin~K. Tsou.
