@@ -155,7 +155,8 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Volume                   = {27},
 
   Owner                    = {Florian},
-  Timestamp                = {2015.09.09}
+  Timestamp                = {2015.09.09},
+  Url                      = {http://dl.acm.org/citation.cfm?id=212114}
 }
 
 @Article{FigueroaEtal2012,
@@ -518,5 +519,19 @@ An extensive empirical study has been performed for the previously mentioned est
   Owner                    = {Florian},
   Timestamp                = {2015.09.08},
   Url                      = {https://www.aclweb.org/anthology/C/C08/C08-1143.pdf}
+}
+
+@Article{zZhuEtAl2009,
+  Title                    = {Introduction to semi-supervised learning},
+  Author                   = {Zhu, Xiaojin and Goldberg, Andrew B},
+  Journal                  = {Synthesis lectures on artificial intelligence and machine learning},
+  Year                     = {2009},
+  Number                   = {1},
+  Pages                    = {1--130},
+  Volume                   = {3},
+
+  Owner                    = {Florian},
+  Publisher                = {Morgan \& Claypool Publishers},
+  Timestamp                = {2015.09.10}
 }
 
