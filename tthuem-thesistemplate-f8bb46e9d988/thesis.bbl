@@ -1,5 +1,11 @@
 \begin{thebibliography}{ZWYT08}
 
+\bibitem[Boz87]{Bozdogan1987}
+Hamparsum Bozdogan.
+\newblock Model selection and akaike's information criterion (aic): The general
+  theory and its analytical extensions.
+\newblock {\em Psychometrika}, 52(3):345--370, September 1987.
+
 \bibitem[Die95]{Dietterich1995}
 Tom Dietterich.
 \newblock Overfitting and undercomputing in machine learning.
@@ -17,6 +23,12 @@ Georg Krempl, Daniel Kottke, and Myra Spiliopoulou.
 \newblock In {\em Proceedings of the 17th International Conference on Discovery
   Science}, October 2014.
 
+\bibitem[KW96]{KohaviEtAl1996}
+Ron Kohavi and David~H. Wolpert.
+\newblock Bias plus variance decomposition for zero-one loss functions.
+\newblock In {\em Machine Learning: Proceedings of the Thirteenth International
+  Conference}, 1996.
+
 \bibitem[RPL13]{RodriguezEtAl2013}
 Juan~D. Rodríguez, Aritz Pérez, and Jose~A. Lozano.
 \newblock A general framework for the statistical analysis of the sources of
@@ -28,6 +40,11 @@ Tobias Scheffer, Christian Decomain, and Stefan Wrobel.
 \newblock Active hidden markov models for information extraction.
 \newblock In {\em Proceedings of the Internation Symposium on Intelligent Data
   Analysis}, 2001.
+
+\bibitem[Wea99]{Weakliem1999}
+David~L. Weakliem.
+\newblock A critique of the bayesian information criterion for model selection.
+\newblock {\em Sociological Methods Research}, 27(3):359--397, February 1999.
 
 \bibitem[ZG09]{ZhuEtAl2009}
 Xiaojin Zhu and Andrew~B Goldberg.

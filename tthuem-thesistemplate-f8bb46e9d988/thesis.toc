@@ -10,21 +10,21 @@
 \contentsline {section}{\numberline {2.2}Generalization Performance}{5}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}(Expected) prediction error, training error and loss}{5}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Bias and variance}{6}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Classificator-based estimators}{6}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Cross-Validation}{6}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Bootstrapping}{6}{subsection.2.2.5}
-\contentsline {section}{\numberline {2.3}Learning Curves and Regression Models}{6}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Function families}{6}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Algorithms}{6}{subsection.2.3.2}
-\contentsline {chapter}{\numberline {3}Example Chapter}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Citation}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Formulas}{7}{section.3.2}
-\contentsline {section}{\numberline {3.3}Graphics}{8}{section.3.3}
-\contentsline {section}{\numberline {3.4}Tables}{8}{section.3.4}
-\contentsline {section}{\numberline {3.5}Code Listings}{8}{section.3.5}
-\contentsline {chapter}{\numberline {4}Evaluation}{11}{chapter.4}
-\contentsline {chapter}{\numberline {5}Related Work}{13}{chapter.5}
-\contentsline {chapter}{\numberline {6}Conclusion}{15}{chapter.6}
-\contentsline {chapter}{\numberline {7}Future Work}{17}{chapter.7}
-\contentsline {chapter}{\numberline {A}Appendix}{19}{appendix.A}
-\contentsline {chapter}{Bibliography}{21}{section*.8}
+\contentsline {subsection}{\numberline {2.2.3}Classificator-based estimators}{7}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Cross-Validation}{8}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Bootstrapping}{8}{subsection.2.2.5}
+\contentsline {section}{\numberline {2.3}Learning Curves and Regression Models}{8}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Function families}{8}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Algorithms}{8}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {3}Example Chapter}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Citation}{9}{section.3.1}
+\contentsline {section}{\numberline {3.2}Formulas}{9}{section.3.2}
+\contentsline {section}{\numberline {3.3}Graphics}{10}{section.3.3}
+\contentsline {section}{\numberline {3.4}Tables}{10}{section.3.4}
+\contentsline {section}{\numberline {3.5}Code Listings}{10}{section.3.5}
+\contentsline {chapter}{\numberline {4}Evaluation}{13}{chapter.4}
+\contentsline {chapter}{\numberline {5}Related Work}{15}{chapter.5}
+\contentsline {chapter}{\numberline {6}Conclusion}{17}{chapter.6}
+\contentsline {chapter}{\numberline {7}Future Work}{19}{chapter.7}
+\contentsline {chapter}{\numberline {A}Appendix}{21}{appendix.A}
+\contentsline {chapter}{Bibliography}{23}{section*.8}

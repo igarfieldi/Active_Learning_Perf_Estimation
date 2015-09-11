@@ -103,6 +103,22 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Url                      = {http://papers.nips.cc/paper/2468-no-unbiased-estimator-of-the-variance-of-k-fold-cross-validation.pdf}
 }
 
+@Article{Bozdogan1987,
+  Title                    = {Model selection and Akaike's Information Criterion (AIC): The general theory and its analytical extensions},
+  Author                   = {Bozdogan, Hamparsum},
+  Journal                  = {Psychometrika},
+  Year                     = {1987},
+
+  Month                    = {September},
+  Number                   = {3},
+  Pages                    = {345-370},
+  Volume                   = {52},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.11},
+  Url                      = {http://link.springer.com/article/10.1007/BF02294361}
+}
+
 @InProceedings{BrumenEtal2004,
   Title                    = {Early Assessment of Classification Performance},
   Author                   = {Brumen, Bostjan and Golob, Izidor and Jaakkola, Hannu and Welzer, Tatjana and Rozman, Ivan},
@@ -277,6 +293,17 @@ This paper describes a simple and effective sample size prediction algorithm tha
   Url                      = {http://research.microsoft.com/en-us/um/people/carlk/papers/kadiephdfull.htm}
 }
 
+@InProceedings{KohaviEtAl1996,
+  Title                    = {Bias Plus Variance Decomposition for Zero-One Loss Functions},
+  Author                   = {Kohavi, Ron and Wolpert, David H.},
+  Booktitle                = {Machine Learning: Proceedings of the Thirteenth International Conference},
+  Year                     = {1996},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.11},
+  Url                      = {ai.stanford.edu/~ronnyk/biasVar.pdf}
+}
+
 @InProceedings{KremplEtAl2014,
   Title                    = {Probabilistic Active Learning: Toward Combining Versatility, Optimality and Efficiency},
   Author                   = {Krempl, Georg and Kottke, Daniel and Spiliopoulou, Myra},
@@ -403,6 +430,20 @@ An extensive empirical study has been performed for the previously mentioned est
   Timestamp                = {2015.09.08}
 }
 
+@Article{Schwarz1978,
+  Title                    = {Estimating the Dimension of a Model},
+  Author                   = {Schwarz, Gideon},
+  Journal                  = {The Annals of Statistics},
+  Year                     = {1978},
+  Number                   = {2},
+  Pages                    = {461-464},
+  Volume                   = {6},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.11},
+  Url                      = {http://projecteuclid.org/euclid.aos/1176344136}
+}
+
 @InCollection{SeoEtAl2000,
   Title                    = {Gaussian Process Regression: Active Data Selection and Test Point Rejection},
   Author                   = {Seo, Sambu and Wallat, Marko and Graepel, Thore and Obermayer, Klaus},
@@ -441,6 +482,20 @@ An extensive empirical study has been performed for the previously mentioned est
   Abstract                 = {This project studied the effect of varying the training size for different classification techniques. The learning curves were then regressed using four common equations. In the restricted domain which was studied, the logarithmic equation was the best fit. This contradicts the earlier work carried out on Decision Trees in which the performance was best modeled by the Power Law. The other classification techniques studied in this project were K-Nearest Neighbors, Support Vector Machines, and Artificial Neural Networks, which have not yet been included in such a study. A preliminary study of how the modeling can be used for predicting the performance of the project was also undertaken. The equations which best predicted the performance were not same as the ones which best fit the final curve, and depended on the classification method more than the datase},
   Timestamp                = {2015.08.26},
   Url                      = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.102.5455&rep=rep1&type=pdf}
+}
+
+@Article{TibshiraniEtAl1999,
+  Title                    = {The Covariance Inflation Criterion for Adaptive Model Selection},
+  Author                   = {Tibshirani, Robert and Knight, Keith},
+  Journal                  = {Journal of the Royal Statistical Society. Series B (Statistical Methodology)},
+  Year                     = {1999},
+  Number                   = {3},
+  Pages                    = {529-546},
+  Volume                   = {61},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.11},
+  Url                      = {http://www.jstor.org/stable/2680721}
 }
 
 @InBook{TsamardinosEtAl2014,
@@ -521,7 +576,7 @@ An extensive empirical study has been performed for the previously mentioned est
   Url                      = {https://www.aclweb.org/anthology/C/C08/C08-1143.pdf}
 }
 
-@Article{zZhuEtAl2009,
+@Article{ZhuEtAl2009,
   Title                    = {Introduction to semi-supervised learning},
   Author                   = {Zhu, Xiaojin and Goldberg, Andrew B},
   Journal                  = {Synthesis lectures on artificial intelligence and machine learning},
