@@ -55,7 +55,7 @@ L(f(\vec{x}), \hat{f}(\vec{x})) =
 	1, & \text{else}
 \end{cases}
 \end{equation}
-For regression problems squared or absolute error loss are more effective, since equal function values are improbable in a continuous value space. It seems intuitive to use the feature vectors already used for training again for the performance evaluation, especially since they are already labeled and with that $f(\vec{x})$ for them known. Utilizing the loss function from above the \textit{training error} on the training set $X_T = \{(\vec{x}_1, y_1), ..., (\vec{x}_n, y_n)\}$ is
+For regression problems squared or absolute error loss are more effective, since equal function values are improbable in a continuous output space. It seems intuitive to use the feature vectors already used for training again for the performance evaluation, especially since they are already labeled and with that $f(\vec{x})$ for them known. Utilizing the loss function from above the \textit{training error} on the training set $X_T = \{(\vec{x}_1, y_1), ..., (\vec{x}_n, y_n)\}$ is
 \begin{equation}
 Err_{T} = \frac{1}{N}\sum_{i=1}^{n} L(y_i, \hat{f}(\vec{x}_i))
 \end{equation}
@@ -70,11 +70,37 @@ An important aspect of the prediction error is the dependence from the fixed tra
 \begin{equation}
 Err_{E} = E_{(\mathbf{X}, \mathbf{Y})}[L(\mathbf{Y}, \hat{f}(\mathbf{X}))]
 \end{equation}
-Here the performance of the algorithm that creates the model $\hat{f}(\vec{x})$ is evaluated, which is no longer of use for the analysis of a specific classifier but can guide the selection of a preferable algorithm. Note that we still require knowledge of the underlying distributions for a direct evaluation, meaning that realistically an estimator is needed for this as well \cite{HastieEtAl2009}.
+Here the performance of the algorithm that creates the model $\hat{f}(\vec{x})$ is evaluated, which is no longer of use for the analysis of a specific classifier but can guide the selection of a preferable algorithm. Note that we still require knowledge of the underlying distributions for a direct evaluation, realistically making an estimator necessary as well \cite{HastieEtAl2009}.
 
 \subsection{Bias and variance}
+In the previous sections we portrayed classifier as a simple mapping $\hat{f}$ of input values $\vec{x}$ to class labels $y$. While this is true for many of them like decision trees, a more general point of view is to see a classifier as an assignment of probabilities for the class labels. Given our random variable $\mathbf{Y}$ for the class labels and a fixed value $\vec{x}$ of our input variable $\mathbf{X}$, $P(\mathbf{Y} = \hat{y} | \vec{x})$ represents the probability that $\mathbf{Y}$ realizes as the value $y$ given our input. For classifiers of the previously described type, only one class label has a non-zero probability for an input, leading to the possibility of being written as a function. In fact, since in practice a definite class label is needed, most classifiers will pick the class label which maximizes said probability anyway \cite{KohaviEtAl1996}.
+
+Another assumption that doesn't necessarily hold was that an error-free target function $f(\vec{x})$ exists. It is entirely possible for our target function to be \textit{noisy}, that is to randomly vary from its true value. In turn, this \textit{variance} leads to blurry class assignments. Thus, we only get a probability $P(\mathbf{Y_T} = y | \vec{x})$ instead of a sharp mapping. Note that the class variable here is different from the one in the previous paragraph; they are conditionally independent for our target distribution and a fixed. Now with this probabilistic notation, it is possible to \textit{decompose} the expected prediction error from the previous section into three components:
+\begin{equation}
+\begin{split}
+Err_{E} &= \sum_{\vec{x}}^{}P(\vec{x})\left(\sigma^2(\vec{x}) + bias^2(\vec{x}) + variance(\vec{x})\right) \\
+&= \frac{1}{|X|}\sum_{\vec{x}}^{}\left(\sigma^2(\vec{x}) + bias^2(\vec{x}) + variance(\vec{x})\right)
+\end{split}
+\end{equation}
+The bias and variance express by how much our classifier differs systematically and at random for a given data point from the true value. $\sigma^2$ is the variance of the noise distribution that the target may or may not have; it is the irreducible error that any classifier will always make. The need for the probability of $\vec{x}$ is dropped under the assumption of equal likelihood for all data points \cite{KohaviEtAl1996}. Ideally you would want to minimize both the bias and the variance of your classifier to achieve a low prediction error. Unfortunately, as the model complexity increases to accommodate for more subtle structures in the training data its bias will decrease but the variance will increase. This dilemma is known as the \textit{bias-variance-tradeoff}.
 
 \subsection{Classificator-based estimators}
+As stated section 2.2.1, the training error of a classifier usually underestimates the true prediction error $Err_S$. To calculate the desired error, two options are available. Either a direct estimate is taken, usually with dedicated test sets, which will be called \textit{out-of-sample error} since it uses different data points than the training error, or the difference between training and true error is estimated and then added to the training error, also called \textit{optimism}. This section briefly introduces two methods to estimate the optimism: \textit{Akaike information criterion} and \textit{Bayes information criterion}.
+
+The \textbf{Akaike information criterion}(AIC) in its original form is defined as a function of a model's likelihood and complexity $\lambda$: $AIC = -2 \cdot log(likelihood) + 2\lambda$ \cite{Bozdogan1987}. If instead of a 0-1-loss the log-likelihood-loss is used, a quantity that uses the logarithm of the likelihood of a model given the input, and a linear model with $\lambda$ parameters assumed, the AIC can also be written as
+\begin{equation}
+AIC = Err_T + 2\frac{\lambda}{n}\sigma^2
+\end{equation}
+with $n$ as the number of training instances and $\sigma^2$ the variance of the target model \cite{HastieEtAl2009}.
+
+A very similar estimate is the \textbf{Bayesian information criterion}(BIC). Defined as $BIC = -2 \cdot log(likelihood) + \lambda log(n)$, it is asymptotically equal to AIC, but with a steeper penalty for complex models due to the exchange of the factor 2 with $log(n)$ \cite{Weakliem1999}. Using the same assumptions as for AIC, we get the formula
+\begin{equation}
+BIC = \frac{n}{\sigma^2}[Err_T + log(n) \cdot \frac{d}{N}\sigma^2]
+\end{equation}
+
+While both criteria are theoretically solid, they are impractical for use in this work; both assume fairly simple model families and restrict the use of loss functions \cite{HastieEtAl2009}.
+
+
 
 \subsection{Cross-Validation}
 
