@@ -1,5 +1,11 @@
 \begin{thebibliography}{ZWYT08}
 
+\bibitem[Aka98]{Akaike1998}
+Hirotugu Akaike.
+\newblock {\em Selected Papers of Hirotugu Akaike}, chapter Information Theory
+  and an Extension of the Maximum Likelihood Principle, pages 199--213.
+\newblock Springer Series in Statistics. Springer New York, 1998.
+
 \bibitem[Boz87]{Bozdogan1987}
 Hamparsum Bozdogan.
 \newblock Model selection and akaike's information criterion (aic): The general
@@ -29,11 +35,22 @@ Ron Kohavi and David~H. Wolpert.
 \newblock In {\em Machine Learning: Proceedings of the Thirteenth International
   Conference}, 1996.
 
+\bibitem[PPS03]{PerlichEtAl2003}
+Claudia Perlich, Foster Provost, and Jeffrey~S. Simonoff.
+\newblock Tree induction vs. logistic regression: a learning-curve analysis.
+\newblock {\em The Journal of Machine Learning Research}, 4:211--255, December
+  2003.
+
 \bibitem[RPL13]{RodriguezEtAl2013}
 Juan~D. Rodríguez, Aritz Pérez, and Jose~A. Lozano.
 \newblock A general framework for the statistical analysis of the sources of
   variance for classification error estimators.
 \newblock {\em Pattern Recognition}, 46(3):855--864, March 2013.
+
+\bibitem[Sch78]{Schwarz1978}
+Gideon Schwarz.
+\newblock Estimating the dimension of a model.
+\newblock {\em The Annals of Statistics}, 6(2):461--464, 1978.
 
 \bibitem[SDW01]{SchefferEtAl2001}
 Tobias Scheffer, Christian Decomain, and Stefan Wrobel.
@@ -45,6 +62,11 @@ Tobias Scheffer, Christian Decomain, and Stefan Wrobel.
 David~L. Weakliem.
 \newblock A critique of the bayesian information criterion for model selection.
 \newblock {\em Sociological Methods Research}, 27(3):359--397, February 1999.
+
+\bibitem[Yel79]{Yelle1979}
+Louis~E. Yelle.
+\newblock The learning curve: Historical review and comprehensive survey.
+\newblock {\em Decision Sciences}, 10(2):302--328, April 1979.
 
 \bibitem[ZG09]{ZhuEtAl2009}
 Xiaojin Zhu and Andrew~B Goldberg.

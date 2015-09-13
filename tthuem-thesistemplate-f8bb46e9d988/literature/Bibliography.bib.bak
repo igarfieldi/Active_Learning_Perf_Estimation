@@ -54,6 +54,20 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Timestamp                = {2015.08.27}
 }
 
+@InBook{Akaike1998,
+  Title                    = {Selected Papers of Hirotugu Akaike},
+  Author                   = {Hirotugu Akaike},
+  Chapter                  = {Information Theory and an Extension of the Maximum Likelihood Principle},
+  Pages                    = {199-213},
+  Publisher                = {Springer New York},
+  Year                     = {1998},
+  Series                   = {Springer Series in Statistics},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.12},
+  Url                      = {http://link.springer.com/chapter/10.1007/978-1-4612-1694-0_15}
+}
+
 @InProceedings{Bach2006,
   Title                    = {Active Learning for misspecified generalized linear models},
   Author                   = {Bach, Francis R.},
@@ -207,6 +221,20 @@ This paper describes a simple and effective sample size prediction algorithm tha
   Owner                    = {Florian},
   Timestamp                = {2015.08.27},
   Url                      = {http://dl.acm.org/citation.cfm?id=1180786}
+}
+
+@InBook{GuEtAl2001,
+  Title                    = {Advances in Web-Age Information Management},
+  Author                   = {Gu, Baohua and Hu, Feifang and Liu, Huan},
+  Chapter                  = {Modelling Classification Performance for Large Data Sets},
+  Pages                    = {317-328},
+  Publisher                = {Springer Berlin Heidelberg},
+  Year                     = {2001},
+
+  Abstract                 = {For many learning algorithms, their learning accuracy will increase as the size of training data increases, forming the well-known learning curve. Usually a learning curve can be fitted by interpolating or extrapolating some points on it with a specified model. The obtained learning curve can then be used to predict the maximum achievable learning accuracy or to estimate the amount of data needed to achieve an expected learning accuracy, both of which will be especially meaningful to data mining on large data sets. Although some models have been proposed to model learning curves, most of them do not test their applicability to large data sets. In this paper, we focus on this issue. We empirically compare six potentially useful models by fitting learning curves of two typical classification algorithms—C4.5 (decision tree) and LOG (logistic discrimination) on eight large UCI benchmark data sets. By using all available data for learning, we fit a full-length learning curve; by using a small portion of the data, we fit a part-length learning curve. The models are then compared in terms of two performances: (1) how well they fit a full-length learning curve, and (2) how well a fitted part-length learning curve can predict learning accuracy at the full length. Experimental results show that the power law (y = a - b * x -c ) is the best among the six models in both the performances for the two algorithms and all the data sets. These results support the applicability of learning curves to data mining.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.12},
+  Url                      = {http://link.springer.com/chapter/10.1007%2F3-540-47714-4_29}
 }
 
 @Article{HanczarEtAl2013,
@@ -527,6 +555,22 @@ An extensive empirical study has been performed for the previously mentioned est
 
   Owner                    = {Florian},
   Timestamp                = {2015.08.21}
+}
+
+@Article{Weakliem1999,
+  Title                    = {A Critique of the Bayesian Information Criterion for Model Selection},
+  Author                   = {Weakliem, David L.},
+  Journal                  = {Sociological Methods Research},
+  Year                     = {1999},
+
+  Month                    = {February},
+  Number                   = {3},
+  Pages                    = {359-397},
+  Volume                   = {27},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.11},
+  Url                      = {smr.sagepub.com/content/27/3/359.short}
 }
 
 @Article{Yelle1979,
