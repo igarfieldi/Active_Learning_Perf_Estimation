@@ -117,6 +117,24 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Url                      = {http://papers.nips.cc/paper/2468-no-unbiased-estimator-of-the-variance-of-k-fold-cross-validation.pdf}
 }
 
+@Article{BorraEtAl2010,
+  Title                    = {Measuring the prediction error. A comparison of cross-validation, bootstrap and covariance penalty methods},
+  Author                   = {Borra, Simone and Di Ciaccio, Agostino},
+  Journal                  = {Computational Statistics \& Data Analysis},
+  Year                     = {2010},
+
+  Month                    = {December},
+  Number                   = {12},
+  Pages                    = {2976-2989},
+  Volume                   = {54},
+
+  Abstract                 = {The estimators most widely used to evaluate the prediction error of a non-linear regression model are examined. An extensive simulation approach allowed the comparison of the performance of these estimators for different non-parametric methods, and with varying signal-to-noise ratio and sample size. Estimators based on resampling methods such as Leave-one-out, parametric and non-parametric Bootstrap, as well as repeated Cross Validation methods and Hold-out, were considered. The methods used are Regression Trees, Projection Pursuit Regression and Neural Networks. The repeated-corrected 10-fold Cross-Validation estimator and the Parametric Bootstrap estimator obtained the best performance in the simulations.},
+  Keywords                 = {Prediction error; Extra-sample error; In-sample error; Optimism; Cross-validation; Leave-one-out; Bootstrap; Covariance penalty; Regression trees; Projection pursuit regression; Neural networks},
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.14},
+  Url                      = {http://www.sciencedirect.com/science/article/pii/S0167947310001064}
+}
+
 @Article{Bozdogan1987,
   Title                    = {Model selection and Akaike's Information Criterion (AIC): The general theory and its analytical extensions},
   Author                   = {Bozdogan, Hamparsum},
@@ -189,6 +207,48 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Url                      = {http://dl.acm.org/citation.cfm?id=212114}
 }
 
+@Article{Efron1983,
+  Title                    = {Estimating the Error Rate of a Prediction Rule: Improvement on Cross-Validation},
+  Author                   = {Efron, Bradley},
+  Journal                  = {Journal of the American Statistical Association},
+  Year                     = {1983},
+  Number                   = {382},
+  Pages                    = {316-331},
+  Volume                   = {78},
+
+  Abstract                 = {We construct a prediction rule on the basis of some data, and then we wish to estimate the error rate of this rule in classifiying future observations. Cross-validation provides a nearly unbiased estimate, using only the original data. Cross-validation turns out to be related closely to the bootstrap estimate of the error rate. This article has two purposes: to understand better the theoretical basis of the prediction problem, and to investigate some related estimators, which seem to offer considerably improved estimation in small samples.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.14},
+  Url                      = {http://www.cs.berkeley.edu/~jordan/sail/readings/archive/efron-improve_cv.pdf}
+}
+
+@Article{EfronEtAl1997,
+  Title                    = {Improvements on Cross-Validation: The .632+ Bootstrap Method},
+  Author                   = {Efron, Bradley and Tibshirani, Robert},
+  Journal                  = {Journal of the American Statistical Association},
+  Year                     = {1997},
+
+  Month                    = {June},
+  Number                   = {438},
+  Pages                    = {548-560},
+  Volume                   = {92},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.15},
+  Url                      = {http://www.stat.washington.edu/courses/stat527/s13/readings/EfronTibshirani_JASA_1997.pdf}
+}
+
+@Article{EvansEtAl2015,
+  Title                    = {Estimating Optimal Active Learning via Model Retraining Improvement},
+  Author                   = {Evans, Lewis P. G. and Adams, Niall M. and Anagnostopoulous, Christoforos},
+  Journal                  = {Journal of Machine Learning Research},
+  Year                     = {2015},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.15},
+  Url                      = {http://arxiv.org/abs/1502.01664#}
+}
+
 @Article{FigueroaEtal2012,
   Title                    = {Predicting sample size required for classification performance},
   Author                   = {Figueroa, Rosa L. and Zeng-Treitler, Qing and Kandula, Sasikiran and Ngo, Long H.},
@@ -221,20 +281,6 @@ This paper describes a simple and effective sample size prediction algorithm tha
   Owner                    = {Florian},
   Timestamp                = {2015.08.27},
   Url                      = {http://dl.acm.org/citation.cfm?id=1180786}
-}
-
-@InBook{GuEtAl2001,
-  Title                    = {Advances in Web-Age Information Management},
-  Author                   = {Gu, Baohua and Hu, Feifang and Liu, Huan},
-  Chapter                  = {Modelling Classification Performance for Large Data Sets},
-  Pages                    = {317-328},
-  Publisher                = {Springer Berlin Heidelberg},
-  Year                     = {2001},
-
-  Abstract                 = {For many learning algorithms, their learning accuracy will increase as the size of training data increases, forming the well-known learning curve. Usually a learning curve can be fitted by interpolating or extrapolating some points on it with a specified model. The obtained learning curve can then be used to predict the maximum achievable learning accuracy or to estimate the amount of data needed to achieve an expected learning accuracy, both of which will be especially meaningful to data mining on large data sets. Although some models have been proposed to model learning curves, most of them do not test their applicability to large data sets. In this paper, we focus on this issue. We empirically compare six potentially useful models by fitting learning curves of two typical classification algorithms—C4.5 (decision tree) and LOG (logistic discrimination) on eight large UCI benchmark data sets. By using all available data for learning, we fit a full-length learning curve; by using a small portion of the data, we fit a part-length learning curve. The models are then compared in terms of two performances: (1) how well they fit a full-length learning curve, and (2) how well a fitted part-length learning curve can predict learning accuracy at the full length. Experimental results show that the power law (y = a - b * x -c ) is the best among the six models in both the performances for the two algorithms and all the data sets. These results support the applicability of learning curves to data mining.},
-  Owner                    = {Florian},
-  Timestamp                = {2015.09.12},
-  Url                      = {http://link.springer.com/chapter/10.1007%2F3-540-47714-4_29}
 }
 
 @Article{HanczarEtAl2013,
@@ -321,6 +367,17 @@ This paper describes a simple and effective sample size prediction algorithm tha
   Url                      = {http://research.microsoft.com/en-us/um/people/carlk/papers/kadiephdfull.htm}
 }
 
+@InProceedings{Kohavi1995,
+  Title                    = {A Study of Cross-Validation and Bootstrap for Accuracy Estimation and Model Selection},
+  Author                   = {Kohavi, Ron},
+  Booktitle                = {International Joint Conference on Artificial Intelligence},
+  Year                     = {1995},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.14},
+  Url                      = {http://frostiebek.free.fr/docs/Machine%20Learning/validation-1.pdf}
+}
+
 @InProceedings{KohaviEtAl1996,
   Title                    = {Bias Plus Variance Decomposition for Zero-One Loss Functions},
   Author                   = {Kohavi, Ron and Wolpert, David H.},
@@ -357,6 +414,16 @@ than error reduction and uncertainty sampling, yet PAL has the same asymptotic t
   Owner                    = {Florian},
   Timestamp                = {2015.08.21},
   Url                      = {http://papers.nips.cc/paper/1001-neural-network-ensembles-cross-validation-and-active-learning.pdf}
+}
+
+@InProceedings{PahikkalaEtAl2008,
+  Title                    = {Exact and efficient leave-pair-out cross validation for ranking RLS},
+  Author                   = {Pahikkala, Tapio and Airola, Antti and Boberg, Jorma and Salakoski, Taipo},
+  Booktitle                = {Proceedings of AKRR},
+  Year                     = {2008},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.14}
 }
 
 @Article{PerlichEtAl2003,
@@ -410,7 +477,7 @@ An extensive empirical study has been performed for the previously mentioned est
   Url                      = {http://www.sciencedirect.com/science/article/pii/S0031320312003998}
 }
 
-@InProceedings{RoyMcCallum2001,
+@InProceedings{RoyEtAl2001,
   Title                    = {Toward optimal active learning through monte carlo estimation of error reduction},
   Author                   = {Roy, Nicholas and McCallum, Andrew},
   Booktitle                = {Proceedings of the International Conference on Machine Learning},
@@ -540,6 +607,17 @@ An extensive empirical study has been performed for the previously mentioned est
   Url                      = {http://link.springer.com/chapter/10.1007/978-3-319-07064-3_1}
 }
 
+@Book{Vapnik1982,
+  Title                    = {Estimation of Dependences Based on Empirical Data},
+  Author                   = {Vapnik, Vladimir},
+  Publisher                = {Springer New York},
+  Year                     = {1982},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.14},
+  Url                      = {http://www.springer.com/us/book/9780387308654}
+}
+
 @Patent{VelipasaogluEtAl2008,
   Title                    = {System and method for estimating performance of a classifier},
   Nationality              = {United States of America},
@@ -571,6 +649,22 @@ An extensive empirical study has been performed for the previously mentioned est
   Owner                    = {Florian},
   Timestamp                = {2015.09.11},
   Url                      = {smr.sagepub.com/content/27/3/359.short}
+}
+
+@Article{WoodEtAl2007,
+  Title                    = {Classification based upon gene expression data: bias and precision of error rates},
+  Author                   = {Wood, Ian A. and Visscher, Peter M. and Mengersen, Kerrie L.},
+  Journal                  = {Bioinformatics},
+  Year                     = {2007},
+
+  Month                    = {June},
+  Number                   = {11},
+  Pages                    = {1363-1370},
+  Volume                   = {23},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.15},
+  Url                      = {https://keppel.qimr.edu.au/contents/p/staff/CVPV127.pdf}
 }
 
 @Article{Yelle1979,
