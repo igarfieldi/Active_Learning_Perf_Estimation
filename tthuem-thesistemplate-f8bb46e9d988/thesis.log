@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.30)  13 SEP 2015 13:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.30)  15 SEP 2015 14:25
 entering extended mode
 **thesis.tex
 (thesis.tex
@@ -1375,19 +1375,8 @@ File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.0 (rcs-revision 1.9)
 \lskip=\skip89
 \lskipa=\skip90
 )
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 60.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 60.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 60.
-
 \@indexfile=\write4
+
 Writing index file thesis.idx
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
@@ -1560,49 +1549,33 @@ File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
- [4] [5] [6] [7])
-[8] (chapters/example.tex
-Chapter 3.
+ [4] [5] [6] [7]
+[8] [9] [10] <pics/learning_curve_general.png, id=380, 782.17218pt x 578.16pt>
+File: pics/learning_curve_general.png Graphic file (type png)
 
-Package natbib Warning: Citation `KAK:GPCE09' on page 9 undefined on input line
- 17.
-
-
-Package natbib Warning: Citation `KG:SME06' on page 9 undefined on input line 1
-9.
-
-
-Package natbib Warning: Citation `CE:BOOK00' on page 9 undefined on input line 
-21.
-
-
-Package natbib Warning: Citation `KCHNP:TR90' on page 9 undefined on input line
- 21.
-
-
-Package natbib Warning: Citation `Coq:website' on page 9 undefined on input lin
-e 21.
-
-
-Package natbib Warning: Citation `B:PHD03' on page 9 undefined on input line 21
+<use pics/learning_curve_general.png>
+Package pdftex.def Info: pics/learning_curve_general.png used on input line 165
 .
+(pdftex.def)             Requested size: 354.86412pt x 262.30452pt.
+ [11 <./pics/learning_curve_general.png>]
+Overfull \hbox (3.67065pt too wide) in paragraph at lines 176--177
+[]\T1/aer/m/n/12 Similar to the ex-trap-o-la-tion of fit-ted learn-ing curves i
+s the \T1/aer/m/it/12 maximum-likelihood-regression
+ []
 
-
-Package natbib Warning: Citation `R:MT09' on page 9 undefined on input line 21.
-
-
-[9
-
-
-
-] <pics/example.pdf, id=340, 174.41159pt x 112.2062pt>
+) [12] (chapters/example.tex
+Chapter 3.
+<pics/example.pdf, id=410, 174.41159pt x 112.2062pt>
 File: pics/example.pdf Graphic file (type pdf)
-
-<use pics/example.pdf>
+ <use pics/example.pdf>
 Package pdftex.def Info: pics/example.pdf used on input line 54.
 (pdftex.def)             Requested size: 218.01395pt x 140.25739pt.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+[13
+
+
+
+] ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
@@ -1611,99 +1584,93 @@ LaTeX Font Info:    Try loading font information for T1+pcr on input line 80.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1pcr.fd"
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)) [10 <./pics/example.pdf>] [11] (chapters/evaluation.tex [12
+)) [14 <./pics/example.pdf>] [15] (chapters/evaluation.tex [16
 
 
 
 ]
 Chapter 4.
-) [13] (chapters/relatedwork.tex [14
+) [17] (chapters/relatedwork.tex [18
 
 
 
 ]
 Chapter 5.
-) [15] (chapters/conclusion.tex [16
+) [19] (chapters/conclusion.tex [20
 
 
 
 ]
 Chapter 6.
-) [17] (chapters/futurework.tex [18
+) [21] (chapters/futurework.tex [22
 
 
 
 ]
 Chapter 7.
-) [19] (chapters/appendix.tex [20
+) [23] (chapters/appendix.tex [24
 
 
 
 ]
 Appendix A.
-) [21] [22
+) [25] [26
 
 
 ] (thesis.bbl (thesis.brf)
 \tf@brf=\write10
- [23
+ [27
 
-]) [24]
+] [28]) [29] [30
+
+]
 No file thesis.ind.
-(tex/erklaerung.tex [25
-
+(tex/erklaerung.tex [31
 
 ])
-
-Package natbib Warning: There were undefined citations.
-
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 188.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 188.
-(thesis.aux (tex/titlepage.aux) (chapters/abstract.aux)
-(chapters/introduction.aux) (chapters/background.aux) (chapters/example.aux)
-(chapters/evaluation.aux) (chapters/relatedwork.aux) (chapters/conclusion.aux)
-(chapters/futurework.aux) (chapters/appendix.aux) (tex/erklaerung.aux))
+ (thesis.aux (tex/titlepage.aux)
+(chapters/abstract.aux) (chapters/introduction.aux) (chapters/background.aux)
+(chapters/example.aux) (chapters/evaluation.aux) (chapters/relatedwork.aux)
+(chapters/conclusion.aux) (chapters/futurework.aux) (chapters/appendix.aux)
+(tex/erklaerung.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 188.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 188.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 0608BC3827E4E13E5556B4308811F950;1788.
-
-
-Package rerunfilecheck Warning: File `thesis.brf' has changed.
-(rerunfilecheck)                Rerun to get bibliographical references right.
-
-Package rerunfilecheck Info: Checksums for `thesis.brf':
-(rerunfilecheck)             Before: 8D738D1056068B5C51E174C0D81D2BE9;1259
-(rerunfilecheck)             After:  958087D77FAB86BEB32CF68BCCC5583F;1319.
+(rerunfilecheck)             Checksum: 12138A738E792C8F3C6589CAA8EC6483;1781.
+Package rerunfilecheck Info: File `thesis.brf' has not changed.
+(rerunfilecheck)             Checksum: E8051B8EEAEEF3F0A06D9D6E018ADE45;3312.
  ) 
 Here is how much of TeX's memory you used:
- 35468 strings out of 493698
- 761462 string characters out of 3144406
- 1017757 words of memory out of 3000000
- 37822 multiletter control sequences out of 15000+200000
- 57898 words of font info for 116 fonts, out of 3000000 for 9000
+ 35619 strings out of 493698
+ 764293 string characters out of 3144406
+ 1015757 words of memory out of 3000000
+ 37946 multiletter control sequences out of 15000+200000
+ 51288 words of font info for 110 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  64i,17n,99p,1876b,1362s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
-8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on thesis.pdf (37 pages, 351485 bytes).
+s/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cmextra/cmex8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+mi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on thesis.pdf (43 pages, 485550 bytes).
 PDF statistics:
- 551 PDF objects out of 1000 (max. 8388607)
- 116 named destinations out of 1000 (max. 500000)
- 349 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 671 PDF objects out of 1000 (max. 8388607)
+ 146 named destinations out of 1000 (max. 500000)
+ 354 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,5 @@
-\begin{thebibliography}{ZWYT08}
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{APWDB11}
 
 \bibitem[Aka98]{Akaike1998}
 Hirotugu Akaike.
@@ -6,16 +7,68 @@ Hirotugu Akaike.
   and an Extension of the Maximum Likelihood Principle, pages 199--213.
 \newblock Springer Series in Statistics. Springer New York, 1998.
 
+\bibitem[APWDB11]{AirolaEtAl2001}
+Antti Airola, Tapio Pahikkala, Willem Waegeman, and Bernard De~Baets.
+\newblock An experimental comparison of cross-validation techniques for
+  estimating the area under the roc curve.
+\newblock {\em Computational Statistics \& Data Analysis}, 55(4):1828--1844,
+  April 2011.
+
+\bibitem[BDC10]{BorraEtAl2010}
+Simone Borra and Agostino Di~Ciaccio.
+\newblock Measuring the prediction error. a comparison of cross-validation,
+  bootstrap and covariance penalty methods.
+\newblock {\em Computational Statistics \& Data Analysis}, 54(12):2976--2989,
+  December 2010.
+
+\bibitem[BGJ{\etalchar{+}}04]{BrumenEtal2004}
+Bostjan Brumen, Izidor Golob, Hannu Jaakkola, Tatjana Welzer, and Ivan Rozman.
+\newblock Early assessment of classification performance.
+\newblock In {\em {ACSW} Frontiers 2004, 2004 {ACSW} Workshops - the
+  Australasian Information Security Workshop (AISW2004), the Australasian
+  Workshop on Data Mining and Web Intelligence (DMWI2004), and the Australasian
+  Workshop on Software Internationalisation {(AWSI2004)} . Dunedin, New
+  Zealand, January 2004}, pages 91--96, 2004.
+
 \bibitem[Boz87]{Bozdogan1987}
 Hamparsum Bozdogan.
 \newblock Model selection and akaike's information criterion (aic): The general
   theory and its analytical extensions.
 \newblock {\em Psychometrika}, 52(3):345--370, September 1987.
 
+\bibitem[CJS{\etalchar{+}}93]{CortesEtal1993}
+Corinna Cortes, L.~D. Jackel, Sara~A. Solla, Vladimir Vapnik, and John~S.
+  Denker.
+\newblock Learning curves: Asymptotic values and rate of convergence.
+\newblock In {\em Neural Information Processing Systems}, 1993.
+
 \bibitem[Die95]{Dietterich1995}
 Tom Dietterich.
 \newblock Overfitting and undercomputing in machine learning.
 \newblock {\em ACM Computing Surveys}, 27(3):326--327, September 1995.
+
+\bibitem[EAA15]{EvansEtAl2015}
+Lewis P.~G. Evans, Niall~M. Adams, and Christoforos Anagnostopoulous.
+\newblock Estimating optimal active learning via model retraining improvement.
+\newblock {\em Journal of Machine Learning Research}, 2015.
+
+\bibitem[Efr83]{Efron1983}
+Bradley Efron.
+\newblock Estimating the error rate of a prediction rule: Improvement on
+  cross-validation.
+\newblock {\em Journal of the American Statistical Association},
+  78(382):316--331, 1983.
+
+\bibitem[ET97]{EfronEtAl1997}
+Bradley Efron and Robert Tibshirani.
+\newblock Improvements on cross-validation: The .632+ bootstrap method.
+\newblock {\em Journal of the American Statistical Association},
+  92(438):548--560, June 1997.
+
+\bibitem[FZTKN12]{FigueroaEtal2012}
+Rosa~L. Figueroa, Qing Zeng-Treitler, Sasikiran Kandula, and Long~H. Ngo.
+\newblock Predicting sample size required for classification performance.
+\newblock {\em BMC Medical Informatics and Decision Making}, 2012.
 
 \bibitem[HTF09]{HastieEtAl2009}
 Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
@@ -29,17 +82,47 @@ Georg Krempl, Daniel Kottke, and Myra Spiliopoulou.
 \newblock In {\em Proceedings of the 17th International Conference on Discovery
   Science}, October 2014.
 
+\bibitem[Koh95]{Kohavi1995}
+Ron Kohavi.
+\newblock A study of cross-validation and bootstrap for accuracy estimation and
+  model selection.
+\newblock In {\em International Joint Conference on Artificial Intelligence},
+  1995.
+
+\bibitem[KV95]{KroghVedelsby1995}
+Anders Krogh and Jesper Vedelsby.
+\newblock Neural network ensembles, cross validation, and active learning.
+\newblock In {\em Advances in Neural Information Processing Systems 7}.
+  Massachusetts Institute of Technology, 1995.
+
+\bibitem[KW95]{KadieEtal1995}
+Carl~Myers Kadie and David~C. Wilkins.
+\newblock {\em Seer: Maximum Likelihood Regression for Learning-Speed Curves}.
+\newblock PhD thesis, University of Illinois, 1995.
+
 \bibitem[KW96]{KohaviEtAl1996}
 Ron Kohavi and David~H. Wolpert.
 \newblock Bias plus variance decomposition for zero-one loss functions.
 \newblock In {\em Machine Learning: Proceedings of the Thirteenth International
   Conference}, 1996.
 
+\bibitem[PABS08]{PahikkalaEtAl2008}
+Tapio Pahikkala, Antti Airola, Jorma Boberg, and Taipo Salakoski.
+\newblock Exact and efficient leave-pair-out cross validation for ranking rls.
+\newblock In {\em Proceedings of AKRR}, 2008.
+
 \bibitem[PPS03]{PerlichEtAl2003}
 Claudia Perlich, Foster Provost, and Jeffrey~S. Simonoff.
 \newblock Tree induction vs. logistic regression: a learning-curve analysis.
 \newblock {\em The Journal of Machine Learning Research}, 4:211--255, December
   2003.
+
+\bibitem[RM01]{RoyEtAl2001}
+Nicholas Roy and Andrew McCallum.
+\newblock Toward optimal active learning through monte carlo estimation of
+  error reduction.
+\newblock In {\em Proceedings of the International Conference on Machine
+  Learning}, 2001.
 
 \bibitem[RPL13]{RodriguezEtAl2013}
 Juan~D. Rodríguez, Aritz Pérez, and Jose~A. Lozano.
@@ -58,10 +141,27 @@ Tobias Scheffer, Christian Decomain, and Stefan Wrobel.
 \newblock In {\em Proceedings of the Internation Symposium on Intelligent Data
   Analysis}, 2001.
 
+\bibitem[Sin05]{Singh2005}
+Sameer Singh.
+\newblock Modeling performance of different classification methods: Deviation
+  from the power law.
+\newblock Project Report, 2005.
+
+\bibitem[Vap82]{Vapnik1982}
+Vladimir Vapnik.
+\newblock {\em Estimation of Dependences Based on Empirical Data}.
+\newblock Springer New York, 1982.
+
 \bibitem[Wea99]{Weakliem1999}
 David~L. Weakliem.
 \newblock A critique of the bayesian information criterion for model selection.
 \newblock {\em Sociological Methods Research}, 27(3):359--397, February 1999.
+
+\bibitem[WVM07]{WoodEtAl2007}
+Ian~A. Wood, Peter~M. Visscher, and Kerrie~L. Mengersen.
+\newblock Classification based upon gene expression data: bias and precision of
+  error rates.
+\newblock {\em Bioinformatics}, 23(11):1363--1370, June 2007.
 
 \bibitem[Yel79]{Yelle1979}
 Louis~E. Yelle.

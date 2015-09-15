@@ -12,19 +12,19 @@
 \contentsline {subsection}{\numberline {2.2.2}Bias and variance}{6}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Classificator-based estimators}{7}{subsection.2.2.3}
 \contentsline {subsection}{\numberline {2.2.4}Cross-Validation}{8}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Bootstrapping}{8}{subsection.2.2.5}
-\contentsline {section}{\numberline {2.3}Learning Curves and Regression Models}{8}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Function families}{8}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Algorithms}{8}{subsection.2.3.2}
-\contentsline {chapter}{\numberline {3}Example Chapter}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Citation}{9}{section.3.1}
-\contentsline {section}{\numberline {3.2}Formulas}{9}{section.3.2}
-\contentsline {section}{\numberline {3.3}Graphics}{10}{section.3.3}
-\contentsline {section}{\numberline {3.4}Tables}{10}{section.3.4}
-\contentsline {section}{\numberline {3.5}Code Listings}{10}{section.3.5}
-\contentsline {chapter}{\numberline {4}Evaluation}{13}{chapter.4}
-\contentsline {chapter}{\numberline {5}Related Work}{15}{chapter.5}
-\contentsline {chapter}{\numberline {6}Conclusion}{17}{chapter.6}
-\contentsline {chapter}{\numberline {7}Future Work}{19}{chapter.7}
-\contentsline {chapter}{\numberline {A}Appendix}{21}{appendix.A}
-\contentsline {chapter}{Bibliography}{23}{section*.8}
+\contentsline {subsection}{\numberline {2.2.5}Bootstrapping}{9}{subsection.2.2.5}
+\contentsline {section}{\numberline {2.3}Learning Curves and Regression Models}{10}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Function families}{11}{subsection.2.3.1}
+\contentsline {section}{\numberline {2.4}Miscellaneous}{12}{section.2.4}
+\contentsline {chapter}{\numberline {3}Example Chapter}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Citation}{13}{section.3.1}
+\contentsline {section}{\numberline {3.2}Formulas}{13}{section.3.2}
+\contentsline {section}{\numberline {3.3}Graphics}{14}{section.3.3}
+\contentsline {section}{\numberline {3.4}Tables}{14}{section.3.4}
+\contentsline {section}{\numberline {3.5}Code Listings}{14}{section.3.5}
+\contentsline {chapter}{\numberline {4}Evaluation}{17}{chapter.4}
+\contentsline {chapter}{\numberline {5}Related Work}{19}{chapter.5}
+\contentsline {chapter}{\numberline {6}Conclusion}{21}{chapter.6}
+\contentsline {chapter}{\numberline {7}Future Work}{23}{chapter.7}
+\contentsline {chapter}{\numberline {A}Appendix}{25}{appendix.A}
+\contentsline {chapter}{Bibliography}{27}{section*.8}
