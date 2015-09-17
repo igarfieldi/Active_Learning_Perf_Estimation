@@ -1,0 +1,166 @@
+%Dokumentenklasse%
+\documentclass{beamer}
+%Theme%
+\usetheme{Warsaw}
+
+%Umlaute%
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsthm}
+\usepackage{algpseudocode}
+\usepackage{natbib}
+
+%Metadaten%
+\title{Kickoff Presentation Bachelor Thesis}
+\subtitle{Estimating hold-out-sample Performance for Active Learning}
+\author{Florian Bethe}
+\date{17th of September 2015}
+\institute{OvGU Magdeburg - Department of Computer Science}
+
+% Enable slide numbering
+\newcommand*\oldmacro{}%
+\let\oldmacro\insertshorttitle%
+\renewcommand*\insertshorttitle{%
+	\oldmacro\hfill%
+	\insertframenumber\,/\,\inserttotalframenumber}
+
+% Enable enumeration over several frames
+\newcounter{sauvegardeenumi}
+\newcommand{\asuivre}{\setcounter{sauvegardeenumi}{\theenumi}}
+\newcommand{\suite}{\setcounter{enumi}{\thesauvegardeenumi}}
+
+%-------------------------------------------------------------------------------%
+
+\begin{document}
+%Titel%
+	\begin{frame}
+		\titlepage
+	\end{frame}
+%Gliederung
+	\begin{frame}{Table of Contents}
+		\tableofcontents
+	\end{frame}
+	
+%-------------------------------------------------------------------------------% 
+\section{Literature Review}
+\begin{frame}{Theoretical background for error estimation of clasifiers}
+	\begin{itemize}
+		\item \cite{RodriguezEtAl2013} defines classifier and error
+		\item \cite{HastieEtAl2009} gives a pretty good overview of everything except learning curves
+		\item \cite{Dietterich1995} examines overfitting
+		\item \cite{KohaviEtAl1996} analyses bias-variance-decomposition for 0-1-loss
+		\item \cite{KroghVedelsby1995} details the bias-variance-tradeoff
+	\end{itemize}
+\end{frame}
+\begin{frame}{Classifier-dependent estimators}
+	\begin{itemize}
+		\item AIC: introduced by \cite{Akaike1998}, explained and simplified by \cite{Bozdogan1987} and \cite{HastieEtAl2009}
+		\item BIC: first presented by \cite{Schwarz1978}. Further analysis provided by \cite{Weakliem1999}
+		\item VC-theory: published by \cite{Vapnik1982}, used by \cite{BrumenEtal2004}
+	\end{itemize}
+\end{frame}
+\begin{frame}{Cross-Validation}
+	\begin{itemize}
+		\item LOO and K-fold: \cite{Kohavi1995}
+		\item \cite{PahikkalaEtAl2008} provides further analysis and testing
+		\item Adaptive incremental k-fold described in \cite{BrumenEtal2004}
+		\item Error and bias-variance analysis in \cite{AirolaEtAl2001}, \cite{RodriguezEtAl2013} and \cite{EfronEtAl1997}
+	\end{itemize}
+\end{frame}
+\begin{frame}{Bootstrapping}
+	\begin{itemize}
+		\item Plain bootstrap: \cite{Kohavi1995}
+		\item LOO: \cite{BorraEtAl2010}
+		\item \cite{Efron1983} and \cite{EfronEtAl1997} present .632 and .632+ and provide experiments, with \cite{WoodEtAl2007} presenting criticism
+	\end{itemize}
+\end{frame}
+\begin{frame}{Learning curves}
+	\begin{itemize}
+		\item \cite{PerlichEtAl2003} and \cite{FigueroaEtal2012} for a general description of learning curves
+		\item \cite{FigueroaEtal2012} also presents algorithm for performance prediction and with \cite{Singh2005} function families for model fitting
+		\item Curve for optimism in \cite{CortesEtal1993}
+	\end{itemize}
+\end{frame}
+\begin{frame}{Miscellaneous}
+	\begin{itemize}
+		\item Model Retraining Improvement: Potential estimation framework \cite{EvansEtAl2015}
+		\item Estimator definition as Monte-Carlo-Simulation in \cite{RoyEtAl2001}
+		\item \cite{KadieEtal1995} analyses Maximum-Likelihood-Estimation for finding prediction models
+	\end{itemize}
+\end{frame}
+
+\section{Chosen approaches}
+\begin{frame}{Adaptive Iterative K-fold Cross-Validation}
+	\begin{description}
+		\item[Presented in \cite{BrumenEtal2004}]
+	\end{description}
+	\begin{itemize}
+		\item K-fold cross-validation modified for use with active learning
+		\item $k=5$ or $10$ for an unbiased estimator \cite{Kohavi1995,AirolaEtAl2001}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{.632+ bootstrap}
+	\begin{description}
+		\item[Introduced by \cite{EfronEtAl1997}]
+	\end{description}
+	\begin{itemize}
+		\item Estimates optimism of training error
+		\item Builds on .632 estimator, but corrects bias for overfit classifiers
+		\item Estimation of no-information error rate for binary classifiers given
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Hold-out curve extrapolation}
+	\begin{description}
+		\item[Description in \cite{FigueroaEtal2012}]
+	\end{description}
+	\begin{itemize}
+		\item Based on hold-out estimates for past iterations
+		\item As estimation for accuracy reduction of cross-validation approach?
+	\end{itemize}
+\end{frame}
+
+\section{Proposed method}
+\begin{frame}{Estimating "old" accuracy}
+	\begin{description}
+		\item[For each iteration:]
+	\end{description}
+	\begin{itemize}
+		\item Use hold-k-out cross-validation with $k=1...n-1$
+		\item Estimate beta distribution from the samples for each k
+		\item Override old estimates in new iteration; only increased test set or also wider training spectrum?
+	\end{itemize}
+\end{frame}
+\begin{frame}{Fit curve model}
+	\begin{description}
+		\item[For each iteration:]
+	\end{description}
+	\begin{itemize}
+		\item Compute expectation value for each beta distribution
+		\item Fit log, exp and pow functions using non-linear regression
+		\item Standard deviation of regression as intervals?
+		\item Build beta distribution from old extrapolations using weighting?
+	\end{itemize}
+\end{frame}
+
+\section{Planned evaluation}
+\begin{frame}{Evaluation And Results}
+	\begin{itemize}
+		\item Compare estimated accuracies to true hold-out estimates using $m$ hold-out sets
+		\item For proposed method: if beta distribution obtained, compute KL-divergence
+		\item For comparison methods: obtain beta distribution by using multiple sets?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Questions}
+	\begin{center}
+		\huge{Questions?}
+	\end{center}
+\end{frame}
+
+\section{Bibliography}
+	\bibliographystyle{abbrvnat}
+	\bibliography{Bibliography}
+
+\end{document}
