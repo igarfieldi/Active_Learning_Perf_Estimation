@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Literature Review}{3}{0}{1}
+\beamer@sectionintoc {2}{Chosen approaches}{9}{0}{2}
+\beamer@sectionintoc {3}{Proposed method}{12}{0}{3}
+\beamer@sectionintoc {4}{Planned evaluation}{14}{0}{4}
+\beamer@sectionintoc {5}{Bibliography}{16}{0}{5}
