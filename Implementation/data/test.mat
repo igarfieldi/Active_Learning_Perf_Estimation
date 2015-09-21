@@ -1,0 +1,29 @@
+# Created by Octave 4.0.0, Sun Sep 20 18:25:45 2015 W. Europe Daylight Time <unknown@Florian-PC>
+# name: X
+# type: matrix
+# rows: 8
+# columns: 3
+ 0 0 0
+ 0 0 1
+ 0 1 0
+ 0 1 1
+ 1 0 0
+ 1 0 1
+ 1 1 0
+ 1 1 1
+
+
+# name: Y
+# type: matrix
+# rows: 8
+# columns: 1
+ 0
+ 0
+ 1
+ 0
+ 1
+ 1
+ 1
+ 0
+
+
