@@ -1,0 +1,73 @@
+*** DATA DESCRIPTION ***
+
+Each of the dataset files contains the following variables:
+  X ....... (N x D) Feature Matrix with rows corresponding to the N instances and columns to the D features
+  Y ....... (N x 1) Class Label Vector (the classification target)
+  Tx ...... (N x 1) Time Vector of feature information (i.e. at which time featurevector of each instance becomes known)
+  Ty ...... (N x 1) Time Vector of label information (i.e. at which time class label becomes known)
+  
+Groups 1--3: Please ignore Tx and Ty
+Groups 4-5: Please use Tx for reference.
+
+Use 
+  load ['../data/' Filename] to load them into the workspace
+or 
+  data=load(['../data/' Filename]);
+to load them into a structure named data (where you can access the fields data.X, data.Y and so on)
+
+Use 
+  who
+or 
+  fieldnames(data)
+to identify the variables therein.
+
+
+**** Checkerboard Dataset ****
+  Filename='checke1.mat'
+  Synthetic binary (y in {0;1}) classification  dataset with 8 (non-overlapping) clusters placed in checkerboard formation on a 4x4 grid. 
+  To visualize, run
+    load '../data/checke1.mat';clf;hold on;plot(X(Y==1,1),X(Y==1,2),'+','color',[.9 .9 0]);plot(X(Y~=1,1),X(Y~=1,2),'o','color',[0 0 1])
+  N=400 Instances
+  D=2 numeric features (normalized to [0 1] ranges)
+  Source: Chapelle, O. Active learning for parzen window classifier. In Proc. of the 10th Int. Workshop on AI and Statistics, 2005, 49-56.
+  
+  
+**** Simple 2d Dataset ****
+  Filename='2dData.mat'
+  Synthetic binary (y in {0;1}) classification  dataset with overlapping classes, nearly linearly separable
+  To visualize, run
+    load '../data/2dData.mat';clf;hold on;plot(X(Y==1,1),X(Y==1,2),'+','color',[.9 .9 0]);plot(X(Y~=1,1),X(Y~=1,2),'o','color',[0 0 1])
+  N=1200 Instances
+  D=2 numeric features (normalized to [0 1] ranges)
+  Source: own work (Daniel Kottke, 2014)
+
+**** Seeds Dataset ****
+  Filename='seeds.mat'
+  Real-world binary (y in {0;1}) classification dataset where different varieties of wheat are classified
+  N=210 Instances
+  D=7 numeric features (all normalized to [0 1] ranges), corresponding to
+      1. area A,
+      2. perimeter P,
+      3. compactness C = 4*pi*A/P^2,
+      4. length of kernel,
+      5. width of kernel,
+      6. asymmetry coefficient
+      7. length of kernel groove.
+   Source: UCI Machine Learning Repository, M. Charytanowicz, J. Niewczas, P. Kulczycki, P.A. Kowalski, S. Lukasik, S. Zak, 'A Complete Gradient Clustering Algorithm for Features Analysis of X-ray Images', in: Information Technologies in Biomedicine, Ewa Pietka, Jacek Kawa (eds.), Springer-Verlag, Berlin-Heidelberg, 2010, pp. 15-24.
+
+**** Abalone Dataset ****
+  Filename='abalone.mat'
+  Real-world binary (y in {0;1}) classification dataset where the agegroup (Rings < 10) of abalones from physical measurements is to be predicted
+  N=4177 Instances
+  D=8 features (all normalized to [0 1] ranges), corresponding to
+    Sex   [1,0,.5]    M, F, and I (infant)
+    Length    continuous  mm  Longest shell measurement
+    Diameter  continuous  mm  perpendicular to length
+    Height    continuous  mm  with meat in shell
+    Whole weight  continuous  grams whole abalone
+    Shucked weight  continuous  grams weight of meat
+    Viscera weight  continuous  grams gut weight (after bleeding)
+    Shell weight  continuous  grams after being dried
+  Source: UCI Machine Learning Repository; Warwick J Nash, Tracy L Sellers, Simon R Talbot, Andrew J Cawthorn and Wes B Ford (1994) "The Population Biology of Abalone (_Haliotis_ species) in Tasmania. I. Blacklip Abalone (_H. rubra_) from the North Coast and Islands of Bass Strait", Sea Fisheries Division, Technical Report No. 48 (ISSN 1034-3288) 
+  https://archive.ics.uci.edu/ml/datasets/Abalone
+  
