@@ -4,5 +4,5 @@ function ret = readData(reader, path)
     data = load(path, "X", "Y");
     
     ret.featureVectors = data.X;
-    ret.labels = data.Y';
+    ret.labels = data.Y;
 endfunction
