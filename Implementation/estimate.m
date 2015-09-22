@@ -22,4 +22,6 @@ function estimate(activeLearner)
     
     o = combinations
     
+    splitSet(labFeat, labLab);
+    
 endfunction
