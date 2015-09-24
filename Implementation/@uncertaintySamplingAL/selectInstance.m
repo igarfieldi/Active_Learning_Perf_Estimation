@@ -1,28 +1,33 @@
-function [ret, aquFeat, aquLab] = selectInstance(uncertaintySamplingAL)
+function [ret, aquFeat, aquLab] = selectInstance(uncertaintySamplingAL, classifier, labelNum)
+    
+    ret = [];
+    aquFeat = [];
+    aquLab = [];
+    
+    if(nargin != 3)
+        print_usage();
+    elseif(!isa(uncertaintySamplingAL, "uncertaintySamplingAL") || !isa(classifier, "classifier") || !isscalar(labelNum))
+        error("selectInstance@uncertaintySamplingAL: requires uncertaintySamplingAL, classifier, scalar");
+    endif
     
     ret = uncertaintySamplingAL;
-    
-    if(nargin != 1)
-        print_usage();
-    elseif(!isa(uncertaintySamplingAL, "uncertaintySamplingAL"))
-        error("selectInstance@uncertaintySamplingAL: requires uncertaintySamplingAL");
-    endif
     
     labFeat = getLabeledFeatures(ret);
     unlabFeat = getUnlabeledFeatures(ret);
     labLab = getLabeledLabels(ret);
     unlabLab = getUnlabeledLabels(ret);
     
-    unlabeledSize = size(getUnlabeledLabels(ret), 2);
+    unlabeledSize = length(getUnlabeledLabels(ret));
+    
     if(unlabeledSize > 0)
         # if no instances have been labeled yet, choose randomly
         if(length(labLab) < 1)
             nextLabelIndex = floor(rand(1) * unlabeledSize) + 1;
         else
             # Determine estimated posteriors with kernel density estimation
-            pwC = parzenWindowClassifier(labFeat, labLab, 0.1);
+            classifier = setTrainingData(classifier, labFeat, labLab, labelNum);
             
-            posteriors = classifyInstances(pwC, unlabFeat);
+            posteriors = classifyInstances(classifier, unlabFeat);
             
             posteriors(posteriors(:) == 0) = 1;
             
@@ -49,5 +54,6 @@ function [ret, aquFeat, aquLab] = selectInstance(uncertaintySamplingAL)
         ret = setLabeledLabels(ret, labLab);
         ret = setUnlabeledLabels(ret, unlabLab);
     endif
+    
     
 endfunction

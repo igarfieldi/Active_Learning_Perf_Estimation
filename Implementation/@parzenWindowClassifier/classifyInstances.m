@@ -1,5 +1,9 @@
 function ret = classifyInstances(pwClassifier, instances)
-
+    
+    if(nargin != 2)
+        print_usage();
+    endif
+    
     labelInd = getTrainingLabelIndices(getClassifier(pwClassifier));
     features = getTrainingFeatures(getClassifier(pwClassifier));
     
@@ -19,10 +23,17 @@ function ret = classifyInstances(pwClassifier, instances)
         
         if(size(matReshape) > 0)
             # use kernel density estimation (Üarzen-Window)
-            tempProb = -(sum((matReshape - bigMat) .^ 2, 2) .* (labelInd(i) - old + 1)) ./ (2 * pwClassifier.sigma^2);
+            
+            tempProb = -(sum((matReshape - bigMat) .^ 2, 2)) ./ (2 * pwClassifier.sigma^2);
             tempProb = sqrt((labelInd(i) - old + 1)) .* exp(tempProb) ./ (sqrt(2*pi) * pwClassifier.sigma);
             tempProb = reshape(tempProb, (labelInd(i) - old + 1), size(instances, 1));
             densities(i, :) = sum(tempProb, 1) ./ (labelInd(i) - old + 1);
+            #{
+            tempProb = normpdf(bigMat, matReshape, pwClassifier.sigma);
+            tempProb = reshape(tempProb, (labelInd(i) - old + 1), rows(instances)*columns(instances));
+            tempProb = sum(tempProb, 1) ./ size(instances, 2);
+            densities(i, :) = prod(reshape(tempProb, rows(instances), columns(instances)), 2);
+            #}
         endif
         
         old = labelInd(i)+1;
