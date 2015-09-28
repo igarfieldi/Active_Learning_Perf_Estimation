@@ -1,35 +1,32 @@
-function [ret, aquFeat, aquLab] = selectInstance(randomSamplingAL, classifier, labelNum)
+# usage: [ret, orac, aquFeat, aquLab] = selectInstance(randomSamplingAL, classifier, oracle, labelNum)
+
+function [ret, orac, aquFeat, aquLab] = selectInstance(randomSamplingAL, classifier, oracle, labelNum)
     
-    ret = randomSamplingAL;
+    ret = [];
+    orac = [];
+    aquFeat = [];
+    aquLab = [];
     
-    if(nargin != 3)
+    if(nargin != 4)
         print_usage();
-    elseif(!isa(randomSamplingAL, "randomSamplingAL") || !isa(classifier, "classifier") || !isscalar(labelNum))
-        error("selectInstance@randomSamplingAL: requires randomSamplingAL, classifier, scalar");
+    elseif(!isa(randomSamplingAL, "randomSamplingAL") || !isa(classifier, "classifier")
+            || !isa(oracle, "oracle") || !isscalar(labelNum))
+        error("selectInstance@randomSamplingAL: requires randomSamplingAL, classifier, oracle, scalar");
     endif
     
-    labFeat = getLabeledFeatures(ret);
-    unlabFeat = getUnlabeledFeatures(ret);
-    labLab = getLabeledLabels(ret);
-    unlabLab = getUnlabeledLabels(ret);
+    ret = randomSamplingAL;
+    orac = oracle;
     
-    unlabeledSize = length(getUnlabeledLabels(ret));
+    unlabeledSize = getNumOfUnlabeledInstances(oracle);
+    
+    # if unlabeled instances remain
     if(unlabeledSize > 0)
+        # select a random one
         nextLabelIndex = floor(rand(1) * unlabeledSize) + 1;
+        [orac, aquFeat, aquLab] = queryInstance(orac, nextLabelIndex);
         
-        aquFeat = unlabFeat(nextLabelIndex, :);
-        aquLab = unlabLab(nextLabelIndex);
-        
-        labFeat = [labFeat; aquFeat];
-        labLab = [labLab; aquLab];
-        
-        unlabFeat(nextLabelIndex, :) = [];
-        unlabLab(nextLabelIndex) = [];
-        
-        ret = setLabeledFeatures(ret, labFeat);
-        ret = setUnlabeledFeatures(ret, unlabFeat);
-        ret = setLabeledLabels(ret, labLab);
-        ret = setUnlabeledLabels(ret, unlabLab);
+        # add it to the active learner
+        ret = addLabeledInstances(ret, aquFeat, aquLab);
     endif
     
 endfunction

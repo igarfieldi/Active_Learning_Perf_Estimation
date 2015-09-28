@@ -6,21 +6,25 @@ addpath("@activeLearner");
 addpath("@classifier");
 addpath("@dataReader");
 addpath("@estimator");
+addpath("@oracle");
 addpath("@parzenWindowClassifier");
+addpath("@probabilisticAL");
 addpath("@randomSamplingAL");
 addpath("@uncertaintySamplingAL");
+addpath("functionFitting");
 
-data_file = "data/seeds.mat";
+pkg load optim;
+
+data_file = "data/2dData.mat";
 
 data = dataReader();
 data = readData(data, data_file);
 
-disp(length(getLabels(data)));
+orac = oracle(getFeatureVectors(data), getLabels(data));
 
 rand = randomSamplingAL(getFeatureVectors(data), getLabels(data));
-
 cert = uncertaintySamplingAL(getFeatureVectors(data), getLabels(data));
 
 pwC = parzenWindowClassifier();
 
-estimate(cert, pwC, 2, 0.1);
+estimate(rand, pwC, orac, 2, 0.1);
