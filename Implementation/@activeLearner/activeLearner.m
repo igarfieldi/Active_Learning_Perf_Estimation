@@ -1,13 +1,11 @@
 function obj = activeLearner(features, labels)
     
-    obj.labeledFeatures = [];
-    obj.labeledLabels = [];
-    obj.unlabeledFeatures = [];
-    obj.unlabeledLabels = [];
+    obj.features = [];
+    obj.labels = [];
     
     if(nargin == 2)
-        obj.unlabeledFeatures = features;
-        obj.unlabeledLabels = labels;
+        obj.features = features;
+        obj.labels = labels;
     endif
     
     obj = class(obj, "activeLearner");
