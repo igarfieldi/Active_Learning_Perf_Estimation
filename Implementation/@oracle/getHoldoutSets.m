@@ -17,7 +17,11 @@ function [feat, lab] = getHoldoutSets(oracle, size, limit)
     
     if(size > 0)
         setNumber = ceil(remInst / size);
-        limit = max(0, min(limit, setNumber));
+        
+        if(limit < 0)
+            limit = setNumber;
+        endif
+        limit = min(limit, setNumber);
         
         feat = cell(1, setNumber);
         feat = cell(1, setNumber);

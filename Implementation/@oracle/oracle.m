@@ -1,13 +1,13 @@
-# usage: obj = oracle(features, labels)
+# usage: obj = oracle(features, labels, labelNum)
 
-function obj = oracle(features, labels)
+function obj = oracle(features, labels, labelNum)
 
     obj = [];
     
-    if(nargin != 2)
+    if(nargin != 3)
         print_usage();
-    elseif(!ismatrix(features) || !isvector(labels))
-        error("@oracle/oracle: requires matrix, vector");
+    elseif(!ismatrix(features) || !isvector(labels) || !isscalar(labelNum))
+        error("@oracle/oracle: requires matrix, vector, scalar");
     elseif(rows(features) != length(labels))
         error("@oracle/oracle: unequal number of feature vectors and labels");
     endif
@@ -16,6 +16,7 @@ function obj = oracle(features, labels)
     obj.labels = labels;
     obj.queriedFeatures = [];
     obj.queriedLabels = [];
+    obj.labelNum = labelNum;
     
     obj = class(obj, "oracle");
 
