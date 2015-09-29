@@ -1,30 +1,26 @@
 # usage: ret = setTrainingData(classifier, features, labels, labelNum)
 
-function ret = setTrainingData(classifier, features, labels, labelNum)
-    
-    ret = [];
+function classifier = setTrainingData(classifier, features, labels, labelNum)
     
     if(nargin != 4)
         print_usage();
     elseif(!isa(classifier, "classifier") || !ismatrix(features) || !isvector(labels) || !isscalar(labelNum))
-        error("setTrainingData: requires classifier, matrix, vector, number");
+        error("setTrainingData: requires classifier, matrix, vector, scalar");
     endif
     
-    ret = classifier;
-    
-    ret.trainingFeatures = zeros(0, 0);
-    ret.trainingLabelInd = zeros(labelNum, 1);
-    ret.labelNum = labelNum;
+    classifier.trainingFeatures = zeros(0, 0);
+    classifier.trainingLabelInd = zeros(labelNum, 1);
+    classifier.labelNum = labelNum;
     
     for i=1:length(labels)
-        if((labels(i)+1) > length(ret.trainingLabelInd))
+        if((labels(i)+1) > length(classifier.trainingLabelInd))
             error("@classifier/setTrainingData: encountered label larger than labelNum");
         endif
         
-        ret.trainingFeatures = [ret.trainingFeatures(1:ret.trainingLabelInd(labels(i)+1), :);
+        classifier.trainingFeatures = [classifier.trainingFeatures(1:classifier.trainingLabelInd(labels(i)+1), :);
                                 features(i, :);
-                                ret.trainingFeatures((ret.trainingLabelInd(labels(i)+1)+1):end, :)];
-        ret.trainingLabelInd(labels(i)+1:end)++;
+                                classifier.trainingFeatures((classifier.trainingLabelInd(labels(i)+1)+1):end, :)];
+        classifier.trainingLabelInd(labels(i)+1:end)++;
     endfor
 
 endfunction

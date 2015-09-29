@@ -1,21 +1,19 @@
-# usage: [ret, orac, aquFeat, aquLab] = selectInstance(uncertaintySamplingAL, classifier, oracle, labelNum)
+# usage: [uncertaintySamplingAL, oracle, aquFeat, aquLab] = selectInstance(uncertaintySamplingAL,
+#                                                       classifier, oracle)
 
-function [ret, orac, aquFeat, aquLab] = selectInstance(uncertaintySamplingAL, classifier, oracle, labelNum)
+function [uncertaintySamplingAL, oracle, aquFeat, aquLab] = selectInstance(
+                                                        uncertaintySamplingAL,
+                                                        classifier, oracle)
     
-    ret = [];
     aquFeat = [];
     aquLab = [];
-    orac = [];
     
-    if(nargin != 4)
+    if(nargin != 3)
         print_usage();
     elseif(!isa(uncertaintySamplingAL, "uncertaintySamplingAL") || !isa(classifier, "classifier")
-            || !isa(oracle, "oracle") || !isscalar(labelNum))
-        error("selectInstance@uncertaintySamplingAL: requires uncertaintySamplingAL, classifier, oracle, scalar");
+            || !isa(oracle, "oracle"))
+        error("selectInstance@uncertaintySamplingAL: requires uncertaintySamplingAL, classifier, oracle");
     endif
-    
-    ret = uncertaintySamplingAL;
-    orac = oracle;
     
     unlabeledSize = getNumOfUnlabeledInstances(oracle);
     
@@ -25,9 +23,9 @@ function [ret, orac, aquFeat, aquLab] = selectInstance(uncertaintySamplingAL, cl
             nextLabelIndex = floor(rand(1) * unlabeledSize) + 1;
         else
             # Determine estimated posteriors with kernel density estimation
-            
-            [features, labels] = getLabeledInstances(ret);
-            classifier = setTrainingData(classifier, features, labels, labelNum);
+            [features, labels] = getLabeledInstances(uncertaintySamplingAL);
+            classifier = setTrainingData(classifier, features, labels,
+                                            getNumberOfLabels(oracle));
             
             # compute estimated class probabilities
             posteriors = classifyInstances(classifier, getUnlabeledInstances(oracle));
@@ -41,9 +39,9 @@ function [ret, orac, aquFeat, aquLab] = selectInstance(uncertaintySamplingAL, cl
             # if multiple instances have the same entropy (max.), select one at random
             nextLabelIndex = maxIndices(floor(rand(1) * length(maxIndices)) + 1);
         endif
-        [orac, aquFeat, aquLab] = queryInstance(orac, nextLabelIndex);
+        [oracle, aquFeat, aquLab] = queryInstance(oracle, nextLabelIndex);
         
-        ret = addLabeledInstances(ret, aquFeat, aquLab);
+        uncertaintySamplingAL = addLabeledInstances(uncertaintySamplingAL, aquFeat, aquLab);
     endif
     
 endfunction

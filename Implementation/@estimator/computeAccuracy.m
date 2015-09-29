@@ -1,6 +1,8 @@
-function ret = computeAccuracy(classifier, testFeat, testLab)
+# usage: acc = computeAccuracy(classifier, testFeat, testLab)
+
+function acc = computeAccuracy(classifier, testFeat, testLab)
     
-    ret = [];
+    acc = [];
     
     if(nargin != 3)
         print_usage();
@@ -10,8 +12,10 @@ function ret = computeAccuracy(classifier, testFeat, testLab)
         error("@estimator/computeAccuracy: uneven number of feature vectors and labels");
     endif
     
+    # classify each instance
     [classProb, label] = max(classifyInstances(classifier, testFeat));
     
-    ret = sum((label' .- 1) == testLab) ./ length(testLab);
+    # acc = num of correctly classified instances / total instance number
+    acc = sum((label' .- 1) == testLab) ./ length(testLab);
     
 endfunction
