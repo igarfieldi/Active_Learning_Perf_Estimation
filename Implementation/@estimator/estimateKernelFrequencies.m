@@ -20,15 +20,19 @@ function frequencies = estimateKernelFrequencies(instances, samples, kernel)
     else
         print_usage();
     endif
-    
-    # create matrices to match each instance with each sample
-    sampleMat = repmat(samples, [rows(instances), 1]);
-    instanceMat = reshape(repmat(instances', [rows(sampleMat)/rows(instances), 1]),
-                         columns(sampleMat), rows(sampleMat))';
-    
-    # estimate the frequencies using the kernel provided
-    frequencies = kernel(instanceMat .- sampleMat, rows(samples));
-    frequencies = reshape(frequencies, rows(samples), rows(instances));
-    frequencies = sum(frequencies, 1) ./ rows(samples);
+	
+	if(rows(samples) < 1)
+		frequencies = zeros(1, rows(instances));
+	else
+		# create matrices to match each instance with each sample
+		sampleMat = repmat(samples, [rows(instances), 1]);
+		instanceMat = reshape(repmat(instances', [rows(sampleMat)/rows(instances), 1]),
+							 columns(sampleMat), rows(sampleMat))';
+		
+		# estimate the frequencies using the kernel provided
+		frequencies = kernel(instanceMat .- sampleMat, rows(samples));
+		frequencies = reshape(frequencies, rows(samples), rows(instances));
+		frequencies = sum(frequencies, 1);
+	endif
     
 endfunction

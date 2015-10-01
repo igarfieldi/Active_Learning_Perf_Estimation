@@ -29,14 +29,9 @@ function plotBetaDists(betaDists, resolution, fig, color, holdOn)
         print_usage();
     endif
     
-    step = resolution;
-    if(resolution > 1)
-        step = 1 / resolution;
-    endif
-    
     dists = size(betaDists, 1);
     dims = [ceil(sqrt(dists)), ceil(dists / ceil(sqrt(dists)))];
-    X = (0:step:1);
+    X = linspace(0, 1, resolution);
     
     figure(fig);
     
@@ -49,10 +44,11 @@ function plotBetaDists(betaDists, resolution, fig, color, holdOn)
         endif
         
         plot(X, betapdf(X, betaDists(i, 1), betaDists(i, 2)), "-", "color", color);
-        
+		
         xlabel("Accuracy");
         ylabel("pdf value");
         title(sprintf("Distribution %d", i));
+		legend("hide");
     endfor
     
 endfunction

@@ -1,7 +1,7 @@
 function estimate(activeLearner, classifier, oracle, labelNum, cutoff)
     
     instances = getNumOfUnlabeledInstances(oracle);
-    limit = 14;
+    limit = 9;
     
     accuracies = cell(limit, 1);
     holdoutAccuracies = zeros(1, min(limit, instances));
@@ -31,7 +31,7 @@ function estimate(activeLearner, classifier, oracle, labelNum, cutoff)
         [labFeat, labLab] = getLabeledInstances(activeLearner);
         
         # estimate holdout accuracy
-        [holdFeat, holdLab] = getHoldoutSets(oracle, 20, instances);
+        [holdFeat, holdLab] = getHoldoutSets(oracle, i, instances);
         
         currentHoldoutAccs = [];
         for j = 1:length(holdLab)
@@ -66,9 +66,15 @@ function estimate(activeLearner, classifier, oracle, labelNum, cutoff)
         counter = 0;
         accSize = zeros(1, i-1);
         for tr = 1:size(pwr, 2);
-            if((counter > 50) && (prod(accSize) != 0))
-                break;
+            #{
+            if(counter > 50)
+                if(prod(accSize) != 0)
+                    break;
+                elseif(accSize(length(pwr{tr})) == 1)
+                    continue;
+                endif
             endif
+            #}
             # train a classifier on the indexed instances...
             classifier = setTrainingData(classifier, labFeat(pwr{tr}, :), labLab(pwr{tr}), labelNum);
             
