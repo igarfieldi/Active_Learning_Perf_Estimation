@@ -47,7 +47,7 @@ function [params, func] = fitExponential(X, Y)
     endif
     
     # set statistical weights
-    wt = 1 ./ max(sqrt(Y), 0.00000000000001);
+    wt = 1 ./ sqrt(min(max(Y, 0.00000000000001), 1));
     
     [values, params, cvg] = leasqr(X, Y, init, f, 0.0001,
                                 max(4000/length(Y), 600), wt, max(length(Y)^2*0.000005, 0.0001) * ones(1, 3));

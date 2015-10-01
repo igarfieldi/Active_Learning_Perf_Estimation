@@ -12,7 +12,7 @@ function [aver, stdDev] = estimatePerformanceLevel(regFuncParams, functionTempla
     endif
     
     fVals = [];
-    
+	
     for j = 1:size(regFuncParams, 2)
         val = max(0, min(functionTemplate(j, regFuncParams(1:end-1, j)), 1));
         # bias due to the cutoff?

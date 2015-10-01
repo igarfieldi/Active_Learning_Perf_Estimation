@@ -23,7 +23,11 @@ function [probabilisticAL, oracle, aquFeat, aquLab] = selectInstance(
     else
         print_usage();
     endif
-        
+    
+	# only defined for 2-class problem?
+	if(getNumberOfLabels(oracle) != 2)
+		error("selectInstance@randomSamplingAL: only works for binary class problem");
+	endif
     
     unlabeledSize = getNumOfUnlabeledInstances(oracle);
     
@@ -34,7 +38,7 @@ function [probabilisticAL, oracle, aquFeat, aquLab] = selectInstance(
             nextLabelIndex = floor(rand(1) * unlabeledSize) + 1;
         else
             # perform kernel frequency estimation for each instance
-            kernel = @(x, n) exp(-sum(x .^ 2, 2) ./ (2*getStandardDeviation(pwClassifier)^2);
+            kernel = @(x, n) exp(-sum(x .^ 2, 2) ./ (2*getStandardDeviation(pwClassifier)^2));
             # get labeled instances and sort them using the classifier's setTrainingData
             [labFeat, labLab] = getLabeledInstances(probabilisticAL);
             pwClassifier = setTrainingData(pwClassifier, labFeat, labLab, getNumberOfLabels(oracle));
@@ -42,22 +46,34 @@ function [probabilisticAL, oracle, aquFeat, aquLab] = selectInstance(
             # get unlabeled instances
             [unlabFeat, unlabLab] = getUnlabeledInstances(oracle);
             
-            
+            # calculate label statistics
             nx = estimateKernelFrequencies(unlabFeat, labFeat, kernel);
-            p = [];
+            py = [];
             old = 1;
             for i = 1:getNumberOfLabels(oracle)
-                p = [p, estimateKernelFrequencies(unlabFeat, labFeat(old:labLabInd(i)), kernel);
+                py = [py; estimateKernelFrequencies(unlabFeat, labFeat(old:labLabInd(i), :), kernel)];
                 old = labLabInd(i) + 1;
             endfor
             
-            pmax = max(p) ./ nx;
+            pmax = max(py) ./ nx;
             
             if(nargin != 4)
                 dx = estimateKernelFrequencies(unlabFeat, [labFeat; unlabFeat], kernel);
             endif
             
-            # TODO: compute pgain
+            # compute pgain
+			# TODO: find vectorized version without NaN errors
+			betaP = nx .* pmax .+ 1;
+			betaQ = nx .* (1 .- pmax) .+ 1;
+			gainFunc = @(p, y) computeError(p, pmax) .- computeError(p, (nx .* pmax .+ y) ./ (nx .+ 1));
+			pgainFunc = @(p) betapdf(p, betaP, betaQ) .* ((1 .- p) .* gainFunc(p, 0) .+ p .* gainFunc(p, 1));
+			
+			pgain = quadv(pgainFunc, 0, 1) .* dx;
+			
+			# find instances that maximize the pgain (if multiple maxima, select random)
+			maxPgain = max(pgain);
+            maxIndices = find(pgain == maxPgain);
+            nextLabelIndex = maxIndices(floor(rand(1) * length(maxIndices)) + 1);
         endif
         
         # query the wanted instance
