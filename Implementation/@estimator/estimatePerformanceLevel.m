@@ -13,14 +13,14 @@ function [aver, stdDev] = estimatePerformanceLevel(regFuncParams, functionTempla
     
     fVals = [];
 	
-    for j = 1:size(regFuncParams, 2)
-        val = max(0, min(functionTemplate(j, regFuncParams(1:end-1, j)), 1));
+    for j = 1:size(regFuncParams, 1)
+        val = max(0, min(functionTemplate(j, regFuncParams(j, 1:end-1)), 1));
         # bias due to the cutoff?
         fVals = [fVals, val];
-        aver += val*regFuncParams(end, j);
+        aver += val*regFuncParams(j, end);
     endfor
-    aver /= sum(regFuncParams(end, :));
+    aver /= sum(regFuncParams(:, end));
     
-    stdDev = sqrt(sum((fVals .- aver).^2 .* regFuncParams(end, :)) / (length(fVals)*sum(regFuncParams(end, :)) - 1));
+    stdDev = sqrt(sum((fVals .- aver).^2 .* regFuncParams(:, end)') / (length(fVals)*sum(regFuncParams(:, end)) - 1));
     
 endfunction
