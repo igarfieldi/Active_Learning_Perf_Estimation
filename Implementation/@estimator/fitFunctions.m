@@ -17,42 +17,54 @@ function funcReg = fitFunctions(accEstimates, funcHandle)
 	endif
 	
 	funcReg = cell(0, 0);
+    
+    kernel = @(x, p) p(1) .+ p(2) .* exp(x .* p(3));
+    fig = 1;
 	
-	for i = 1:length(accEstimates)
+	for i = 2:length(accEstimates)
 		itSize = zeros(1, i-1);
 		
-		for j = 1:i-1
+		for j = 1:length(accEstimates{i})
 			itSize(j) = size(accEstimates{i}{j}, 2);
 		endfor
-		
-		if(length(itSize) != 0)
-			funcReg = [funcReg, []];
-		endif
+        
+        funcReg = [funcReg, []];
 		
 		# create indices for all combinations
 		indices = [];
-		for j = 1:i-1
-			vec = (1:itSize(i-j));
+		for j = 1:length(itSize)
+			vec = (1:itSize(length(itSize)-j+1));
 			S = repmat(repelems(vec',
-					[vec; prod(itSize((i-j+1):end)) .* ones(1, itSize(i-j))])',
-					prod(itSize((1:(i-j-1)))), 1);
+					[vec; prod(itSize((length(itSize)-j+2):end)) .* ones(1, itSize(length(itSize)-j+1))])',
+					prod(itSize((1:(length(itSize)-j)))), 1);
 			indices = [S, indices];
 		endfor
-		
+        
 		# iterate over all indices and fit a curve for each set of accuracies
 		for j = 1:size(indices, 1)
 			samps = [];
 			
-			for k = 1:i-1
+			for k = 1:length(itSize)
 				samps = [samps, accEstimates{i}{k}(:, indices(j, k))];
 			endfor
-			
-			params = funcHandle((1:i-1), samps(1, :));
+            
+			params = funcHandle((1:length(itSize)), samps(1, :));
 			if(accum)
 				params = [params; prod(samps(2, :))];
 			endif
 			
 			funcReg{end} = [funcReg{end}; params'];
+            
+            figure(fig);
+            hold on;
+            
+            X = linspace(1, length(accEstimates{i}{k}(:, indices(j, k))), 1000);
+            plot((1:length(samps)), samps(1, :), "+", "color", [1, 0, 0]);
+            plot(X, kernel(X, params'), "-", "color", [1, 0, 0]);
+            
+            axis([0, size(samps, 2) + 1, 0, 1]);
+            
+            fig++;
 		endfor
 		
 	endfor

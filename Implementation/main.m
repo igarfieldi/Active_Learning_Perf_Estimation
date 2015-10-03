@@ -16,7 +16,7 @@ addpath("plotting");
 
 pkg load optim;
 
-data_file = "data/2dData.mat";
+data_file = "data/seeds.mat";
 
 data = dataReader();
 data = readData(data, data_file);
@@ -29,7 +29,7 @@ prob = probabilisticAL(getFeatureVectors(data), getLabels(data));
 pwC = parzenWindowClassifier();
 
 currAL = cert;
-iterations = 6;
+iterations = 4;
 holdoutBetas = zeros(iterations, 2);
 
 
@@ -40,11 +40,11 @@ holdoutBetas = zeros(iterations, 2);
 expFunc = @(x, p) p(1) .+ p(2) .* exp(x .* p(3));
 funcs = fitFunctions(accumEstAccs, @(X, Y) fitExponential(X, Y));
 
-[aver, std] = estimatePerformanceLevel(funcs{end}, expFunc)
+[aver, std] = estimatePerformanceLevel(funcs{end}, expFunc);
 
 # draw accuracies and regressed functions
-plotEstimatedAccuracies(accumEstAccs, 1, [0, 0, 0.5], 1);
-plotRegressedFunctions(funcs, expFunc, 3, 1000, 1, [1, 0, 0], 1);
+#plotEstimatedAccuracies(accumEstAccs, 1, [0, 0, 0.5], 1);
+#plotRegressedFunctions(funcs, expFunc, 3, 1000, 1, [1, 0, 0], 1);
 
 # estimate holdout performance of the classifier at each iteration
 [feat, lab] = getLabeledInstances(currAL);

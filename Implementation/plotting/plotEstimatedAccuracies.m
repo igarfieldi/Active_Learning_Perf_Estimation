@@ -26,7 +26,7 @@ function plotEstimatedAccuracies(accs, fig, color, holdOn)
 	for i = 1:length(accs)
 		# create subplots
 		subplot(dims(1), dims(2), i);
-		if(holding != 0)
+        if(holding != 0)
 			hold on;
 		else
 			hold off;
@@ -34,15 +34,15 @@ function plotEstimatedAccuracies(accs, fig, color, holdOn)
 		
 		# iterate through the accuracies
 		currIterAccs = accs{i};
-		
+        
 		for j = 1:length(currIterAccs)
 			plot(j .* ones(1, length(currIterAccs{j}(1, :))), currIterAccs{j}(1, :), "+", "color", color);
 		endfor
 		
-		axis([0, i+1, 0, 1]);
-		xlabel("Training instances");
-		ylabel("Estimated accuracy");
-		title(sprintf("Iteration: %d", i));
+		axis([0, i+1, -0.5, 1.5]);
+		#xlabel("Training instances");
+		#ylabel("Estimated accuracy");
+		#title(sprintf("Iteration: %d", i));
 	endfor
 
 endfunction
