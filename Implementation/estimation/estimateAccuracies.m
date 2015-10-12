@@ -1,29 +1,21 @@
-# usage: accs = estimateAccuracies(classifier, oracle, low, high)
+# usage: [accs, accumAccs] = estimateAccuracies(classifier, oracle)
 
-function [accs, accumAccs] = estimateAccuracies(classifier, oracle, low, high)
+function [accs, accumAccs] = estimateAccuracies(classifier, oracle)
 
+	global debug;
+	
 	accs = [];
 	accumAccs = [];
 	
-	if(nargin != 4)
+	if(nargin != 2)
 		print_usage();
-	elseif(!isa(classifier, "classifier") || !isa(oracle, "oracle") || !isscalar(low) || !isscalar(high))
-		error("@estimator/estimateAccuracies: requires classifier, oracle, scalar, scalar");
+	elseif(!isa(classifier, "classifier") || !isa(oracle, "oracle"))
+		error("@estimator/estimateAccuracies: requires classifier, oracle");
 	endif
 	
-	# check for accidental switcheroo
-	if(low > high)
-		t = high;
-		high = low;
-		low = t;
-	endif
-	# negative upper limit means no limit
-	if(high < 0)
-		high = size(getQueriedInstances(oracle), 1);
-	endif
-	# check for correct bounds
-	low = max(2, low);
-	high = min(size(getQueriedInstances(oracle), 1), high);
+	# set the bounds
+	low = 3;
+	high = size(getQueriedInstances(oracle), 1);
 	
 	# get the labeled instances
 	[features, labels] = getQueriedInstances(oracle);
@@ -32,6 +24,9 @@ function [accs, accumAccs] = estimateAccuracies(classifier, oracle, low, high)
 	accumAccs = cell(high-low+1, 1);
 	
 	for iter = low:high
+		if(debug)
+			disp(sprintf("Estimation iteration: %d", iter));
+		endif
 		# add a new cell dimension for the currrent iteration
 		accs{iter-low + 1} = cell(iter-1, 1);
 		

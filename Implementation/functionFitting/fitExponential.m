@@ -2,6 +2,8 @@
 
 function [params, func] = fitExponential(X, Y)
 
+	global verbose;
+	
     params = [];
     
     if(nargin != 2)
@@ -13,6 +15,7 @@ function [params, func] = fitExponential(X, Y)
     endif
     
     f = @(x, p) p(1) + p(2)*exp(x*p(3));
+	dfdp = @(x, f, p, dp, func) [ones(length(x), 1), exp(x * p(3)), p(2) * x .* exp(x * p(3))];
     
     # estimate initial parameters
     init = rand(1, 3) .- 0.5;
@@ -45,12 +48,18 @@ function [params, func] = fitExponential(X, Y)
         
         init = [a0, a1, a2];
     endif
-    
-    # set statistical weights
-    wt = 1 ./ sqrt(min(max(Y, 0.00000000000001), 1));
-    
-    [values, params, cvg] = leasqr(X, Y, init, f, 0.0001,
-                                max(4000/length(Y), 600), wt, max(length(Y)^2*0.000005, 0.0001) * ones(1, 3));
+	
+	cvg = 0;
+	
+	init = [0.1, 0.4, 0.3];
+	while(cvg == 0)
+		[values, params, cvg] = leasqr(X', Y', init, f, 0.00000001,
+									5000, [],
+									[], dfdp);
+		init = rand(1, 3) .- 0.5;
+	endwhile
+	
+	params = params';
     
     func = @(x) params(1) + params(2)*exp(x*params(3));
 

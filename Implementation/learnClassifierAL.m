@@ -3,7 +3,9 @@
 
 function [activeLearner, classifier, oracle] = learnClassifierAL(activeLearner,
                                 classifier, oracle, limit)
-    
+
+    global debug;
+	
     if(nargin != 4)
         print_usage();
     elseif(!isa(activeLearner, "activeLearner") || !isa(classifier, "classifier")
@@ -22,7 +24,9 @@ function [activeLearner, classifier, oracle] = learnClassifierAL(activeLearner,
     
     # add as many instances as specified by limit
     for iteration = 1:limit
-		disp(sprintf("Iteration: %d", iteration));
+		if(debug)
+			disp(sprintf("Training iteration: %d", iteration));
+		endif
         # select the next instance by using the provided active learner and
         # add it to the active learner
         [activeLearner, oracle, aquFeat, aquLab] = selectInstance(
