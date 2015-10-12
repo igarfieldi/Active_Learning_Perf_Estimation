@@ -28,12 +28,12 @@ function [holdoutAccs, iterAccs] = estimateHoldoutAccuracy(classifier, oracle, h
 		endfor
 	endif
 	
-	#if wanted, compute the holdout accuracies for every iteration stored in oracle
+	# if wanted, compute the holdout accuracies for every iteration stored in oracle
 	if(isargout(2))
 		iterAccs = [];
 		[feat, lab] = getQueriedInstances(oracle);
 		
-		for i = 1:length(lab)
+		for i = 3:length(lab)
 			classifier = setTrainingData(classifier, feat(1:i, :), lab(1:i), getNumberOfLabels(oracle));
 			
 			currAccs = [];

@@ -2,24 +2,35 @@
 clc;
 more off;
 
+# load the optim package for least square fitting
+pkg load optim;
+
+dataDir = "data/";
+resDir = "results/";
+
 addpath("@activeLearner");
 addpath("@classifier");
 addpath("@dataReader");
-addpath("@estimator");
 addpath("@oracle");
 addpath("@parzenWindowClassifier");
 addpath("@probabilisticAL");
 addpath("@randomSamplingAL");
 addpath("@uncertaintySamplingAL");
+addpath("estimation");
 addpath("functionFitting");
+addpath("IO");
 addpath("plotting");
 
-pkg load optim;
+global debug = 1;
 
-data_file = "data/seeds.mat";
+dataFile = "2dData.mat";
+resolution = 50;
+holdoutSize = 20;
+samples = @(i) min(factorial(i+2), 8);
+iterations = 7;
 
 data = dataReader();
-data = readData(data, data_file);
+data = readData(data, [dataDir, dataFile]);
 
 orac = oracle(getFeatureVectors(data), getLabels(data), 2);
 
@@ -28,27 +39,32 @@ cert = uncertaintySamplingAL(getFeatureVectors(data), getLabels(data));
 prob = probabilisticAL(getFeatureVectors(data), getLabels(data));
 pwC = parzenWindowClassifier();
 
-currAL = cert;
-iterations = 4;
-holdoutBetas = zeros(iterations, 2);
+# active learner to be used
+currAL = rand;
 
+# function template used for fitting
+funcTemplate = @(x, p) p(1) .+ p(2) .* exp(x .* p(3));
+fitFunc = @(X, Y) fitExponential(X, Y);
 
 [currAL, ~, orac] = learnClassifierAL(currAL, pwC, orac, iterations);
+[~, accumEstAccs] = estimateAccuracies(pwC, orac);
 
-[estAccs, accumEstAccs] = estimateAccuracies(pwC, orac, 2, iterations);
-
-expFunc = @(x, p) p(1) .+ p(2) .* exp(x .* p(3));
-funcs = fitFunctions(accumEstAccs, @(X, Y) fitExponential(X, Y));
-
-[aver, std] = estimatePerformanceLevel(funcs{end}, expFunc);
-
-# draw accuracies and regressed functions
-#plotEstimatedAccuracies(accumEstAccs, 1, [0, 0, 0.5], 1);
-#plotRegressedFunctions(funcs, expFunc, 3, 1000, 1, [1, 0, 0], 1);
+MCSamples = getMonteCarloSamples(accumEstAccs, samples);
+funcs = fitFunctions(MCSamples, fitFunc);
 
 # estimate holdout performance of the classifier at each iteration
-[feat, lab] = getLabeledInstances(currAL);
-[~, iterHoldoutAccs] = estimateHoldoutAccuracy(pwC, orac, 20);
-[holdoutBetas(:, 1), holdoutBetas(:, 2)] = estimateBetaDist(iterHoldoutAccs);
+[~, iterHoldoutAccs] = estimateHoldoutAccuracy(pwC, orac, holdoutSize);
+holdoutBetas = estimateBetaDist(iterHoldoutAccs);
+[holdoutMu, holdoutVar] = getMuVarFromBeta(holdoutBetas(:, 1), holdoutBetas(:, 2));
 
-#plotBetaDists(holdoutBetas, 10000, 2, [1, 0, 1], 1);
+# estimate performance level for the iterations
+[predictedMu, predictedVar, predictedBetas] = estimatePerformanceLevel(funcs, funcTemplate);
+
+# plot results
+plotResults(funcs, funcTemplate, MCSamples, accumEstAccs,
+			predictedBetas, holdoutBetas, holdoutMu, predictedMu,
+			holdoutVar, predictedVar,resolution, 1);
+
+# store results
+storeResults([resDir, dataFile], iterations, samples, holdoutSize, dataFile,
+		orac, currAL, accumEstAccs, MCSamples, funcs, holdoutBetas, predictedBetas);

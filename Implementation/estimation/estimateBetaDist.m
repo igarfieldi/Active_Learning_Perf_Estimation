@@ -3,7 +3,7 @@
 # Estimates the parameters p and q for a beta distribution
 # based on the mean and variance of the provided data samples.
 
-function [p,q] = estimateBetaDist(values)
+function dist = estimateBetaDist(values)
 
     if(nargin != 1)
         print_usage();
@@ -20,12 +20,7 @@ function [p,q] = estimateBetaDist(values)
     var = sum((values - mu) .^ 2, 2)/(columns(values)-1);
 
     # put mu and var into rearranged formulas for mean and variance of
-    # beta distribution:
-    # q = -\frac{\frac{\mu^2}{(1-\mu)^2}v+v+2\frac{\mu}{1-\mu}-\frac{\mu}{1-\mu}}
-    #           {v\left(\frac{\mu13^3}{(1-\mu)^3}+1+3\frac{\mu^2}{(1-\mu)^2}+3\frac{\mu}{1-\mu}}
-    # p = \frac{q\mu}{1-\mu}
-    q = -(mu.^2.*var./((1-mu).^2)+var+2.*mu.*var./(1-mu)-mu./(1-mu));
-    q = q./(var.*(mu.^3./((1-mu).^3)+1+3.*mu.^2./((1-mu).^2)+3*mu./(1-mu)));
-    p = mu.*q./(1-mu);
+    # beta distribution
+    dist = getBetaFromMuVar(mu, var);
 
 endfunction
