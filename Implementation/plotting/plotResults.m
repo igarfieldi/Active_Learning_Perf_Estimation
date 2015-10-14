@@ -5,7 +5,7 @@ function plotResults(regFuncs, funcHandle, samples, allAccs,
 								holdoutBetas, predictedBetas,
 								holdoutMu, predictedMu,
 								holdoutVar, predictedVar,
-								resPerOne, figInit)
+								CVPerfs, resPerOne, figInit)
 	#{
 	if(nargin == 7)
 		if(!iscell(regFuncs) || !is_function_handle(funcHandle) || !iscell(samples)
@@ -16,7 +16,7 @@ function plotResults(regFuncs, funcHandle, samples, allAccs,
 		print_usage();
 	endif
     #}
-	
+	#{
 	for i = 1:length(regFuncs)
 		# add space for the predicted and holdout betas
 		totalSize = size(regFuncs{i}, 1) + 1;
@@ -64,8 +64,8 @@ function plotResults(regFuncs, funcHandle, samples, allAccs,
 			title(sprintf("Sample: %d", j));
 		endfor
 	endfor
-	
-	figure(figInit);
+	#}
+	figure(figInit++);
 	hold on;
 	title("Average plot");
 	
@@ -75,6 +75,7 @@ function plotResults(regFuncs, funcHandle, samples, allAccs,
 	plot(3:size(predictedBetas, 1)+2, holdoutMu .+ holdoutVar, "*", "color", [0.6, 0, 0.6]);
 	plot(3:size(predictedBetas, 1)+2, predictedMu .- predictedVar, "*", "color", [0, 0.6, 0]);
 	plot(3:size(predictedBetas, 1)+2, predictedMu .+ predictedVar, "*", "color", [0, 0.6, 0]);
+	plot(2:length(CVPerfs)+1, CVPerfs, "*-", "color", [0.6, 0.5, 0]);
 	
 	axis([0, size(predictedBetas, 1)+3, 0, 1]);
 

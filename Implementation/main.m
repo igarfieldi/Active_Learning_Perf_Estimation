@@ -26,8 +26,10 @@ global debug = 1;
 dataFile = "2dData.mat";
 resolution = 50;
 holdoutSize = 20;
-samples = @(i) min(factorial(i+2), 8);
-iterations = 7;
+funcTemplate = @(x, p) p(1) .+ p(2) .* exp(x .* p(3));
+fitFunc = @(X, Y) fitExponential(X, Y);
+samples = @(i) (i+2)^2;#min(factorial(i+2), 20);
+iterations = 13;
 
 data = dataReader();
 data = readData(data, [dataDir, dataFile]);
@@ -42,13 +44,15 @@ pwC = parzenWindowClassifier();
 # active learner to be used
 currAL = rand;
 
-# function template used for fitting
-funcTemplate = @(x, p) p(1) .+ p(2) .* exp(x .* p(3));
-fitFunc = @(X, Y) fitExponential(X, Y);
-
 [currAL, ~, orac] = learnClassifierAL(currAL, pwC, orac, iterations);
-[~, accumEstAccs] = estimateAccuracies(pwC, orac);
 
+# estimate the performance with adaptive incremental k-fold cross-validation
+CVPerfs = [];
+for i = 2:iterations
+	CVPerfs = [CVPerfs, estimatePerformanceAIKFoldCV(pwC, orac, 5, i)];
+endfor
+
+[~, accumEstAccs] = estimateAccuracies(pwC, orac);
 MCSamples = getMonteCarloSamples(accumEstAccs, samples);
 funcs = fitFunctions(MCSamples, fitFunc);
 
@@ -63,7 +67,7 @@ holdoutBetas = estimateBetaDist(iterHoldoutAccs);
 # plot results
 plotResults(funcs, funcTemplate, MCSamples, accumEstAccs,
 			predictedBetas, holdoutBetas, holdoutMu, predictedMu,
-			holdoutVar, predictedVar,resolution, 1);
+			holdoutVar, predictedVar, CVPerfs, resolution, 1);
 
 # store results
 storeResults([resDir, dataFile], iterations, samples, holdoutSize, dataFile,

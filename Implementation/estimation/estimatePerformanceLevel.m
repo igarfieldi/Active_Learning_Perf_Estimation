@@ -26,6 +26,11 @@ function [mu, var, betas] = estimatePerformanceLevel(regFuncParams, functionTemp
 		currMu /= size(regFuncParams{i}, 1);
 		mu = [mu, currMu];
 		
+		if(length(fVals) == 1)
+			z = fVals
+			u = regFuncParams{i}
+		endif
+		
 		currVar = sum((fVals .- currMu).^2) ./ (length(fVals) - 1);
 		var = [var, currVar];
 		
