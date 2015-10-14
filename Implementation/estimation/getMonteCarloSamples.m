@@ -2,6 +2,8 @@
 
 function samples = getMonteCarloSamples(accumAccs, numOfSamples)
 
+	global debug;
+	
 	samples = [];
 	
 	if(nargin != 2)
@@ -14,6 +16,10 @@ function samples = getMonteCarloSamples(accumAccs, numOfSamples)
 	samples = cell(length(accumAccs), 1);
 	
 	for i = 1:length(accumAccs)
+		if(debug)
+			disp(sprintf("Monte-Carlo iteration: %d", i+2));
+		endif
+		
 		currSize = [];
 		
 		for j = 1:length(accumAccs{i})

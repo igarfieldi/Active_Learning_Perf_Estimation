@@ -17,7 +17,7 @@ function funcReg = fitFunctions(accSamples, funcHandle)
 	for i = 1:length(accSamples)
         funcReg{i} = [];
 		if(debug)
-			disp(sprintf("Fitting iteration: %d", i));
+			disp(sprintf("Fitting iteration: %d", i+2));
         endif
 		
 		# iterate over all samples and fit a curve for each one
