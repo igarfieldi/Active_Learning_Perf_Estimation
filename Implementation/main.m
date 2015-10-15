@@ -19,7 +19,9 @@ addpath("@uncertaintySamplingAL");
 addpath("estimation");
 addpath("functionFitting");
 addpath("IO");
+addpath("perfEstimation");
 addpath("plotting");
+addpath("utility");
 
 global debug = 1;
 
@@ -28,8 +30,9 @@ resolution = 50;
 holdoutSize = 20;
 funcTemplate = @(x, p) p(1) .+ p(2) .* exp(x .* p(3));
 fitFunc = @(X, Y) fitExponential(X, Y);
-samples = @(i) (i+2)^2;#min(factorial(i+2), 20);
-iterations = 13;
+iterations = 10;
+samples = ((1:iterations) .+ 2);
+foldSize = 5;
 
 data = dataReader();
 data = readData(data, [dataDir, dataFile]);
@@ -43,6 +46,21 @@ pwC = parzenWindowClassifier();
 
 # active learner to be used
 currAL = rand;
+
+#{
+[orac, CVmu, CFmu, CFvar, CFbeta, Hmu, Hvar, Hbeta] = estimatePerformanceMeasures(
+                            pwC, orac, currAL, iterations, samples, holdoutSize,
+                            foldSize, funcTemplate, fitFunc);
+
+
+KLDiv = computeKullbackLeiblerDivergence(Hbeta, CFbeta, 50)
+SSD = computeSummedSquaredDifference(Hbeta, CFbeta, 50)
+
+figure(1);
+hold on;
+plot(3:size(CFbeta, 1)+2, KLDiv', "*-", "color", [1, 0, 0]);
+plot(3:size(CFbeta, 1)+2, SSD', "*-", "color", [0, 0, 1]);
+#}
 
 [currAL, ~, orac] = learnClassifierAL(currAL, pwC, orac, iterations);
 
