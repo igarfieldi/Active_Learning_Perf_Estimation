@@ -1,6 +1,6 @@
-# usage: [params, func] = fitExponential(X, Y)
+# usage: [params, func] = fitSigmoid(X, Y)
 
-function [params, func] = fitExponential(X, Y)
+function [params, func] = fitSigmoid(X, Y)
 
 	global verbose;
 	
@@ -14,27 +14,26 @@ function [params, func] = fitExponential(X, Y)
         error("fitExponential: vector lengths do not match");
     endif
     
-	f = @(x, p) p(1) .+ p(2) .* exp(p(3) .* x);
+	f = @(x, p) -p(1) ./ 2 .+ p(1) ./ (1 .+ exp(-p(2).*(x .- p(3))));
 	#dfdp = @(x, f, p, dp, func) [ones(length(x), 1), exp(x * p(3)), p(2) * x .* exp(x * p(3))];
     
 	cvg = 0;
 	
 	wt1 = sqrt (X');
 	
-	options.bounds = [0, 1; -Inf, 0; -Inf, 0];
+	options.bounds = [0, 2; 0, Inf; -Inf, Inf];
 	
 	squErr = 1;
 	c = 0;
 	
 	while((squErr > 10^(-3)) && (c < 10))
-		init = (rand(1, 3) .- [0, 1, 1]) .* [1, 10, 10];
+		init = (rand(1, 3) .- [0, 0, 0.5]) .* [2, 6, 8];
 		[values, params, cvg] = leasqr(X', Y', init, f, 0.0001,
 									200, [], [], [], options);
 		
 		squErr = sum((f(X, params) .- Y) .^ 2);
 		c++;
 	endwhile
-	
 	
 	params = params';
     

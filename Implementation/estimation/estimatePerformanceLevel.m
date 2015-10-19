@@ -18,7 +18,7 @@ function [mu, var, betas] = estimatePerformanceLevel(regFuncParams, functionTemp
 		
 		for j = 1:size(regFuncParams{i}, 1)
 			# bias due to the cutoff???
-			val = max(0, min(functionTemplate(j, regFuncParams{i}(j, :)), 1));
+			val = max(0, min(functionTemplate(i+2, regFuncParams{i}(j, :)), 1));
 			fVals = [fVals, val];
 			currMu += val;
 		endfor

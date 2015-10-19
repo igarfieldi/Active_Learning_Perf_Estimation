@@ -1,13 +1,18 @@
-# usage: [mu, var, beta] = estimatePerformanceFitting(classifier, oracle, samples,
+# usage: [mu, var, beta] = estimatePerformanceMCFit(classifier, oracle, samples,
 #                                                    functionTemplate,
 #                                                    fittingFunction)
 
 
-function [mu, var, beta] = estimatePerformanceFitting(classifier, oracle, samples,
+function [mu, var, beta, MCSamples, funcs] = estimatePerformanceMCFit(
+													classifier, oracle, samples,
                                                     functionTemplate,
                                                     fittingFunction)
 
-    perf = [];
+    mu = [];
+	var = [];
+	beta = [];
+	MCSamples = [];
+	funcs = [];
     
     if(nargin != 5)
         print_usage();
