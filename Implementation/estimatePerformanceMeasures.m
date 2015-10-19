@@ -4,7 +4,7 @@
 #                                            functionTemplate,
 #                                            fittingFunction)
 
-function [oracle, CVmu, CFmu, CFvar, CFbeta, Hmu, Hvar, Hbeta] = ...
+function [oracle, Hmu, CVmu, CFmu, AFmu] = ...
                     estimatePerformanceMeasures(classifier, oracle, activeLearner,
                                             iterations, samples, holdoutSize, k,
                                             functionTemplate,
@@ -43,6 +43,7 @@ activeLearner, scalar, vector, scalar, function handle, function handle");
     CFmu = [];
     CFvar = [];
     CFbeta = [];
+	AFmu = [];
     Hmu = [];
     Hvar = [];
     Hbeta = [];
@@ -73,13 +74,38 @@ activeLearner, scalar, vector, scalar, function handle, function handle");
         
         # use our approach (curve fitting with leave-x-out CV)
         [CFmuTemp, CFvarTemp, CFbetaTemp] = ...
-                estimatePerformanceFitting(classifier, oracle, samples(i-2),
+                estimatePerformanceMCFit(classifier, oracle, samples(i-2),
                                             functionTemplate, fittingFunction);
         
         CFmu = [CFmu; CFmuTemp];
         CFvar = [CFvar; CFvarTemp];
         CFbeta = [CFbeta; CFbetaTemp];
+		
+		
+		# use averaging + fitting
+		AFmu = [AFmu; estimatePerformanceAverFit(classifier, oracle,
+							functionTemplate, fittingFunction)];
         
     endfor
+	
+	#{
+	CFerr = CFmu .- Hmu;
+	CFerrA = abs(CFmu .- Hmu);
+	CFerrSq = (CFmu .- Hmu) .^ 2;
+	CVerr = CVmu .- Hmu;
+	CVerrA = abs(CVmu .- Hmu);
+	CVerrSq = (CVmu .- Hmu) .^ 2;
+	AFerr = AFmu .- Hmu;
+	AFerrA = abs(AFmu .- Hmu);
+	AFerrSq = (AFmu .- Hmu) .^ 2;
+	
+	figure(1);
+	hold on;
+	#plot(3:size(CFbeta, 1)+2, (Hmu .- CFmu)', "*-", "color", [0, 0, 1]);
+	plot(3:length(CFerr)+2, CFerr', "*-", "color", [1, 0, 1]);
+	plot(3:length(CVerr)+2, CVerr', "*-", "color", [0, 1, 0]);
+	plot(3:length(AFerr)+2, AFerr', "*-", "color", [1, 0, 0]);
+	axis([0, length(Hmu)+3, -1, 1]);
+	#}
 
 endfunction

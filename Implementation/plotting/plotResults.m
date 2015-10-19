@@ -75,8 +75,9 @@ function plotResults(regFuncs, funcHandle, samples, allAccs,
 	plot(3:size(predictedBetas, 1)+2, holdoutMu .+ holdoutVar, "*", "color", [0.6, 0, 0.6]);
 	plot(3:size(predictedBetas, 1)+2, predictedMu .- predictedVar, "*", "color", [0, 0.6, 0]);
 	plot(3:size(predictedBetas, 1)+2, predictedMu .+ predictedVar, "*", "color", [0, 0.6, 0]);
-	plot(2:length(CVPerfs)+1, CVPerfs, "*-", "color", [0.6, 0.5, 0]);
+	#plot(3:length(CVPerfs)+2, CVPerfs, "*-", "color", [0.6, 0.5, 0]);
 	
 	axis([0, size(predictedBetas, 1)+3, 0, 1]);
+	
 
 endfunction
