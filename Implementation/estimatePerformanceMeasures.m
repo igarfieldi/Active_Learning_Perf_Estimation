@@ -74,7 +74,7 @@ activeLearner, scalar, vector, scalar, function handle, function handle");
         
         # use our approach (curve fitting with leave-x-out CV)
         [CFmuTemp, CFvarTemp, CFbetaTemp] = ...
-                estimatePerformanceMCFit(classifier, oracle, samples(i-2),
+                estimatePerformanceMCFit(classifier, oracle, samples(i),
                                             functionTemplate, fittingFunction);
         
         CFmu = [CFmu; CFmuTemp];

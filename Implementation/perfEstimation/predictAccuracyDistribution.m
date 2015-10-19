@@ -1,15 +1,15 @@
 # usage: [mu, var, betas, fVals] = predictAccuracyDistribution(regFuncParams, functionTemplate)
 
-function [mu, var, betas, fVals] = predictAccuracyDistribution(regFuncParams, functionTemplate)
+function [mu, var, betas, fVals] = predictAccuracyDistribution(x, regFuncParams, functionTemplate)
     
     mu = [];
     var = [];
 	betas = [];
     
-    if(nargin != 2)
+    if(nargin != 3)
         print_usage();
-    elseif(!ismatrix(regFuncParams) || !is_function_handle(functionTemplate))
-        error("@estimator/estimatePerformanceLevel: requires matrix, functionHandle");
+    elseif(!isscalar(x) || !ismatrix(regFuncParams) || !is_function_handle(functionTemplate))
+        error("@estimator/estimatePerformanceLevel: requires scalar, matrix, functionHandle");
     endif
     
     mu = 0;
@@ -18,7 +18,7 @@ function [mu, var, betas, fVals] = predictAccuracyDistribution(regFuncParams, fu
     
     for j = 1:size(regFuncParams, 1)
         # bias due to the cutoff???
-        val = max(0, min(functionTemplate(j, regFuncParams(j, :)), 1));
+        val = max(0, min(functionTemplate(x, regFuncParams(j, :)), 1));
         fVals = [fVals, val];
         mu += val;
     endfor

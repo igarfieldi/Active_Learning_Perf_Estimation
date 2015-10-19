@@ -30,6 +30,6 @@ function [mu, var, beta, MCSamples, funcs] = estimatePerformanceMCFit(
     MCSamples = getMonteCarloSamplesIter(accumEstAccs, samples);
     funcs = fitFunctionsIter(MCSamples, fittingFunction);
     
-    [mu, var, beta, ~] = predictAccuracyDistribution(funcs, functionTemplate);
+    [mu, var, beta, ~] = predictAccuracyDistribution(length(accumEstAccs)+2, funcs, functionTemplate);
 
 endfunction

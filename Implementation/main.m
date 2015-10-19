@@ -33,8 +33,8 @@ funcTemplate = @(x, p) p(1) .+ p(2) .* exp(x .* p(3));
 #funcTemplate = @(x, p) -p(1) ./ 2 .+ p(1) ./ (1 .+ exp(-p(2).*(x .- p(3))));
 fitFunc = @(X, Y) fitExponential(X, Y);
 #fitFunc = @(X, Y) fitSigmoid(X, Y);
-samples = @(i) min(factorial(i+2), 10);
-iterations = 10;
+samples = @(i) i .^ 2;#min(factorial(i), 10);
+iterations = 7;
 
 data = dataReader();
 data = readData(data, [dataDir, dataFile]);
@@ -54,7 +54,7 @@ CVmu = [];
 CFmu = [];
 AFmu = [];
 
-for i = 1:20
+for i = 1:10
 	disp(i);
 	[~, HmuT, CVmuT, CFmuT, AFmuT] = estimatePerformanceMeasures(
 								pwC, orac, currAL, iterations, samples, holdoutSize,
@@ -70,12 +70,19 @@ CFerr = sum(CFmu .- Hmu, 2) / size(Hmu, 2);
 CVerr = sum(CVmu .- Hmu, 2) / size(Hmu, 2);
 AFerr = sum(AFmu .- Hmu, 2) / size(Hmu, 2);
 
+CFerrSq = sum((CFmu .- Hmu) .^ 2, 2) / size(Hmu, 2);
+AFerrSq = sum((AFmu .- Hmu) .^ 2, 2) / size(Hmu, 2);
+CVerrSq = sum((CVmu .- Hmu) .^ 2, 2) / size(Hmu, 2);
+
 figure(1);
 hold on;
 plot(3:length(CFerr)+2, CFerr', "*-", "color", [1, 0, 1]);
 plot(3:length(CVerr)+2, CVerr', "*-", "color", [0, 1, 0]);
 plot(3:length(AFerr)+2, AFerr', "*-", "color", [1, 0, 0]);
-axis([0, length(Hmu)+3, -1, 1]);
+plot(3:length(CFerr)+2, CFerrSq', "*-", "color", [1, 0, 1]);
+plot(3:length(CVerr)+2, CVerrSq', "*-", "color", [0, 1, 0]);
+plot(3:length(AFerr)+2, AFerrSq', "*-", "color", [1, 0, 0]);
+axis([0, length(Hmu)+3, -0.5, 1]);
 
 #{
 KLDiv = computeKullbackLeiblerDivergence(Hbeta, CFbeta, 50);
