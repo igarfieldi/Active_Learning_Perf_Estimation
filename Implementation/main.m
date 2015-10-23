@@ -19,22 +19,23 @@ addpath("@uncertaintySamplingAL");
 addpath("estimation");
 addpath("functionFitting");
 addpath("IO");
-addpath("perfEstimation");
 addpath("plotting");
 addpath("utility");
 
 global debug = 1;
+global notConverged = 0;
 
-dataFile = "2dData.mat";
+dataFile = "checke1.mat";
 resolution = 50;
 holdoutSize = 20;
 foldSize = 5;
-funcTemplate = @(x, p) p(1) .+ p(2) .* exp(x .* p(3));
-#funcTemplate = @(x, p) -p(1) ./ 2 .+ p(1) ./ (1 .+ exp(-p(2).*(x .- p(3))));
-fitFunc = @(X, Y) fitExponential(X, Y);
-#fitFunc = @(X, Y) fitSigmoid(X, Y);
+funcTemplates = {@(x, p) p(1) .+ p(2) .* exp(x .* p(3)),...
+				@(x, p) -p(1) ./ 2 .+ p(1) ./ (1 .+ exp(-p(2).*(x .- p(3))))};
+bounds = {[0, 1; -Inf, 0; -Inf, 0], [0, 2; 0, Inf; -Inf, Inf]};
+inits = {[0, 1, 1; 1, 10, 10], [0, 0, 0.5; 2, 6, 8]};
 samples = @(i) i .^ 2;#min(factorial(i), 10);
-iterations = 7;
+iterations = 10;
+testRuns = 1;
 
 data = dataReader();
 data = readData(data, [dataDir, dataFile]);
@@ -54,17 +55,10 @@ CVmu = [];
 CFmu = [];
 AFmu = [];
 
-for i = 1:10
-	disp(i);
-	[~, HmuT, CVmuT, CFmuT, AFmuT] = estimatePerformanceMeasures(
-								pwC, orac, currAL, iterations, samples, holdoutSize,
-								foldSize, funcTemplate, fitFunc);
-								
-	Hmu = [Hmu, HmuT];
-	CVmu = [CVmu, CVmuT];
-	CFmu = [CFmu, CFmuT];
-	AFmu = [AFmu, AFmuT];
-endfor
+[~, Hmu, CVmu, CFmu, AFmu] = estimatePerformanceMeasures(
+							pwC, orac, currAL, iterations, testRuns, samples,
+							foldSize, funcTemplates{1}, bounds{1}, inits{1});
+
 
 CFerr = sum(CFmu .- Hmu, 2) / size(Hmu, 2);
 CVerr = sum(CVmu .- Hmu, 2) / size(Hmu, 2);
@@ -74,51 +68,27 @@ CFerrSq = sum((CFmu .- Hmu) .^ 2, 2) / size(Hmu, 2);
 AFerrSq = sum((AFmu .- Hmu) .^ 2, 2) / size(Hmu, 2);
 CVerrSq = sum((CVmu .- Hmu) .^ 2, 2) / size(Hmu, 2);
 
+Hmu = sum(Hmu, 2) ./ size(Hmu, 2);
+CVmu = sum(CVmu, 2) ./ size(CVmu, 2);
+CFmu = sum(CFmu, 2) ./ size(CFmu, 2);
+AFmu = sum(AFmu, 2) ./ size(AFmu, 2);
+
 figure(1);
+hold on;
+axis([3, length(Hmu)+2, 0, 1]);
+plot(3:length(Hmu)+2, Hmu', "*-", "color", [0, 0, 1]);
+plot(3:length(CFmu)+2, CFmu', "*-", "color", [1, 0, 1]);
+plot(3:length(CVmu)+2, CVmu', "*-", "color", [0, 1, 0]);
+plot(3:length(AFmu)+2, AFmu', "*-", "color", [1, 0, 0]);
+#{
+figure(2);
 hold on;
 plot(3:length(CFerr)+2, CFerr', "*-", "color", [1, 0, 1]);
 plot(3:length(CVerr)+2, CVerr', "*-", "color", [0, 1, 0]);
 plot(3:length(AFerr)+2, AFerr', "*-", "color", [1, 0, 0]);
+figure(3);
+hold on;
 plot(3:length(CFerr)+2, CFerrSq', "*-", "color", [1, 0, 1]);
 plot(3:length(CVerr)+2, CVerrSq', "*-", "color", [0, 1, 0]);
 plot(3:length(AFerr)+2, AFerrSq', "*-", "color", [1, 0, 0]);
-axis([0, length(Hmu)+3, -0.5, 1]);
-
-#{
-KLDiv = computeKullbackLeiblerDivergence(Hbeta, CFbeta, 50);
-SSD = computeSummedSquaredDifference(Hbeta, CFbeta, 50);
-figure(2);
-hold on;
-plot(3:size(CFbeta, 1)+2, KLDiv', "*-", "color", [1, 0, 0]);
-plot(3:size(CFbeta, 1)+2, SSD', "*-", "color", [0, 0, 1]);
-#}
-#{
-[currAL, ~, orac] = learnClassifierAL(currAL, pwC, orac, iterations);
-
-# estimate the performance with adaptive incremental k-fold cross-validation
-CVPerfs = [];
-for i = 3:iterations
-	CVPerfs = [CVPerfs, estimatePerformanceAIKFoldCV(pwC, orac, i-1, i)];
-endfor
-
-[~, accumEstAccs] = estimateAccuracies(pwC, orac);
-MCSamples = getMonteCarloSamples(accumEstAccs, samples);
-funcs = fitFunctions(MCSamples, fitFunc);
-
-# estimate holdout performance of the classifier at each iteration
-[~, iterHoldoutAccs] = estimateHoldoutAccuracy(pwC, orac, holdoutSize);
-holdoutBetas = estimateBetaDist(iterHoldoutAccs);
-[holdoutMu, holdoutVar] = getMuVarFromBeta(holdoutBetas(:, 1), holdoutBetas(:, 2));
-
-# estimate performance level for the iterations
-[predictedMu, predictedVar, predictedBetas] = estimatePerformanceLevel(funcs, funcTemplate);
-
-# plot results
-plotResults(funcs, funcTemplate, MCSamples, accumEstAccs,
-			holdoutBetas, predictedBetas, holdoutMu, predictedMu,
-			holdoutVar, predictedVar, CVPerfs, resolution, 1);
-
-# store results
-storeResults([resDir, dataFile], iterations, samples, holdoutSize, dataFile,
-		orac, currAL, accumEstAccs, MCSamples, funcs, holdoutBetas, predictedBetas);
 #}

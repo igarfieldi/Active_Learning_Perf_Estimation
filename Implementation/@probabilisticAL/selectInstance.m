@@ -38,7 +38,7 @@ function [probabilisticAL, oracle, aquFeat, aquLab] = selectInstance(
             nextLabelIndex = floor(rand(1) * unlabeledSize) + 1;
         else
             # perform kernel frequency estimation for each instance
-            kernel = @(x, n) exp(-sum(x .^ 2, 2) ./ (2*getStandardDeviation(pwClassifier)^2));
+            kernel = @(x, n) exp(-sum(x .^ 2, 2) ./ (2*getSigma(pwClassifier)^2));
             # get labeled instances and sort them using the classifier's setTrainingData
             [labFeat, labLab] = getLabeledInstances(probabilisticAL);
             pwClassifier = setTrainingData(pwClassifier, labFeat, labLab, getNumberOfLabels(oracle));

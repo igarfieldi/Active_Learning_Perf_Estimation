@@ -22,8 +22,9 @@ function ret = classifyInstances(pwClassifier, instances)
         # check if training instances for the class are present
         if(labelInd(i) - old >= 0)
             # use kernel density estimation (Parzen-Window)
-            densities(i, :) = estimateKernelFrequencies(instances,
-                                features(old:labelInd(i), :), kernel) ./ (labelInd(i) - old + 1);
+            densities(i, :) = estimateKernelDensities(instances,
+                                features(old:labelInd(i), :), getSigma(pwClassifier))...
+									./ (labelInd(i) - old + 1);
         endif
         
         old = labelInd(i)+1;
