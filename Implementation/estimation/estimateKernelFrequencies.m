@@ -1,4 +1,4 @@
-# usage: frequencies = estimateKernelFrequencies(instances, samples, kernel)
+# usage: frequencies = estimateKernelFrequencies(instances, samples, sigma, kernel)
 
 function frequencies = estimateKernelFrequencies(instances, samples, kernel)
 
@@ -16,7 +16,7 @@ function frequencies = estimateKernelFrequencies(instances, samples, kernel)
         elseif(size(instances, 2) != size(samples, 2))
             error("@estimator/estimateKernelFrequency(2): instances and samples must have same number of columns");
         endif
-        kernel = @(x, n) exp(-sum(x .^ 2, 2) ./ 2);
+        kernel = @(x) exp(-sum(x .^ 2, 2) ./ 2) ./ sqrt(2 * pi);
     else
         print_usage();
     endif
@@ -30,7 +30,7 @@ function frequencies = estimateKernelFrequencies(instances, samples, kernel)
 							 columns(sampleMat), rows(sampleMat))';
 		
 		# estimate the frequencies using the kernel provided
-		frequencies = kernel(instanceMat .- sampleMat, rows(samples));
+		frequencies = kernel(instanceMat .- sampleMat);
 		frequencies = reshape(frequencies, rows(samples), rows(instances));
 		frequencies = sum(frequencies, 1);
 	endif

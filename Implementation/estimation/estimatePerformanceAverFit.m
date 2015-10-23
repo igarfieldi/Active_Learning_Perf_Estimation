@@ -1,23 +1,23 @@
 # usage: [mu, var, beta] = estimatePerformanceAverFit(classifier, oracle,...
 #                                                    functionTemplate,...
-#                                                    fittingFunction)
+#                                                    bounds, inits)
 
 
 function [mu, averages, func] = estimatePerformanceAverFit(classifier, oracle,
                                                     functionTemplate,
-                                                    fittingFunction)
+                                                    bounds, inits)
 
     mu = [];
 	averages = [];
 	func = [];
     
-    if(nargin != 4)
+    if(nargin != 5)
         print_usage();
     elseif(!isa(classifier, "classifier") || !isa(oracle, "oracle")
             || !is_function_handle(functionTemplate)
-            || !is_function_handle(fittingFunction))
+            || !ismatrix(bounds) || !ismatrix(inits))
         error("estimatePerformanceFitting: requires classifier, oracle, \
-function handle, function handle");
+function handle, matrix, matrix");
     endif
     
     # estimate the accuracies for all combinations of training/test set
@@ -29,7 +29,8 @@ function handle, function handle");
 		averages = [averages, sum(accumEstAccs{i}(1, :) .* accumEstAccs{i}(2, :), 2)...
 									/ sum(accumEstAccs{i}(2, :), 2)];
 	endfor
-    func = fitFunctionsIter(averages, fittingFunction);
+    func = fitFunctionsIter(averages, functionTemplate, bounds, inits);
+	
 	#{
 	figure(size(getQueriedInstances(oracle), 1)+3);
 	hold on;

@@ -1,6 +1,6 @@
-# usage: sigma = getStandardDeviation(pwClassifier)
+# usage: sigma = getSigma(pwClassifier)
 
-function sigma = getStandardDeviation(pwClassifier)
+function sigma = getSigma(pwClassifier)
 
     sigma = [];
     

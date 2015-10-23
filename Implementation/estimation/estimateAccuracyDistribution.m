@@ -1,6 +1,6 @@
-# usage: [mu, var, betas, fVals] = predictAccuracyDistribution(regFuncParams, functionTemplate)
+# usage: [mu, var, betas, fVals] = estimateAccuracyDistribution(regFuncParams, functionTemplate)
 
-function [mu, var, betas, fVals] = predictAccuracyDistribution(x, regFuncParams, functionTemplate)
+function [mu, var, betas, fVals] = estimateAccuracyDistribution(x, regFuncParams, functionTemplate)
     
     mu = [];
     var = [];
