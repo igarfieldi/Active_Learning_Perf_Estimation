@@ -5,12 +5,12 @@ function densities = estimateKernelDensities(instances, samples, sigma)
     densities = [];
     
     if(nargin == 3)
-        if(!ismatrix(instances) || !ismatrix(samples) || !isscalar(sigma))
-            error("@estimator/estimateKernelDensities(3): requires matrix, matrix, scalar");
+        if(!ismatrix(instances) || !ismatrix(samples) || !isvector(sigma))
+            error("@estimator/estimateKernelDensities(3): requires matrix, matrix, vector");
         elseif(size(instances, 2) != size(samples, 2))
             error("@estimator/estimateKernelDensities(3): instances and samples must have same number of columns");
         endif
-        kernel = @(x) sum(exp(-x .^ 2 ./ 2) ./ sqrt(2 * pi), 2);
+        kernel = @(x) prod(exp(-x .^ 2 ./ 2) ./ sqrt(2 * pi), 2);
     else
         print_usage();
     endif
@@ -18,25 +18,32 @@ function densities = estimateKernelDensities(instances, samples, sigma)
 	if(rows(samples) < 1)
 		densities = zeros(1, rows(instances));
 	else
+		# compute standard deviation of samples
+		# if not enough samples are available, take provided sigma (std. dev. of whole dataset)
+		if(size(samples, 1) > 1)
+			mu = sum(samples, 1) ./ size(samples, 1);
+			estSigma = sqrt(sum((samples .- mu) .^ 2, 1) ./ (size(samples, 1) - 1.5));
+			if(estSigma != 0)
+				sigma = estSigma;
+			endif
+		endif
+		
 		# estimate 'smoothness' based on Silverman's rule of thumb
 		q = size(samples, 2);	# dimensions
 		v = 2;					# kernel order (order of first non-zero moment)
-		R = 0.28209;			# kernel roughness (int_{-Inf}{Inf} k(x)^2 dx
-		Cv = (pi^(q/2)*2^(q+v-1)*factorial(v)^2*R^q/...
-			(v*1*(doubleFactorial(2*v-1)+(q-1)*doubleFactorial(v-1)^2)))^(1/(2*v+q));
-		bandwidth = sigma * Cv * size(samples, 1)^(-1/(2*v+q));
+		Cv = getSilvermanConstantFor2ndOrderGauss(q);
+		bandwidth = sigma .* (Cv * size(samples, 1)^(-1/(2*v+q)));
+		#bandwidth = 0.1 * ones(1, size(samples, 2)) .* (Cv * size(samples, 1)^(-1/(2*v+q)));
+		
 		
 		# create matrices to match each instance with each sample
 		sampleMat = repmat(samples, [rows(instances), 1]);
 		instanceMat = reshape(repmat(instances', [rows(sampleMat)/rows(instances), 1]),
 							 columns(sampleMat), rows(sampleMat))';
-		
 		# estimate the frequencies using the kernel provided (multivariate)
 		densities = kernel((instanceMat .- sampleMat) ./ bandwidth);
 		densities = reshape(densities, rows(samples), rows(instances));
-		densities = sum(densities, 1) ./ (size(samples, 1) * bandwidth^q);
+		densities = max(sum(densities, 1) ./ (size(samples, 1) * prod(bandwidth)), 10^(-99));
 	endif
     
 endfunction
-
- (pi^(q/2)*2^(q+v-1)*factorial(v)^2*R^q/(v*1*(doubleFactorial(2*v-1)+(q-1)*doubleFactorial(v-1)^2)))^(1/(2*v+q))

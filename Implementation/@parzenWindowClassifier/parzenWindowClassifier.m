@@ -1,6 +1,6 @@
 function obj = parzenWindowClassifier(features, labels, sigma)
 
-    obj.sigma = 0.1;
+    obj.sigma = [0.1];
     obj.classifier = [];
     clas = @classifier();
     

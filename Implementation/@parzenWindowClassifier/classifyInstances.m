@@ -23,12 +23,16 @@ function ret = classifyInstances(pwClassifier, instances)
         if(labelInd(i) - old >= 0)
             # use kernel density estimation (Parzen-Window)
             densities(i, :) = estimateKernelDensities(instances,
-                                features(old:labelInd(i), :), getSigma(pwClassifier))...
-									./ (labelInd(i) - old + 1);
+                                features(old:labelInd(i), :), getSigma(pwClassifier));
         endif
         
         old = labelInd(i)+1;
     endfor
+	
+	# DEBUG
+	if(sum(densities) == 0)
+		keyboard;
+	endif
     
     # use density estimation and estimated prior probabilities to estimate posteriors
     ret = (priorEstimates .* densities) ./ sum(priorEstimates .* densities, 1);

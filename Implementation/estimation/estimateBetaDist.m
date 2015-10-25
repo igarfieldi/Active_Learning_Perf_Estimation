@@ -18,7 +18,7 @@ function dist = estimateBetaDist(values)
     # calculate mean and variance
     mu = sum(values, 2) ./ columns(values);
     var = sum((values - mu) .^ 2, 2)/(columns(values)-1);
-
+	
     # put mu and var into rearranged formulas for mean and variance of
     # beta distribution
     dist = getBetaFromMuVar(mu, var);
