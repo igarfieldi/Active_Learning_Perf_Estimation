@@ -74,19 +74,25 @@ activeLearner, scalar, vector, scalar, function handle, matrix, matrix");
 			[feat, lab] = getQueriedInstances(currOracle);
 			classifier = setTrainingData(classifier, feat, lab, getNumberOfLabels(currOracle));
 			
+			#visualizeDensities(feat, lab, 5, i-2, iterations-2);
+			
 			# get the holdout accuracies
 			[Hsamples, ~] = estimatePerformanceHoldout(classifier, currOracle, i);
-			HbetaTemp = estimateBetaDist(Hsamples);
-			currHbeta = [currHbeta; struct("p", HbetaTemp(1), "q", HbetaTemp(2))];
-			[HmuTemp, HvarTemp] = getMuVarFromBeta(HbetaTemp(1), HbetaTemp(2));
-			currHmu = [currHmu; HmuTemp];
-			currHvar = [currHvar; HvarTemp];
+			if(sum(Hsamples) < length(Hsamples))
+				HbetaTemp = estimateBetaDist(Hsamples);
+				currHbeta = [currHbeta; struct("p", HbetaTemp(1), "q", HbetaTemp(2))];
+				[HmuTemp, HvarTemp] = getMuVarFromBeta(HbetaTemp(1), HbetaTemp(2));	
+				currHmu = [currHmu; HmuTemp];
+				currHvar = [currHvar; HvarTemp];
+			else
+				currHmu = [currHmu; 1];
+			endif
 			
 			# use adaptive incremental K-fold cross-validation
 			currCVmu = [currCVmu; estimatePerformanceAIKFoldCV(classifier, currOracle, k)];
 			
 			# TODO: use .632+ bootstrapping
-			
+			#{
 			# use our approach (curve fitting with leave-x-out CV)
 			[CFmuTemp, CFvarTemp, CFbetaTemp] = ...
 					estimatePerformanceMCFit(classifier, currOracle, samples(i),
@@ -100,7 +106,7 @@ activeLearner, scalar, vector, scalar, function handle, matrix, matrix");
 			# use averaging + fitting
 			currAFmu = [currAFmu; estimatePerformanceAverFit(classifier, currOracle,
 										functionTemplate, bounds, inits)];
-			
+			#}
 		endfor
 		
 		CVmu = [CVmu, currCVmu];

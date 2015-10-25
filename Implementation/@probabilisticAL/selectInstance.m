@@ -38,27 +38,30 @@ function [probabilisticAL, oracle, aquFeat, aquLab] = selectInstance(
             nextLabelIndex = floor(rand(1) * unlabeledSize) + 1;
         else
             # perform kernel frequency estimation for each instance
-            kernel = @(x, n) exp(-sum(x .^ 2, 2) ./ (2*getSigma(pwClassifier)^2));
+            kernel = @(x) exp(-sum(x .^ 2 ./ (2*getSigma(pwClassifier).^2), 2));
             # get labeled instances and sort them using the classifier's setTrainingData
             [labFeat, labLab] = getLabeledInstances(probabilisticAL);
             pwClassifier = setTrainingData(pwClassifier, labFeat, labLab, getNumberOfLabels(oracle));
             [labFeat, ~, labLabInd] = getTrainingInstances(pwClassifier);
             # get unlabeled instances
             [unlabFeat, unlabLab] = getUnlabeledInstances(oracle);
+			
+			# integration resolution
+			X = linspace(0.0001, 0.9999, 10000);
             
             # calculate label statistics
-            nx = estimateKernelFrequencies(unlabFeat, labFeat, kernel);
+            nx = estimateKernelFrequencies(unlabFeat, labFeat);
             py = [];
             old = 1;
             for i = 1:getNumberOfLabels(oracle)
-                py = [py; estimateKernelFrequencies(unlabFeat, labFeat(old:labLabInd(i), :), kernel)];
+                py = [py; estimateKernelFrequencies(unlabFeat, labFeat(old:labLabInd(i), :))];
                 old = labLabInd(i) + 1;
             endfor
             
             pmax = max(py) ./ nx;
             
             if(nargin != 4)
-                dx = estimateKernelFrequencies(unlabFeat, [labFeat; unlabFeat], kernel);
+                dx = estimateKernelFrequencies(unlabFeat, [labFeat; unlabFeat]);
             endif
             
             # compute pgain
@@ -66,9 +69,15 @@ function [probabilisticAL, oracle, aquFeat, aquLab] = selectInstance(
 			betaP = nx .* pmax .+ 1;
 			betaQ = nx .* (1 .- pmax) .+ 1;
 			gainFunc = @(p, y) computeError(p, pmax) .- computeError(p, (nx .* pmax .+ y) ./ (nx .+ 1));
-			pgainFunc = @(p) betapdf(p, betaP, betaQ) .* ((1 .- p) .* gainFunc(p, 0) .+ p .* gainFunc(p, 1));
+			pgainFunc = @(p) betapdf(repmat(p, 1, length(betaP)), repmat(betaP, length(p), 1),...
+										repmat(betaQ, length(p), 1))...
+								.* ((1 .- p) .* gainFunc(p, 0) .+ p .* gainFunc(p, 1));
 			
-			pgain = quadv(pgainFunc, 0, 1) .* dx;
+			
+			#pgain = quadVec(pgainFunc, 0, 1) .* dx;
+			#pgain = quadv(pgainFunc, 0, 1) .* dx;
+			pgain = trapz(X, pgainFunc(X')) .* dx;
+			
 			
 			# find instances that maximize the pgain (if multiple maxima, select random)
 			maxPgain = max(pgain);
