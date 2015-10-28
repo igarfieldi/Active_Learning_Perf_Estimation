@@ -16,8 +16,10 @@ function [features, labels, labelIndices] = getTrainingInstances(classifier)
     labelIndices = classifier.trainingLabelInd;
     
     if(isargout(2))
+		old = 0;
         for i = 1:length(labelIndices)
-            labels = [labels; (i-1) * ones(labelIndices(i), 1)];
+            labels = [labels; (i-1) * ones(labelIndices(i)-old, 1)];
+			old = labelIndices(i);
         endfor
     endif
 

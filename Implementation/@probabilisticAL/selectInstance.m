@@ -76,6 +76,8 @@ function [probabilisticAL, oracle, aquFeat, aquLab] = selectInstance(
 			
 			#pgain = quadVec(pgainFunc, 0, 1) .* dx;
 			#pgain = quadv(pgainFunc, 0, 1) .* dx;
+			# Necessary workaround since the values get too small with the regular integration approach
+			# and better versions of quad don't support vectorized inputs
 			pgain = trapz(X, pgainFunc(X')) .* dx;
 			
 			
