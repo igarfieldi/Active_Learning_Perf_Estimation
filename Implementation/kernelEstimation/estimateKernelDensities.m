@@ -10,7 +10,7 @@ function densities = estimateKernelDensities(instances, samples, sigma)
         elseif(size(instances, 2) != size(samples, 2))
             error("@estimator/estimateKernelDensities(3): instances and samples must have same number of columns");
         endif
-        kernel = @(x) prod(exp(-x .^ 2 ./ 2) ./ sqrt(2 * pi), 2);
+        kernel = @(x) exp(-sum(x .* x, 2) ./ 2) ./ sqrt(2 * pi);
     else
         print_usage();
     endif
@@ -33,13 +33,14 @@ function densities = estimateKernelDensities(instances, samples, sigma)
 		v = 2;					# kernel order (order of first non-zero moment)
 		Cv = getSilvermanConstantFor2ndOrderGauss(q);
 		bandwidth = sigma .* (Cv * size(samples, 1)^(-1/(2*v+q)));
-		#bandwidth = 0.1 * ones(1, size(samples, 2)) .* (Cv * size(samples, 1)^(-1/(2*v+q)));
+		#bandwidth = [0.05, 0.05] .* ones(1, size(samples, 2)) .* (Cv * size(samples, 1)^(-1/(2*v+q)));
 		
 		
 		# create matrices to match each instance with each sample
 		sampleMat = repmat(samples, [rows(instances), 1]);
 		instanceMat = reshape(repmat(instances', [rows(sampleMat)/rows(instances), 1]),
 							 columns(sampleMat), rows(sampleMat))';
+		
 		# estimate the frequencies using the kernel provided (multivariate)
 		densities = kernel((instanceMat .- sampleMat) ./ bandwidth);
 		densities = reshape(densities, rows(samples), rows(instances));
