@@ -1,6 +1,6 @@
 # usage: samples = getMonteCarloSamples(accumAccs, numOfSamples)
 
-function samples = getMonteCarloSamplesIter(accumAccs, numOfSamples)
+function samples = getMonteCarloSamples(accumAccs, numOfSamples)
 
 	samples = [];
 	

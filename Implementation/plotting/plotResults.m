@@ -1,83 +1,54 @@
-# usage: plotResults(regFuncs, funcHandle, samples, allAccs,
-#								resPerOne, figInit)
+# usage: plotResults(mus, vars, figures)
 
-function plotResults(regFuncs, funcHandle, samples, allAccs,
-								holdoutBetas, predictedBetas,
-								holdoutMu, predictedMu,
-								holdoutVar, predictedVar,
-								CVPerfs, resPerOne, figInit)
-	#{
-	if(nargin == 7)
-		if(!iscell(regFuncs) || !is_function_handle(funcHandle) || !iscell(samples)
-			|| !iscell(allAccs) || !isscalar(resPerOne) || !isscalar(figInit))
-			error("plotting/plotRegressedFunctions(5): requires cell, function handle, scalar, scalar, vector, scalar");
-		endif
-	else
-		print_usage();
-	endif
-    #}
-	#{
-	for i = 1:length(regFuncs)
-		# add space for the predicted and holdout betas
-		totalSize = size(regFuncs{i}, 1) + 1;
-		dims = [ceil(sqrt(totalSize))];
-		dims = [dims(1), ceil(totalSize / dims(1))];
-		
-		figure(figInit++);
-		
-		title(sprintf("Total instances: %d", size(samples{i}, 2)));
-		
-		X = linspace(0, 1, resPerOne);
-		subplot(dims(1), dims(2), totalSize);
-		hold on;
-		plot(X, betapdf(X, holdoutBetas(i, 1), holdoutBetas(i, 2)), "-", "color", [1, 0, 1]);
-		plot(X, betapdf(X, predictedBetas(i, 1), predictedBetas(i, 2)), "-", "color", [0, 1, 0]);
-		title("Beta distributions");
-		
-		
-		allAccsPlot = [];
-		for k = 1:length(allAccs{i})
-			allAccsPlot = [allAccsPlot, [k .* ones(1, size(allAccs{i}{k}, 2)); allAccs{i}{k}(1, :)]];
-		endfor
-		
-		X = linspace(0, size(samples{i}, 2) + 1, resPerOne * (size(samples{i}, 2) + 1));
-		for j = 1:size(regFuncs{i}, 1)
-			# create subplots
-			subplot(dims(1), dims(2), j);
-			hold on;
-			
-			# plot 1. all accuracies, 2. the currently fitted accuracies, 3. the curve,
-			# 4. holdouts and predictions
-			plot(allAccsPlot(1, :), allAccsPlot(2, :), "+", "color", [0, 0, 1]);
-			plot(1:size(samples{i}, 2), samples{i}(j, :), "*", "color", [1, 0.3, 0.3]);
-			
-			plot(X, min(1, max(0, funcHandle(X, regFuncs{i}(j, :)))), "-", "color", [1, 0, 0]);
-			plot(size(samples{i}, 2) + 1, holdoutMu(i), "+", "color", [1, 0, 1]);
-			plot(size(samples{i}, 2) + 1, predictedMu(i), "+", "color", [0, 1, 0]);
-			plot(size(samples{i}, 2) + 1, predictedMu(i) + predictedVar(i), "+", "color", [0, 0.6, 0]);
-			plot(size(samples{i}, 2) + 1, predictedMu(i) - predictedVar(i), "+", "color", [0, 0.6, 0]);
-			plot(size(samples{i}, 2) + 1, holdoutMu(i) + holdoutVar(i), "+", "color", [0.6, 0, 0.6]);
-			plot(size(samples{i}, 2) + 1, holdoutMu(i) - holdoutVar(i), "+", "color", [0.6, 0, 0.6]);
-			axis([0, size(samples{i}, 2) + 2, 0, 1]);
-			xlabel("Training instances");
-			ylabel("Estimated accuracy");
-			title(sprintf("Sample: %d", j));
-		endfor
-	endfor
-	#}
-	figure(figInit++);
-	hold on;
-	title("Average plot");
-	
-	plot(3:size(predictedBetas, 1)+2, holdoutMu, "*-", "color", [1, 0, 1]);
-	plot(3:size(predictedBetas, 1)+2, predictedMu, "*-", "color", [0, 1, 0]);
-	plot(3:size(predictedBetas, 1)+2, holdoutMu .- holdoutVar, "*", "color", [0.6, 0, 0.6]);
-	plot(3:size(predictedBetas, 1)+2, holdoutMu .+ holdoutVar, "*", "color", [0.6, 0, 0.6]);
-	plot(3:size(predictedBetas, 1)+2, predictedMu .- predictedVar, "*", "color", [0, 0.6, 0]);
-	plot(3:size(predictedBetas, 1)+2, predictedMu .+ predictedVar, "*", "color", [0, 0.6, 0]);
-	#plot(3:length(CVPerfs)+2, CVPerfs, "*-", "color", [0.6, 0.5, 0]);
-	
-	axis([0, size(predictedBetas, 1)+3, 0, 1]);
-	
+function plotResults(mus, vars, figures, colors, names)
+
+    if(nargin != 5)
+        print_usage();
+    elseif(!isvector(figures))
+        error("plotResults: requires 3d_mat, 3d_mat, vector, cell, cell");
+    endif
+    
+    # get the averages
+    averMus = sum(mus, 1) ./ size(mus, 1);
+    averVars = sum(vars, 1) ./ size(vars, 1);
+    
+    # compute difference, absolute error and squared error
+    averErrors = sum(mus .- mus(:, :, 1), 1) ./ size(mus, 1);
+    averAbsErrors = sum(abs(mus .- mus(:, :, 1)), 1) ./ size(mus, 1);
+    averSquErrors = sum((mus .- mus(:, :, 1)).^2, 1) ./ size(mus, 1);
+    
+    figure(figures(1));
+    hold on;
+    for i = 1:size(mus, 3)
+        plot(3:size(mus, 2), averMus(:, 3:end, i), "-", "color", colors{i});
+    endfor
+    title("Accuracies");
+    xlabel("Training instances");
+    ylabel("Accuracies");
+    legend(names, "location", "southeast");
+    axis([3, size(mus, 2), 0, 1]);
+    
+    figure(figures(2));
+    hold on;
+    for i = 1:size(averErrors, 3)
+        plot(3:size(averErrors, 2), averErrors(:, 3:end, i), "-", "color", colors{i});
+    endfor
+    title("Differences to hold-out");
+    xlabel("Training instances");
+    ylabel("Differences");
+    legend(names, "location", "northeast");
+    axis([3, size(averErrors, 2)]);
+    
+    figure(figures(3));
+    hold on;
+    for i = 1:size(averSquErrors, 3)
+        plot(3:size(averSquErrors, 2), averSquErrors(:, 3:end, i),
+            "-", "color", colors{i});
+    endfor
+    title("Squared error");
+    xlabel("Training instances");
+    ylabel("err²");
+    legend(names, "location", "northeast");
+    axis([3, size(averSquErrors, 2)]);
 
 endfunction

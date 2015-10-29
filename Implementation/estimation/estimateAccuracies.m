@@ -1,6 +1,6 @@
-# usage: [accs, accumAccs] = estimateAccuraciesIter(classifier, oracle)
+# usage: [accs, accumAccs, wis, combs] = estimateAccuracies(classifier, oracle)
 
-function [accs, accumAccs] = estimateAccuraciesIter(classifier, oracle)
+function [accs, accumAccs, wis, combs] = estimateAccuracies(classifier, oracle)
 
 	accs = [];
 	accumAccs = [];
@@ -21,6 +21,18 @@ function [accs, accumAccs] = estimateAccuraciesIter(classifier, oracle)
     pwr = powerset([1:length(labels)])(2:end-1);
     revPwr = fliplr(pwr);
     
+    # set up list storing which set contains which training instances
+    if(isargout(3))
+        wis = cell(length(labels)-1, 1);
+        for i = 1:length(labels)-1
+            wis{i} = zeros(length(labels), i);
+        endfor
+        wisCounter = ones(length(labels)-1, 1);
+    endif
+    if(isargout(4))
+        combs = cell(length(labels)-1, 1);
+    endif
+    
     for comb = 1:length(pwr)
         # train the classifier with the selected instances
         classifier = setTrainingData(classifier, features(pwr{comb}, :), labels(pwr{comb}), getNumberOfLabels(oracle));
@@ -29,7 +41,27 @@ function [accs, accumAccs] = estimateAccuraciesIter(classifier, oracle)
         currAcc = computeAccuracy(classifier, features(revPwr{comb}, :), labels(revPwr{comb}));
         # add estimated accuracy to list
         accs{length(pwr{comb})} = [accs{length(pwr{comb})}, currAcc];
+        
+        if(isargout(3))
+            # write current counter in the storage list
+            wis{length(pwr{comb})}(pwr{comb}, wisCounter(length(pwr{comb}))) = ...
+                                        wisCounter(length(pwr{comb}));
+            wisCounter(length(pwr{comb}))++;
+        endif
+        
+        if(isargout(4))
+            combs{length(pwr{comb})} = [combs{length(pwr{comb})}; pwr{comb}];
+        endif
     endfor
+    
+    # remove the (inevitable) zeros in the storage list
+    if(isargout(3))
+        for i = 1:length(labels)-1
+            wis{i} = wis{i}';
+            wis{i}(wis{i} == 0) = [];
+            wis{i} = reshape(wis{i}, length(wis{i}) / length(labels), length(labels))';
+        endfor
+    endif
     
     # if accumulated (kind of sparse) accuracy list is wanted
     if(isargout(2))

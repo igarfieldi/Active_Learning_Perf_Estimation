@@ -3,33 +3,30 @@
 #                                                    bounds, inits)
 
 
-function [mu, averages, func] = estimatePerformanceAverFit(classifier, oracle,
-                                                    functionTemplate,
-                                                    bounds, inits)
+function [mu, func] = estimatePerformanceAverFit(classifier, oracle,
+                                                    functionParams)
 
     mu = [];
 	averages = [];
 	func = [];
     
-    if(nargin != 5)
+    if(nargin != 3)
         print_usage();
     elseif(!isa(classifier, "classifier") || !isa(oracle, "oracle")
-            || !is_function_handle(functionTemplate)
-            || !ismatrix(bounds) || !ismatrix(inits))
-        error("estimatePerformanceFitting: requires classifier, oracle, \
-function handle, matrix, matrix");
+             || !isstruct(functionParams))
+        error("estimatePerformanceFitting: requires classifier, oracle, struct");
     endif
     
     # estimate the accuracies for all combinations of training/test set
     # with the queried instances
-    [~, accumEstAccs] = estimateAccuraciesIter(classifier, oracle);
+    [~, accumEstAccs] = estimateAccuracies(classifier, oracle);
     # average the accuracies for every cell
 	averages = [];
 	for i = 1:length(accumEstAccs)
 		averages = [averages, sum(accumEstAccs{i}(1, :) .* accumEstAccs{i}(2, :), 2)...
 									/ sum(accumEstAccs{i}(2, :), 2)];
 	endfor
-    func = fitFunctionsIter(averages, functionTemplate, bounds, inits);
+    func = fitFunctions(averages, functionParams);
 	
 	#{
 	figure(size(getQueriedInstances(oracle), 1)+3);
@@ -43,7 +40,7 @@ function handle, matrix, matrix");
 	if(isempty(func))
 		mu = accumEstAccs(end);
 	else
-		mu = functionTemplate(length(accumEstAccs) + 2, func);
+		mu = functionParams.template(length(accumEstAccs) + 2, func);
 	endif
 
 endfunction
