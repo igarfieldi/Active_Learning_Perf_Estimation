@@ -1,6 +1,6 @@
-# usage: [mu, var, betas, fVals] = estimateAccuracyDistribution(regFuncParams, functionTemplate)
+# usage: [mu, var, fVals] = evaluateEstimatedFunctions(x, regFuncParams, functionTemplate)
 
-function [mu, var, betas, fVals] = estimateAccuracyDistribution(x, regFuncParams, functionTemplate)
+function [mu, var, fVals] = evaluateEstimatedFunctions(x, regFuncParams, functionTemplate)
     
     mu = [];
     var = [];
@@ -26,7 +26,5 @@ function [mu, var, betas, fVals] = estimateAccuracyDistribution(x, regFuncParams
     mu /= size(regFuncParams, 1);
     
     var = sum((fVals .- mu).^2) ./ (length(fVals) - 1);
-    
-    betas = [betas; getBetaFromMuVar(mu, var)];
 
 endfunction

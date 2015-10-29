@@ -3,10 +3,8 @@
 #                                                    fittingFunction)
 
 
-function [mu, var, beta, MCSamples, funcs] = estimatePerformanceMCFit(
-													classifier, oracle, samples,
-                                                    functionTemplate,
-                                                    bounds, inits)
+function [mu, var, MCSamples, funcs] = estimatePerformanceMCFit(classifier,
+                                                    oracle, samples, functionParams)
 
     mu = [];
 	var = [];
@@ -14,22 +12,22 @@ function [mu, var, beta, MCSamples, funcs] = estimatePerformanceMCFit(
 	MCSamples = [];
 	funcs = [];
     
-    if(nargin != 6)
+    if(nargin != 4)
         print_usage();
     elseif(!isa(classifier, "classifier") || !isa(oracle, "oracle")
-            || !isscalar(samples) || !is_function_handle(functionTemplate)
-            || !ismatrix(bounds) || !ismatrix(inits))
+            || !isscalar(samples) || !isstruct(functionParams))
         error("estimatePerformanceFitting: requires classifier, oracle, scalar,\
                 function handle, function handle");
     endif
     
     # estimate the accuracies for all combinations of training/test set
     # with the queried instances
-    [~, accumEstAccs] = estimateAccuraciesIter(classifier, oracle);
+    [~, accumEstAccs] = estimateAccuracies(classifier, oracle);
     # use Monte-Carlo sampling to reduce the amount of functions to be fitted
-    MCSamples = getMonteCarloSamplesIter(accumEstAccs, samples);
-    funcs = fitFunctionsIter(MCSamples, functionTemplate, bounds, inits);
+    MCSamples = getMonteCarloSamples(accumEstAccs, samples);
+    funcs = fitFunctions(MCSamples, functionParams);
     
-    [mu, var, beta, ~] = estimateAccuracyDistribution(length(accumEstAccs)+2, funcs, functionTemplate);
+    [mu, var] = evaluateEstimatedFunctions(length(accumEstAccs)+2, funcs,
+                                            functionParams.template);
 
 endfunction

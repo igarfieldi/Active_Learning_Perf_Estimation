@@ -23,8 +23,7 @@ function ret = classifyInstances(pwClassifier, instances)
         if(labelInd(i) - old >= 0)
             # use kernel density estimation (Parzen-Window)
             densities(i, :) = estimateKernelDensities(instances,
-                                features(old:labelInd(i), :), getSigma(pwClassifier))...
-									./ (labelInd(i) - old + 1);
+                                features(old:labelInd(i), :), getSigma(pwClassifier));
         endif
         
         old = labelInd(i)+1;
