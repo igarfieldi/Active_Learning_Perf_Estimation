@@ -25,21 +25,22 @@ addpath("utility");
 
 global debug = 1;
 global notConverged = {};
+global converged = {};
 
 # color code
 colors = {[1, 0, 1], [1, 0, 0], [0, 0, 0], [0, 1, 0], [0, 1, 1],...
-            [0, 0, 1], [1, 1, 0]};
-methodNames = {"Holdout", "CrossVal", ".632+", "MC", "RegMC", "ResMC", "Aver"};
+            [0, 0, 1], [1, 1, 0], [0.2, 0.2, 0.2]};
+methodNames = {"Holdout", "CrossVal", ".632+", "MC", "RegMC", "ResMC", "Aver", "All"};
 
-testParams.iterations = 7;
-testParams.runs = 6;
-testParams.samples = @(i) i;#i .^ 2;
+testParams.iterations = 20;
+testParams.runs = 1;
+testParams.samples = @(i) i .^ 2;
 testParams.foldSize = 5;
-testParams.useMethod = [1, 1, 0, 1, 1, 1, 1];
+testParams.useMethod = [1, 0, 0, 0, 0, 0, 1, 0];
 
 functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
-                        "bounds", [0, 1; -Inf, 0; -Inf, 0],
-                        "inits", [0, 1, 1; 1, 10, 10]),
+                        "bounds", [-Inf, Inf; -Inf, Inf; -Inf, Inf],#"bounds", [0, 1; -Inf, 0; -Inf, 0],
+                        "inits", [0, 1, 1; 1, 2, 2]),
                 struct("template", @(x, p) -p(1)./2 .+ p(1)./(1.+exp(-p(2).*(x.-p(3)))),
                         "bounds", [0, 2; 0, Inf; -Inf, Inf],
                         "inits", [0, 0, 0.5; 2, 6, 8])];
@@ -55,6 +56,7 @@ ALs = {randomSamplingAL(getFeatureVectors(data), getLabels(data)),
 
 
 data = readData(data, [dataDir, dataFiles{1}]);
+classifier = estimateSigma(classifier, getFeatureVectors(data));
 orac = oracle(getFeatureVectors(data), getLabels(data), length(unique(getLabels(data))));
 
 [~, mus, vars] = estimatePerformanceMeasures(classifier, orac, ALs{1},

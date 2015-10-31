@@ -29,8 +29,8 @@ activeLearner,struct, struct");
     feat = [];
     lab = [];
     
-    mus = zeros(testParams.runs, testParams.iterations, 7);
-    vars = zeros(testParams.runs, testParams.iterations, 7);
+    mus = zeros(testParams.runs, testParams.iterations, length(testParams.useMethod));
+    vars = zeros(testParams.runs, testParams.iterations, length(testParams.useMethod));
     
 	for r = 1:testParams.runs
 		if(debug)
@@ -73,36 +73,43 @@ activeLearner,struct, struct");
             
             endif
 			
+			# estimate the accuracies with leave-x-out cv
+			[estAccs, accumEstAccs, wis, combs] = estimateAccuracies(classifier, oracle);
+			
 			# use our approaches (curve fitting with leave-x-out CV)
             if(testParams.useMethod(4))
                 [mus(r, i, 4), vars(r, i, 4)] = estimatePerformanceMCFit(classifier,
                                                     currOracle, testParams.samples(i),
-                                                    functionParams);
+                                                    functionParams, accumEstAccs);
             endif
             
             if(testParams.useMethod(5))
                 [mus(r, i, 5), vars(r, i, 5)] = estimatePerformanceRegFit(classifier,
                                                     currOracle, testParams.samples(i),
-                                                    functionParams);
+                                                    functionParams, estAccs, wis, combs);
             endif
             
             if(testParams.useMethod(6))
                 [mus(r, i, 6), vars(r, i, 6)] = estimatePerformanceRestrictedFit(
                                                     classifier, currOracle, 
                                                     testParams.samples(i),
-                                                    functionParams);
+                                                    functionParams, accumEstAccs);
 			endif
             
 			# use averaging + fitting
             if(testParams.useMethod(7))
                 mus(r, i, 7) = estimatePerformanceAverFit(classifier, currOracle,
-                                                    functionParams);
+                                                    functionParams, accumEstAccs);
             endif
+			
+			if(testParams.useMethod(8))
+				mus(r, i, 8) = estimatePerformanceAllFit(classifier, currOracle,
+													functionParams);
+			endif
             
 		endfor
         
 	endfor
-	
 	oracle = currOracle;
 
 endfunction
