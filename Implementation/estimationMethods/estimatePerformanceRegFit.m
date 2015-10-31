@@ -1,23 +1,21 @@
-# usage: [mu, var, MCSamples, funcs] = estimatePerformanceRegFit(classifier,
-#                                            oracle, samples, functionParams,
-#											estAccs, wis, combs)
+# usage: [mu, var, MCSamples, funcs] = estimatePerformanceRegFit(estAccs,
+#                                               functionParams, wis,
+#                                               combs, samples)
 
-function [mu, var, MCSamples, funcs] = estimatePerformanceRegFit(classifier,
-                                            oracle, samples, functionParams,
-											estAccs, wis, combs)
+function [mu, var, MCSamples, funcs] = estimatePerformanceRegFit(estAccs,
+                                                functionParams, wis,
+                                                combs, samples)
 
     mu = [];
 	var = [];
 	MCSamples = [];
 	funcs = [];
     
-    if(nargin != 7)
+    if(nargin != 5)
         print_usage();
-    elseif(!isa(classifier, "classifier") || !isa(oracle, "oracle")
-             || !isscalar(samples) || !isstruct(functionParams),
-			 || !iscell(estAccs) || !iscell(wis) || !iscell(combs))
-        error("estimatePerformanceRegFit: requires classifier, oracle, scalar,\
-					struct, cell, cell, cell");
+    elseif(!iscell(estAccs) || !isstruct(functionParams)
+			 || !iscell(wis) || !iscell(combs) || !isscalar(samples))
+        error("estimatePerformanceRegFit: requires cell, struct, cell, cell, scalar");
     endif
     
     # use Monte-Carlo sampling to reduce the amount of functions to be fitted

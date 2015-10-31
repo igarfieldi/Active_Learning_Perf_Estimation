@@ -27,7 +27,7 @@ function plotResults(mus, vars, figures, colors, names)
     ylabel("Accuracies");
     legend(names, "location", "southeast");
     axis([3, size(mus, 2), 0, 1]);
-    
+    #{
     figure(figures(2));
     hold on;
     for i = 1:size(averErrors, 3)
@@ -50,5 +50,6 @@ function plotResults(mus, vars, figures, colors, names)
     ylabel("err²");
     legend(names, "location", "northeast");
     axis([3, size(averSquErrors, 2)]);
+    #}
 
 endfunction

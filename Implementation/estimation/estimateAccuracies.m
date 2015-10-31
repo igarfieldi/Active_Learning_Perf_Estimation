@@ -35,10 +35,12 @@ function [accs, accumAccs, wis, combs] = estimateAccuracies(classifier, oracle)
     
     for comb = 1:length(pwr)
         # train the classifier with the selected instances
-        classifier = setTrainingData(classifier, features(pwr{comb}, :), labels(pwr{comb}), getNumberOfLabels(oracle));
+        classifier = setTrainingData(classifier, features(pwr{comb}, :),
+                                labels(pwr{comb}), getNumberOfLabels(oracle));
         
         # test using the remaining instances
-        currAcc = computeAccuracy(classifier, features(revPwr{comb}, :), labels(revPwr{comb}));
+        currAcc = computeAccuracy(classifier, features(revPwr{comb}, :),
+                                labels(revPwr{comb}));
         # add estimated accuracy to list
         accs{length(pwr{comb})} = [accs{length(pwr{comb})}, currAcc];
         

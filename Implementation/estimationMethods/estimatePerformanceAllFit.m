@@ -1,18 +1,15 @@
-# usage: [mu, func] = estimatePerformanceAllFit(classifier, oracle, functionParams
-#												estAccs)
+# usage: [mu, func] = estimatePerformanceAllFit(estAccs, functionParams
 
 
-function [mu, func] = estimatePerformanceAllFit(classifier, oracle, functionParams,
-												estAccs)
+function [mu, func] = estimatePerformanceAllFit(estAccs, functionParams)
 
     mu = [];
 	func = [];
     
-    if(nargin != 4)
+    if(nargin != 2)
         print_usage();
-    elseif(!isa(classifier, "classifier") || !isa(oracle, "oracle")
-             || !isstruct(functionParams) || !iscell(estAccs))
-        error("estimatePerformanceAllFit: requires classifier, oracle, struct, cell");
+    elseif(!iscell(estAccs) || !isstruct(functionParams))
+        error("estimatePerformanceAllFit: requires cell, struct");
     endif
     
     # average the accuracies for every cell

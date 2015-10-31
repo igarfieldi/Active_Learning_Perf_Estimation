@@ -55,7 +55,7 @@ activeLearner,struct, struct");
 			# train the classifier with the currently labeled instances
 			[feat, lab] = getQueriedInstances(currOracle);
 			classifier = setTrainingData(classifier, feat, lab, getNumberOfLabels(currOracle));
-			
+            
 			# get the holdout accuracies
             if(testParams.useMethod(1))
                 holdoutAccs = estimatePerformanceHoldout(classifier, currOracle, i);
@@ -70,11 +70,12 @@ activeLearner,struct, struct");
 			
 			# TODO: use .632+ bootstrapping
             if(testParams.useMethod(3))
-            
+                mus(r, i, 3) = estimatePerformanceBootstrap(classifier, currOracle,
+                                                    testParams.bsSamples);
             endif
 			
 			# estimate the accuracies with leave-x-out cv
-			[estAccs, accumEstAccs, wis, combs] = estimateAccuracies(classifier, oracle);
+			[estAccs, accumEstAccs, wis, combs] = estimateAccuracies(classifier, currOracle);
 			
 			# use our approaches (curve fitting with leave-x-out CV)
             if(testParams.useMethod(4))
@@ -84,9 +85,9 @@ activeLearner,struct, struct");
             endif
             
             if(testParams.useMethod(5))
-                [mus(r, i, 5), vars(r, i, 5)] = estimatePerformanceRegFit(classifier,
-                                                    currOracle, testParams.samples(i),
-                                                    functionParams, estAccs, wis, combs);
+                [mus(r, i, 5), vars(r, i, 5)] = estimatePerformanceRegFit(estAccs,
+                                                    functionParams, wis, combs,
+                                                    testParams.samples(i));
             endif
             
             if(testParams.useMethod(6))
