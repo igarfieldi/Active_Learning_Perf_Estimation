@@ -1,8 +1,8 @@
-# usage: 
+# usage: mu = estimatePerformanceAIKFoldCV(classifier, oracle, k, iter)
 
-function perf = estimatePerformanceAIKFoldCV(classifier, oracle, k, iter)
+function mu = estimatePerformanceAIKFoldCV(classifier, oracle, k, iter)
 
-	perf = [];
+	mu = [];
 	
 	if(nargin == 3)
 		if(!isa(classifier, "classifier") || !isa(oracle, "oracle") || !isscalar(k))
@@ -30,7 +30,7 @@ function perf = estimatePerformanceAIKFoldCV(classifier, oracle, k, iter)
 	setSize = length(lab) / k;
 	
 	currIndex = 0;
-	perf = 0;
+	mu = 0;
 	
 	for i = 1:k
 		testIndices = [round(currIndex)+1:round(currIndex + setSize)];
@@ -39,9 +39,9 @@ function perf = estimatePerformanceAIKFoldCV(classifier, oracle, k, iter)
 		
 		classifier = setTrainingData(classifier, feat(trainIndices, :),
 								lab(trainIndices), getNumberOfLabels(oracle));
-		perf += computeAccuracy(classifier, feat(testIndices, :), lab(testIndices));
+		mu += computeAccuracy(classifier, feat(testIndices, :), lab(testIndices));
 	endfor
 	
-	perf /= k;
+	mu /= k;
 
 endfunction

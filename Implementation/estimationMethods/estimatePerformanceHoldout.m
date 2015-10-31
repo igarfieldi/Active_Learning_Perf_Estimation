@@ -1,6 +1,8 @@
-# usage: function [holdoutAccs, iterAccs] = estimatePerformanceHoldout(classifier, oracle, holdoutSize)
+# usage: [holdoutAccs, iterAccs] = estimatePerformanceHoldout(classifier,
+#                                                       oracle, holdoutSize)
 
-function [holdoutAccs, iterAccs] = estimatePerformanceHoldout(classifier, oracle, holdoutSize)
+function [holdoutAccs, iterAccs] = estimatePerformanceHoldout(classifier,
+                                                        oracle, holdoutSize)
 
     holdoutAccs = [];
     iterAccs = [];

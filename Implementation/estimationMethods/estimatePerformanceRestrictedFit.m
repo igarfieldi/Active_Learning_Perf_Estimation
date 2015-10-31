@@ -1,24 +1,22 @@
 # usage: [mu, var, MCSamples, funcs] = estimatePerformanceRestrictedFit(
-#													classifier, oracle, samples,
-#                                                   functionParams, accumEstAccs)
+#   												accumEstAccs, functionParams,
+#                                                   samples)
 
 
 function [mu, var, MCSamples, funcs] = estimatePerformanceRestrictedFit(
-													classifier, oracle, samples,
-                                                    functionParams, accumEstAccs)
+													accumEstAccs, functionParams,
+                                                    samples)
 
     mu = [];
 	var = [];
 	MCSamples = [];
 	funcs = [];
     
-    if(nargin != 5)
+    if(nargin != 3)
         print_usage();
-    elseif(!isa(classifier, "classifier") || !isa(oracle, "oracle")
-             || !isscalar(samples) || !isstruct(functionParams)
+    elseif(!isscalar(samples) || !isstruct(functionParams)
 			 || !isscell(accumEstAccs))
-        error("estimatePerformanceRestrictedFit: requires classifier, oracle, scalar,\
-					struct, cell");
+        error("estimatePerformanceRestrictedFit: requires cell, struct, scalar");
     endif
     
     # use Monte-Carlo sampling to reduce the amount of functions to be fitted
