@@ -8,7 +8,7 @@ function [holdoutAccs, iterAccs] = estimatePerformanceHoldout(classifier, oracle
     if(nargin != 3)
         print_usage();
     elseif(!isa(classifier, "classifier") || !isa(oracle, "oracle") || !isscalar(holdoutSize))
-        error("@estimator/estimateHoldoutAccuracy: requires classifier, oracle, scalar");
+        error("estimatePerformanceHoldout: requires classifier, oracle, scalar");
     endif
     
     unlabeled = getNumOfUnlabeledInstances(oracle);

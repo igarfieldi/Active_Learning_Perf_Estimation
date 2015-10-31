@@ -1,6 +1,6 @@
-# usage: funcReg = fitFunctions(accSamples, funcHandle)
+# usage: funcReg = fitFunctionsExperimental(iterations, accSamples, functionParams)
 
-function funcReg = fitFunctions(iterations, accSamples, functionParams)
+function funcReg = fitFunctionsExperimental(iterations, accSamples, functionParams)
 
 	global notConverged;
 	global converged;
@@ -47,13 +47,17 @@ function funcReg = fitFunctions(iterations, accSamples, functionParams)
 			
 			# every 10 iterations, remove the most outlying data point
 			if((mod(counter, 10) == 0) && (length(Y) > 2))
-				#{
+				r = stdres
+				z = linspace(min(X), max(X), 10000);
+				figure(5);
+				hold on;
+				plot(X, Y, "+");
+				plot(z, functionParams.template(z, bestParams), "-");
+				keyboard;
 				[~, maxI] = max((values' .- Y) .^ 2);
-				
 				
 				Y(maxI) = [];
 				X(maxI) = [];
-				#}
 			endif
 		endwhile
 		
