@@ -22,7 +22,7 @@ function [mu, var, MCSamples, funcs] = estimatePerformanceRegFit(estAccs,
     MCSamples = getMonteCarloSamplesSuper(estAccs, wis, combs, samples);
     funcs = fitFunctions(1:length(estAccs), MCSamples, functionParams);
     
-    [mu, var] = evaluateEstimatedFunctions(length(estAccs)+2, funcs,
+    [mu, var] = evaluateEstimatedFunctions(length(estAccs)+1, funcs,
                                                 functionParams.template);
 
     

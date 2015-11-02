@@ -1,14 +1,18 @@
 # usage: [accs, accumAccs, wis, combs] = estimateAccuracies(classifier, oracle)
 
-function [accs, accumAccs, wis, combs] = estimateAccuracies(classifier, oracle)
+function [accs, accumAccs, wis, combs] = estimateAccuracies(classifier, oracle, subset)
 
 	accs = [];
 	accumAccs = [];
 	
-	if(nargin != 2)
-		print_usage();
-	elseif(!isa(classifier, "classifier") || !isa(oracle, "oracle"))
-		error("@perfEstimation/estimateAccuraciesIter: requires classifier, oracle");
+	if((nargin == 2) || (nargin == 3))
+		if(!isa(classifier, "classifier") || !isa(oracle, "oracle"))
+            error("estimateAccuracies: requires classifier, oracle");
+        elseif((nargin == 3) && !isvector(subset))
+            error("estimateAccuracies: requires classifier, oracle, subset");
+        endif
+    else
+        print_usage();
 	endif
 	
 	# get the labeled instances
@@ -19,6 +23,9 @@ function [accs, accumAccs, wis, combs] = estimateAccuracies(classifier, oracle)
     # compute all possible two-set splits of the labeled instances by
     # computing the powerset of the instance indices
     pwr = powerset([1:length(labels)])(2:end-1);
+    if(nargin == 3)
+        pwr = pwr(subset);
+    endif
     revPwr = fliplr(pwr);
     
     # set up list storing which set contains which training instances

@@ -1,12 +1,8 @@
-# usage: [oracle, CVmu, CFmu, CFvar, CFbeta, Hmu, Hvar, Hbeta] = ...
-#                    estimatePerformanceMeasures(classifier, oracle, activeLearner,
-#                                            iterations, samples, holdoutSize, k,
-#                                            functionTemplate,
-#                                            fittingFunction)
+# usage: [oracle, mus, vars] = estimatePerformanceMeasures(classifier, oracle,
+#                                           activeLearner, testParams, functionParams)
 
-function [oracle, mus, vars] = ...
-                    estimatePerformanceMeasures(classifier, oracle, activeLearner,
-                                            testParams, functionParams)
+function [oracle, mus, vars] = estimatePerformanceMeasures(classifier, oracle,
+                                            activeLearner, testParams, functionParams)
 
     global debug;
     
@@ -36,7 +32,9 @@ activeLearner,struct, struct");
 		if(debug)
 			disp(sprintf("Test run: %d", r));
 		endif
+        
 		currOracle = oracle;
+        bsAccs = cell(2, 1);
 		
 		# select initial 2 instances before any performance estimation can be applied
 		for i = 1:min(testParams.iterations, 2)
@@ -52,10 +50,12 @@ activeLearner,struct, struct");
 			[activeLearner, currOracle, ~, ~] = selectInstance(activeLearner,
 															classifier, currOracle);
 			
+			# estimate the accuracies with leave-x-out cv
+			[estAccs, accumEstAccs, wis, combs] = estimateAccuracies(classifier, currOracle);
+            
 			# train the classifier with the currently labeled instances
 			[feat, lab] = getQueriedInstances(currOracle);
 			classifier = setTrainingData(classifier, feat, lab, getNumberOfLabels(currOracle));
-            
 			# get the holdout accuracies
             if(testParams.useMethod(1))
                 holdoutAccs = estimatePerformanceHoldout(classifier, currOracle, i);
@@ -70,18 +70,44 @@ activeLearner,struct, struct");
 			
 			# TODO: use .632+ bootstrapping
             if(testParams.useMethod(3))
-                mus(r, i, 3) = estimatePerformanceBootstrap(classifier, currOracle,
+                mus(r, i, 3) = estimatePerformanceBS632plus(classifier, currOracle,
                                                     testParams.bsSamples);
             endif
-			
-			# estimate the accuracies with leave-x-out cv
-			[estAccs, accumEstAccs, wis, combs] = estimateAccuracies(classifier, currOracle);
+            
+            if(testParams.useMethod(9))
+                if(i > 3)
+                    [mus(r, i, 9), ~, ~, bsAccs] = estimatePerformanceBSFit(classifier,
+                                                        currOracle, functionParams,
+                                                        testParams.bsSamples, bsAccs);
+                else
+                    [mus(r, i, 9), ~, ~, bsAccs] = estimatePerformanceBSFit(classifier,
+                                                        currOracle, functionParams,
+                                                        testParams.bsSamples);
+                endif
+            endif
+            
+            if(testParams.useMethod(10))
+                mus(r, i, 10) = estimatePerformance632Fit(classifier,
+                                                    currOracle, functionParams,
+                                                    testParams.bsSamples);
+            endif
+            
+            if(testParams.useMethod(11))
+                mus(r, i, 11) = estimatePerformance632MCFit(classifier, currOracle,
+                                                    functionParams, testParams.samples(i));
+            endif
+            
+            if(testParams.useMethod(12))
+               [mus(r, i, 12), vars(r, i, 12)] = estimatePerformanceRegNIFit(estAccs,
+                                                    functionParams, wis, combs,
+                                                    testParams.samples(i), classifier,
+                                                    currOracle);
+            endif
 			
 			# use our approaches (curve fitting with leave-x-out CV)
             if(testParams.useMethod(4))
-                [mus(r, i, 4), vars(r, i, 4)] = estimatePerformanceMCFit(classifier,
-                                                    currOracle, testParams.samples(i),
-                                                    functionParams, accumEstAccs);
+                [mus(r, i, 4), vars(r, i, 4)] = estimatePerformanceMCFit(accumEstAccs,
+                                                    functionParams, testParams.samples(i));
             endif
             
             if(testParams.useMethod(5))
@@ -92,20 +118,18 @@ activeLearner,struct, struct");
             
             if(testParams.useMethod(6))
                 [mus(r, i, 6), vars(r, i, 6)] = estimatePerformanceRestrictedFit(
-                                                    classifier, currOracle, 
-                                                    testParams.samples(i),
-                                                    functionParams, accumEstAccs);
+                                                    accumEstAccs, functionParams,
+                                                    testParams.samples(i));
 			endif
             
 			# use averaging + fitting
             if(testParams.useMethod(7))
-                mus(r, i, 7) = estimatePerformanceAverFit(classifier, currOracle,
-                                                    functionParams, accumEstAccs);
+                mus(r, i, 7) = estimatePerformanceAverFit(accumEstAccs, functionParams);
             endif
 			
 			if(testParams.useMethod(8))
-				mus(r, i, 8) = estimatePerformanceAllFit(classifier, currOracle,
-													functionParams);
+				mus(r, i, 8) = estimatePerformanceAverNIFit(accumEstAccs, functionParams,
+                                                    classifier, currOracle);
 			endif
             
 		endfor
