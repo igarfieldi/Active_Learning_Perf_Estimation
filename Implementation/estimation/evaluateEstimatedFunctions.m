@@ -1,9 +1,9 @@
 # usage: [mu, var, fVals] = evaluateEstimatedFunctions(x, regFuncParams, functionTemplate)
 
-function [mu, var, fVals] = evaluateEstimatedFunctions(x, regFuncParams, functionTemplate)
+function [mu, variance, fVals] = evaluateEstimatedFunctions(x, regFuncParams, functionTemplate)
     
     mu = [];
-    var = [];
+    variance = [];
 	betas = [];
     
     if(nargin != 3)
@@ -13,18 +13,17 @@ function [mu, var, fVals] = evaluateEstimatedFunctions(x, regFuncParams, functio
     endif
     
     mu = 0;
-    var = 0;
+    variance = 0;
     fVals = [];
     
     for j = 1:size(regFuncParams, 1)
         # bias due to the cutoff???
         val = max(0, min(functionTemplate(x, regFuncParams(j, :)), 1));
         fVals = [fVals, val];
-        mu += val;
     endfor
     
-    mu /= size(regFuncParams, 1);
+    mu = mean(fVals);
     
-    var = sum((fVals .- mu).^2) ./ (length(fVals) - 1);
+    variance = var(fVals);
 
 endfunction

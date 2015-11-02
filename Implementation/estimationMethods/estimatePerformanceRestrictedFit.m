@@ -15,7 +15,7 @@ function [mu, var, MCSamples, funcs] = estimatePerformanceRestrictedFit(
     if(nargin != 3)
         print_usage();
     elseif(!isscalar(samples) || !isstruct(functionParams)
-			 || !isscell(accumEstAccs))
+			 || !iscell(accumEstAccs))
         error("estimatePerformanceRestrictedFit: requires cell, struct, scalar");
     endif
     

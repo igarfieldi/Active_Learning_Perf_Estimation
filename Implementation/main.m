@@ -28,19 +28,21 @@ global notConverged = {};
 global converged = {};
 
 # color code
-colors = {[1, 0, 1], [1, 0, 0], [0, 0, 0], [0, 1, 0], [0, 1, 1],...
-            [0, 0, 1], [1, 1, 0], [0.2, 0.2, 0.2]};
-methodNames = {"Holdout", "CrossVal", ".632+", "MC", "RegMC", "ResMC", "Aver", "All"};
+colors = [[1, 0, 1]; [1, 0, 0]; [0, 0, 0]; [0, 1, 0]; [0, 1, 1];...
+            [0, 0, 1]; [1, 0.4, 0]; [0, 0, 1]; [0, 1, 0]; [0, 0.2, 1]];
+colors = jet(12);
+methodNames = {"Holdout", "CV", ".632+", "MCFit", "RegMCFit", "ResMCFit",...
+                    "AverFit", "AverNIFit", "BSFit", "632Fit", "632MCFit", "RegNIMCFit"};
 
-testParams.iterations = 6;
-testParams.runs = 10;
+testParams.iterations = 7;
+testParams.runs = 1;
 testParams.samples = @(i) i .^ 2;
 testParams.foldSize = 5;
 testParams.bsSamples = 50;
-testParams.useMethod = [1, 1, 1, 0, 1, 0, 0, 0];
+testParams.useMethod = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
 functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
-                        "bounds", [-Inf, Inf; -Inf, Inf; -Inf, Inf],#"bounds", [0, 1; -Inf, 0; -Inf, 0],
+                        "bounds", [0, 1; -Inf, 0; -Inf, 0],
                         "inits", [0, 1, 1; 1, 2, 2]),
                 struct("template", @(x, p) -p(1)./2 .+ p(1)./(1.+exp(-p(2).*(x.-p(3)))),
                         "bounds", [0, 2; 0, Inf; -Inf, Inf],
@@ -60,7 +62,9 @@ data = readData(data, [dataDir, dataFiles{1}]);
 classifier = estimateSigma(classifier, getFeatureVectors(data));
 orac = oracle(getFeatureVectors(data), getLabels(data), length(unique(getLabels(data))));
 
-[~, mus, vars] = estimatePer    formanceMeasures(classifier, orac, ALs{1},
+[~, mus, vars] = estimatePerformanceMeasures(classifier, orac, ALs{1},
                                             testParams, functionParams(1));
 
-plotResults(mus, vars, [1,2,3], colors, methodNames);
+save([resDir, "mus"], "mus", "vars");
+
+plotResults(mus, vars, 1:4, testParams.useMethod, colors, methodNames);

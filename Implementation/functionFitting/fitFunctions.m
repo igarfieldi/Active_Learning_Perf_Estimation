@@ -43,38 +43,33 @@ function funcReg = fitFunctions(iterations, accSamples, functionParams)
 				MSE = currMSE;
 				bestStdRes = stdres;
 			endif
-			
-			
-			# every 10 iterations, remove the most outlying data point
-			if((mod(counter, 10) == 0) && (length(Y) > 2))
-				#{
-				[~, maxI] = max((values' .- Y) .^ 2);
-				
-				
-				Y(maxI) = [];
-				X(maxI) = [];
-				#}
-			endif
 		endwhile
 		
 		#{
-		if(counter >= 10)
-			
-			notConverged = [notConverged; bestStdRes];
-			#fittedParams = [sum(Y) / length(Y); 0; 0];
-		else
-			figure(1);
+		if((counter >= 10) && (length(iterations) > 5))
+			figure(5);
 			clf;
 			hold on;
-			plot(X, Y, "*");
+			plot(X, Y, "*", "color", [0, 0, 1]);
 			z = linspace(min(X), max(X), 1000);
-			plot(z, functionParams.template(z, bestParams), "-");
-			r = bestStdRes
-			m = (values' .- Y) ./ std((values' .- Y))
-			keyboard;
-			converged = [converged; bestStdRes];
-		endif
-		#}
+			plot(z, functionParams.template(z, bestParams), "-", "color", [0, 0, 1]);
+            
+            [~, mi] = max(abs(bestStdRes));
+            X(mi) = [];
+            Y(mi) = [];
+            
+            
+			init = (rand(1, 3) .- functionParams.inits(1, :)) .* functionParams.inits(2, :);
+			[values, fittedParams, cvg, ~, ~, ~, ~, stdres] = leasqr(X', Y', init,
+                                        functionParams.template, 0.0001,
+										400, [], [], [], options);
+            
+			plot(X, Y, "*", "color", [1, 0, 0]);
+			plot(z, functionParams.template(z, bestParams), "-", "color", [1, 0, 0]);
+            
+            keyboard;
+        endif
+        #}
         
         funcReg = [funcReg; bestParams'];
     endfor
