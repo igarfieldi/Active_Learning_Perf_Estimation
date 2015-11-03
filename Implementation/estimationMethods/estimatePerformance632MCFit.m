@@ -28,8 +28,11 @@ function [mu, var, MCSamples, funcs] = estimatePerformance632MCFit(classifier,
         iters = [iters, ones(1, length(accs{i})) .* (i+1)];
     endfor
     
-    funcs = fitFunctions(iters, serAccs, functionParams);
-    
-    mu = functionParams.template(length(lab)+1, funcs);
+	if(var(iters) != 0)
+		funcs = fitFunctions(iters, serAccs, functionParams);
+		mu = functionParams.template(length(lab)+1, funcs);
+	else
+		mu = mean(serAccs);
+	endif
 
 endfunction

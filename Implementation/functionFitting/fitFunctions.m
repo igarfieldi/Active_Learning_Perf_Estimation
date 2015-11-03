@@ -31,9 +31,9 @@ function funcReg = fitFunctions(iterations, accSamples, functionParams)
 		
 		while((MSE > 10^(-3)) && (counter < 10))
 			init = (rand(1, 3) .- functionParams.inits(1, :)) .* functionParams.inits(2, :);
-			[values, fittedParams, cvg, ~, ~, ~, ~, stdres] = leasqr(X', Y', init,
-                                        functionParams.template, 0.0001,
-										400, [], [], [], options);
+				[values, fittedParams, cvg, ~, ~, ~, ~, stdres] = leasqr(X', Y', init,
+											functionParams.template, 0.0001,
+											400, [], [], [], options);
 			
 			currMSE = sum((values' .- Y) .^ 2);
 			counter++;
