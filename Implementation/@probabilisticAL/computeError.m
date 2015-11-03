@@ -21,8 +21,14 @@ function ret = computeError(p, x)
 	elseif(isscalar(p) && isvector(x))
 		ret = repmat(1 - p, 1, length(x));
 		ret(x < 0.5) = p;
+		r = ret;
+	elseif(isvector(p) && isvector(x))
+		ret = repmat(reshape((1 .- p), length(p), 1), 1, length(x));
+		x = repmat(reshape(x, 1, length(x)), length(p), 1);
+		indices = find(x < 0.5);
+		ret(indices) = 1 .- ret(indices);
 	else
-		error("@probabilisticAL/computeError: requires either two scalars or one scalar and one vector");
+		error("@probabilisticAL/computeError: requires either scalars or vectors");
 	endif
 
 endfunction

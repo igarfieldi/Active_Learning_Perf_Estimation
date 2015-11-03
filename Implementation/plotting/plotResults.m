@@ -1,6 +1,6 @@
 # usage: plotResults(mus, vars, figures)
 
-function plotResults(mus, vars, figures, used, colors, names)
+function handles = plotResults(mus, vars, figures, used, colors, names)
 
     if(nargin != 6)
         print_usage();
@@ -26,8 +26,10 @@ function plotResults(mus, vars, figures, used, colors, names)
     averAbsErrors = sum(abs(mus .- mus(:, :, 1)), 1) ./ size(mus, 1);
     averSquErrors = sum((mus .- mus(:, :, 1)).^2, 1) ./ size(mus, 1);
     variance = var(mus);
+	
+	handles = [];
     
-    figure(figures(1));
+    handles(1) = figure(figures(1));
     clf;
     hold on;
     for i = 1:size(mus, 3)
@@ -36,10 +38,10 @@ function plotResults(mus, vars, figures, used, colors, names)
     title("Accuracies");
     xlabel("Training instances");
     ylabel("Accuracies");
-    legend(names, "location", "southeast");
+    legend(names, "location", "southeastoutside");
     axis([3, size(mus, 2), 0, 1]);
     
-    figure(figures(2));
+    handles(2) = figure(figures(2));
     clf;
     hold on;
     for i = 2:size(averErrors, 3)
@@ -48,10 +50,10 @@ function plotResults(mus, vars, figures, used, colors, names)
     title("Differences to hold-out");
     xlabel("Training instances");
     ylabel("Differences");
-    legend(names(2:end), "location", "northeast");
+    legend(names(2:end), "location", "southeastoutside");
     axis([3, size(averErrors, 2)]);
     
-    figure(figures(3));
+    handles(3) = figure(figures(3));
     clf;
     hold on;
     for i = 2:size(averSquErrors, 3)
@@ -61,22 +63,23 @@ function plotResults(mus, vars, figures, used, colors, names)
     title("Squared error");
     xlabel("Training instances");
     ylabel("err²");
-    legend(names(2:end), "location", "northeast");
+    legend(names(2:end), "location", "southeastoutside");
     axis([3, size(averSquErrors, 2)]);
     
     if(size(mus, 1) > 1)
-        figure(figures(4));
+        handles(4) = figure(figures(4));
         clf;
         hold on;
         for i = 1:size(variance, 3)
             plot(3:size(variance, 2), variance(:, 3:end, i),
                 "-", "color", colors(i, :));
         endfor
-        title("Squared error");
+        title("Variance");
         xlabel("Training instances");
-        ylabel("err²");
-        legend(names(2:end), "location", "northeast");
+        ylabel("Variance");
+        legend(names(2:end), "location", "southeastoutside");
         axis([3, size(variance, 2)]);
     endif
+	
 
 endfunction

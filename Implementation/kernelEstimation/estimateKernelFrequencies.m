@@ -26,7 +26,7 @@ function frequencies = estimateKernelFrequencies(instances, samples, kernel)
 	else
 		# estimate std. dev.
 		sigma = ones(1, size(samples, 2)) .* 0.1;
-		#{
+		
 		if(size(samples, 1) > 1)
 			mu = sum(samples, 1) ./ size(samples, 1);
 			estSigma = sqrt(sum((samples .- mu) .^ 2, 1) ./ (size(samples, 1) - 1.5));
@@ -34,7 +34,7 @@ function frequencies = estimateKernelFrequencies(instances, samples, kernel)
 				sigma = estSigma;
 			endif
 		endif
-		#}
+		
 		
 		# create matrices to match each instance with each sample
 		sampleMat = repmat(samples, [rows(instances), 1]);

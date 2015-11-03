@@ -28,14 +28,23 @@ global notConverged = {};
 global converged = {};
 
 # color code
-colors = [[1, 0, 1]; [1, 0, 0]; [0, 0, 0]; [0, 1, 0]; [0, 1, 1];...
-            [0, 0, 1]; [1, 0.4, 0]; [0, 0, 1]; [0, 1, 0]; [0, 0.2, 1]];
-colors = jet(12);
-methodNames = {"Holdout", "CV", ".632+", "MCFit", "RegMCFit", "ResMCFit",...
+colors = [1.00000   0.00000   1.00000
+		  0.00000   0.00000   0.50000
+		  0.00000   0.00000   1.00000
+		  0.00000   1.00000   0.20000
+		  0.00000   0.80000   0.20000
+		  0.00000   0.50000   0.20000
+		  0.00000   0.50000   0.50000
+		  1.00000   1.00000   0.00000
+		  1.00000   0.66667   0.00000
+		  1.00000   0.33333   0.00000
+		  1.00000   0.00000   0.00000
+		  0.66667   0.00000   0.00000];
+methodNames = {"Holdout", "CV", ".632+", "MCFit", "SuperMCFit", "HigherMCFit",...
                     "AverFit", "AverNIFit", "BSFit", "632Fit", "632MCFit", "RegNIMCFit"};
 
 testParams.iterations = 7;
-testParams.runs = 1;
+testParams.runs = 6;
 testParams.samples = @(i) i .^ 2;
 testParams.foldSize = 5;
 testParams.bsSamples = 50;
@@ -50,6 +59,10 @@ functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
 
 dataFiles = {"checke1.mat", "2dData.mat", "seeds.mat", "abalone.mat"};
 
+useFile = 1;
+useAL = 3;
+useFunc = 2;
+
 
 data = dataReader();
 classifier = parzenWindowClassifier();
@@ -58,13 +71,20 @@ ALs = {randomSamplingAL(getFeatureVectors(data), getLabels(data)),
         probabilisticAL(getFeatureVectors(data), getLabels(data))};
 
 
-data = readData(data, [dataDir, dataFiles{1}]);
+data = readData(data, [dataDir, dataFiles{useFile}]);
 classifier = estimateSigma(classifier, getFeatureVectors(data));
 orac = oracle(getFeatureVectors(data), getLabels(data), length(unique(getLabels(data))));
 
-[~, mus, vars] = estimatePerformanceMeasures(classifier, orac, ALs{1},
-                                            testParams, functionParams(1));
+[~, newMus, newVars] = estimatePerformanceMeasures(classifier, orac, ALs{useAL},
+                                            testParams, functionParams(useFunc));
 
-save([resDir, "mus"], "mus", "vars");
+mus = [];
+vars = [];
+#load([resDir, "res_AL_", num2str(useAL), "_Func_", num2str(useFunc), "_",...
+#		dataFiles{useFile}], "mus", "vars");
+mus = cat(1, mus, newMus);
+vars = cat(1, vars, newVars);
+save([resDir, "res_AL_", num2str(useAL), "_Func_", num2str(useFunc), "_",...
+		dataFiles{useFile}], "mus", "vars");
 
 plotResults(mus, vars, 1:4, testParams.useMethod, colors, methodNames);
