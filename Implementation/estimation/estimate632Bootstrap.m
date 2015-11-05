@@ -4,6 +4,8 @@ function accs = estimate632Bootstrap(classifier, oracle, totalSamples, subset)
 
     accs = [];
     
+    # TODO: change to on-request (wanted samples are given as parameters)
+    
     if((nargin == 3) || (nargin == 4))
         if(!isa(classifier, "classifier") || !isa(oracle, "oracle")
             || !isscalar(totalSamples))

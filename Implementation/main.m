@@ -43,12 +43,17 @@ colors = [1.00000   0.00000   1.00000
 methodNames = {"Holdout", "CV", ".632+", "MCFit", "SuperMCFit", "HigherMCFit",...
                     "AverFit", "AverNIFit", "BSFit", "632Fit", "632MCFit", "RegNIMCFit"};
 
-testParams.iterations = 5;
+methodNames = {"Holdout", "CV", ".632+", "MCFit", "SuperMCFit", "AverFit", "632Fit",...
+                    "MCFitW", "SuperMCFitW", "MCFitNI", "SuperMCFitNI", "AverFitNI"};
+# use: Holdout, CV, .632+, MCFit, SuperMCFit, AverFit, 632Fit
+
+testParams.iterations = 20;
 testParams.runs = 1;
-testParams.samples = @(i) i .^ 2;
+testParams.samples = @(i) @(i) i .^ 2;
+testParams.averSize = 1000;
 testParams.foldSize = -1;
 testParams.bsSamples = 50;
-testParams.useMethod = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+testParams.useMethod = [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0];
 
 functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
                         "bounds", [0, 1; -Inf, 0; -Inf, 0],
@@ -75,10 +80,9 @@ data = readData(data, [dataDir, dataFiles{useFile}]);
 classifier = estimateSigma(classifier, getFeatureVectors(data));
 orac = oracle(getFeatureVectors(data), getLabels(data), length(unique(getLabels(data))));
 
-[~, mus, vars] = estimatePerformanceMeasures(classifier, orac, ALs{useAL},
+[~, mus, vars] = estimatePerformanceMeasuresExp(classifier, orac, ALs{useAL},
                                             testParams, functionParams(useFunc));
-
 #addResults([resDir, "res_AL_", num2str(useAL), "_Func_", num2str(useFunc), "_",...
 #		dataFiles{useFile}], mus, vars);
 
-#plotResults(mus, vars, 1:4, testParams.useMethod, colors, methodNames);
+plotResults(mus, vars, 1:4, testParams.useMethod, colors, methodNames);
