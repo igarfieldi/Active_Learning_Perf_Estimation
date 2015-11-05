@@ -1,7 +1,7 @@
 # usage: [oracle, mus, vars] = estimatePerformanceMeasures(classifier, oracle,
 #                                           activeLearner, testParams, functionParams)
 
-function [oracle, mus, vars] = estimatePerformanceMeasures(classifier, oracle,
+function [oracle, mus, vars] = estimatePerformanceMeasuresExp(classifier, oracle,
                                             activeLearner, testParams, functionParams)
 
     global debug;
@@ -50,11 +50,6 @@ activeLearner,struct, struct");
 			[activeLearner, currOracle, ~, ~] = selectInstance(activeLearner,
 															classifier, currOracle);
 			
-			# estimate the accuracies with leave-x-out cv
-			if(sum(testParams.useMethod(4:8)) > 0)
-				[estAccs, accumEstAccs, wis, combs] = estimateAccuracies(classifier, currOracle);
-			endif
-			
 			# train the classifier with the currently labeled instances
 			[feat, lab] = getQueriedInstances(currOracle);
 			classifier = setTrainingData(classifier, feat, lab, getNumberOfLabels(currOracle));
@@ -76,63 +71,78 @@ activeLearner,struct, struct");
                                                     testParams.bsSamples);
             endif
             
-            if(testParams.useMethod(9))
-                if(i > 3)
-                    [mus(r, i, 9), ~, ~, bsAccs] = estimatePerformanceBSFit(classifier,
-                                                        currOracle, functionParams,
-                                                        testParams.bsSamples, bsAccs);
-                else
-                    [mus(r, i, 9), ~, ~, bsAccs] = estimatePerformanceBSFit(classifier,
-                                                        currOracle, functionParams,
-                                                        testParams.bsSamples);
-                endif
+            allSamples = [];
+            
+            # 3-layer computation:
+            # First, methods compute which samples they would like to be computed.
+            # Then, all unique samples needed are computed.
+            # Last, each method draws the wanted sample accuracies from the shared
+            # pool and does their thing.
+            
+            
+            # First stage (some methods share samples, currently anyway TODO??)
+            # use MC Fitting
+            if(testParams.useMethod(4) || testParams.useMethod(8)
+                    || testParams.useMethod(10))
+                MCsamples = getFittingSamplesExp(i, testParams.samples(i));
+                MCpos = length(allSamples)+1:length(allSamples)+prod(size(MCsamples));
+                allSamples = [allSamples; vec(MCsamples)];
             endif
             
-            if(testParams.useMethod(10))
-                mus(r, i, 10) = estimatePerformance632Fit(classifier,
-                                                    currOracle, functionParams,
-                                                    testParams.bsSamples);
+            # use MC Fitting with Supersets
+            if(testParams.useMethod(4) || testParams.useMethod(9)
+                    || testParams.useMethod(11))
+                SMCsamples = getFittingSamplesSuperExp(i, testParams.samples(i));
+                SMCpos = length(allSamples)+1:length(allSamples)+prod(size(SMCsamples));
+                allSamples = [allSamples; vec(SMCsamples)];
             endif
             
-            if(testParams.useMethod(11))
-                mus(r, i, 11) = estimatePerformance632MCFit(classifier, currOracle,
-                                                    functionParams, testParams.samples(i));
+            # use averaged Fitting (only subset of all)
+            if(testParams.useMethod(6) || testParams.useMethod(12))
+                [averSamples, averSizes] = getFittingSamplesAverExp(i, testParams.averSize);
+                averPos = length(allSamples)+1:length(allSamples)+prod(size(averSamples));
+                allSamples = [allSamples; averSamples];
             endif
             
-            if(testParams.useMethod(12))
-               [mus(r, i, 12), vars(r, i, 12)] = estimatePerformanceRegNIFit(estAccs,
-                                                    functionParams, wis, combs,
-                                                    testParams.samples(i), classifier,
-                                                    currOracle);
-            endif
-			
-			# use our approaches (curve fitting with leave-x-out CV)
+            # Second stage
+            [uniqueSamples, ~, pos] = unique(allSamples);
+			estAccs = estimateAccuraciesExperimental(classifier, currOracle, uniqueSamples);
+            
+            # Third stage
+            
             if(testParams.useMethod(4))
-                [mus(r, i, 4), vars(r, i, 4)] = estimatePerformanceMCFit(accumEstAccs,
-                                                    functionParams, testParams.samples(i));
+                MCsamples = reshape(estAccs(pos(MCpos)), size(MCsamples));
+                mus(r, i, 4) = estimatePerformanceMCFitExp(MCsamples, functionParams);
             endif
             
             if(testParams.useMethod(5))
-                [mus(r, i, 5), vars(r, i, 5)] = estimatePerformanceRegFit(estAccs,
-                                                    functionParams, wis, combs,
-                                                    testParams.samples(i));
+                SMCsamples = reshape(estAccs(pos(SMCpos)), size(SMCsamples));
+                mus(r, i, 5) = estimatePerformanceMCFitExp(SMCsamples, functionParams);
             endif
             
             if(testParams.useMethod(6))
-                [mus(r, i, 6), vars(r, i, 6)] = estimatePerformanceRestrictedFit(
-                                                    accumEstAccs, functionParams,
-                                                    testParams.samples(i));
-			endif
-            
-			# use averaging + fitting
-            if(testParams.useMethod(7))
-                mus(r, i, 7) = estimatePerformanceAverFit(accumEstAccs, functionParams);
+                averSamples = estAccs(pos(averPos));
+                
+                averages = [];
+                oldPos = 0;
+                for k = 1:length(averSizes)
+                    currSamples = averSamples(oldPos+1:averSizes(k));
+                    
+                    if(prod(size(currSamples)) == 0)
+                        keyboard;
+                    endif
+                    
+                    averages = [averages; sum(currSamples) / prod(size(currSamples))];
+                endfor
+                
+                mus(r, i, 6) = estimatePerformanceMCFitExp(averages, functionParams);
             endif
-			
-			if(testParams.useMethod(8))
-				mus(r, i, 8) = estimatePerformanceAverNIFit(accumEstAccs, functionParams,
-                                                    classifier, currOracle);
-			endif
+            
+            if(testParams.useMethod(7))
+                mus(r, i, 7) = estimatePerformance632Fit(classifier,
+                                                    currOracle, functionParams,
+                                                    testParams.bsSamples);
+            endif
             
 		endfor
         

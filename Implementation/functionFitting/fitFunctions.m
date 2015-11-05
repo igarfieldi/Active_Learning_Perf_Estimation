@@ -27,26 +27,27 @@ function funcReg = fitFunctions(iterations, accSamples, functionParams)
 		flag = 0;
 		
 		bestParams = [];
-		bestStdRes = [];
+		#bestStdRes = [];
 		
-		while((MSE > 10^(-3)) && (counter < 10))
+		while((MSE > 10^(-3)) && (counter < 5))
 			init = (rand(1, 3) .- functionParams.inits(1, :)) .* functionParams.inits(2, :);
-				[values, fittedParams, cvg, ~, ~, ~, ~, stdres] = leasqr(X', Y', init,
-											functionParams.template, 0.0001,
-											400, [], [], [], options);
-			
+            [values, fittedParams, cvg, ~, ~, ~, ~, ~] = leasqr(X', Y', init,
+                                        functionParams.template, 0.0001,
+                                        300, [], [], [], options);
+            
 			currMSE = sum((values' .- Y) .^ 2);
 			counter++;
 			
 			if((currMSE < MSE) || isempty(bestParams))
 				bestParams = fittedParams;
 				MSE = currMSE;
-				bestStdRes = stdres;
+				#bestStdRes = stdres;
 			endif
 		endwhile
-		
+        
+        
 		#{
-		if((counter >= 10) && (length(iterations) > 5))
+		if((counter >= 5) && (length(iterations) > 5))
 			figure(5);
 			clf;
 			hold on;

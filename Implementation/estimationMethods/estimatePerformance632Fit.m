@@ -16,7 +16,8 @@ function [mu, averages, func] = estimatePerformance632Fit(classifier,
     endif
     
     accs = estimate632Bootstrap(classifier, oracle, totalSamples);
-    
+    mu = 0;
+    #{
     for i = 2:length(accs)
         averages = [averages, sum(accs{i}) / length(accs{i})];
     endfor
@@ -27,5 +28,6 @@ function [mu, averages, func] = estimatePerformance632Fit(classifier,
     else
         mu = averages(1);
     endif
+    #}
 
 endfunction

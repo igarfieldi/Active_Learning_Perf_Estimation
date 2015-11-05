@@ -1,13 +1,16 @@
 1;
 clc;
 
-f = @(x, p) p(1) .+ p(2) .* x;
+k = 2;
+n = 1:4;
 
-tp = [1, 0.2];
+totalSize = length(n) ^ k;
 
-X = [0, 0, 0, 1, 1, 1, 2, 2, 2]';
-Y = f(X, tp) .+ normrnd(0, 0.1, 1, length(X))'
+mat = [];
 
-[val, params, ~, ~, ~, ~, ~, stdresid] = leasqr(X, Y, [0,1], f)
+for i = 1:k
+    mat = [repmat(repelems(n, [1:length(n); ones(1, length(n)) * length(n)^(i-1)])',...
+            totalSize/(length(n)^i), 1), mat];
+endfor
 
-e = sum((val .- f(X, tp)) .^ 2)
+mat
