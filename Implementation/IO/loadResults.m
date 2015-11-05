@@ -1,28 +1,13 @@
-# usage: storeAccuracies(path, accs)
+# usage: [mus, vars] = loadResults(path)
 
-function [iterations, samples, holdoutSize, data_file, orac, currAL, accumEstAccs,
-	MCSamples, funcs, holdoutBetas, predictedBetas] = loadResults(file)
+function [mus, vars] = loadResults(path)
 
 	if(nargin != 1)
 		print_usage();
+	elseif(!ischar(path))
+		error("storeResults: requires chars");
 	endif
 	
-	if(!ischar(file))
-		error("IO/storeResults: requires char, ...");
-	endif
-	
-	res = load(file, "res");
-	
-	iterations = res.iterations;
-	samples = res.samples;
-	holdoutSize = res.holdoutSize;
-	data_file = res.data_file;
-	orac = res.orac;
-	currAL = res.currAL;
-	accumEstAccs = res.accumEstAccs;
-	MCSamples = res.MCSamples;
-	funcs = res.funcs;
-	holdoutBetas = res.holdoutBetas;
-	predictedBetas = res.predictedBetas;
+	load(path, "mus", "vars");
 
 endfunction

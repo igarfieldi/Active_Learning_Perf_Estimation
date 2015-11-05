@@ -24,7 +24,7 @@ function mu = estimatePerformanceAIKFoldCV(classifier, oracle, k, iter)
 	indices = randperm(length(lab));
 	
 	# we can only have as many subsets as instances already queried
-	if(k > length(lab))
+	if(k > length(lab) || (k < 1))
 		k = length(lab);
 	endif
 	setSize = length(lab) / k;

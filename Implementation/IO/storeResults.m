@@ -1,29 +1,13 @@
-# usage: storeResults(file, iterations, samples, holdoutSize, data_file,
-#		accumEstAccs, MCSamples, funcs, holdoutBetas, predictedBetas)
+# usage: storeResults(path, mus, vars)
 
-function storeResults(file, iterations, samples, holdoutSize, data_file,
-	orac, currAL, accumEstAccs, MCSamples, funcs, holdoutBetas, predictedBetas)
+function storeResults(path, mus, vars)
 
-	if(nargin != 12)
+	if(nargin != 3)
 		print_usage();
+	elseif(!ischar(path))
+		error("storeResults: requires chars, ..., ...");
 	endif
 	
-	if(!ischar(file))
-		error("IO/storeResults: requires char, ...");
-	endif
-	
-	res.iterations = iterations;
-	res.samples = samples;
-	res.holdoutSize = holdoutSize;
-	res.data_file = data_file;
-	res.orac = orac;
-	res.currAL = currAL;
-	res.accumEstAccs = accumEstAccs;
-	res.MCSamples = MCSamples;
-	res.funcs = funcs;
-	res.holdoutBetas = holdoutBetas;
-	res.predictedBetas = predictedBetas;
-	
-	save(file, "res");
+	save(path, "mus", "vars");
 
 endfunction

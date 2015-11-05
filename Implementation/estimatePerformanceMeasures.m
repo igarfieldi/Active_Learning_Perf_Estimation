@@ -51,8 +51,12 @@ activeLearner,struct, struct");
 															classifier, currOracle);
 			
 			# estimate the accuracies with leave-x-out cv
-			[estAccs, accumEstAccs, wis, combs] = estimateAccuracies(classifier, currOracle);
+			if(sum(testParams.useMethod(4:8)) > 0)
+				[estAccs, accumEstAccs, wis, combs] = estimateAccuracies(classifier, currOracle);
+			endif
             
+			estAccs = estimateAccuraciesExperimental(classifier, currOracle);
+			
 			# train the classifier with the currently labeled instances
 			[feat, lab] = getQueriedInstances(currOracle);
 			classifier = setTrainingData(classifier, feat, lab, getNumberOfLabels(currOracle));
