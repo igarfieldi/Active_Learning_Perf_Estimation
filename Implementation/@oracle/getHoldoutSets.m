@@ -9,7 +9,7 @@ function [feat, lab] = getHoldoutSets(oracle, size, limit, state)
         if(!isa(oracle, "oracle") || !isscalar(size) || !isscalar(limit))
             error("@oracle/getHoldoutSets: requires oracle, scalar, scalar");
         elseif((nargin == 4) && !isvector(state))
-            error("getHoldoutSets: state has to be a vector");
+            error("@oracle/getHoldoutSets: state has to be a vector");
         endif
     else
         print_usage();

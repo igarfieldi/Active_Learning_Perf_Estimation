@@ -7,9 +7,9 @@ function acc = computeAccuracy(classifier, testFeat, testLab)
     if(nargin != 3)
         print_usage();
     elseif(!isa(classifier, "classifier") || !ismatrix(testFeat) || !isvector(testLab))
-        error("@estimator/computeAccuracy: requires classifier, matrix, vector");
+        error("@classifier/computeAccuracy: requires classifier, matrix, vector");
     elseif(rows(testFeat) != length(testLab))
-        error("@estimator/computeAccuracy: uneven number of feature vectors and labels");
+        error("@classifier/computeAccuracy: uneven number of feature vectors and labels");
     endif
     
     # classify each instance

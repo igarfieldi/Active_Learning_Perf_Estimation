@@ -1,4 +1,4 @@
-# usage:[obj, feat, lab] = queryInstance(oracle, index)
+# usage: [obj, feat, lab] = queryInstance(oracle, index)
 
 function [obj, feat, lab] = queryInstance(oracle, index)
     

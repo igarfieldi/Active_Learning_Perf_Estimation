@@ -5,7 +5,7 @@ function storeResults(path, mus, vars)
 	if(nargin != 3)
 		print_usage();
 	elseif(!ischar(path))
-		error("storeResults: requires chars, ..., ...");
+		error("IO/storeResults: requires chars, ..., ...");
 	endif
 	
 	save(path, "mus", "vars");

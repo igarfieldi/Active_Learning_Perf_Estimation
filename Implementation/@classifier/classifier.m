@@ -1,3 +1,5 @@
+# usage: obj = classifier(features, labels, labelNum)
+
 function obj = classifier(features, labels, labelNum)
     
     obj = [];

@@ -6,16 +6,21 @@ function frequencies = estimateKernelFrequencies(instances, samples, kernel)
     
     if(nargin == 3)
         if(!ismatrix(instances) || !ismatrix(samples) || !is_function_handle(kernel))
-            error("@estimator/estimateKernelFrequency(3): requires matrix, matrix, function_handle");
+            error("kernelEstimation/estimateKernelFrequency(3): requires matrix, \
+matrix, function_handle");
         elseif(size(instances, 2) != size(samples, 2))
-            error("@estimator/estimateKernelFrequency(3): instances and samples must have same number of columns");
+            error("kernelEstimation/estimateKernelFrequency(3): instances and \
+samples must have same number of columns");
         endif
     elseif(nargin == 2)
         if(!ismatrix(instances) || !ismatrix(samples))
-            error("@estimator/estimateKernelFrequency(2): requires matrix, matrix");
+            error("kernelEstimation/estimateKernelFrequency(2): requires matrix, \
+matrix");
         elseif(size(instances, 2) != size(samples, 2))
-            error("@estimator/estimateKernelFrequency(2): instances and samples must have same number of columns");
+            error("kernelEstimation/estimateKernelFrequency(2): instances and \
+samples must have same number of columns");
         endif
+        
         kernel = @(x) exp(-sum(x .^ 2, 2) ./ 2) ./ sqrt(2 * pi);
     else
         print_usage();

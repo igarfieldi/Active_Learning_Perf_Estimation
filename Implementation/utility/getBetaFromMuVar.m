@@ -7,9 +7,9 @@ function [p, q] = getBetaFromMuVar(mu, var)
     if(nargin != 2)
         print_usage();
     elseif(!ismatrix(mu) || !ismatrix(var))
-        error("@estimator/getBetaFromMuVar: requires matrix, matrix");
+        error("utility/getBetaFromMuVar: requires matrix, matrix");
     elseif(size(mu) != size(var))
-        error("@estimtor/getBetaFromMuVar: length of mu and var do not match");
+        error("utility/getBetaFromMuVar: length of mu and var do not match");
     endif
 	
 	p = -mu .* (var .+ mu .^ 2 .- mu) ./ var;

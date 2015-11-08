@@ -5,7 +5,8 @@ function pwClassifier = setSigma(pwClassifier, sigma)
     if(nargin != 2)
         print_usage();
     elseif(!isa(pwClassifier, "parzenWindowClassifier") || !isvector(sigma))
-        error("@parzenWindowClassifier/getStandardDeviation: requires parzenWindowClassifier, vector");
+        error("@parzenWindowClassifier/setSigma: requires \
+parzenWindowClassifier, vector");
     endif
     
     pwClassifier.sigma = sigma;
