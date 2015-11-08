@@ -5,7 +5,7 @@ function [mus, vars] = loadResults(path)
 	if(nargin != 1)
 		print_usage();
 	elseif(!ischar(path))
-		error("storeResults: requires chars");
+		error("IO/storeResults: requires chars");
 	endif
 	
 	load(path, "mus", "vars");

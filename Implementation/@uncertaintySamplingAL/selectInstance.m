@@ -1,18 +1,16 @@
-# usage: [uncertaintySamplingAL, oracle, aquFeat, aquLab] = selectInstance(uncertaintySamplingAL,
-#                                                       classifier, oracle)
+# usage: [USAL, oracle, aquFeat, aquLab] = selectInstance(USAL, classifier, oracle)
 
-function [uncertaintySamplingAL, oracle, aquFeat, aquLab] = selectInstance(
-                                                        uncertaintySamplingAL,
-                                                        classifier, oracle)
+function [USAL, oracle, aquFeat, aquLab] = selectInstance(USAL, classifier, oracle)
     
     aquFeat = [];
     aquLab = [];
     
     if(nargin != 3)
         print_usage();
-    elseif(!isa(uncertaintySamplingAL, "uncertaintySamplingAL") || !isa(classifier, "classifier")
+    elseif(!isa(USAL, "uncertaintySamplingAL") || !isa(classifier, "classifier")
             || !isa(oracle, "oracle"))
-        error("selectInstance@uncertaintySamplingAL: requires uncertaintySamplingAL, classifier, oracle");
+        error("@uncertaintySamplingAL/selectInstance: requires uncertaintySamplingAL, \
+classifier, oracle");
     endif
     
     unlabeledSize = getNumOfUnlabeledInstances(oracle);
@@ -23,7 +21,7 @@ function [uncertaintySamplingAL, oracle, aquFeat, aquLab] = selectInstance(
             nextLabelIndex = floor(rand(1) * unlabeledSize) + 1;
         else
             # Determine estimated posteriors with kernel density estimation
-            [features, labels] = getLabeledInstances(uncertaintySamplingAL);
+            [features, labels] = getLabeledInstances(USAL);
             classifier = setTrainingData(classifier, features, labels,
                                             getNumberOfLabels(oracle));
             
@@ -41,7 +39,7 @@ function [uncertaintySamplingAL, oracle, aquFeat, aquLab] = selectInstance(
         endif
         [oracle, aquFeat, aquLab] = queryInstance(oracle, nextLabelIndex);
         
-        uncertaintySamplingAL = addLabeledInstances(uncertaintySamplingAL, aquFeat, aquLab);
+        USAL = USAL(uncertaintySamplingAL, aquFeat, aquLab);
     endif
     
 endfunction

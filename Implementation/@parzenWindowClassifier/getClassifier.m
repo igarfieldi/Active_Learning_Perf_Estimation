@@ -1,3 +1,5 @@
+# usage: ret = getClassifier(pwClassifier)
+
 function ret = getClassifier(pwClassifier)
     
     ret = [];
@@ -5,7 +7,7 @@ function ret = getClassifier(pwClassifier)
     if(nargin != 1)
         print_usage();
     elseif(!isa(pwClassifier, "parzenWindowClassifier"))
-        error("getClassifier@parzenWindowClassifier: requires parzenWindowClassifier");   
+        error("@parzenWindowClassifier/getClassifier: requires parzenWindowClassifier");   
     else
         ret = pwClassifier.classifier;
     endif        

@@ -1,4 +1,4 @@
-# usage: frequencies = estimateKernelDensities(instances, samples, sigma, kernel)
+# usage: densities = estimateKernelDensities(instances, samples, sigma)
 
 function densities = estimateKernelDensities(instances, samples, sigma)
 
@@ -6,9 +6,11 @@ function densities = estimateKernelDensities(instances, samples, sigma)
     
     if(nargin == 3)
         if(!ismatrix(instances) || !ismatrix(samples) || !isvector(sigma))
-            error("@estimator/estimateKernelDensities(3): requires matrix, matrix, vector");
+            error("kernelEstimation/estimateKernelDensities(3): requires matrix, \
+matrix, vector");
         elseif(size(instances, 2) != size(samples, 2))
-            error("@estimator/estimateKernelDensities(3): instances and samples must have same number of columns");
+            error("kernelEstimation/estimateKernelDensities(3): instances and \
+samples must have same number of columns");
         endif
         kernel = @(x) exp(-sum(x .* x, 2) ./ 2) ./ sqrt(2 * pi);
     else
@@ -19,7 +21,8 @@ function densities = estimateKernelDensities(instances, samples, sigma)
 		densities = zeros(1, rows(instances));
 	else
 		# compute standard deviation of samples
-		# if not enough samples are available, take provided sigma (std. dev. of whole dataset)
+		# if not enough samples are available, take provided sigma
+        # (std. dev. of whole dataset)
 		if(size(samples, 1) > 1)
 			mu = sum(samples, 1) ./ size(samples, 1);
 			estSigma = sqrt(sum((samples .- mu) .^ 2, 1) ./ (size(samples, 1) - 1.5));
@@ -33,8 +36,6 @@ function densities = estimateKernelDensities(instances, samples, sigma)
 		v = 2;					# kernel order (order of first non-zero moment)
 		Cv = getSilvermanConstantFor2ndOrderGauss(q);
 		bandwidth = sigma .* (Cv * size(samples, 1)^(-1/(2*v+q)));
-		#bandwidth = [0.05, 0.05] .* ones(1, size(samples, 2)) .* (Cv * size(samples, 1)^(-1/(2*v+q)));
-		
 		
 		# create matrices to match each instance with each sample
 		sampleMat = repmat(samples, [rows(instances), 1]);
@@ -44,7 +45,8 @@ function densities = estimateKernelDensities(instances, samples, sigma)
 		# estimate the frequencies using the kernel provided (multivariate)
 		densities = kernel((instanceMat .- sampleMat) ./ bandwidth);
 		densities = reshape(densities, rows(samples), rows(instances));
-		densities = max(sum(densities, 1) ./ (size(samples, 1) * prod(bandwidth)), 10^(-99));
+		densities = max(sum(densities, 1) ./ (size(samples, 1) *...
+                                                prod(bandwidth)), 10^(-99));
 	endif
     
 endfunction

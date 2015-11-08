@@ -7,7 +7,7 @@ function res = doubleFactorial(n)
 	if(nargin != 1)
 		print_usage();
 	elseif(!isscalar(n))
-		error("doubleFactorial: requires scalar");
+		error("utility/doubleFactorial: requires scalar");
 	endif
 	
 	res = 1;

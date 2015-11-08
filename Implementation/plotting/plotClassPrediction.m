@@ -1,4 +1,4 @@
-# usage: 
+# usage: plotClassPrediction(classifier, features, labels, fig)
 
 function plotClassPrediction(classifier, features, labels, fig)
 
@@ -6,7 +6,8 @@ function plotClassPrediction(classifier, features, labels, fig)
         print_usage();
     elseif(!isa(classifier, "classifier") || !ismatrix(features) || !ismatrix(labels)
             || !isscalar(fig))
-        error("plotClassPrediction: requires classifier, matrix, matrix, scalar");
+        error("plotting/plotClassPrediction: requires classifier, matrix, \
+matrix, scalar");
     endif
     
     
@@ -27,11 +28,9 @@ function plotClassPrediction(classifier, features, labels, fig)
     coords = [reshape(XX, rows(XX)*columns(XX), 1), reshape(YY, rows(YY)*columns(YY), 1)];
     coordRes = classifyInstances(classifier, coords)(2, :);
     
-    mesh(X, X, 1 .- reshape(coordRes, meshRes, meshRes));
-    view(-45, 45);
-    #image([0, 1], [0, 1], ceil(colorRes .* reshape(coordRes, meshRes, meshRes)));
+    image([0, 1], [0, 1], ceil(colorRes .* reshape(coordRes, meshRes, meshRes)));
     
-    #{
+    
     neg = features(nthargout(2, @max, res) == 1, :);
     pos = features(nthargout(2, @max, res) == 2, :);
     plot(neg(:, 1), neg(:, 2), ".", "markersize", 10, "color", [1, 0, 0]);
@@ -45,5 +44,5 @@ function plotClassPrediction(classifier, features, labels, fig)
         "color", [0, 0, 1]);
     
     axis("square");
-    #}
+    
 endfunction

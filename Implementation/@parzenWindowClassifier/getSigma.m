@@ -7,7 +7,7 @@ function sigma = getSigma(pwClassifier)
     if(nargin != 1)
         print_usage();
     elseif(!isa(pwClassifier, "parzenWindowClassifier"))
-        error("@parzenWindowClassifier/getStandardDeviation: requires parzenWindowClassifier");
+        error("@parzenWindowClassifier/getSigma: requires parzenWindowClassifier");
     endif
     
     sigma = pwClassifier.sigma;

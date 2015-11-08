@@ -1,16 +1,53 @@
-# usage: funcReg = fitFunctions(accSamples, funcHandle)
+# usage: funcReg = fitFunctions(iterations, accSamples, functionParams,
+#                                   sampleWeights, maxTrials)
 
-function funcReg = fitFunctions(iterations, accSamples, functionParams)
+function funcReg = fitFunctions(iterations, accSamples, functionParams,
+                                    sampleWeights, maxTrials)
 
-	global notConverged;
-	global converged;
 	funcReg = [];
 	
-	if(nargin != 3)
-		print_usage();
-	elseif(!isvector(iterations) || !ismatrix(accSamples) || !isstruct(functionParams))
-		error("@perfEstimation/fitFunctionsIter: requires vector, matrix, struct");
-	endif
+    if((nargin < 3) || (nargin > 5))
+        print_usage();
+    elseif(!isvector(iterations))
+        error("functionFitting/fitFunctions: X component for fitting (iterations) \
+needs to be of vector form");
+    elseif(!ismatrix(accSamples))
+        error("functionFitting/fitFunctions: accuracy samples have to be provided \
+as matrix");
+    elseif(length(iterations) != size(accSamples, 2))
+        error("functionFitting/fitFunctions: length of iterations and number of \
+accuracy samples have to coincide");
+    elseif(!isstruct(functionParams))
+        error("functionFitting/fitFunctions: function parameters have to provided \
+as struct");
+    endif
+    
+    iterations = vec(iterations);
+    
+    # default weights
+    weights = ones(length(iterations), 1);
+    trials = 5;
+    
+    if((nargin == 4) && !isempty(sampleWeights))
+        if(!isvector(sampleWeights))
+            error("functionFitting/fitFunctions: sample weights have to be \
+provided as vector");
+        elseif(length(sampleWeights) != length(iterations))
+            error("functionFitting/fitFunctions: number of sample weights and \
+number of iterations have to coincide");
+        endif
+        
+        weights = vec(sampleWeights);
+    endif
+    
+    if((nargin == 5) && !isempty(maxTrials))
+        if(!isscalar(maxTrials))
+            error("functionFitting/fitFunctions: maximal amount of trials has \
+to be scalar");
+        endif
+        
+        trials = max(1, maxTrials);
+    endif
 	
 	funcReg = [];
 	
@@ -19,7 +56,7 @@ function funcReg = fitFunctions(iterations, accSamples, functionParams)
     # iterate over all samples and fit a curve for each one
     for j = 1:size(accSamples, 1)
 		X = iterations;
-		Y = accSamples(j, :);
+		Y = vec(accSamples(j, :));
 		
 		
 		MSE = Inf;
@@ -27,13 +64,12 @@ function funcReg = fitFunctions(iterations, accSamples, functionParams)
 		flag = 0;
 		
 		bestParams = [];
-		#bestStdRes = [];
 		
-		while((MSE > 10^(-3)) && (counter < 5))
-			init = (rand(1, 3) .- functionParams.inits(1, :)) .* functionParams.inits(2, :);
-            [values, fittedParams, cvg, ~, ~, ~, ~, ~] = leasqr(X', Y', init,
+		while(counter < trials)
+			init = (rand(1, 3).-functionParams.inits(1, :)) .* functionParams.inits(2, :);
+            [values, fittedParams, cvg, ~, ~, ~, ~, ~] = leasqr(X, Y, init,
                                         functionParams.template, 0.0001,
-                                        300, [], [], [], options);
+                                        300, weights, [], [], options);
             
 			currMSE = sum((values' .- Y) .^ 2);
 			counter++;
@@ -41,36 +77,8 @@ function funcReg = fitFunctions(iterations, accSamples, functionParams)
 			if((currMSE < MSE) || isempty(bestParams))
 				bestParams = fittedParams;
 				MSE = currMSE;
-				#bestStdRes = stdres;
 			endif
 		endwhile
-        
-        
-		#{
-		if((counter >= 5) && (length(iterations) > 5))
-			figure(5);
-			clf;
-			hold on;
-			plot(X, Y, "*", "color", [0, 0, 1]);
-			z = linspace(min(X), max(X), 1000);
-			plot(z, functionParams.template(z, bestParams), "-", "color", [0, 0, 1]);
-            
-            [~, mi] = max(abs(bestStdRes));
-            X(mi) = [];
-            Y(mi) = [];
-            
-            
-			init = (rand(1, 3) .- functionParams.inits(1, :)) .* functionParams.inits(2, :);
-			[values, fittedParams, cvg, ~, ~, ~, ~, stdres] = leasqr(X', Y', init,
-                                        functionParams.template, 0.0001,
-										400, [], [], [], options);
-            
-			plot(X, Y, "*", "color", [1, 0, 0]);
-			plot(z, functionParams.template(z, bestParams), "-", "color", [1, 0, 0]);
-            
-            keyboard;
-        endif
-        #}
         
         funcReg = [funcReg; bestParams'];
     endfor

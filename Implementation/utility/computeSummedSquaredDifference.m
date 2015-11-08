@@ -7,7 +7,8 @@ function diff = computeSummedSquaredDifference(P, Q, res)
     if(nargin != 3)
         print_usage();
     elseif(!ismatrix(P) || !ismatrix(Q) || !isscalar(res))
-        error("computeSummedSquaredDifference: requires matrix, matrix, scalar");
+        error("utiltiy/computeSummedSquaredDifference: requires matrix, matrix, \
+scalar");
     endif
     
     X = repmat(linspace(0+1/res, 1-1/res, res), size(P, 1), 1);

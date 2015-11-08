@@ -1,4 +1,4 @@
-# usage: plotResults(mus, vars, figures)
+# usage: handles = plotResults(mus, vars, figures, used, colors, names)
 
 function handles = plotResults(mus, vars, figures, used, colors, names)
 
@@ -6,7 +6,8 @@ function handles = plotResults(mus, vars, figures, used, colors, names)
         print_usage();
     elseif(!isvector(figures) || !isvector(used) || !ismatrix(colors)
             || !iscell(names))
-        error("plotResults: requires 3d_mat, 3d_mat, vector, vector, matrix, cell");
+        error("plotting/plotResults: requires 3d_mat, 3d_mat, vector, vector, \
+matrix, cell");
     endif
     
     # disregard methods not used in evaluation
@@ -29,6 +30,7 @@ function handles = plotResults(mus, vars, figures, used, colors, names)
 	
 	handles = [];
     
+    # plot accuracy averages
     handles(1) = figure(figures(1));
     clf;
     hold on;
@@ -41,6 +43,7 @@ function handles = plotResults(mus, vars, figures, used, colors, names)
     legend(names, "location", "southeastoutside");
     axis([3, size(mus, 2), 0, 1]);
     
+    # plot error (simple difference)
     handles(2) = figure(figures(2));
     clf;
     hold on;
@@ -53,6 +56,7 @@ function handles = plotResults(mus, vars, figures, used, colors, names)
     legend(names(2:end), "location", "southeastoutside");
     axis([3, size(averErrors, 2)]);
     
+    # plot squared error
     handles(3) = figure(figures(3));
     clf;
     hold on;
@@ -66,6 +70,7 @@ function handles = plotResults(mus, vars, figures, used, colors, names)
     legend(names(2:end), "location", "southeastoutside");
     axis([3, size(averSquErrors, 2)]);
     
+    # plot variance
     if(size(mus, 1) > 1)
         handles(4) = figure(figures(4));
         clf;
@@ -80,6 +85,5 @@ function handles = plotResults(mus, vars, figures, used, colors, names)
         legend(names(2:end), "location", "southeastoutside");
         axis([3, size(variance, 2)]);
     endif
-	
 
 endfunction

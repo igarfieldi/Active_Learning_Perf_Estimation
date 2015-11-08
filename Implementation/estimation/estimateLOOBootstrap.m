@@ -1,70 +1,52 @@
-# usage: accs = estimateLXOBootstrap(classifier, oracle, totalSamples)
+# usage: accs = estimateLOOBootstrap(classifier, oracle, samples, bsSampleNum)
 
-function accs = estimateLOOBootstrap(classifier, oracle, totalSamples, prevAcc)
+function accs = estimateLOOBootstrap(classifier, oracle, samples, bsSampleNum)
 
     accs = [];
     
-    if((nargin == 3) || (nargin == 4))
-        if(!isa(classifier, "classifier") || !isa(oracle, "oracle")
-                || !isscalar(totalSamples))
-            error("estimateLXOBootstrap: requires classifier, oracle, scalar");
-        elseif((nargin == 4) && !iscell(prevAcc))
-            error("estimateLXOBootstrap: requires classifier, oracle, scalar, cell");
-        endif
-    else
+    if(nargin != 4)
         print_usage();
+    elseif(!isa(classifier, "classifier") || !isa(oracle, "oracle")
+            || (!isvector(samples) && !isempty(samples)) || !isscalar(bsSampleNum))
+        error("estimation/estimateLOOBootstrap: requires classifier, oracle, \
+vector, scalar");
     endif
     
     [feat, lab] = getQueriedInstances(oracle);
     
-    # if we have the accuracies from last iteration, use them
-    accs = cell(length(lab)-1, 1);
-    if(nargin == 4)
-        accs = prevAcc;
-    endif
+    elemVec = 1:length(lab);
     
-    # the new powerset... is the OLD powerset!
-    # well not really, but if we have the old accs, the new instance sets are
-    # the old ones + the newest instance
-    pwr = powerset(1:length(lab))(2:end-1);
-    if(nargin == 4)
-        pwr = powerset(1:length(lab)-1)(2:end-1);
-        pwr{end+1} = [];
-    endif
-    
-    for i = 1:length(pwr)
-        currSet = pwr{i};
-        
-        # add newest instance if we have old accs
-        if(nargin == 4)
-            currSet = [currSet, length(lab)];
-        endif
-        
-        if(length(accs) < length(currSet))
-            accs{length(currSet)} = [];
-        endif
-        
-        tAcc = 0;
+    for i = 1:length(samples)
+        bits = logical(bitget(samples(i), elemVec));
+        currSet = elemVec(bits);
         
         # create the bootstrap samples
-        bsSamples = discrete_rnd(currSet, ones(1, length(currSet)), totalSamples,
+        bsSamples = discrete_rnd(currSet, ones(1, length(currSet)), bsSampleNum,
                             length(currSet));
+        
+        tErr = 0;
+        tTotal = 0;
         
         # perform leave-one-out bootstrapping
         for k = 1:length(currSet)
-            for j = 1:totalSamples
+            for j = 1:bsSampleNum
                 testIndices = setdiff(currSet(k), bsSamples(j, :));
                 
                 if(!isempty(testIndices))
                     classifier = setTrainingData(classifier, feat(bsSamples(j, :), :),
                                     lab(bsSamples(j, :)), getNumberOfLabels(oracle));
-                    tAcc = computeAccuracy(classifier, feat(testIndices, :),
+                    tErr += 1 - computeAccuracy(classifier, feat(testIndices, :),
                                                 lab(testIndices));
-                    
-                    accs{length(currSet)} = [accs{length(currSet)}, tAcc];
+                    tTotal++;
                 endif
             endfor
         endfor
+        
+        if(tTotal > 0)
+            tErr /= tTotal;
+            
+            accs = [accs, 1 - tErr];
+        endif
     endfor
     
 

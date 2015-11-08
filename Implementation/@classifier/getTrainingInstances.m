@@ -9,7 +9,7 @@ function [features, labels, labelIndices] = getTrainingInstances(classifier)
     if(nargin != 1)
         print_usage();
     elseif(!isa(classifier, "classifier"))
-        error("getTrainingFeatures: requires classifier");
+        error("@classifier/getTrainingFeatures: requires classifier");
     endif
     
     features = classifier.trainingFeatures;

@@ -8,9 +8,9 @@ function [mu, var] = getMuVarFromBeta(p, q)
     if(nargin != 2)
         print_usage();
     elseif(!isvector(p) || !isvector(q))
-        error("@estimator/getMuVarFromBeta: requires scalar, scalar");
+        error("utility/getMuVarFromBeta: requires scalar, scalar");
     elseif(length(p) != length(q))
-        error("@estimtor/getMuVarFromBeta: length of mu and var do not match");
+        error("utility/getMuVarFromBeta: length of mu and var do not match");
     endif
 	
 	mu = p ./ (p .+ q);

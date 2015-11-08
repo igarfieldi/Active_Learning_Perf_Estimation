@@ -1,9 +1,7 @@
-# usage: ret = addLabeledInstances(activeLearner, features, labels)
+# usage: activeLearner = addLabeledInstances(activeLearner, features, labels)
 
-function ret = addLabeledInstances(activeLearner, features, labels)
+function activeLearner = addLabeledInstances(activeLearner, features, labels)
 
-    ret = [];
-    
     if(nargin != 3)
         print_usage();
     elseif(!isa(activeLearner, "activeLearner") || !ismatrix(features) || !isvector(labels))
@@ -12,8 +10,7 @@ function ret = addLabeledInstances(activeLearner, features, labels)
         error("@activeLearner/addLabeledInstances: unequal number of feature vectors and labels");
     endif
     
-    ret = activeLearner;
-    ret.features = [ret.features; features];
-    ret.labels = [ret.labels; labels];
+    activeLearner.features = [activeLearner.features; features];
+    activeLearner.labels = [activeLearner.labels; labels];
 
 endfunction
