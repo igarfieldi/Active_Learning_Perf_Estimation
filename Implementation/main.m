@@ -4,25 +4,10 @@ more off;
 pkg load optim;
 clear;
 
-dataDir = "./data/";
-resDir = "./results/";
+dataDir = ".\\data\\";
+resDir = ".\\results\\";
 
-addpath("./@activeLearner");
-addpath("./@classifier");
-addpath("./@dataReader");
-addpath("./@oracle");
-addpath("./@parzenWindowClassifier");
-addpath("./@probabilisticAL");
-addpath("./@randomSamplingAL");
-addpath("./@uncertaintySamplingAL");
-addpath("./estimation");
-addpath("./estimationMethods");
-addpath("./functionFitting");
-addpath("./IO");
-addpath("./kernelEstimation");
-addpath("./plotting");
-addpath("./sampleSelection");
-addpath("./utility");
+addpath(genpath(pwd()));
 
 global debug = 1;
 global notConverged = {};
@@ -44,17 +29,14 @@ colors = [1.00000   0.00000   1.00000
 colors = jet(19);
 colors = [1, 0, 0; 0, 0, 1];
 
-methodNames = {"Holdout", "CV", ".632+", "MCFit", "SuperMCFit", "HigherMCFit",...
-                    "AverFit", "AverNIFit", "BSFit", "632Fit", "632MCFit", "RegNIMCFit"};
-
 methodNames = {"Holdout", "CV", ".632+",...
                     "MCFit", "SuperMCFit", "AverFit", "632Fit",...
                     "MCFitW", "SuperMCFitW", "AverFitW", "632FitW",...
                     "MCFitNI", "SuperMCFitNI", "AverFitNI", "632FitNI",...
                     "MCFitWNI", "SuperMCFitWNI", "AverFitWNI", "632FitWNI"};
 
-testParams.iterations = 20;
-testParams.runs = 20;
+testParams.iterations = 40;
+testParams.runs = 200;
 testParams.samples = @(i) 2*i;
 testParams.averMaxSamples = 1000;
 testParams.bsMaxSamples = 50;
@@ -73,9 +55,12 @@ functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
                         "bounds", [0, 2; 0, Inf; -Inf, Inf],
                         "inits", [0, 0, 0.5; 2, 6, 8])];
 
-dataFiles = {"checke1.mat", "2dData.mat", "seeds.mat", "abalone.mat"};
+dataFiles = {"checke1.mat", "2dData.mat", "seeds.mat", "abaloneQuarter.mat"};
+#		1		82				172			
+#		2		22				53			63.6			111.6
+#		3		80.9			79.8		125.83			300.28
 
-useFile = 2;
+useFile = 4;
 useAL = 1;
 useFunc = 1;
 
@@ -96,6 +81,9 @@ t1 = time();
                                             testParams, functionParams(useFunc));
 
 disp(time()-t1);
+
+[mus, vars] = addResults("results/testingsChecke1.mat", mus, vars);
+
 #addResults([resDir, "res_AL_", num2str(useAL), "_Func_", num2str(useFunc), "_",...
 #        dataFiles{useFile}], mus, vars);
 

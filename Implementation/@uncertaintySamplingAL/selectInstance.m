@@ -39,7 +39,7 @@ classifier, oracle");
         endif
         [oracle, aquFeat, aquLab] = queryInstance(oracle, nextLabelIndex);
         
-        USAL = USAL(uncertaintySamplingAL, aquFeat, aquLab);
+        USAL = addLabeledInstances(USAL, aquFeat, aquLab);
     endif
     
 endfunction
