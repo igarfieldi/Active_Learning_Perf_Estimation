@@ -1,6 +1,6 @@
 # usage: mu = estAIKFoldCV(classifier, oracle, k, iter)
 
-function mu = estAIKFoldCV(classifier, oracle, k, iter)
+function [mu, variance] = estAIKFoldCV(classifier, oracle, k, iter)
 
 	mu = [];
 	
@@ -33,6 +33,8 @@ scalar, scalar");
 	
 	currIndex = 0;
 	mu = 0;
+    
+    accuracies = [];
 	
 	for i = 1:k
 		testIndices = [round(currIndex)+1:round(currIndex + setSize)];
@@ -41,9 +43,10 @@ scalar, scalar");
 		
 		classifier = setTrainingData(classifier, feat(trainIndices, :),
 								lab(trainIndices), getNumberOfLabels(oracle));
-		mu += computeAccuracy(classifier, feat(testIndices, :), lab(testIndices));
+		accuracies = [accuracies, computeAccuracy(classifier, feat(testIndices, :), lab(testIndices))];
 	endfor
 	
-	mu /= k;
+	mu = mean(accuracies);
+    variance = var(accuracies);
 
 endfunction

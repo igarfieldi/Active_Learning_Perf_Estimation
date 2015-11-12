@@ -22,17 +22,17 @@ testParams.runs = 1;
 testParams.samples = @(i) i^2;
 testParams.averMaxSamples = 10000;
 testParams.bsMaxSamples = 50;
-testParams.foldSize = -1;
+testParams.foldSize = 5;
 testParams.bsSamples = 50;
 testParams.useMethod = [1, 1, 1,...
                         1, 1, 1, 1,...
                         1, 1, 1, 1,...
-                        0, 1, 0, 0,...
-                        0, 0, 0, 0];
+                        0, 0, 0, 0,...
+                        0, 1, 0, 0];
 
 functionParams = struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
                         "bounds", [0, 1; -Inf, 0; -Inf, 0],
-                        "inits", [0, 1, 1; 1, 2, 2]);
+                        "inits", [0, 1, 1; 1, 2, 3]);
 
 data = dataReader();
 classifier = parzenWindowClassifier();
