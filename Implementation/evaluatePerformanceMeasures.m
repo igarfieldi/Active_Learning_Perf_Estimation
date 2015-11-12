@@ -63,7 +63,7 @@ activeLearner,struct, struct");
             
             # use adaptive incremental K-fold cross-validation
             if(testParams.useMethod(2))
-                mus(r, i, 2) = estAIKFoldCV(classifier, currOracle, testParams.foldSize);
+                [mus(r, i, 2), vars(r, i, 2)] = estAIKFoldCV(classifier, currOracle, testParams.foldSize);
             endif
 			
 			# use .632+ bootstrapping

@@ -35,12 +35,12 @@ methodNames = {"Holdout", "CV", ".632+",...
                     "MCFitNI", "SuperMCFitNI", "AverFitNI", "632FitNI",...
                     "MCFitWNI", "SuperMCFitWNI", "AverFitWNI", "632FitWNI"};
 
-testParams.iterations = 40;
+testParams.iterations = 30;
 testParams.runs = 200;
 testParams.samples = @(i) 2*i;
 testParams.averMaxSamples = 1000;
 testParams.bsMaxSamples = 50;
-testParams.foldSize = -1;
+testParams.foldSize = 5;
 testParams.bsSamples = 50;
 testParams.useMethod = [1, 1, 0,...
                         0, 0, 0, 0,...
@@ -55,12 +55,12 @@ functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
                         "bounds", [0, 2; 0, Inf; -Inf, Inf],
                         "inits", [0, 0, 0.5; 2, 6, 8])];
 
-dataFiles = {"checke1.mat", "2dData.mat", "seeds.mat", "abaloneQuarter.mat"};
+dataFiles = {"checke1.mat", "2dData.mat", "seeds.mat", "abaloneReduced.mat"};
 #		1		82				172			
 #		2		22				53			63.6			111.6
 #		3		80.9			79.8		125.83			300.28
 
-useFile = 4;
+useFile = 2;
 useAL = 1;
 useFunc = 1;
 
