@@ -4,7 +4,7 @@ more off;
 pkg load optim;
 clear;
 
-basePath = fileparts(program_invocation_name())
+basePath = pwd();
 
 dataDir = [basePath, "\\data\\"];
 resDir = [basePath, "\\results\\"];
@@ -44,11 +44,12 @@ data = readData(data, [dataDir, useFile]);
 classifier = estimateSigma(classifier, getFeatureVectors(data));
 orac = oracle(getFeatureVectors(data), getLabels(data), length(unique(getLabels(data))));
 
-[~, mus, vars] = evaluatePerformanceMeasures(classifier, orac, ALs{useAL},
+[~, mus, vars, times] = evaluatePerformanceMeasures(classifier, orac, ALs{useAL},
                                             testParams, functionParams);
 
 mus = mus
 vars = vars
+times = times
 
 storeResults([resDir, "res_", num2str(useAL), "_", num2str(time()),...
-				"_", num2str(randi(20000000)), "_", useFile], mus, vars);
+				"_", num2str(randi(20000000)), "_", useFile], mus, vars, times);

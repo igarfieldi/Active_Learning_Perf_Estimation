@@ -1,11 +1,12 @@
-# usage: [newMus, newVars] = addResults(path, mus, vars)
+# usage: [newMus, newVars, newTimes] = addResults(path, mus, vars, times)
 
-function [newMus, newVars] = addResults(path, mus, vars)
+function [newMus, newVars, newTimes] = addResults(path, mus, vars, times)
 
 	newMus = [];
 	newVars = [];
+	newTimes = [];
 	
-	if(nargin != 3)
+	if(nargin != 4)
 		print_usage();
 	elseif(!ischar(path))
 		error("IO/storeResults: requires chars, ..., ...");
@@ -13,14 +14,16 @@ function [newMus, newVars] = addResults(path, mus, vars)
 	
     oldMus = [];
     oldVars = [];
+	oldTimes = [];
     
     if(exist(path, "file") == 2)
-        [oldMus, oldVars] = loadResults(path);
+        [oldMus, oldVars, oldTimes] = loadResults(path);
     endif
 	
 	newMus = cat(1, oldMus, mus);
 	newVars = cat(1, oldVars, vars);
+	newTimes = cat(1, oldTimes, times);
 	
-	storeResults(path, newMus, newVars);
+	storeResults(path, newMus, newVars, newTimes);
 
 endfunction
