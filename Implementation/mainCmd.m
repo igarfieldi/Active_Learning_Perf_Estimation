@@ -6,10 +6,10 @@ clear;
 
 basePath = pwd();
 
-dataDir = [basePath, "\\data\\"];
-resDir = [basePath, "\\results\\"];
+dataDir = [basePath, "/data/"];
+resDir = [basePath, "/results/"];
 
-addpath(genpath(basePath()));
+addpath(genpath(basePath));
 
 global debug = 1;
 
@@ -31,8 +31,10 @@ testParams.useMethod = [1, 1, 1,...
                         0, 1, 0, 0];
 
 functionParams = struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
+						"derivative", @(x, f, p, dp, F, bounds) [ones(length(x), 1),...
+											exp(p(3).*x), p(2).*x.+exp(p(3).*x)],
                         "bounds", [0, 1; -Inf, 0; -Inf, 0],
-                        "inits", [0, 1, 1; 1, 2, 3]);
+                        "inits", [0, 1, 1; 1, 2, 2]);
 
 data = dataReader();
 classifier = parzenWindowClassifier();
