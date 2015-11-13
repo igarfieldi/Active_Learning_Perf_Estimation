@@ -1,0 +1,729 @@
+% This file was created with JabRef 2.10.
+% Encoding: UTF8
+
+
+@InProceedings{GuEtal2001,
+  Title                    = {Modelling Classification Performance for Large Data Sets},
+  Author                   = {Gu, Baohua and Hu, Feifang and Liu, Huan},
+  Booktitle                = {Advances in Web-Age Information Management, Second International Conference,
+ {WAIM} 2001, Xi'an, China, July 9-11, 2001, Proceedings},
+  Year                     = {2001},
+  Pages                    = {317--328},
+
+  Abstract                 = {For many learning algorithms, their learning accuracy will increase as the size of training data increases, forming the well-known learning curve. Usually a learning curve can be fitted by interpolating or extrapolating some points on it with a specified model. The obtained learning curve can then be used to predict the maximum achievable learning accuracy or to estimate the amount of data needed to achieve an expected learning accuracy, both of which will be especially meaningful to data mining on large data sets. Although some models have been proposed to model learning curves, most of them do not test their applicability to large data sets. In this paper, we focus on this issue. We empirically compare six potentially useful models by fitting learning curves of two typical classification algorithms—C4.5 (decision tree) and LOG (logistic discrimination) on eight large UCI benchmark data sets. By using all available data for learning, we fit a full-length learning curve; by using a small portion of the data, we fit a part-length learning curve. The models are then compared in terms of two performances: (1) how well they fit a full-length learning curve, and (2) how well a fitted part-length learning curve can predict learning accuracy at the full length. Experimental results show that the power law (y=a−b∗x−c)is the best among the six models in both the performances for the two algorithms and all the data sets. These results support the applicability of learning curves to data mining.},
+  Bibsource                = {dblp computer science bibliography, http://dblp.org},
+  Biburl                   = {http://dblp.uni-trier.de/rec/bib/conf/waim/GuHL01},
+  Crossref                 = {DBLP:conf/waim/2001},
+  Doi                      = {10.1007/3-540-47714-4_29},
+  Timestamp                = {2015.08.26},
+  Url                      = {http://dx.doi.org/10.1007/3-540-47714-4_29}
+}
+
+@InProceedings{KolachinaEtal2012,
+  Title                    = {Prediction of Learning Curves in Machine Translation},
+  Author                   = {Kolachina, Prasanth and Cancedda, Nicola and Dymetman, Marc and Venkatapathy, Sriram},
+  Booktitle                = {The 50th Annual Meeting of the Association for Computational Linguistics,
+ Proceedings of the Conference, July 8-14, 2012, Jeju Island, Korea
+ - Volume 1: Long Papers},
+  Year                     = {2012},
+  Pages                    = {22--30},
+
+  Abstract                 = {Parallel data in the domain of interest is the key resource when training a statistical machine translation (SMT) system for a specific purpose. Since ad-hoc manual translation can represent a significant investment in time and money, a prior assesment of the amount of training data required to achieve a satisfactory accuracy level can be very useful. In this work, we show how to predict what the learning curve would look like if we were to manually translate increasing amounts of data.
+
+We consider two scenarios, 1) Monolingual samples in the source and target languages are available and 2) An additional small amount of parallel corpus is also available. We propose methods for predicting learning curves in both these scenarios.},
+  Bibsource                = {dblp computer science bibliography, http://dblp.org},
+  Biburl                   = {http://dblp.uni-trier.de/rec/bib/conf/acl/KolachinaCDV12},
+  Crossref                 = {DBLP:conf/acl/2012-1},
+  Timestamp                = {2015.08.26},
+  Url                      = {http://www.aclweb.org/anthology/P12-1003}
+}
+
+@Article{AirolaEtAl2001,
+  Title                    = {An experimental comparison of cross-validation techniques for estimating the area under the ROC curve},
+  Author                   = {Airola, Antti and Pahikkala, Tapio and Waegeman, Willem and De Baets, Bernard},
+  Journal                  = {Computational Statistics \& Data Analysis},
+  Year                     = {2011},
+
+  Month                    = {April},
+  Number                   = {4},
+  Pages                    = {1828-1844},
+  Volume                   = {55},
+
+  Abstract                 = {Reliable estimation of the classification performance of inferred predictive models is difficult when working with small data sets. Cross-validation is in this case a typical strategy for estimating the performance. However, many standard approaches to cross-validation suffer from extensive bias or variance when the area under the ROC curve (AUC) is used as the performance measure. This issue is explored through an extensive simulation study. Leave-pair-out cross-validation is proposed for conditional AUC-estimation, as it is almost unbiased, and its deviation variance is as low as that of the best alternative approaches. When using regularized least-squares based learners, efficient algorithms exist for calculating the leave-pair-out cross-validation estimate.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.27}
+}
+
+@InBook{Akaike1998,
+  Title                    = {Selected Papers of Hirotugu Akaike},
+  Author                   = {Hirotugu Akaike},
+  Chapter                  = {Information Theory and an Extension of the Maximum Likelihood Principle},
+  Pages                    = {199-213},
+  Publisher                = {Springer New York},
+  Year                     = {1998},
+  Series                   = {Springer Series in Statistics},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.12},
+  Url                      = {http://link.springer.com/chapter/10.1007/978-1-4612-1694-0_15}
+}
+
+@InProceedings{Bach2006,
+  Title                    = {Active Learning for misspecified generalized linear models},
+  Author                   = {Bach, Francis R.},
+  Booktitle                = {Advances in Neural Information Processing Systems 19},
+  Year                     = {2006},
+  Editor                   = {1},
+  Pages                    = {65-72},
+  Publisher                = {MIT Press},
+
+  Abstract                 = {Active learning refers to algorithmic frameworks aimed at selecting training data points in order to reduce the number of required training data points and/or improve the generalization performance of a learning method. In this paper, we present an asymptotic analysis of active learning for generalized linear models. Our analysis holds under the common practical situation of model misspecification, and is based on realistic assumptions regarding the nature of the sampling distributions, which are usually neither independent nor identical. We derive unbiased estimators of generalization performance, as well as estimators of expected reduction in generalization error after adding a new training data point, that allow us to optimize its sampling distribution through a convex optimization problem. Our analysis naturally leads to an algorithm for sequential active learning which is applicable for all tasks supported by generalized linear models (e.g., binary classification, multi-class classification, regression) and can be applied in non-linear settings through the use of Mercer kernels.},
+  Keywords                 = {"active learning" "expected error reduction"},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.21},
+  Url                      = {http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6287095&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6287095}
+}
+
+@Article{Badiru1992,
+  Title                    = {Computational survey of univariate and multivariate learning curve models},
+  Author                   = {Badiru, A. B.},
+  Journal                  = {Engineering Management, IEEE Transactions on},
+  Year                     = {1992},
+
+  Month                    = {May},
+  Number                   = {2},
+  Pages                    = {176-188},
+  Volume                   = {39},
+
+  Abstract                 = {A computational survey of the various univariate and multivariate learning curve models that have evolved over the past several years is presented. Discussions are presented to show how the models might be used for cost analysis or productivity assessment in engineering management. A computational experiment comparing a univariate model to a bivariate model is presented. While the bivariate model provides only a slightly better fit than the univariate model, it does provide more detailed information about the factor interactions, and better utilization of available data. The results of the computational experiment can be generalized for the appropriateness of multivariate models.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.22},
+  Url                      = {http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=141275&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D141275}
+}
+
+@Article{BengioEtAl2004,
+  Title                    = {No Unbiased Estimator of the Variance of K-Fold Cross-Validation},
+  Author                   = {Bengio, Yoshua and Grandvalet, Yves},
+  Journal                  = {The Journal of Machine Learning Research},
+  Year                     = {2004},
+
+  Month                    = {December},
+  Pages                    = {1089-1105},
+  Volume                   = {5},
+
+  Abstract                 = {Most machine learning researchers perform quantitative experiments to estimate generalization error and compare the performance of different algorithms (in particular, their proposed algorithm). In order to be able to draw statistically convincing conclusions, it is important to estimate the uncertainty of such estimates. This paper studies the very commonly used K-fold cross-validation estimator of generalization performance. The main theorem shows that there exists no universal (valid under all distributions) unbiased estimator of the variance of K-fold cross-validation. The analysis that accompanies this result is based on the eigen-decomposition of the covariance matrix of errors, which has only three different eigenvalues corresponding to three degrees of freedom of the matrix and three components of the total variance. This analysis helps to better understand the nature of the problem and how it can make naive estimators (that don't take into account the error correlations due to the overlap between training and test sets) grossly underestimate variance. This is confirmed by numerical experiments in which the three components of the variance are compared when the difficulty of the learning problem and the number of folds are varied.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.27},
+  Url                      = {http://papers.nips.cc/paper/2468-no-unbiased-estimator-of-the-variance-of-k-fold-cross-validation.pdf}
+}
+
+@Article{BorraEtAl2010,
+  Title                    = {Measuring the prediction error. A comparison of cross-validation, bootstrap and covariance penalty methods},
+  Author                   = {Borra, Simone and Di Ciaccio, Agostino},
+  Journal                  = {Computational Statistics \& Data Analysis},
+  Year                     = {2010},
+
+  Month                    = {December},
+  Number                   = {12},
+  Pages                    = {2976-2989},
+  Volume                   = {54},
+
+  Abstract                 = {The estimators most widely used to evaluate the prediction error of a non-linear regression model are examined. An extensive simulation approach allowed the comparison of the performance of these estimators for different non-parametric methods, and with varying signal-to-noise ratio and sample size. Estimators based on resampling methods such as Leave-one-out, parametric and non-parametric Bootstrap, as well as repeated Cross Validation methods and Hold-out, were considered. The methods used are Regression Trees, Projection Pursuit Regression and Neural Networks. The repeated-corrected 10-fold Cross-Validation estimator and the Parametric Bootstrap estimator obtained the best performance in the simulations.},
+  Keywords                 = {Prediction error; Extra-sample error; In-sample error; Optimism; Cross-validation; Leave-one-out; Bootstrap; Covariance penalty; Regression trees; Projection pursuit regression; Neural networks},
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.14},
+  Url                      = {http://www.sciencedirect.com/science/article/pii/S0167947310001064}
+}
+
+@Article{Bozdogan1987,
+  Title                    = {Model selection and Akaike's Information Criterion (AIC): The general theory and its analytical extensions},
+  Author                   = {Bozdogan, Hamparsum},
+  Journal                  = {Psychometrika},
+  Year                     = {1987},
+
+  Month                    = {September},
+  Number                   = {3},
+  Pages                    = {345-370},
+  Volume                   = {52},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.11},
+  Url                      = {http://link.springer.com/article/10.1007/BF02294361}
+}
+
+@InProceedings{BrumenEtal2004,
+  Title                    = {Early Assessment of Classification Performance},
+  Author                   = {Brumen, Bostjan and Golob, Izidor and Jaakkola, Hannu and Welzer, Tatjana and Rozman, Ivan},
+  Booktitle                = {{ACSW} Frontiers 2004, 2004 {ACSW} Workshops - the Australasian Information
+ Security Workshop (AISW2004), the Australasian Workshop on Data Mining
+ and Web Intelligence (DMWI2004), and the Australasian Workshop on
+ Software Internationalisation {(AWSI2004)} . Dunedin, New Zealand,
+ January 2004},
+  Year                     = {2004},
+  Pages                    = {91--96},
+
+  Abstract                 = {The ability to distinguish between objects is the fundamental to learning and intelligent behavior in general. The difference between two things is the information we seek; the processed information is actually the base for the knowledge. Automatic extraction of knowledge has been in interest ever since the advent of computing, and has received a wide attention with the successes of data mining. One of the tasks of data mining is also classification, which provides a mapping from attributes (observations) to pre-specified classes. Based on the distinction between the objects they are mapped into different classes. In the paper, we present an approach for early assessment of the extracted knowledge (classification models) in the terms of performance (accuracy). The assessment is based on the observation of the performance on smaller sample sizes. The solution is formally defined and used in an experiment. The results confirm the correctness of the approach.},
+  Bibsource                = {dblp computer science bibliography, http://dblp.org},
+  Biburl                   = {http://dblp.uni-trier.de/rec/bib/conf/acsw/BrumenGJWR04},
+  Timestamp                = {2015.08.22},
+  Url                      = {http://crpit.com/confpapers/CRPITV32Brumen.pdf}
+}
+
+@PhdThesis{Cortes1994,
+  Title                    = {Prediction of generalization ability in learning machines},
+  Author                   = {Cortes, Corinna},
+  School                   = {University of Rochester},
+  Year                     = {1994},
+
+  Abstract                 = {Training a learning machine from examples is accomplished by minimizing a quantitative error measure, the training error defined over a training set. A low error on the training set does not, however, guarantee a low expected error on any future example presented to the learning machine---that is, a low generalization error. .pp The main goal of the dissertation is to merge theory and practice: to develop theoretically based but experimentally adapted tools that allow an accurate prediction of the generalization error of an arbitrarily arbitrarily complex classifier. This goal is reached through experimental and theoretical studies of the relationship between the training and generalization error for a variety of learning machines. The result is the introduction of a practical and principled method for predicting the generalization error. The power and accuracy of the predictive procedure is illustrated from application to real-life problems. Theoretical inspiration for the model arises from calculations of of the expected difference between the training and generalization error for some simple learning machines. Novel computations of this character are included in the dissertation. Experimental studies yield experience with the performance ability of real-life classifiers, and result in new capacity measures for a set of classifiers. .pp The dissertation also presents a new classification algorithm, the Soft Margin Classifier algorithm, for learning with errors on the training set. The algorithm is an extension of the Optimal Margin Classifier algorithm, and is consistently found to outperform its predecessor because it absorbs out-lying and erroneous patterns in flexible margins.},
+  Timestamp                = {2015.08.26},
+  Url                      = {https://urresearch.rochester.edu/institutionalPublicationPublicView.action?institutionalItemId=652}
+}
+
+@InProceedings{CortesEtal1993,
+  Title                    = {Learning Curves: Asymptotic Values and Rate of Convergence},
+  Author                   = {Cortes, Corinna and Jackel, L. D. and Solla, Sara A. and Vapnik, Vladimir and Denker, John S.},
+  Booktitle                = {Neural Information Processing Systems},
+  Year                     = {1993},
+
+  Abstract                 = {Training classifiers on large databases is computationally demanding. It is desirable to develop efficient procedures for a reliable prediction of a classifier's suitability for implementing a given task, so that resources can be assigned to the most promising candidates or freed for exploring new classifier candidates. We propose such a practical and principled predictive method. Practical because it avoids the costly procedure of training poor classifiers on the whole training set, and principled because of its theoretical foundation. The effectiveness of the proposed procedure is demonstrated for both single and multilayer networks.},
+  Timestamp                = {2015.05.12},
+  Url                      = {http://papers.nips.cc/paper/803-learning-curves-asymptotic-values-and-rate-of-convergence.pdf}
+}
+
+@Article{Dietterich1995,
+  Title                    = {Overfitting and undercomputing in machine learning},
+  Author                   = {Dietterich, Tom},
+  Journal                  = {ACM Computing Surveys},
+  Year                     = {1995},
+
+  Month                    = {September},
+  Number                   = {3},
+  Pages                    = {326-327},
+  Volume                   = {27},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.09},
+  Url                      = {http://dl.acm.org/citation.cfm?id=212114}
+}
+
+@Article{Efron1983,
+  Title                    = {Estimating the Error Rate of a Prediction Rule: Improvement on Cross-Validation},
+  Author                   = {Efron, Bradley},
+  Journal                  = {Journal of the American Statistical Association},
+  Year                     = {1983},
+  Number                   = {382},
+  Pages                    = {316-331},
+  Volume                   = {78},
+
+  Abstract                 = {We construct a prediction rule on the basis of some data, and then we wish to estimate the error rate of this rule in classifiying future observations. Cross-validation provides a nearly unbiased estimate, using only the original data. Cross-validation turns out to be related closely to the bootstrap estimate of the error rate. This article has two purposes: to understand better the theoretical basis of the prediction problem, and to investigate some related estimators, which seem to offer considerably improved estimation in small samples.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.14},
+  Url                      = {http://www.cs.berkeley.edu/~jordan/sail/readings/archive/efron-improve_cv.pdf}
+}
+
+@Article{EfronEtAl1997,
+  Title                    = {Improvements on Cross-Validation: The .632+ Bootstrap Method},
+  Author                   = {Efron, Bradley and Tibshirani, Robert},
+  Journal                  = {Journal of the American Statistical Association},
+  Year                     = {1997},
+
+  Month                    = {June},
+  Number                   = {438},
+  Pages                    = {548-560},
+  Volume                   = {92},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.15},
+  Url                      = {http://www.stat.washington.edu/courses/stat527/s13/readings/EfronTibshirani_JASA_1997.pdf}
+}
+
+@Article{EvansEtAl2015,
+  Title                    = {Estimating Optimal Active Learning via Model Retraining Improvement},
+  Author                   = {Evans, Lewis P. G. and Adams, Niall M. and Anagnostopoulous, Christoforos},
+  Journal                  = {Journal of Machine Learning Research},
+  Year                     = {2015},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.15},
+  Url                      = {http://arxiv.org/abs/1502.01664}
+}
+
+@Article{FigueroaEtal2012,
+  Title                    = {Predicting sample size required for classification performance},
+  Author                   = {Figueroa, Rosa L. and Zeng-Treitler, Qing and Kandula, Sasikiran and Ngo, Long H.},
+  Journal                  = {BMC Medical Informatics and Decision Making},
+  Year                     = {2012},
+
+  Abstract                 = {Background
+Supervised learning methods need annotated data in order to generate efficient models. Annotated data, however, is a relatively scarce resource and can be expensive to obtain. For both passive and active learning methods, there is a need to estimate the size of the annotated sample required to reach a performance target.
+
+Methods
+We designed and implemented a method that fits an inverse power law model to points of a given learning curve created using a small annotated training set. Fitting is carried out using nonlinear weighted least squares optimization. The fitted model is then used to predict the classifier's performance and confidence interval for larger sample sizes. For evaluation, the nonlinear weighted curve fitting method was applied to a set of learning curves generated using clinical text and waveform classification tasks with active and passive sampling methods, and predictions were validated using standard goodness of fit measures. As control we used an un-weighted fitting method.
+
+Results
+A total of 568 models were fitted and the model predictions were compared with the observed performances. Depending on the data set and sampling method, it took between 80 to 560 annotated samples to achieve mean average and root mean squared error below 0.01. Results also show that our weighted fitting method outperformed the baseline un-weighted method (p < 0.05).
+
+Conclusions
+This paper describes a simple and effective sample size prediction algorithm that conducts weighted fitting of learning curves. The algorithm outperformed an un-weighted algorithm described in previous literature. It can help researchers determine annotation sample size for supervised machine learning.},
+  Timestamp                = {2015.08.26},
+  Url                      = {http://www.biomedcentral.com/1472-6947/12/8}
+}
+
+@InProceedings{vanGemertEtAl2006,
+  Title                    = {The influence of cross-validation on video classification performance},
+  Author                   = {van Gemert, Jan C. and Snoek, Cees G. M. and Veenman, Cor J. and Smeulders, Arnold W. M.},
+  Booktitle                = {MULTIMEDIA '06 Proceedings of the 14th annual ACM international conference on Multimedia},
+  Year                     = {2006},
+  Pages                    = {695-698},
+
+  Abstract                 = {Digital video is sequential in nature. When video data is used in a semantic concept classification task, the episodes are usually summarized with shots. The shots are annotated as containing, or not containing, a certain concept resulting in a labeled dataset. These labeled shots can subsequently be used by supervised learning methods (classifiers) where they are trained to predict the absence or presence of the concept in unseen shots and episodes. The performance of such automatic classification systems is usually estimated with cross-validation. By taking random samples from the dataset for training and testing as such, part of the shots from an episode are in the training set and another part from the same episode is in the test set. Accordingly, data dependence between training and test set is introduced, resulting in too optimistic performance estimates. In this paper, we experimentally show this bias, and propose how this bias can be prevented using episode-constrained crossvalidation. Moreover, we show that a 17% higher classifier performance can be achieved by using episode constrained cross-validation for classifier parameter tuning.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.27},
+  Url                      = {http://dl.acm.org/citation.cfm?id=1180786}
+}
+
+@Article{HanczarEtAl2013,
+  Title                    = {The reliability of estimated confidence intervals for classification error rates when only a single sample is available},
+  Author                   = {Hanczar, Blaise and Dougherty, Edward R.},
+  Journal                  = {PatternRecognition},
+  Year                     = {2013},
+
+  Month                    = {March},
+  Number                   = {3},
+  Pages                    = {1067-1077},
+  Volume                   = {46},
+
+  Abstract                 = {Error estimation accuracy is the salient issue regarding the validity of a classifier model. When samples are small, training-data-based error estimates tend to suffer from inaccuracy and quantification of error estimation accuracy is difficult. Numerous methods have been proposed for estimating confidence intervals for the true error based on the estimated error. This paper surveys proposed methods and quantifies their performance. Monte Carlo methods are used to obtain accurate estimates of the true confidence intervals and compare these to the intervals estimated from samples. We consider different error estimators and several proposed confidence-bound estimators. Both synthetic and real genomic data are employed. Our simulations show the majority of the confidence intervals methods have poor performance because of the difference of shape between true and estimated intervals. According to our results, the best estimation strategy is to use the 10-time 10-fold cross-validation with a confidence interval based on the standard deviation.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.27},
+  Url                      = {http://www.sciencedirect.com/science/article/pii/S0031320312004256}
+}
+
+@Book{HastieEtAl2009,
+  Title                    = {The Elements of Statistical Learning},
+  Author                   = {Hastie, Trevor and Tibshirani, Robert and Friedman, Jerome},
+  Publisher                = {Springer},
+  Year                     = {2009},
+  Edition                  = {2},
+  Series                   = {Springer Series in Statistics},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.31},
+  Url                      = {http://web.stanford.edu/~hastie/local.ftp/Springer/OLD/ESLII_print4.pdf}
+}
+
+@InBook{HofierkaEtAl2007,
+  Title                    = {Digital Terrain Modelling},
+  Author                   = {Hofierka, Jaroslav and Cebecauer, Tomáš and Šúri, Marcel},
+  Chapter                  = {Optimisation of Interpolation Parameters Using Cross-validation},
+  Pages                    = {67-82},
+  Publisher                = {Springer Berlin Heidelberg},
+  Year                     = {2007},
+
+  Abstract                 = {Quality of data used in the GIS-support tools is a critical issue, as the decisions that affect locations or areas are to be made effectively, in time and with adequate accuracy. At present, a number of European Union and national policy strategies rely on the use of quality digital elevation model (DEM) data. The accuracy, smoothness and representativeness are properties of DEM determining outputs of the support systems that are designed for assessment of renewable energy resources, flood forecasting, disaster and security management. Similarly, suitability analysis, calculating of environmental indicators and water quality monitoring within the catchments are based on the use of DEM and the decisions taken have financial and legal implications. Thus, a prerequisite for full exploitation of the potential of DEMs is to make them available for the community at sufficient accuracy and detail for a variety of applications.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.27},
+  Url                      = {http://link.springer.com/chapter/10.1007%2F978-3-540-36731-4_3#page-1}
+}
+
+@Article{IsakssonEtAl2008,
+  Title                    = {Cross-validation and bootstrapping are unreliable in small sample classification},
+  Author                   = {Isaksson, Anders and Wallman, Mikael and Göransson, Hanna and Gustafsson, Mats G.},
+  Journal                  = {PatternRecognition Letters},
+  Year                     = {2008},
+
+  Month                    = {October},
+  Number                   = {14},
+  Pages                    = {1960-1965},
+  Volume                   = {29},
+
+  Abstract                 = {The interest in statistical classification for critical applications such as diagnoses of patient samples based on supervised learning is rapidly growing. To gain acceptance in applications where the subsequent decisions have serious consequences, e.g. choice of cancer therapy, any such decision support system must come with a reliable performance estimate. Tailored for small sample problems, cross-validation (CV) and bootstrapping (BTS) have been the most commonly used methods to determine such estimates in virtually all branches of science for the last 20 years. Here, we address the often overlooked fact that the uncertainty in a point estimate obtained with CV and BTS is unknown and quite large for small sample classification problems encountered in biomedical applications and elsewhere. To avoid this fundamental problem of employing CV and BTS, until improved alternatives have been established, we suggest that the final classification performance always should be reported in the form of a Bayesian confidence interval obtained from a simple holdout test or using some other method that yields conservative measures of the uncertainty.},
+  Keywords                 = {Supervised classification; Performance estimation; Confidence interval},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.22},
+  Url                      = {http://dl.acm.org/citation.cfm?id=1410544}
+}
+
+@InProceedings{Kääriäinen2005,
+  Title                    = {Generalization Error Bounds Using Unlabeled Data},
+  Author                   = {Kääriäinen, Matti},
+  Booktitle                = {Learning Theory},
+  Year                     = {2005},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.21},
+  Url                      = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.63.2451}
+}
+
+@PhdThesis{KadieEtal1995,
+  Title                    = {Seer: Maximum Likelihood Regression for Learning-Speed Curves},
+  Author                   = {Carl Myers Kadie and David C. Wilkins},
+  School                   = {University of Illinois},
+  Year                     = {1995},
+
+  Abstract                 = {The research presented here focuses on modeling machine-learning performance. The thesis introduces Seer, a system that generates empirical observations of classification-learning performance and then uses those observations to create statistical models. The models can be used to predict the number of training examples needed to achieve a desired level and the maximum accuracy possible given an unlimited number of training examples. Seer advances the state of the art with 1) models that embody the best constraints for classification learning and most useful parameters, 2) algorithms that efficiently find maximum-likelihood models, and 3) a demonstration on real-world data from three domains of a practicable application of such modeling. The first part of the thesis gives an overview of the requirements for a good maximum-likelihood model of classification-learning performance. Next, reasonable design choices for such models are explored. Selection among such models is a task of nonlinear programming, but by exploiting appropriate problem constraints, the task is reduced to a nonlinear regression task that can be solved with an efficient iterative algorithm. The latter part of the thesis describes almost 100 experiments in the domains of soybean disease, heart disease, and audiological problems. The tests show that Seer is excellent at characterizing learning-performance and that it seems to be as good as possible at predicting learning},
+  Timestamp                = {2015.08.26},
+  Url                      = {http://research.microsoft.com/en-us/um/people/carlk/papers/kadiephdfull.htm}
+}
+
+@InProceedings{Kohavi1995,
+  Title                    = {A Study of Cross-Validation and Bootstrap for Accuracy Estimation and Model Selection},
+  Author                   = {Kohavi, Ron},
+  Booktitle                = {International Joint Conference on Artificial Intelligence},
+  Year                     = {1995},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.14}
+}
+
+@InProceedings{KohaviEtAl1996,
+  Title                    = {Bias Plus Variance Decomposition for Zero-One Loss Functions},
+  Author                   = {Kohavi, Ron and Wolpert, David H.},
+  Booktitle                = {Machine Learning: Proceedings of the Thirteenth International Conference},
+  Year                     = {1996},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.11},
+  Url                      = {ai.stanford.edu/~ronnyk/biasVar.pdf}
+}
+
+@InProceedings{KremplEtAl2014,
+  Title                    = {Probabilistic Active Learning: Toward Combining Versatility, Optimality and Efficiency},
+  Author                   = {Krempl, Georg and Kottke, Daniel and Spiliopoulou, Myra},
+  Booktitle                = {Proceedings of the 17th International Conference on Discovery Science},
+  Year                     = {2014},
+  Month                    = {October},
+
+  Abstract                 = {Mining data with minimal annotation costs requires efficient active approaches, that ideally select the optimal candidate for labelling under a user-specified classification performance measure. Common generic approaches, that are usable with any classifier and any performance measure, are either slow like error reduction, or heuristics like uncertainty sampling. In contrast, our Probabilistic Active Learning (PAL) approach offers versatility, direct optimisation of a performance measure and computational efficiency. Given a labelling candidate from a pool, PAL models both the candidate’s label and the true posterior in its neighbourhood as random variables. By computing the expectation of the gain in classification performance over both random variables, PAL then selects the candidate that in expectation will improve the classification performance the most. Extending our recent poster, we discuss the properties of PAL and perform a thorough experimental evaluation on several synthetic and real-world data sets of different sizes. Results show comparable or better classification performance
+than error reduction and uncertainty sampling, yet PAL has the same asymptotic time complexity as uncertainty sampling and is faster than error reduction.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.08},
+  Url                      = {https://kmd.cs.ovgu.de/teaching/hli/KremplKottkeSpiliopoulou2014DS_FULL.pdf}
+}
+
+@InCollection{KroghVedelsby1995,
+  Title                    = {Neural Network Ensembles, Cross Validation, and Active Learning},
+  Author                   = {Krogh, Anders and Vedelsby, Jesper},
+  Booktitle                = {Advances in Neural Information Processing Systems 7},
+  Publisher                = {Massachusetts Institute of Technology},
+  Year                     = {1995},
+
+  Abstract                 = {Learning of continuous valued functions using neural network ensembles (committees) can give improved accuracy, reliable estimation of the generalization error, and active learning. The ambiguity is defined as the variation of the output of ensemble members averaged over unlabeled data, so it quantifies the disagreement among the networks. It is discussed how to use the ambiguity in combination with cross-validation to give a reliable estimate of the ensemble generalization error, and how this type of ensemble cross-validation can sometimes improve performance. It is shown how to estimate the optimal weights of the ensemble members using unlabeled data. By a generalization of query by committee, it is finally shown how the ambiguity can be used to select new training data to be labaled in an active learning scheme.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.21},
+  Url                      = {http://papers.nips.cc/paper/1001-neural-network-ensembles-cross-validation-and-active-learning.pdf}
+}
+
+@InProceedings{PahikkalaEtAl2008,
+  Title                    = {Exact and efficient leave-pair-out cross validation for ranking RLS},
+  Author                   = {Pahikkala, Tapio and Airola, Antti and Boberg, Jorma and Salakoski, Taipo},
+  Booktitle                = {Proceedings of AKRR},
+  Year                     = {2008},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.14}
+}
+
+@Article{PerlichEtAl2003,
+  Title                    = {Tree induction vs. logistic regression: a learning-curve analysis},
+  Author                   = {Perlich, Claudia and Provost, Foster and Simonoff, Jeffrey S.},
+  Journal                  = {The Journal of Machine Learning Research},
+  Year                     = {2003},
+
+  Month                    = {December},
+  Pages                    = {211-255},
+  Volume                   = {4},
+
+  Abstract                 = {Tree induction and logistic regression are two standard, off-the-shelf methods for building models for classification. We present a large-scale experimental comparison of logistic regression and tree induction, assessing classification accuracy and the quality of rankings based on class-membership probabilities. We use a learning-curve analysis to examine the relationship of these measures to the size of the training set. The results of the study show several things. (1) Contrary to some prior observations, logistic regression does not generally outperform tree induction. (2) More specifically, and not surprisingly, logistic regression is better for smaller training sets and tree induction for larger data sets. Importantly, this often holds for training sets drawn from the same domain (that is, the learning curves cross), so conclusions about induction-algorithm superiority on a given domain must be based on an analysis of the learning curves. (3) Contrary to conventional wisdom, tree induction is effective at producing probability-based rankings, although apparently comparatively less so for a given training-set size than at making classifications. Finally, (4) the domains on which tree induction and logistic regression are ultimately preferable can be characterized surprisingly well by a simple measure of the separability of signal from noise.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.22},
+  Url                      = {http://dl.acm.org/citation.cfm?id=945375}
+}
+
+@InProceedings{Raeder2010,
+  Title                    = {Consequences of Variability in Classifier Performance Estimates},
+  Author                   = {Raeder, T. and Hoens, T. R. and Chawla, N. V.},
+  Booktitle                = {Data Mining (ICDM), 2010 IEEE 10th International Conference on},
+  Year                     = {2010},
+  Month                    = {December},
+  Pages                    = {421-430},
+
+  Abstract                 = {The prevailing approach to evaluating classifiers in the machine learning community involves comparing the performance of several algorithms over a series of usually unrelated data sets. However, beyond this there are many dimensions along which methodologies vary wildly. We show that, depending on the stability and similarity of the algorithms being compared, these sometimes-arbitrary methodological choices can have a significant impact on the conclusions of any study, including the results of statistical tests. In particular, we show that performance metrics and data sets used, the type of cross-validation employed, and the number of iterations of cross-validation run have a significant, and often predictable, effect. Based on these results, we offer a series of recommendations for achieving consistent, reproducible results in classifier performance comparisons.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.27},
+  Url                      = {http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=5693996&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D5693996}
+}
+
+@Article{RodriguezEtAl2013,
+  Title                    = {A general framework for the statistical analysis of the sources of variance for classification error estimators},
+  Author                   = {Rodríguez, Juan D. and Pérez, Aritz and Lozano, Jose A.},
+  Journal                  = {Pattern Recognition},
+  Year                     = {2013},
+
+  Month                    = {March},
+  Number                   = {3},
+  Pages                    = {855-864},
+  Volume                   = {46},
+
+  Abstract                 = {Estimating the prediction error of classifiers induced by supervised learning algorithms is important not only to predict its future error, but also to choose a classifier from a given set (model selection). If the goal is to estimate the prediction error of a particular classifier, the desired estimator should have low bias and low variance. However, if the goal is the model selection, in order to make fair comparisons the chosen estimator should have low variance assuming that the bias term is independent from the considered classifier.
+
+This paper follows the analysis proposed in [1] about the statistical properties of k-fold cross-validation estimators and extends it to the most popular error estimators: resubstitution, holdout, repeated holdout, simple bootstrap and 0.632 bootstrap estimators, without and with stratification. We present a general framework to analyze the decomposition of the variance of different error estimators considering the nature of the variance (irreducible/reducible variance) and the different sources of sensitivity (internal/external sensitivity).
+
+An extensive empirical study has been performed for the previously mentioned estimators with naive Bayes and C4.5 classifiers over training sets obtained from assorted probability distributions. The empirical analysis consists of decomposing the variances following the proposed framework and checking the independence assumption between the bias and the considered classifier. Based on the obtained results, we propose the most appropriate error estimations for model selection under different experimental conditions.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.02},
+  Url                      = {http://www.sciencedirect.com/science/article/pii/S0031320312003998}
+}
+
+@InProceedings{RoyEtAl2001,
+  Title                    = {Toward optimal active learning through monte carlo estimation of error reduction},
+  Author                   = {Roy, Nicholas and McCallum, Andrew},
+  Booktitle                = {Proceedings of the International Conference on Machine Learning},
+  Year                     = {2001},
+
+  Abstract                 = {This paper presents an active learning method that directly optimizes expected future error. This is in contrast to many other popular techniques that instead aim to reduce version space size. These methods are popular because for many learning models, closed form calculation of the expected future error is intractable. Our approach is made feasible by taking a Monte Carlo approach to estimating the expected reduction in error due to the labeling of a query. In experimental results on three real-world data sets we reach high accuracy with four times fewer labelled examples than competing methods.},
+  Keywords                 = {"active learning" "expected error reduction"},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.21},
+  Url                      = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.137.6296}
+}
+
+@Article{SahinerEtAl2008,
+  Title                    = {Classifier performance prediction for computer-aided diagnosis using a limited dataset},
+  Author                   = {Sahiner, Berkman and Chan, Heang-Ping and Hadjiiski, Lubomir},
+  Journal                  = {Medical Physics},
+  Year                     = {2008},
+  Volume                   = {35},
+
+  Abstract                 = {In a practical classifier design problem, the true population is generally unknown and the available sample is finite-sized. A common approach is to use a resampling technique to estimate the performance of the classifier that will be trained with the available sample. We conducted a Monte Carlo simulation study to compare the ability of the different resampling techniques in training the classifier and predicting its performance under the constraint of a finite-sized sample. The true population for the two classes was assumed to be multivariate normal distributions with known covariance matrices. Finite sets of sample vectors were drawn from the population. The true performance of the classifier is defined as the area under the receiver operating characteristic curve (AUC) when the classifier designed with the specific sample is applied to the true population. We investigated methods based on the Fukunaga–Hayes and the leave-one-out techniques, as well as three different types of bootstrap methods, namely, the ordinary, 0.632, and bootstrap. The Fisher’s linear discriminant analysis was used as the classifier. The dimensionality of the feature space was varied from 3 to 15. The sample size from the positive class was varied between 25 and 60, while the number of cases from the negative class was either equal to or . Each experiment was performed with an independent dataset randomly drawn from the true population. Using a total of 1000 experiments for each simulation condition, we compared the bias, the variance, and the root-mean-squared error (RMSE) of the AUC estimated using the different resampling techniques relative to the true AUC (obtained from training on a finite dataset and testing on the population). Our results indicated that, under the study conditions, there can be a large difference in the RMSE obtained using different resampling methods, especially when the feature space dimensionality is relatively large and the sample size is small. Under this type of conditions, the 0.632 and bootstrap methods have the lowest RMSE, indicating that the difference between the estimated and the true performances obtained using the 0.632 and bootstrap will be statistically smaller than those obtained using the other three resampling methods. Of the three bootstrap methods, the bootstrap provides the lowest bias. Although this investigation is performed under some specific conditions, it reveals important trends for the problem of classifier performance prediction under the constraint of a limited dataset.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.27},
+  Url                      = {http://scitation.aip.org/content/aapm/journal/medphys/35/4/10.1118/1.2868757}
+}
+
+@InProceedings{SawadeEtAl2010,
+  Title                    = {Active Risk Estimation},
+  Author                   = {Sawade, Christoph and Landwehr, Niels and Bickel, Steffen and Scheffer, Tobias},
+  Booktitle                = {Proceedings of the 27th International Conference on Machine Learning},
+  Year                     = {2010},
+
+  Abstract                 = {We address the problem of evaluating the risk of a given model accurately at minimal labeling costs. This problem occurs in situations in which risk estimates cannot be obtaind from held-out training data, because the training data are unavailable or do not reflect the desired test distribution. We study active risk estimation processes in which instances are actively selected by a sampling process from a pool of unlabeled test instances and their labels are queried. We derive the sampling distribution that minimizes the estimation error of the active risk estimator when used to select instances from the pool. An analysis of the distribution that governs the estimator leads to confidence intervals. We empirically study conditions under which the active risk estimate is more accurate than a standard risk estimate that draws equally many instances from the test distribution.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.21},
+  Url                      = {http://machinelearning.wustl.edu/mlpapers/paper_files/icml2010_SawadeLBS10.pdf}
+}
+
+@InProceedings{SchefferEtAl2001,
+  Title                    = {Active Hidden Markov Models for Information Extraction},
+  Author                   = {Scheffer, Tobias and Decomain, Christian and Wrobel, Stefan},
+  Booktitle                = {Proceedings of the Internation Symposium on Intelligent Data Analysis},
+  Year                     = {2001},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.08}
+}
+
+@Article{Schwarz1978,
+  Title                    = {Estimating the Dimension of a Model},
+  Author                   = {Schwarz, Gideon},
+  Journal                  = {The Annals of Statistics},
+  Year                     = {1978},
+  Number                   = {2},
+  Pages                    = {461-464},
+  Volume                   = {6},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.11},
+  Url                      = {http://projecteuclid.org/euclid.aos/1176344136}
+}
+
+@InCollection{SeoEtAl2000,
+  Title                    = {Gaussian Process Regression: Active Data Selection and Test Point Rejection},
+  Author                   = {Seo, Sambu and Wallat, Marko and Graepel, Thore and Obermayer, Klaus},
+  Booktitle                = {Mustererkennung 2000},
+  Publisher                = {Springer-Verlag Berlin Heidelberg},
+  Year                     = {2000},
+
+  Abstract                 = {We consider active data selection and test point rejection strategies for Gaussian process regression based on the variance of the posterior over target values. Gaussian process regression is viewed as transductive regression that provides target distributions for given points rather than selecting an explicit regression function. Since not only the posterior mean but also the posterior variance are easily calculated we use this additional information to two ends: Active data selection is performed by either querying at points of high estimated posterior variance or at points that minimize the estimated posterior variance averaged over the input distribution of interest or - in a transductive manner - averaged over the test set. Test point rejection is performed using the estimated posterior variance as a confidence measure. We find for both a two-dimensional toy problem and for a real-world benchmark problem that the variance is a reasonable criterion for both active data selection and test point rejection.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.21},
+  Url                      = {link.springer.com/chapter/10.1007/978-3-642-59802-9_4}
+}
+
+@Article{Shawe-Taylor1998,
+  Title                    = {Classification Accuracy Based on Observed Margin},
+  Author                   = {Shawe-Taylor, J.},
+  Journal                  = {Algorithmica},
+  Year                     = {1998},
+
+  Month                    = {September},
+  Pages                    = {157-172},
+  Volume                   = {22},
+
+  Abstract                 = {Following recent results [10] showing the importance of the fat-shattering dimension in explaining the beneficial effect of a large margin on generalization performance, the current paper investigates how the margin on a test example can be used to give greater certainty of correct classification in the distribution independent model. Hence, generalization analysis is possible at three distinct phases, a priori using a standard pac analysis, after training based on properties of the chosen hypothesis [10], and finally in this paper at testing based on properties of the test example. The results also show that even if the classifier does not classify all of the training examples correctly, the fact that a new example has a larger margin than that on the misclassified test examples, can be used to give very good estimates for the generalization performance in terms of the fat-shattering dimension measured at a scale proportional to the excess margin. The estimate relies on a sufficiently large number of the correctly classified training examples having a margin roughly equal to that used to estimate generalization, indicating that the corresponding output values need to be "well sampled."},
+  Timestamp                = {2015.08.22},
+  Url                      = {http://link.springer.com/article/10.1007%2FPL00013827#page-1}
+}
+
+@Misc{Singh2005,
+  Title                    = {Modeling Performance of Different Classification Methods: Deviation from the Power Law},
+
+  Author                   = {Singh, Sameer},
+  HowPublished             = {Project Report},
+  Year                     = {2005},
+
+  Abstract                 = {This project studied the effect of varying the training size for different classification techniques. The learning curves were then regressed using four common equations. In the restricted domain which was studied, the logarithmic equation was the best fit. This contradicts the earlier work carried out on Decision Trees in which the performance was best modeled by the Power Law. The other classification techniques studied in this project were K-Nearest Neighbors, Support Vector Machines, and Artificial Neural Networks, which have not yet been included in such a study. A preliminary study of how the modeling can be used for predicting the performance of the project was also undertaken. The equations which best predicted the performance were not same as the ones which best fit the final curve, and depended on the classification method more than the datase},
+  Timestamp                = {2015.08.26},
+  Url                      = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.102.5455&rep=rep1&type=pdf}
+}
+
+@Article{TibshiraniEtAl1999,
+  Title                    = {The Covariance Inflation Criterion for Adaptive Model Selection},
+  Author                   = {Tibshirani, Robert and Knight, Keith},
+  Journal                  = {Journal of the Royal Statistical Society. Series B (Statistical Methodology)},
+  Year                     = {1999},
+  Number                   = {3},
+  Pages                    = {529-546},
+  Volume                   = {61},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.11},
+  Url                      = {http://www.jstor.org/stable/2680721}
+}
+
+@InBook{TsamardinosEtAl2014,
+  Title                    = {Artificial Intelligence: Methods and Applications},
+  Author                   = {Tsamardinos, Ioannis and Rakhshani, Amin and Lagani, Vincenzo},
+  Chapter                  = {Performance-Estimation Properties of Cross-Validation-Based Protocols with Simultaneous Hyper-Parameter Optimization},
+  Pages                    = {1-14},
+  Publisher                = {Springer International Publishing},
+  Year                     = {2014},
+
+  Abstract                 = {In a typical supervised data analysis task, one needs to perform the following two tasks: (a) select the best combination of learning methods (e.g., for variable selection and classifier) and tune their hyper-parameters (e.g., K in K-NN), also called model selection, and (b) provide an estimate of the performance of the final, reported model. Combining the two tasks is not trivial because when one selects the set of hyper-parameters that seem to provide the best estimated performance, this estimation is optimistic (biased / overfitted) due to performing multiple statistical comparisons. In this paper, we confirm that the simple Cross-Validation with model selection is indeed optimistic (overestimates) in small sample scenarios. In comparison the Nested Cross Validation and the method by Tibshirani and Tibshirani provide conservative estimations, with the later protocol being more computationally efficient. The role of stratification of samples is examined and it is shown that stratification is beneficial.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.27},
+  Url                      = {http://link.springer.com/chapter/10.1007/978-3-319-07064-3_1}
+}
+
+@Book{Vapnik1982,
+  Title                    = {Estimation of Dependences Based on Empirical Data},
+  Author                   = {Vapnik, Vladimir},
+  Publisher                = {Springer New York},
+  Year                     = {1982},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.14},
+  Url                      = {http://www.springer.com/us/book/9780387308654}
+}
+
+@Patent{VelipasaogluEtAl2008,
+  Title                    = {System and method for estimating performance of a classifier},
+  Nationality              = {United States of America},
+  Number                   = {US 7383241 B2},
+  Year                     = {2008},
+  Yearfiled                = {2004},
+  Author                   = {Velipasaoglu, Omer Emre and Schuetze, Hinrich and Yu, Chia-Hao and Stukov, Stan},
+  Day                      = {3},
+  Dayfiled                 = {14},
+  Month                    = {June},
+  Monthfiled               = {July},
+  Url                      = {https://www.google.com/patents/US7383241},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.21}
+}
+
+@Article{Weakliem1999,
+  Title                    = {A Critique of the Bayesian Information Criterion for Model Selection},
+  Author                   = {Weakliem, David L.},
+  Journal                  = {Sociological Methods Research},
+  Year                     = {1999},
+
+  Month                    = {February},
+  Number                   = {3},
+  Pages                    = {359-397},
+  Volume                   = {27},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.11},
+  Url                      = {smr.sagepub.com/content/27/3/359.short}
+}
+
+@Article{WoodEtAl2007,
+  Title                    = {Classification based upon gene expression data: bias and precision of error rates},
+  Author                   = {Wood, Ian A. and Visscher, Peter M. and Mengersen, Kerrie L.},
+  Journal                  = {Bioinformatics},
+  Year                     = {2007},
+
+  Month                    = {June},
+  Number                   = {11},
+  Pages                    = {1363-1370},
+  Volume                   = {23},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.15},
+  Url                      = {https://keppel.qimr.edu.au/contents/p/staff/CVPV127.pdf}
+}
+
+@Article{Yelle1979,
+  Title                    = {The Learning Curve: Historical Review and Comprehensive Survey},
+  Author                   = {Yelle, Louis E.},
+  Journal                  = {Decision Sciences},
+  Year                     = {1979},
+
+  Month                    = {April},
+  Number                   = {2},
+  Pages                    = {302-328},
+  Volume                   = {10},
+
+  Abstract                 = {The use of the learning curve has been receiving increasing attention in recent years. Much of this increase has been due to learning curve applications other than in the traditional learning curve areas. A comprehensive survey of developments in the learning curve area has never been published. The closest thing to a survey was by Asher in 1956. His study focused exclusively on military applications during and immediately after World War II. This paper summarizes the learning curve literature from World War II to the present, emphasizing developments since the study by Asher. Particular emphasis is given to identifying the new directions into which the learning curve has made recent inroads and identifying fruitful areas for future research.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.22},
+  Url                      = {http://onlinelibrary.wiley.com/doi/10.1111/j.1540-5915.1979.tb00026.x/abstract}
+}
+
+@Article{JungboEtAl2010,
+  Title                    = {Confidence-based stopping criteria for active learning for data annotation},
+  Author                   = {Zhu, Jungbo and Wang, Huizhen and Hovy, Eduard and Ma, Matthew},
+  Journal                  = {ACM Transactions on Speech and Language Processing},
+  Year                     = {2010},
+
+  Month                    = {April},
+  Volume                   = {6},
+
+  Abstract                 = {The labor-intensive task of labeling data is a serious bottleneck for many supervised learning approaches for natural language processing applications. Active learning aims to reduce the human labeling cost for supervised learning methods. Determining when to stop the active learning process is a very important practical issue in real-world applications. This article addresses the stopping criterion issue of active learning, and presents four simple stopping criteria based on confidence estimation over the unlabeled data pool, including maximum uncertainty, overall uncertainty, selected accuracy, and minimum expected error methods. Further, to obtain a proper threshold for a stopping criterion in a specific task, this article presents a strategy by considering the label change factor to dynamically update the predefined threshold of a stopping criterion during the active learning process. To empirically analyze the effectiveness of each stopping criterion for active learning, we design several comparison experiments on seven real-world datasets for three representative natural language processing applications such as word sense disambiguation, text classification and opinion analysis.},
+  Keywords                 = {"active learning" "expected error reduction"},
+  Owner                    = {Florian},
+  Timestamp                = {2015.08.21},
+  Url                      = {http://dl.acm.org/citation.cfm?id=1753784}
+}
+
+@InProceedings{ZhuEtAl2008,
+  Title                    = {Active Learning with Sampling by Uncertainty and Density for Word Sense Disambiguation and Text Classification},
+  Author                   = {Zhu, Jingbo and Wang, Huizhen and Yao, Tianshun and Tsou, Benjamin K.},
+  Booktitle                = {Proceedings of the 22nd International Conference on Computational Linguistics},
+  Year                     = {2008},
+  Month                    = {August},
+  Pages                    = {1137-1144},
+
+  Abstract                 = {This paper addresses two issues of active learning. Firstly, to solve a problem of uncertainty sampling that it often fails by selecting outliers, this paper presents a new selective sampling technique, sampling by uncertainty and density (SUD), in which a k-Nearest-Neighbor-based density measure is adopted to determine whether an unlabeled example is an outlier. Secondly, a technique of sampling by clustering (SBC) is applied to build a representative initial training data set for active learning. Finally, we implement a new algorithm of active learning with SUD and SBC techniques. The experimental results from three real-world data sets show that our method outperforms competing methods, particularly at the early stages of active learning.},
+  Owner                    = {Florian},
+  Timestamp                = {2015.09.08},
+  Url                      = {https://www.aclweb.org/anthology/C/C08/C08-1143.pdf}
+}
+
+@Article{ZhuEtAl2009,
+  Title                    = {Introduction to semi-supervised learning},
+  Author                   = {Zhu, Xiaojin and Goldberg, Andrew B},
+  Journal                  = {Synthesis lectures on artificial intelligence and machine learning},
+  Year                     = {2009},
+  Number                   = {1},
+  Pages                    = {1--130},
+  Volume                   = {3},
+
+  Owner                    = {Florian},
+  Publisher                = {Morgan \& Claypool Publishers},
+  Timestamp                = {2015.09.10}
+}
+

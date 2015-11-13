@@ -1,0 +1,59 @@
+Executable = /usr/bin/octave
+Universe = vanilla
+initialdir = /home/dkottke/iti/2015_bt_bethe/Implementation
+request_cpus = 1
+request_memory = 4000
+getenv = True
+error = ../log/$(Process).e
+output = ../log/$(Process).o
+log = ../log/logfilename_$(Process)
+
+#### tests:
+
+#  abalone PAL
+Arguments = mainCmd.m abaloneReduced.mat 3
+Queue 300
+
+#  seeds PAL
+Arguments = mainCmd.m seeds.mat 3
+Queue 300
+
+#  abalone uncertainty sampling
+Arguments = mainCmd.m abaloneReduced.mat 2
+Queue 300
+
+#  abalone random sampling
+Arguments = mainCmd.m abaloneReduced.mat 1
+Queue 300
+
+#  2dData PAL
+Arguments = mainCmd.m 2dData.mat 3
+Queue 300
+
+#  checke1 PAL
+Arguments = mainCmd.m checke1.mat 3
+Queue 300
+
+#  seeds uncertainty sampling
+Arguments = mainCmd.m seeds.mat 2
+Queue 300
+
+#  seeds random sampling
+Arguments = mainCmd.m seeds.mat 1
+Queue 300
+
+#  checke1 uncertainty sampling
+Arguments = mainCmd.m checke1.mat 2
+Queue 300
+
+#  2dData uncertainty sampling
+Arguments = mainCmd.m 2dData.mat 2
+Queue 300
+
+#  checke1 random sampling
+Arguments = mainCmd.m checke1.mat 1
+Queue 300
+
+#  2dData random sampling
+Arguments = mainCmd.m 2dData.mat 1
+Queue 300
