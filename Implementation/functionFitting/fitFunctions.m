@@ -67,9 +67,10 @@ to be scalar");
 		
 		while(counter < trials)
 			init = (rand(1, 3).-functionParams.inits(1, :)) .* functionParams.inits(2, :);
-            [values, fittedParams, cvg, ~, ~, ~, ~, ~] = leasqr(X, Y, init,
+            [values, fittedParams] = leasqr(X, Y, init,
                                         functionParams.template, 0.0001,
-                                        300, weights, [], [], options);
+                                        300, weights, 0.001 * ones (size (init)),
+										functionParams.derivative, options);
             
 			currMSE = sum((values' .- Y) .^ 2);
 			counter++;
