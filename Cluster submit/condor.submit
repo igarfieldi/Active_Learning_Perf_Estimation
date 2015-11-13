@@ -1,6 +1,6 @@
 Executable = /usr/bin/octave
 Universe = vanilla
-initialdir = /home/dkottke/iti/actlearn/code/experiments/staticComparisonOpal
+initialdir = /home/dkottke/iti/2015_bt_bethe/Implementation
 request_cpus = 1
 request_memory = 4000
 getenv = True
