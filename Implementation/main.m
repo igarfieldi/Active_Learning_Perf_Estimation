@@ -4,8 +4,8 @@ more off;
 pkg load optim;
 clear;
 
-dataDir = ".\\data\\";
-resDir = ".\\results\\";
+dataDir = "./data/";
+resDir = "./results/";
 
 addpath(genpath(pwd()));
 
@@ -36,7 +36,7 @@ methodNames = {"Holdout", "CV", ".632+",...
                     "MCFitWNI", "SuperMCFitWNI", "AverFitWNI", "632FitWNI"};
 
 testParams.iterations = 15;
-testParams.runs = 10;
+testParams.runs = 1;
 testParams.samples = @(i) 2*i;
 testParams.averMaxSamples = 1000;
 testParams.bsMaxSamples = 50;
@@ -49,9 +49,12 @@ testParams.useMethod = [1, 0, 0,...
                         0, 1, 0, 0];
 
 functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
+						"derivative", @(x, f, p, dp, F, bounds) [ones(length(x), 1),...
+											exp(p(3).*x), p(2).*x.+exp(p(3).*x)],
                         "bounds", [0, 1; -Inf, 0; -Inf, 0],
                         "inits", [0, 1, 1; 1, 2, 2]),
                 struct("template", @(x, p) -p(1)./2 .+ p(1)./(1.+exp(-p(2).*(x.-p(3)))),
+						"derivative", [],
                         "bounds", [0, 2; 0, Inf; -Inf, Inf],
                         "inits", [0, 0, 0.5; 2, 6, 8])];
 

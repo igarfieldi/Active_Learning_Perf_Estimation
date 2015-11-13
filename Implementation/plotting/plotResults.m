@@ -15,7 +15,7 @@ matrix, cell");
     used(used == 0) = [];
     mus = mus(:, :, used);
     vars = vars(:, :, used);
-    colors = colors(used, :);
+	colors = colors(used, :);
     names = names(used);
     
     # get the averages
