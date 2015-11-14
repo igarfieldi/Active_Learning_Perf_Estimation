@@ -1,6 +1,7 @@
 1;
 clc;
 more off;
+warnings("off");
 pkg load optim;
 clear;
 
