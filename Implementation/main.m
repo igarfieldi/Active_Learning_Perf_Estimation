@@ -1,6 +1,7 @@
 1;
 clc;
 more off;
+warning("off");
 pkg load optim;
 clear;
 
@@ -27,7 +28,7 @@ colors = [1.00000   0.00000   1.00000
 		  1.00000   0.00000   0.00000
 		  0.66667   0.00000   0.00000];
 colors = jet(19);
-colors = [1, 0, 0; 0, 0, 1];
+#colors = [1, 0, 0; 0, 0, 1];
 
 methodNames = {"Holdout", "CV", ".632+",...
                     "MCFit", "SuperMCFit", "AverFit", "632Fit",...
@@ -36,15 +37,15 @@ methodNames = {"Holdout", "CV", ".632+",...
                     "MCFitWNI", "SuperMCFitWNI", "AverFitWNI", "632FitWNI"};
 
 testParams.iterations = 15;
-testParams.runs = 1;
+testParams.runs = 10;
 testParams.samples = @(i) 2*i;
 testParams.averMaxSamples = 1000;
 testParams.bsMaxSamples = 50;
 testParams.foldSize = 5;
 testParams.bsSamples = 50;
-testParams.useMethod = [1, 0, 0,...
-                        0, 0, 0, 0,...
-                        0, 0, 0, 0,...
+testParams.useMethod = [1, 1, 1,...
+                        1, 1, 1, 1,...
+                        1, 1, 1, 1,...
                         0, 0, 0, 0,...
                         0, 1, 0, 0];
 
