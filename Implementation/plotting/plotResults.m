@@ -15,7 +15,7 @@ matrix, cell");
     used(used == 0) = [];
     mus = mus(:, :, used);
     vars = vars(:, :, used);
-	colors = colors(used, :);
+	#colors = colors(used, :);
     names = names(used);
     
     # get the averages
@@ -43,6 +43,7 @@ matrix, cell");
     legend(names, "location", "southeastoutside");
     axis([3, size(mus, 2), 0, 1]);
     
+    #{
     # plot error (simple difference)
     handles(2) = figure(figures(2));
     clf;
@@ -85,5 +86,6 @@ matrix, cell");
         legend(names(2:end), "location", "southeastoutside");
         axis([3, size(variance, 2)]);
     endif
+    #}
 
 endfunction

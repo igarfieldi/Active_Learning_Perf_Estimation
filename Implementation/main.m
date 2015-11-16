@@ -36,8 +36,8 @@ methodNames = {"Holdout", "CV", ".632+",...
                     "MCFitNI", "SuperMCFitNI", "AverFitNI", "632FitNI",...
                     "MCFitWNI", "SuperMCFitWNI", "AverFitWNI", "632FitWNI"};
 
-testParams.iterations = 15;
-testParams.runs = 10;
+testParams.iterations = 3;
+testParams.runs = 1;
 testParams.samples = @(i) 2*i;
 testParams.averMaxSamples = 1000;
 testParams.bsMaxSamples = 50;
@@ -64,8 +64,8 @@ dataFiles = {"checke1.mat", "2dData.mat", "seeds.mat", "abaloneReduced.mat"};
 #		2		22				53			63.6			111.6
 #		3		80.9			79.8		125.83			300.28
 
-useFile = 2;
-useAL = 1;
+useFile = 4;
+useAL = 3;
 useFunc = 1;
 
 
@@ -82,7 +82,6 @@ orac = oracle(getFeatureVectors(data), getLabels(data), length(unique(getLabels(
 
 [~, mus, vars, times] = evaluatePerformanceMeasures(classifier, orac, ALs{useAL},
                                             testParams, functionParams(useFunc));
-
 
 storeResults("results/testingsChecke1.mat", mus, vars, times);
 

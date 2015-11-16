@@ -20,7 +20,7 @@ useAL = str2num(args{2});
 
 testParams.iterations = 30;
 testParams.runs = 1;
-testParams.samples = @(i) i^2;
+testParams.samples = @(i) min(i^2, ceil(10000 / i));
 testParams.averMaxSamples = 10000;
 testParams.bsMaxSamples = 50;
 testParams.foldSize = 5;

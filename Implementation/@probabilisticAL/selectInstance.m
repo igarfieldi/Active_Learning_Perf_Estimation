@@ -77,13 +77,26 @@ parzenWindowClassifier, oracle, matrix");
 			evalPoints = linspace(0.0001, 0.9999, 10000);
 			pgain = trapz(evalPoints', pgainFunc(evalPoints'), 1);
 			
-			#pgain = quadv(pgainFunc, 0, 1) .* dx;
+            # Octave's default precision isn't enough to distinguish small
+            # nx from zero, so we get a bunch of NaNs (which screws with the index search).
+            # Since we cannot make out the maximum pgain for these cases anyway,
+            # set them to zero (makes no difference if we have any values != NaN,
+            # if we don't, well... sucks, but unless somebody has the nerve to 
+            # rewrite everything with either symbolic evaluation or 128+ bit precision,
+            # there's no way around it)
+            pgain(find(isnan(pgain))) = 0;
 			
             
 			# find instances that maximize the pgain (if multiple maxima, select random)
 			maxPgain = max(pgain);
             maxIndices = find(pgain == maxPgain);
-            nextLabelIndex = maxIndices(floor(rand(1) * length(maxIndices)) + 1);
+            
+            # In theory shouldn't happen, but just to make sure there's no bs going on
+            if(length(maxIndices) < 1)
+                nextLabelIndex = randi(unlabeledSize);
+            else
+                nextLabelIndex = maxIndices(randi(length(maxIndices)));
+            endif
         endif
         
         # query the wanted instance
