@@ -18,7 +18,7 @@ classifier, oracle");
     # if unlabeled instances remain
     if(unlabeledSize > 0)
         # select a random one
-        nextLabelIndex = floor(rand(1) * unlabeledSize) + 1;
+        nextLabelIndex = randi(unlabeledSize);
         [oracle, aquFeat, aquLab] = queryInstance(oracle, nextLabelIndex);
         
         # add it to the active learner
