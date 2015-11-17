@@ -28,7 +28,7 @@ colors = [1.00000   0.00000   1.00000
 		  1.00000   0.00000   0.00000
 		  0.66667   0.00000   0.00000];
 colors = jet(19);
-#colors = [1, 0, 0; 0, 0, 1];
+colors = [1, 0, 1; 0, 0, 1; 0, 1, 0; 1, 0, 0];
 
 methodNames = {"Holdout", "CV", ".632+",...
                     "MCFit", "SuperMCFit", "AverFit", "632Fit",...
@@ -36,37 +36,44 @@ methodNames = {"Holdout", "CV", ".632+",...
                     "MCFitNI", "SuperMCFitNI", "AverFitNI", "632FitNI",...
                     "MCFitWNI", "SuperMCFitWNI", "AverFitWNI", "632FitWNI"};
 
-testParams.iterations = 3;
-testParams.runs = 1;
-testParams.samples = @(i) 2*i;
-testParams.averMaxSamples = 1000;
+testParams.iterations = 12;
+testParams.runs = 10;
+testParams.samples = @(i) i^2;
+testParams.averMaxSamples = 10000;
 testParams.bsMaxSamples = 50;
 testParams.foldSize = 5;
 testParams.bsSamples = 50;
-testParams.useMethod = [1, 1, 1,...
-                        1, 1, 1, 1,...
-                        1, 1, 1, 1,...
+testParams.useMethod = [1, 0, 0,...
+                        0, 0, 1, 0,...
                         0, 0, 0, 0,...
-                        0, 1, 0, 0];
+                        0, 0, 0, 0,...
+                        0, 0, 0, 0];
 
 functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
 						"derivative", @(x, f, p, dp, F, bounds) [ones(length(x), 1),...
 											exp(p(3).*x), p(2).*x.+exp(p(3).*x)],
+						"params", 3,
                         "bounds", [0, 1; -Inf, 0; -Inf, 0],
                         "inits", [0, 1, 1; 1, 2, 2]),
                 struct("template", @(x, p) -p(1)./2 .+ p(1)./(1.+exp(-p(2).*(x.-p(3)))),
 						"derivative", [],
+						"params", 3,
                         "bounds", [0, 2; 0, Inf; -Inf, Inf],
-                        "inits", [0, 0, 0.5; 2, 6, 8])];
+                        "inits", [0, 0, 0.5; 2, 6, 8]),
+                struct("template", @(x, p) p(1) .+ p(2) .* x,
+						"derivative", @(x, f, p, dp, F, bounds) [ones(length(x), 1), x],
+						"params", 2,
+                        "bounds", [0, 1; 0, Inf],
+                        "inits", [0, 0; 1, 4])];
 
 dataFiles = {"checke1.mat", "2dData.mat", "seeds.mat", "abaloneReduced.mat"};
 #		1		82				172			
 #		2		22				53			63.6			111.6
 #		3		80.9			79.8		125.83			300.28
 
-useFile = 4;
-useAL = 3;
-useFunc = 1;
+useFile = 1;
+useAL = 1;
+useFunc = 3;
 
 
 data = dataReader();

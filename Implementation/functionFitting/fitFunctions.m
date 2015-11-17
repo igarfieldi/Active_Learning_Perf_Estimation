@@ -68,19 +68,20 @@ to be scalar");
 		while(counter < trials)
 			# Select initial parameters for fitting
 			# The range (in form of a substract and scaling factor) are given as parameters
-			init = (rand(1, 3).-functionParams.inits(1, :)) .* functionParams.inits(2, :);
+			init = (rand(1, functionParams.params).-functionParams.inits(1, :)) .* functionParams.inits(2, :);
 			try
+				# For linear fit, we can compute the best parameters directly
 				[values, fittedParams] = leasqr(X, Y, init,
 											functionParams.template, 0.0001,
 											300, weights, 0.001 * ones (size (init)),
 											functionParams.derivative, options);
 			catch
-				# If we encounter an error, just select new initial parameters
+				# If we encounter an error, simply select new initial parameters
 				# *cough* Octave-3.8.2 and optim-1.4.0 only *cough*
 				continue;
 			end_try_catch
             
-			currMSE = sum((values' .- Y) .^ 2);
+			currMSE = sum((values .- Y) .^ 2);
 			counter++;
 			
 			if((currMSE < MSE) || isempty(bestParams))
