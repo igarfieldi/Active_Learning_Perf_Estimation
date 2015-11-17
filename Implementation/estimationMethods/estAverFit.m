@@ -32,7 +32,7 @@ provided as struct");
         
         averages = [averages, sum(currAverage) / prod(size(currAverage))];
     endfor
-    
+	
     # default weights
     weights = ones(1, length(fitX));
     
