@@ -17,6 +17,7 @@ global debug = 1;
 args = argv();
 useFile = args{1};
 useAL = str2num(args{2});
+useFunc = str2num(args{3});
 
 testParams.iterations = 30;
 testParams.runs = 1;
@@ -31,11 +32,24 @@ testParams.useMethod = [1, 1, 1,...
                         0, 0, 0, 0,...
                         0, 1, 0, 0];
 
-functionParams = struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
+functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
 						"derivative", @(x, f, p, dp, F, bounds) [ones(length(x), 1),...
 											exp(p(3).*x), p(2).*x.+exp(p(3).*x)],
+						"params", 3,
                         "bounds", [0, 1; -Inf, 0; -Inf, 0],
-                        "inits", [0, 1, 1; 1, 2, 2]);
+                        "inits", [0, 1, 1; 1, 2, 2]),
+                struct("template", @(x, p) 2.*(p(1).-p(2)).*(1./(1.+exp(p(3).*x)).-0.5).+p(1),
+						"derivative", @(x, f, p, dp, F, bounds) [2./(exp(p(3).*x).+1),...
+								-2.*(1./(exp(p(3).*x).+1).-0.5),...
+								2.*x.*exp(p(3).*x).*(p(2).-p(1))./((exp(p(3).*x).+1).^2)],
+						"params", 3,
+                        "bounds", [0, 1; 0, 1; 0, Inf],
+                        "inits", [0, 0, 0.5; 1, 1, 8]),
+                struct("template", @(x, p) p(1) .+ p(2) .* x,
+						"derivative", @(x, f, p, dp, F, bounds) [ones(length(x), 1), x],
+						"params", 2,
+                        "bounds", [0, 1; 0, Inf],
+                        "inits", [0, 0; 1, 4])];
 
 data = dataReader();
 classifier = parzenWindowClassifier();
@@ -48,7 +62,7 @@ classifier = estimateSigma(classifier, getFeatureVectors(data));
 orac = oracle(getFeatureVectors(data), getLabels(data), length(unique(getLabels(data))));
 
 [~, mus, vars, times] = evaluatePerformanceMeasures(classifier, orac, ALs{useAL},
-                                            testParams, functionParams);
+                                            testParams, functionParams(useFunc));
 
 mus = mus
 vars = vars

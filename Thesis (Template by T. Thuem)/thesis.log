@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.4.23)  14 NOV 2015 10:27
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.4.23)  18 NOV 2015 18:40
 entering extended mode
 **thesis.tex
 
@@ -1754,7 +1754,7 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 188.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 4835ABF761B2989F37CD7372A80FF7EE;1398.
 Package rerunfilecheck Info: File `thesis.brf' has not changed.
-(rerunfilecheck)             Checksum: 8236F311C9B606A6C21395156CBE03C0;3313.
+(rerunfilecheck)             Checksum: A150B5319BFA21D9B2BE9774D8E503D6;3313.
  ) 
 Here is how much of TeX's memory you used:
  30996 strings out of 493921
@@ -1778,9 +1778,9 @@ C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (37 pages, 418713 bytes).
+Output written on thesis.pdf (37 pages, 419080 bytes).
 PDF statistics:
- 568 PDF objects out of 1000 (max. 8388607)
+ 569 PDF objects out of 1000 (max. 8388607)
  112 named destinations out of 1000 (max. 500000)
  293 words of extra memory for PDF output out of 10000 (max. 10000000)
 
