@@ -35,8 +35,6 @@ parzenWindowClassifier, oracle, matrix");
         if(size(getQueriedInstances(oracle), 1) < 1)
             nextLabelIndex = floor(rand(1) * unlabeledSize) + 1;
         else
-            # perform kernel frequency estimation for each instance
-            kernel = @(x, n) exp(-sum(x .^ 2, 2) ./ (2*mean(getSigma(pwc).^2)));
             # get labeled instances and sort them using the classifier's setTrainingData
             [labFeat, labLab] = getLabeledInstances(PAL);
             pwc = setTrainingData(pwc, labFeat, labLab,
@@ -46,19 +44,21 @@ parzenWindowClassifier, oracle, matrix");
             [unlabFeat, unlabLab] = getUnlabeledInstances(oracle);
             
             # calculate label statistics
-            nx = estimateKernelFrequencies(unlabFeat, labFeat, kernel);
+            nx = estimateKernelDensities(unlabFeat, labFeat, getSigma(pwc));
             py = [];
             old = 1;
             for i = 1:getNumberOfLabels(oracle)
-                py = [py; estimateKernelFrequencies(unlabFeat,...
-                            labFeat(old:labLabInd(i), :), kernel)];
+                py = [py; estimateKernelDensities(unlabFeat,...
+                            labFeat(old:labLabInd(i), :), getSigma(pwc))];
                 old = labLabInd(i) + 1;
             endfor
             
-            pmax = max(py) ./ nx;
+            pmax = (max(py)+10^(-30)) ./ (nx+2*10^(-30));
             
+			#{
             if(nargin < 4)
-                dx = estimateKernelFrequencies(unlabFeat, [labFeat; unlabFeat], kernel);
+                dx = estimateKernelDensities(unlabFeat, [labFeat; unlabFeat], getSigma(pwc));
+				dx ./ sum(dx);
             endif
             
             # compute pgain
@@ -75,7 +75,7 @@ parzenWindowClassifier, oracle, matrix");
                                 .* gainFunc(p, 1));
 			
 			evalPoints = linspace(0.0001, 0.9999, 10000);
-			pgain = trapz(evalPoints', pgainFunc(evalPoints'), 1);
+			pgain = trapz(evalPoints', pgainFunc(evalPoints'), 1) .* dx;
 			
             # Octave's default precision isn't enough to distinguish small
             # nx from zero, so we get a bunch of NaNs (which screws with the index search).
@@ -85,11 +85,12 @@ parzenWindowClassifier, oracle, matrix");
             # rewrite everything with either symbolic evaluation or 128+ bit precision,
             # there's no way around it)
             pgain(find(isnan(pgain))) = 0;
+			#}
 			
+			pgain = OPALgain(nx, pmax, 0.5, 1);
             
 			# find instances that maximize the pgain (if multiple maxima, select random)
-			maxPgain = max(pgain);
-            maxIndices = find(pgain == maxPgain);
+            maxIndices = find(pgain == max(pgain));
             
             # In theory shouldn't happen, but just to make sure there's no bs going on
             if(length(maxIndices) < 1)

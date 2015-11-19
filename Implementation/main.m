@@ -37,7 +37,7 @@ methodNames = {"Holdout", "CV", ".632+",...
                     "MCFitWNI", "SuperMCFitWNI", "AverFitWNI", "632FitWNI"};
 
 testParams.iterations = 12;
-testParams.runs = 10;
+testParams.runs = 15;
 testParams.samples = @(i) i^2;
 testParams.averMaxSamples = 10000;
 testParams.bsMaxSamples = 50;
@@ -55,11 +55,13 @@ functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
 						"params", 3,
                         "bounds", [0, 1; -Inf, 0; -Inf, 0],
                         "inits", [0, 1, 1; 1, 2, 2]),
-                struct("template", @(x, p) -p(1)./2 .+ p(1)./(1.+exp(-p(2).*(x.-p(3)))),
-						"derivative", [],
+                struct("template", @(x, p) 2.*(p(1).-p(2)).*(1./(1.+exp(p(3).*x)).-0.5).+p(1),
+						"derivative", @(x, f, p, dp, F, bounds) [2./(exp(p(3).*x).+1),...
+								-2.*(1./(exp(p(3).*x).+1).-0.5),...
+								2.*x.*exp(p(3).*x).*(p(2).-p(1))./((exp(p(3).*x).+1).^2)],
 						"params", 3,
-                        "bounds", [0, 2; 0, Inf; -Inf, Inf],
-                        "inits", [0, 0, 0.5; 2, 6, 8]),
+                        "bounds", [0, 1; 0, 1; 0, Inf],
+                        "inits", [0, 0, 0.5; 1, 1, 8]),
                 struct("template", @(x, p) p(1) .+ p(2) .* x,
 						"derivative", @(x, f, p, dp, F, bounds) [ones(length(x), 1), x],
 						"params", 2,
@@ -71,10 +73,9 @@ dataFiles = {"checke1.mat", "2dData.mat", "seeds.mat", "abaloneReduced.mat"};
 #		2		22				53			63.6			111.6
 #		3		80.9			79.8		125.83			300.28
 
-useFile = 1;
-useAL = 1;
-useFunc = 3;
-
+useFile = 3;
+useAL = 3;
+useFunc = 1;
 
 data = dataReader();
 classifier = parzenWindowClassifier();

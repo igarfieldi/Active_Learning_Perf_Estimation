@@ -13,7 +13,7 @@
 \contentsline {subsection}{\numberline {2.2.3}Classifier-based estimators}{7}{subsection.2.2.3}
 \contentsline {subsection}{\numberline {2.2.4}Cross-Validation}{8}{subsection.2.2.4}
 \contentsline {subsection}{\numberline {2.2.5}Bootstrapping}{9}{subsection.2.2.5}
-\contentsline {section}{\numberline {2.3}Learning Curves and Regression Models}{10}{section.2.3}
+\contentsline {section}{\numberline {2.3}Learning Curves and Regression Models}{11}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Function families}{11}{subsection.2.3.1}
 \contentsline {section}{\numberline {2.4}Miscellaneous}{12}{section.2.4}
 \contentsline {chapter}{\numberline {3}Proposed Methods}{13}{chapter.3}
