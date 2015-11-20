@@ -37,19 +37,22 @@ functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
 											exp(p(3).*x), p(2).*x.+exp(p(3).*x)],
 						"params", 3,
                         "bounds", [0, 1; -Inf, 0; -Inf, 0],
-                        "inits", [0, 1, 1; 1, 2, 2]),
+                        "inits", [0, 1, 1; 1, 2, 2],
+						"useData", @(size) 1:size),
                 struct("template", @(x, p) 2.*(p(1).-p(2)).*(1./(1.+exp(p(3).*x)).-0.5).+p(1),
 						"derivative", @(x, f, p, dp, F, bounds) [2./(exp(p(3).*x).+1),...
 								-2.*(1./(exp(p(3).*x).+1).-0.5),...
 								2.*x.*exp(p(3).*x).*(p(2).-p(1))./((exp(p(3).*x).+1).^2)],
 						"params", 3,
                         "bounds", [0, 1; 0, 1; 0, Inf],
-                        "inits", [0, 0, 0.5; 1, 1, 8]),
+                        "inits", [0, 0, 0.5; 1, 1, 8],
+						"useData", @(size) 1:size),
                 struct("template", @(x, p) p(1) .+ p(2) .* x,
 						"derivative", @(x, f, p, dp, F, bounds) [ones(length(x), 1), x],
 						"params", 2,
                         "bounds", [0, 1; 0, Inf],
-                        "inits", [0, 0; 1, 4])];
+                        "inits", [0, 0; 1, 4],
+						"useData", @(size) max(size-3, 1):size)];
 
 data = dataReader();
 classifier = parzenWindowClassifier();

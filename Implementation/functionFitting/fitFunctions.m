@@ -50,13 +50,15 @@ to be scalar");
     endif
 	
 	funcReg = [];
+	iterSize = length(iterations);
 	
 	options.bounds = functionParams.bounds;
+	weights = weights(functionParams.useData(iterSize));
     
     # iterate over all samples and fit a curve for each one
     for j = 1:size(accSamples, 1)
-		X = iterations;
-		Y = vec(accSamples(j, :));
+		X = iterations(functionParams.useData(iterSize));
+		Y = vec(accSamples(j, functionParams.useData(iterSize)));
 		
 		
 		MSE = Inf;
