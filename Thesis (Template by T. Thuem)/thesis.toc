@@ -17,6 +17,7 @@
 \contentsline {subsection}{\numberline {2.3.1}Function families}{11}{subsection.2.3.1}
 \contentsline {section}{\numberline {2.4}Miscellaneous}{12}{section.2.4}
 \contentsline {chapter}{\numberline {3}Proposed Methods}{13}{chapter.3}
+\contentsline {subsection}{\numberline {3.0.1}Performance estimation on training sub-sets}{13}{subsection.3.0.1}
 \contentsline {chapter}{\numberline {4}Evaluation}{15}{chapter.4}
 \contentsline {chapter}{\numberline {5}Conclusion and Future Work}{17}{chapter.5}
 \contentsline {chapter}{\numberline {A}Appendix}{19}{appendix.A}

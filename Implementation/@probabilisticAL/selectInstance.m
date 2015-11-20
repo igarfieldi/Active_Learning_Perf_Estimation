@@ -42,25 +42,25 @@ parzenWindowClassifier, oracle, matrix");
             [labFeat, ~, labLabInd] = getTrainingInstances(pwc);
             # get unlabeled instances
             [unlabFeat, unlabLab] = getUnlabeledInstances(oracle);
-            
+			
             # calculate label statistics
-            nx = estimateKernelDensities(unlabFeat, labFeat, getSigma(pwc));
+            nx = estimateKernelFrequencies(unlabFeat, labFeat);
             py = [];
             old = 1;
             for i = 1:getNumberOfLabels(oracle)
-                py = [py; estimateKernelDensities(unlabFeat,...
-                            labFeat(old:labLabInd(i), :), getSigma(pwc))];
+                py = [py; estimateKernelFrequencies(unlabFeat,...
+                            labFeat(old:labLabInd(i), :))];
                 old = labLabInd(i) + 1;
             endfor
             
             pmax = (max(py)+10^(-30)) ./ (nx+2*10^(-30));
             
-			#{
             if(nargin < 4)
-                dx = estimateKernelDensities(unlabFeat, [labFeat; unlabFeat], getSigma(pwc));
+                dx = estimateKernelFrequencies(unlabFeat, [labFeat; unlabFeat]);
 				dx ./ sum(dx);
             endif
             
+			#{
             # compute pgain
 			# TODO: find vectorized version without NaN errors
 			betaP = nx .* pmax .+ 1;
@@ -87,7 +87,7 @@ parzenWindowClassifier, oracle, matrix");
             pgain(find(isnan(pgain))) = 0;
 			#}
 			
-			pgain = OPALgain(nx, pmax, 0.5, 1);
+			pgain = OPALgain(nx, pmax, 0.5, 1) .* dx;
             
 			# find instances that maximize the pgain (if multiple maxima, select random)
             maxIndices = find(pgain == max(pgain));

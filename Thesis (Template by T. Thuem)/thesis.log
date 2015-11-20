@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.4.23)  18 NOV 2015 18:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.4.23)  20 NOV 2015 11:38
 entering extended mode
 **thesis.tex
 
@@ -1520,7 +1520,7 @@ our preamble.
 
 
 ("C:\Users\Florian\Desktop\Bachelorarbeit\Thesis (Template by T. Thuem)\tex/tit
-lepage.tex" <pics/INF_SIGN_druck.pdf, id=106, 277.00789pt x 45.76799pt>
+lepage.tex" <pics/INF_SIGN_druck.pdf, id=110, 277.00789pt x 45.76799pt>
 File: pics/INF_SIGN_druck.pdf Graphic file (type pdf)
 
 <use pics/INF_SIGN_druck.pdf>
@@ -1605,7 +1605,7 @@ File: omsaer.fd 1999/12/27
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
  [4] [5] [6] [7]
-[8] [9] [10] <pics/learning_curve_general.png, id=330, 782.17218pt x 578.16pt>
+[8] [9] [10] <pics/learning_curve_general.png, id=335, 782.17218pt x 578.16pt>
 File: pics/learning_curve_general.png Graphic file (type png)
 
 <use pics/learning_curve_general.png>
@@ -1623,6 +1623,10 @@ s the \T1/aer/m/it/12 maximum-likelihood-regression
 ("C:\Users\Florian\Desktop\Bachelorarbeit\Thesis (Template by T. Thuem)\chapter
 s/methods.tex"
 Chapter 3.
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 7.
+
 ) [13
 
 
@@ -1752,15 +1756,21 @@ laerung.aux"))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 188.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 188.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 4835ABF761B2989F37CD7372A80FF7EE;1398.
-Package rerunfilecheck Info: File `thesis.brf' has not changed.
-(rerunfilecheck)             Checksum: A150B5319BFA21D9B2BE9774D8E503D6;3313.
+(rerunfilecheck)             Checksum: CA88D135D1A8B1641DFEE8F94BC39A71;1499.
+
+
+Package rerunfilecheck Warning: File `thesis.brf' has changed.
+(rerunfilecheck)                Rerun to get bibliographical references right.
+
+Package rerunfilecheck Info: Checksums for `thesis.brf':
+(rerunfilecheck)             Before: B20470455BC89BD19D4B4F13DA5361E5;3371
+(rerunfilecheck)             After:  09F93DF013DCD7A06E981B53DD72C1D6;3441.
  ) 
 Here is how much of TeX's memory you used:
- 30996 strings out of 493921
- 638263 string characters out of 3147276
+ 30998 strings out of 493921
+ 638297 string characters out of 3147276
  862434 words of memory out of 3000000
- 33369 multiletter control sequences out of 15000+200000
+ 33370 multiletter control sequences out of 15000+200000
  44291 words of font info for 89 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  65i,17n,74p,1773b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1778,9 +1788,9 @@ C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (37 pages, 419080 bytes).
+Output written on thesis.pdf (37 pages, 422878 bytes).
 PDF statistics:
- 569 PDF objects out of 1000 (max. 8388607)
- 112 named destinations out of 1000 (max. 500000)
- 293 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 577 PDF objects out of 1000 (max. 8388607)
+ 113 named destinations out of 1000 (max. 500000)
+ 301 words of extra memory for PDF output out of 10000 (max. 10000000)
 
