@@ -105,11 +105,11 @@ activeLearner,struct, struct");
             
             # use sampled fitting with Supersets
             if(sum(testParams.useMethod([5,9,13,17])) > 0)
-				#SMCt = time();
-                #[SMCsamples, SMCpos, CVSamples] = getFittingSamplesSuperLXO(i,
-                #                                        testParams.samples(i),
-                #                                        CVSamples);
-				#SMCt = time() - SMCt;
+				SMCt = time();
+                [SMCsamples, SMCpos, CVSamples] = getFittingSamplesSuperLXO(i,
+                                                        testParams.samples(i),
+                                                        CVSamples);
+				SMCt = time() - SMCt;
             endif
             
             
@@ -186,11 +186,11 @@ activeLearner,struct, struct");
             endif
             
             if(testParams.useMethod(5))
-				#t1 = time();
-                #[mus(r, i, 5), vars(r, i, 5)] = estSampleFit(SMCsamples,
-                #                                            functionParams);
-				#times(r, i, 5) = SMCt + CVt*prod(size(SMCsamples))/length(uniqueCVSamples)...
-				#					+ (time() - t1);
+				t1 = time();
+                [mus(r, i, 5), vars(r, i, 5)] = estSampleFit(SMCsamples,
+                                                            functionParams);
+				times(r, i, 5) = SMCt + CVt*prod(size(SMCsamples))/length(uniqueCVSamples)...
+									+ (time() - t1);
             endif
             
             if(testParams.useMethod(6))
