@@ -26,7 +26,7 @@ classifier, oracle");
                                             getNumberOfLabels(oracle));
             
             # compute estimated class probabilities
-            posteriors = classifyInstances(classifier, getUnlabeledInstances(oracle));
+            posteriors = classifyInstances(classifier, getUnlabeledInstances(oracle), true);
             posteriors(posteriors(:) == 0) = 1;
             
             # compute and select the instance with the maximal prob. entropy

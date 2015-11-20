@@ -29,25 +29,13 @@ samples must have same number of columns");
 	if(rows(samples) < 1)
 		frequencies = zeros(1, rows(instances));
 	else
-		# estimate std. dev.
-		sigma = ones(1, size(samples, 2)) .* 0.1;
-		
-		if(size(samples, 1) > 1)
-			mu = sum(samples, 1) ./ size(samples, 1);
-			estSigma = sqrt(sum((samples .- mu) .^ 2, 1) ./ (size(samples, 1) - 1.5));
-			if(estSigma != 0)
-				sigma = estSigma;
-			endif
-		endif
-		
-		
 		# create matrices to match each instance with each sample
 		sampleMat = repmat(samples, [rows(instances), 1]);
 		instanceMat = reshape(repmat(instances', [rows(sampleMat)/rows(instances), 1]),
 							 columns(sampleMat), rows(sampleMat))';
 		
 		# estimate the frequencies using the kernel provided
-		frequencies = kernel((instanceMat .- sampleMat) ./ sigma);
+		frequencies = kernel(instanceMat .- sampleMat);
 		frequencies = reshape(frequencies, rows(samples), rows(instances));
 		frequencies = sum(frequencies, 1);
 	endif
