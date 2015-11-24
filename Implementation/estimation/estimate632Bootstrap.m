@@ -29,14 +29,15 @@ vector, scalar");
         
         # perform leave-one-out bootstrapping
         for k = 1:length(currSet)
+			testSet = setdiff(elemVec, currSet);
             for j = 1:bsSampleNum
-                testIndices = setdiff(currSet(k), bsSamples(j, :));
+                testIndices = union(setdiff(currSet(k), bsSamples(j, :)), testSet);
                 
                 if(!isempty(testIndices))
                     classifier = setTrainingData(classifier, feat(bsSamples(j, :), :),
                                     lab(bsSamples(j, :)), getNumberOfLabels(oracle));
-                    tErr += 1 - computeAccuracy(classifier, feat(testIndices, :),
-                                                lab(testIndices));
+                    tErr += 1 - computeAccuracy(classifier, feat(testSet, :),
+                                                lab(testSet));
                     tTotal++;
                 endif
             endfor
@@ -50,7 +51,7 @@ vector, scalar");
                                         getNumberOfLabels(oracle));
             trainingErr = 1 - computeAccuracy(classifier, feat(currSet, :), lab(currSet));
             
-            accs = [accs, 1 - ((1-1/e) * tErr + 1/e * trainingErr)];
+            accs = [accs, 1 - tErr];#((1-1/e) * tErr + 1/e * trainingErr)];
         endif
     endfor
     

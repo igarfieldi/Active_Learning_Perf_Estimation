@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.4.23)  20 NOV 2015 11:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.4.23)  24 NOV 2015 02:32
 entering extended mode
 **thesis.tex
 
@@ -1624,22 +1624,23 @@ s the \T1/aer/m/it/12 maximum-likelihood-regression
 s/methods.tex"
 Chapter 3.
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 7.
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 10.
 
-) [13
+[13
 
 
 
-]
+]) [14]
 ("C:\Users\Florian\Desktop\Bachelorarbeit\Thesis (Template by T. Thuem)\chapter
-s/evaluation.tex" [14
+s/evaluation.tex"
+Chapter 4.
+) [15
 
 
 
 ]
-Chapter 4.
-) [15]
 ("C:\Users\Florian\Desktop\Bachelorarbeit\Thesis (Template by T. Thuem)\chapter
 s/conclusion.tex" [16
 
@@ -1756,20 +1757,14 @@ laerung.aux"))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 188.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 188.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: CA88D135D1A8B1641DFEE8F94BC39A71;1499.
-
-
-Package rerunfilecheck Warning: File `thesis.brf' has changed.
-(rerunfilecheck)                Rerun to get bibliographical references right.
-
-Package rerunfilecheck Info: Checksums for `thesis.brf':
-(rerunfilecheck)             Before: B20470455BC89BD19D4B4F13DA5361E5;3371
-(rerunfilecheck)             After:  09F93DF013DCD7A06E981B53DD72C1D6;3441.
+(rerunfilecheck)             Checksum: 25BBBCF3226DEF98D9510E5776F1925C;1492.
+Package rerunfilecheck Info: File `thesis.brf' has not changed.
+(rerunfilecheck)             Checksum: 54EAA847BBFFFF96986A5A3684895A7C;3497.
  ) 
 Here is how much of TeX's memory you used:
  30998 strings out of 493921
- 638297 string characters out of 3147276
- 862434 words of memory out of 3000000
+ 638287 string characters out of 3147276
+ 862433 words of memory out of 3000000
  33370 multiletter control sequences out of 15000+200000
  44291 words of font info for 89 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -1788,9 +1783,9 @@ C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (37 pages, 422878 bytes).
+Output written on thesis.pdf (37 pages, 427244 bytes).
 PDF statistics:
- 577 PDF objects out of 1000 (max. 8388607)
+ 580 PDF objects out of 1000 (max. 8388607)
  113 named destinations out of 1000 (max. 500000)
  301 words of extra memory for PDF output out of 10000 (max. 10000000)
 

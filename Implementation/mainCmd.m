@@ -14,7 +14,7 @@ addpath(genpath(basePath));
 
 global debug = 1;
 
-args = argv();
+args = argv()
 useFile = args{1};
 useAL = str2num(args{2});
 useFunc = str2num(args{3});
@@ -71,5 +71,5 @@ mus = mus
 vars = vars
 times = times
 
-storeResults([resDir, "res_", num2str(useAL), "_", num2str(time()),...
-				"_", num2str(randi(20000000)), "_", useFile], mus, vars, times);
+storeResults([resDir, strsplit(useFile, "."){1}, "_", num2str(useAL), "_", num2str(useFunc), "_",...
+				num2str(time()), "_", num2str(randi(20000000)), ".mat"], mus, vars, times);
