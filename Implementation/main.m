@@ -44,7 +44,7 @@ testParams.bsMaxSamples = 50;
 testParams.foldSize = 5;
 testParams.bsSamples = 50;
 testParams.useMethod = [1, 0, 0,...
-                        0, 0, 0, 0,...
+                        0, 0, 0, 1,...
                         0, 0, 0, 0,...
                         0, 0, 0, 0,...
                         0, 0, 0, 0];
@@ -76,8 +76,8 @@ dataFiles = {"checke1.mat", "2dData.mat", "seeds.mat", "abaloneReduced.mat"};
 #		2		22				53			63.6			111.6
 #		3		80.9			79.8		125.83			300.28
 
-useFile = 1;
-useAL = 2;
+useFile = 2;
+useAL = 1;
 useFunc = 1;
 
 data = dataReader();
@@ -94,7 +94,8 @@ orac = oracle(getFeatureVectors(data), getLabels(data), length(unique(getLabels(
 [~, mus, vars, times] = evaluatePerformanceMeasures(classifier, orac, ALs{useAL},
                                             testParams, functionParams(useFunc));
 
-storeResults("results/testingsChecke1.mat", mus, vars, times);
+#storeResults([resDir, strsplit("checke1.mat", "."){1}, "_", num2str(useAL), "_", num2str(useFunc), "_",...
+#				num2str(time()), "_", num2str(randi(20000000)), ".mat"], mus, vars, times);
 
 #addResults([resDir, "res_AL_", num2str(useAL), "_Func_", num2str(useFunc), "_",...
 #        dataFiles{useFile}], mus, vars);
