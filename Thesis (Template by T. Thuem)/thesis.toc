@@ -18,7 +18,10 @@
 \contentsline {section}{\numberline {2.4}Miscellaneous}{12}{section.2.4}
 \contentsline {chapter}{\numberline {3}Proposed Methods}{13}{chapter.3}
 \contentsline {section}{\numberline {3.1}Performance estimation on training sub-sets}{13}{section.3.1}
-\contentsline {chapter}{\numberline {4}Evaluation}{15}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{17}{chapter.5}
-\contentsline {chapter}{\numberline {A}Appendix}{19}{appendix.A}
-\contentsline {chapter}{Bibliography}{21}{section*.8}
+\contentsline {subsection}{\numberline {3.1.1}Sub-sampling of fitting points}{14}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Function models and fitting algorithms}{15}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Grouping of performance estimates}{16}{subsection.3.1.3}
+\contentsline {chapter}{\numberline {4}Evaluation}{19}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{21}{chapter.5}
+\contentsline {chapter}{\numberline {A}Appendix}{23}{appendix.A}
+\contentsline {chapter}{Bibliography}{25}{section*.8}
