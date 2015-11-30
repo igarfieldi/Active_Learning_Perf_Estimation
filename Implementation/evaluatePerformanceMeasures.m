@@ -156,7 +156,7 @@ activeLearner,struct, struct");
             endif
             
             if(sum(testParams.useMethod([5,9,13,17])) > 0)
-                #SMCsamples = reshape(CVAccs(CVpos(SMCpos)), size(SMCsamples));
+                SMCsamples = reshape(CVAccs(CVpos(SMCpos)), size(SMCsamples));
             endif
             
             if(sum(testParams.useMethod([6,10,14,18])) > 0)

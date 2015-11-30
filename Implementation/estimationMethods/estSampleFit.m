@@ -31,10 +31,10 @@ provided as a struct");
         if(!isscalar(niRate))
             error("estSampleFit: niRate has to be scalar");
         endif
-        
         accs = [ones(size(accs, 1), 1) .* niRate, accs];
         weights = [1, weights];
         fitX = [0, fitX];
+		
     endif
     
     funcs = fitFunctions(fitX, accs, functionParams, weights);

@@ -47,4 +47,4 @@ for f = 1:4
 	endfor
 endfor
 
-plotResults(allMus{4, 1, 3}, allVars{4, 1, 3}, 1:4, testParams.useMethod, colors, methodNames);
+plotResults(allMus{2, 3, 3}, allVars{2, 3, 3}, 1:4, testParams.useMethod, colors, methodNames);
