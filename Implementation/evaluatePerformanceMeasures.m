@@ -28,7 +28,7 @@ activeLearner,struct, struct");
     mus = zeros(testParams.runs, testParams.iterations, length(testParams.useMethod));
     vars = zeros(testParams.runs, testParams.iterations, length(testParams.useMethod));
     times = zeros(testParams.runs, testParams.iterations, length(testParams.useMethod));
-    
+
 	for r = 1:testParams.runs
 		if(debug)
 			disp(sprintf("Test run: %d", r));
@@ -300,8 +300,8 @@ activeLearner,struct, struct");
             endif
             
 		endfor
-        
 	endfor
+    
 	oracle = currOracle;
 
 endfunction

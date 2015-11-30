@@ -22,8 +22,9 @@
 \contentsline {subsection}{\numberline {3.1.2}Grouping of performance estimates}{16}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}Combining sub-estimates with curve fitting}{16}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Function models and fitting algorithms}{16}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Fitting improvements}{17}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Evaluation}{19}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{21}{chapter.5}
-\contentsline {chapter}{\numberline {A}Appendix}{23}{appendix.A}
-\contentsline {chapter}{Bibliography}{25}{section*.8}
+\contentsline {subsection}{\numberline {3.2.2}Fitting improvements}{18}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Evaluation}{21}{chapter.4}
+\contentsline {section}{\numberline {4.1}Intent and criteria}{21}{section.4.1}
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{23}{chapter.5}
+\contentsline {chapter}{\numberline {A}Appendix}{25}{appendix.A}
+\contentsline {chapter}{Bibliography}{27}{section*.8}

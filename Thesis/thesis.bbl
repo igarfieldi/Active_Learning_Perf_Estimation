@@ -1,4 +1,4 @@
-\begin{thebibliography}{31}
+\begin{thebibliography}{33}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -86,6 +86,11 @@ Figueroa, R.~L., Zeng-Treitler, Q., Kandula, S., \& Ngo, L.~H. (2012).
 \newblock {\em BMC Medical Informatics and Decision Making\/}.
 \newline\urlprefix\url{http://www.biomedcentral.com/1472-6947/12/8}
 
+\bibitem[{Gupta \& Nadarajah(2004)}]{GuptaEtAl2004}
+Gupta, A.~K., \& Nadarajah, S. (2004).
+\newblock {\em Handbook of beta distribution and its applications\/}.
+\newblock CRC Press.
+
 \bibitem[{Hastie et~al.(2009)Hastie, Tibshirani, \& Friedman}]{HastieEtAl2009}
 Hastie, T., Tibshirani, R., \& Friedman, J. (2009).
 \newblock {\em The Elements of Statistical Learning\/}.
@@ -126,6 +131,12 @@ Krogh, A., \& Vedelsby, J. (1995).
 \newblock In {\em Advances in Neural Information Processing Systems 7\/}.
   Massachusetts Institute of Technology.
 \newline\urlprefix\url{http://papers.nips.cc/paper/1001-neural-network-ensembles-cross-validation-and-active-learning.pdf}
+
+\bibitem[{Kullback \& Leibler(1951)}]{KullbackEtAl1951}
+Kullback, S., \& Leibler, R.~A. (1951).
+\newblock On information and sufficiency.
+\newblock {\em The Annals of Methematical Statistics\/}, {\em 22\/}(1), 79--86.
+\newline\urlprefix\url{http://projecteuclid.org/euclid.aoms/1177729694}
 
 \bibitem[{Levenberg(1944)}]{Levenberg1944}
 Levenberg, K. (1944).
