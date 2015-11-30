@@ -3,6 +3,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces General appearance of a learning curve. Training set size as x-axis, accuracy as y-axis \cite {FigueroaEtal2012}}}{11}{figure.2.1}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces All possible accuracies for training subsets with $k = 6$}}{15}{figure.3.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

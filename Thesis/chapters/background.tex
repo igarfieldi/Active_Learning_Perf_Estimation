@@ -141,6 +141,7 @@ It factors in the training error to lift up the otherwise too conservative estim
 
 Building on that, \cite{EfronEtAl1997} developed a modified .632 bootstrap under the name of \textbf{.632+ bootstrap}. As their experiments showed, the .632 method has problems estimating the performance of an extremely overfit classifier. To account for this, they use two the two quantities \textit{no-information error rate} and \textit{relative overfitting}. The no-information error rate $\hat{\gamma}$ is defined as as the error rate of a classifier when no dependence exists between input and output data, i.e. $\mathbf{X}$ and $\mathbf{Y}$ are independent. Relative overfitting $\hat{R}$ then expresses how close the classifier is overfit to the no-information error rate:
 \begin{equation}
+\label{eq:niRate}
 \hat{R} =
 \begin{cases}
 	\frac{\widehat{Err}^{LOO} - Err_T}{\hat{\gamma} - Err_T}, & \text{if } \widehat{Err}^{LOO}, \hat{\gamma} > Err_T \\
