@@ -283,6 +283,16 @@ This paper describes a simple and effective sample size prediction algorithm tha
   Url                      = {http://dl.acm.org/citation.cfm?id=1180786}
 }
 
+@Book{GuptaEtAl2004,
+  Title                    = {Handbook of beta distribution and its applications},
+  Author                   = {Gupta, Arjun K and Nadarajah, Saralees},
+  Publisher                = {CRC Press},
+  Year                     = {2004},
+
+  Owner                    = {fbeth},
+  Timestamp                = {2015.11.30}
+}
+
 @Article{HanczarEtAl2013,
   Title                    = {The reliability of estimated confidence intervals for classification error rates when only a single sample is available},
   Author                   = {Hanczar, Blaise and Dougherty, Edward R.},
@@ -413,6 +423,31 @@ than error reduction and uncertainty sampling, yet PAL has the same asymptotic t
   Owner                    = {Florian},
   Timestamp                = {2015.08.21},
   Url                      = {http://papers.nips.cc/paper/1001-neural-network-ensembles-cross-validation-and-active-learning.pdf}
+}
+
+@Article{KullbackEtAl1951,
+  Title                    = {On Information and Sufficiency},
+  Author                   = {Kullback, S. and Leibler, R. A.},
+  Journal                  = {The Annals of Methematical Statistics},
+  Year                     = {1951},
+  Number                   = {1},
+  Pages                    = {79-86},
+  Volume                   = {22},
+
+  Owner                    = {fbeth},
+  Timestamp                = {2015.11.30},
+  Url                      = {http://projecteuclid.org/euclid.aoms/1177729694}
+}
+
+@Article{Levenberg1944,
+  Title                    = {A Method for the Solution of Certain Non-Linear Problems},
+  Author                   = {Levenberg, Kenneth},
+  Journal                  = {Quarterly Journal of Applied Mathmatics},
+  Year                     = {1944},
+
+  Owner                    = {fbeth},
+  Timestamp                = {2015.11.26},
+  Url                      = {http://www.researchgate.net/publication/216212779_A_Method_for_The_Solution_of_Certain_Non-Linear_Problem_in_Least_Squares}
 }
 
 @InProceedings{PahikkalaEtAl2008,
