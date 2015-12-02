@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{34}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -96,6 +96,12 @@ Hastie, T., Tibshirani, R., \& Friedman, J. (2009).
 \newblock {\em The Elements of Statistical Learning\/}.
 \newblock Springer Series in Statistics. Springer, 2 ed.
 \newline\urlprefix\url{http://web.stanford.edu/~hastie/local.ftp/Springer/OLD/ESLII_print4.pdf}
+
+\bibitem[{Joyce(2011)}]{Joyce2011}
+Joyce, J.~M. (2011).
+\newblock {\em International Encyclopedia of Statistical Science\/}, chap.
+  Kullback-Leibler Divergence, (pp. 720--722).
+\newblock Springer Berlin Heidelberg.
 
 \bibitem[{Kadie \& Wilkins(1995)}]{KadieEtal1995}
 Kadie, C.~M., \& Wilkins, D.~C. (1995).
