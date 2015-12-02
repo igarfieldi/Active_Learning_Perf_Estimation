@@ -36,20 +36,52 @@ with $p(x)$ and $q(x)$ are the density functions of their respective distributio
 
 Although not the main focus, we will also keep an eye on the computation time needed for each method, mostly because of the exponential complexity of our proposed methods.
 
+\section{Method selection}
 
-TODO: Test methodology; Datasets, what methods used, how did we get the holdout sets, what functions were fitted, what active learners played a role, how many iterations, how many test runs
-TODO: Results
-TODO: diagrams; KL divergences, accuracy plots, computation time, errors
+The methods we described in section \ref{methods} mostly conform to a three-step process: First, some sort of sub-sampling is performed (whether this actually reduces the amount of subsets is irrelevant). Then, the performance for the selected subsets is estimated and grouped. Last, the function of choice is fit on the groups and the final performance estimate obtained by evaluating and then averaging the functions at the point $f(k)$. Including the possibility of using fitting improvements like weighting and the no-information rate as well as different function models, we get a lot of combinations available. Unfortunately, we cannot test all of them as it is quite time consuming, which necessitates the selection of some combinations.
 
+Of course there are some intuitive limitations to what can be combined. When using all or a capped amount of subsets, applying some kind of path-like grouping seems much weirder than using averaging. Likewise, when path sub-sampling has been chosen, the intuitive option is to fit individual curves instead of only one with prior averaging. Also, some pre-screening suggested that the usage of the no-information rate as 0th data point is not as effective as hoped. Causes seem to be both high variance, leading to worsened fitting with low amounts of sub-samples, as well as its expendability for larger sub-sample sizes, which come naturally with larger training set sizes.
 
+As a result of this, we designed tests for four different methods: path sub-sampling with as well as without superset restriction and one curve per path, which will be abbreviated as \textit{pathNormal} and \textit{pathSuper}, and capped sub-sampling with averaging and one curve fit, \textit{averaged}. While the estimation technique for the two path-based methods will be exclusively cross-validation, we elected \textit{averaging} to also be tested with .632 bootstrapping to assess whether it has any impact on the quality of the methods. Additionally, we will evaluate each of them using both weighted and unweighted fitting, with the former being designated by a trailing \textit{W}. And although the pre-screening made the usage of the no-information rate questionable, not testing it at all would be a waste. Thus, \textit{pathSuperW} will also participate in a modified version with a 0th data point for each path/curve, named \textit{pathSuperWNI}.
 
-As stated previously, the primary goal of this work is the creation of a performance estimation method that, via combination of well-tried techniques, outperforms its components. For that, we need criteria to compare the various methods in a way that allows conclusions about their quality. First, it has to be clear for which aspect our methods are supposed to be improvements. Although a decrease in computation time would be nice, we seek to approximate the performance of a classifier trained by an active learner with a training set $X_T$ of size $k$. As the loss function we use \textit{0-1-loss}, the comparing value is the \textit{accuracy}. Orienting on \cite{AirolaEtAl2001}, we select both the \textit{root mean squared error}
+\section{Test environment}
+
+\subsection{Function models}
+
+As kind of belonging to the estimation methods but not really, we separated the function model used for fitting from the method description. Since it does not affect their modus operandi, the choice of a model is, similar to the active learner and classifier, part of the test parameters. We already briefly touched on this subject in section \ref{methods} and mentioned the exponential law with three parameters as well as a custom sigmoid function with fairly descriptive parameters. As overfitting is a known problem for classification and regression \cite{Dietterich1995}, we also chose to test with a linear model, which also did decent in experiments on learning curve fitting \cite{FigueroaEtal2012}. Concluding, we have the following three function models for use:
+\begin{subequations}
+	\begin{align}
+	f_{exp}(x) &= a + b \cdot e^{c \cdot x} \\
+	f_{sig}(x) &= y_0 + 2 \cdot (y_0 - S) \cdot \left( \frac{1}{1+e^{m \cdot x}} - 0.5 \right) \\
+	f_{lin}(x) &= m \cdot x + b
+	\end{align}
+\end{subequations}
+
+As the first two are not linearizable, we have to use the Levenberg-Marquardt algorithm, which, amongst others, requires the specification of initial parameters. Also, as we do have a preconceived image of a learning curve as monotone rising and limited to the interval $[0, 1]$, providing constraints to fulfill these requirements seems proper. This is trivial for the sigmoid function, as it was specifically designed to allow this kind of modification: $y_0$ and $S$, as representations of the y-intercept and the function's asymptote, are limited to $[0,1]$ with $y_0 \leq S$, and $m$ has to be in $\mathbb{R}_{\geq 0}$. For the other functions it is not as easy to find suitable bounds: while both have parameters directly affecting the y-intercept and slope, their asymptote for $x \mapsto \inf$ is either affected by two parameters or is not a constant (linear). Both would require polynomial equality constraints, which were not taken into account for this work. Thus, it is good to keep in mind that these functions might violate the learning curve constraints.
+
+\subsection{Active learner}
+
+Although nothing in this work is directly dependent of it, the active learner (AL) used to select the instances is a core part of the evaluation. Not only because the whole sub-sampling is based on the assumption of an active learning process, but also due to the effect \textit{different} ALs have on the learning process: while a randomly sampling AL slowly but steadily gathers instances from everywhere in the feature space with equal probability, others put more emphasis on certain instances that may improve the classifier's performance more than others. One of the other ALs is \textit{uncertainty sampling}, which was already introduced in \ref{background}. Here, the data is assumed to be divided by a decision boundary, separating instances of different classes \cite{ZhuEtAl2008}. In case of an ideal separation, it will improve a classifier's accuracy quicker, i.e. it takes less purchased instances to reach a certain accuracy level. However, not all data has a clear decision boundary; noise and more than two groupings of instances sharing the same class make life difficult for uncertainty sampling.
+
+\textit{Probabilistic active learning} (PAL) takes a different approach. It takes a look at each available instance's surroundings and computes the density of unlabeled as well as the amount of already purchased instances. The latter combined with the portion of instances sharing their class label with the original instance is denoted as \textit{label statistics}. Using this, assuming the instance's class label and the overall probability of this class in its neighbourhood was to be known, an optimal selection with regard to the classifier's performance could be made. But since those two quantities are generally unknown, PAL considers them as random variables. This enables the computation of an expected or probabilistic performance gain for each unlabeled instance. When weighted with the instance density in its neighbourhood, it allows an statistically optimal selection for the performance.
+
+PAL makes some assumptions, one of which is that the class probability for a neighbourhood can be modeled as a beta distribution. In the original paper, the density computation was also performed with a modified version of kernel density estimation; more about this in \ref{evaluation:classifier}. However, since we use a different estimator for uncertainty sampling, this may hinder the comparability. Thus, instead of the originally intended estimator, we use our classifier for both active learners.
+
+\subsection{Classifier}
+\label{evaluation:classifier}
+The choice of an adequate classifier is mostly limited by the active learners and the datasets used in the evaluation. From the dataset side, it has to be able to accept continuous features. The output of class assignment probability is necessitated by PAL and uncertainty sampling. Also, as PAL requires some sort of density estimation and to keep the comparability of both ALs up, a classifier making use of kernel density estimation (KDE) would be nice. Considering this, we selected the Parzen window classifier. It is a non-parametric classifier directly build on KDE. Here, we assume that the data is distributed according to some probability distribution; a good assumption is the normal distribution. Then, the kernel $K$, which in our case is the probability density function (but it does not have to be), is approximated at the point we want to know using the following formula:
 \begin{equation}
-RMSE = \frac{1}{n} \sum_{i=1}^{n} \left(y - y'\right)^2
+\label{equ:uniKDE}
+\hat{f}_h(x) = \frac{1}{nh} \sum_{i=1}^{n} K(\frac{x-x_n}{h})
 \end{equation}
-as well as \textit{absolute mean error}
-\begin{equation}
-AME = \frac{1}{n} \sum_{i=1}^{n} \left|y - y'\right|
-\end{equation}
-as our evaluation errors.
+$x$ is the point for which we want to know the density, $x_n$ are the already known points and $h$ is the so-called bandwidth, a smoothing factor for the kernel \cite{SheatherEtAl1991}. It has to be estimated, which is usually done by applying a function called \textit{Silverman's rule of thumb}, which is dependent on $n$, the dimensionality of the data, its estimated standard deviation and some statistical properties of the kernel largely irrelevant to this work. If the data in question is multivariate, \eqref{equ:uniKDE} has to be a bit modified; $K$ is then usually the product of the kernel for each dimension, same goes for the bandwidth \cite{Silverman1986}.
 
+The Parzen window classifier estimates the densities of an instance to be labeled for each class label, each time using only the instances with the same label as $x_n$. Then, they are multiplied with the prior class probabilities, i.e. the share each class label has among the labeled instances. Normalization then results in the wanted (estimated) class probabilities, with the largest probability dictating the resulting class \cite{ArchambeauEtAl2006}.
+
+\subsection{Datasets}
+
+TODO: Datasets, Parameters, Results, Discussion etc.
+
+TODO: abstract, introduction, conclusion
+
+TODO: diagrams for KDE, datasets, PAL illustration

@@ -25,6 +25,12 @@
 \contentsline {subsection}{\numberline {3.2.2}Fitting improvements}{18}{subsection.3.2.2}
 \contentsline {chapter}{\numberline {4}Evaluation}{21}{chapter.4}
 \contentsline {section}{\numberline {4.1}Objective and measurements}{21}{section.4.1}
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{25}{chapter.5}
-\contentsline {chapter}{\numberline {A}Appendix}{27}{appendix.A}
-\contentsline {chapter}{Bibliography}{29}{section*.8}
+\contentsline {section}{\numberline {4.2}Method selection}{22}{section.4.2}
+\contentsline {section}{\numberline {4.3}Test parameters and datasets}{23}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Function models}{23}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Active learner}{24}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Classifier}{25}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Datasets}{25}{subsection.4.3.4}
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{27}{chapter.5}
+\contentsline {chapter}{\numberline {A}Appendix}{29}{appendix.A}
+\contentsline {chapter}{Bibliography}{31}{section*.8}
