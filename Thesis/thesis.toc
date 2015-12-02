@@ -24,7 +24,7 @@
 \contentsline {subsection}{\numberline {3.2.1}Function models and fitting algorithms}{16}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Fitting improvements}{18}{subsection.3.2.2}
 \contentsline {chapter}{\numberline {4}Evaluation}{21}{chapter.4}
-\contentsline {section}{\numberline {4.1}Intent and criteria}{21}{section.4.1}
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{23}{chapter.5}
-\contentsline {chapter}{\numberline {A}Appendix}{25}{appendix.A}
-\contentsline {chapter}{Bibliography}{27}{section*.8}
+\contentsline {section}{\numberline {4.1}Objective and measurements}{21}{section.4.1}
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{25}{chapter.5}
+\contentsline {chapter}{\numberline {A}Appendix}{27}{appendix.A}
+\contentsline {chapter}{Bibliography}{29}{section*.8}
