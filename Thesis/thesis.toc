@@ -26,7 +26,7 @@
 \contentsline {chapter}{\numberline {4}Evaluation}{21}{chapter.4}
 \contentsline {section}{\numberline {4.1}Objective and measurements}{21}{section.4.1}
 \contentsline {section}{\numberline {4.2}Method selection}{22}{section.4.2}
-\contentsline {section}{\numberline {4.3}Test parameters and datasets}{23}{section.4.3}
+\contentsline {section}{\numberline {4.3}Test environment}{23}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Function models}{23}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Active learner}{24}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}Classifier}{25}{subsection.4.3.3}
