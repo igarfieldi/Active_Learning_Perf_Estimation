@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.11.26)  2 DEC 2015 19:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.11.26)  3 DEC 2015 21:57
 entering extended mode
 **thesis.tex
 (thesis.tex
@@ -1584,7 +1584,7 @@ File: omsaer.fd 1999/12/27
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
  [4] [5] [6] [7]
-[8] [9] [10] <pics/learning_curve_general.png, id=412, 782.17218pt x 578.16pt>
+[8] [9] [10] <pics/learning_curve_general.png, id=415, 782.17218pt x 578.16pt>
 File: pics/learning_curve_general.png Graphic file (type png)
 
 <use pics/learning_curve_general.png>
@@ -1614,14 +1614,14 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 
 
 
-] [14] <pics/pathExample1.pdf, id=450, 614.295pt x 794.97pt>
+] [14] <pics/pathExample1.pdf, id=453, 614.295pt x 794.97pt>
 File: pics/pathExample1.pdf Graphic file (type pdf)
 
 <use pics/pathExample1.pdf>
 Package pdftex.def Info: pics/pathExample1.pdf used on input line 23.
 (pdftex.def)             Requested size: 199.60895pt x 156.61537pt.
 
-<pics/accDemonstration.pdf, id=452, 614.295pt x 794.97pt>
+<pics/accDemonstration.pdf, id=455, 614.295pt x 794.97pt>
 File: pics/accDemonstration.pdf Graphic file (type pdf)
 
 <use pics/accDemonstration.pdf>
@@ -1641,7 +1641,7 @@ ady used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.98 
-     ] [18] <pics/weightingDiff.pdf, id=488, 614.295pt x 794.97pt>
+     ] [18] <pics/weightingDiff.pdf, id=491, 614.295pt x 794.97pt>
 File: pics/weightingDiff.pdf Graphic file (type pdf)
 
 <use pics/weightingDiff.pdf>
@@ -1660,13 +1660,30 @@ l.156 \include{chapters/methods}
 
 ]
 Chapter 4.
-[21] [22] [23] [24]) [25] (chapters/conclusion.tex [26
+[21] [22] [23] [24] <pics/KDE3inst.pdf, id=553, 614.295pt x 794.97pt>
+File: pics/KDE3inst.pdf Graphic file (type pdf)
+
+<use pics/KDE3inst.pdf>
+Package pdftex.def Info: pics/KDE3inst.pdf used on input line 81.
+(pdftex.def)             Requested size: 354.86412pt x 278.43634pt.
 
 
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-]
+) [25] [26pdfTeX warning (ext4): destination with the same identifier (name{fig
+ure.4.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.157 \include{chapters/evaluation}
+                                    <./pics/KDE3inst.pdf>]
+(chapters/conclusion.tex
 Chapter 5.
-) [27] (chapters/appendix.tex [28
+) [27
+
+
+
+] (chapters/appendix.tex [28
 
 
 
@@ -1749,15 +1766,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 191.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 191.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 191.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 76BB821173862457BE0608F1A46EA549;2464.
+(rerunfilecheck)             Checksum: 8981256777CD8BF43C52F699663C484F;2452.
 Package rerunfilecheck Info: File `thesis.brf' has not changed.
-(rerunfilecheck)             Checksum: 5A435365796156D521A7C1B6F0512C05;4332.
+(rerunfilecheck)             Checksum: BC9B1AAD18EEE1025D58107191843E33;4328.
  ) 
 Here is how much of TeX's memory you used:
- 35809 strings out of 493698
- 769782 string characters out of 3144411
+ 35816 strings out of 493698
+ 769905 string characters out of 3144411
  1014757 words of memory out of 3000000
- 38139 multiletter control sequences out of 15000+200000
+ 38144 multiletter control sequences out of 15000+200000
  44943 words of font info for 91 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  64i,17n,77p,1876b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1777,9 +1794,9 @@ iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.
 ype1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on thesis.pdf (49 pages, 623340 bytes).
+Output written on thesis.pdf (49 pages, 826123 bytes).
 PDF statistics:
- 801 PDF objects out of 1000 (max. 8388607)
- 159 named destinations out of 1000 (max. 500000)
- 430 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 810 PDF objects out of 1000 (max. 8388607)
+ 160 named destinations out of 1000 (max. 500000)
+ 441 words of extra memory for PDF output out of 10000 (max. 10000000)
 

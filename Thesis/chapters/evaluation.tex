@@ -76,6 +76,13 @@ The choice of an adequate classifier is mostly limited by the active learners an
 \end{equation}
 $x$ is the point for which we want to know the density, $x_n$ are the already known points and $h$ is the so-called bandwidth, a smoothing factor for the kernel \cite{SheatherEtAl1991}. It has to be estimated, which is usually done by applying a function called \textit{Silverman's rule of thumb}, which is dependent on $n$, the dimensionality of the data, its estimated standard deviation and some statistical properties of the kernel largely irrelevant to this work. If the data in question is multivariate, \eqref{equ:uniKDE} has to be a bit modified; $K$ is then usually the product of the kernel for each dimension, same goes for the bandwidth \cite{Silverman1986}.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[trim = 0cm 6cm 0cm 5cm, clip = true, width = 0.8\textwidth]{KDE3inst}
+	\caption{The estimated kernel density for a grid with one positive and two negative instance; lower Z value indicates lower certainty for the class assignment}
+	\label{fig:KDE3inst}
+\end{figure}
+
 The Parzen window classifier estimates the densities of an instance to be labeled for each class label, each time using only the instances with the same label as $x_n$. Then, they are multiplied with the prior class probabilities, i.e. the share each class label has among the labeled instances. Normalization then results in the wanted (estimated) class probabilities, with the largest probability dictating the resulting class \cite{ArchambeauEtAl2006}.
 
 \subsection{Datasets}

@@ -2,6 +2,7 @@
 more off;
 clc;
 
+#{
 figure(1);
 clc;
 hold on;
@@ -23,7 +24,13 @@ endfor
 
 plot(dataX, dataY, "*", "markersize", 8);
 print("../Thesis/pics/accDemonstration.pdf");
+#}
 
-# TODO: graph showing some estimation paths
-# TODO: graph showing the difference between weighted and unweighted acc curve
-# TODO: showcase no-information rate
+plotClassPrediction3d([1, 1], [0, 0; 1.3, 0], 0.4, 2);
+xlabel("X");
+ylabel("Y");
+zlabel("Kernel density");
+title("Maximal KDEs for a grid of instances and their classification");
+caxis([0, 256]);
+colorbar("ytick", [0, 128, 256], "yticklabel", {"Neg. instance", "Ambiguous", "Pos. instance"});
+print("../Thesis/pics/KDE3inst.pdf");
