@@ -15,6 +15,7 @@
 \usepackage{amsmath}
 \usepackage{algpseudocode} % enables algorithmic-environment, see pseudo-code example below
 \usepackage[plain]{algorithm}
+\usepackage{multirow}
 
 %*********************************************************************%
 % META                                                                %
@@ -120,9 +121,9 @@
 		\listoftables
 		\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
 
-		\renewcommand{\lstlistlistingname}{Quelltextverzeichnis}
+		\renewcommand{\lstlistlistingname}{Algorithmenverzeichnis}
 		\blankpage
-		\lstlistoflistings
+		\listofalgorithms
 		\addcontentsline{toc}{chapter}{\lstlistlistingname}
 
 		%\renewcommand*{\firstacronymfont}[1]{\emph{#1}}
@@ -134,10 +135,9 @@
 		\listoftables
 		\addcontentsline{toc}{chapter}{List of Tables}
 
-		\renewcommand{\lstlistlistingname}{List of Code Listings}
 		\blankpage
-		\lstlistoflistings
-		\addcontentsline{toc}{chapter}{\lstlistlistingname}
+		\listofalgorithms
+		\addcontentsline{toc}{chapter}{List of Algorithms}
 
 		%\renewcommand*{\firstacronymfont}[1]{\emph{#1}}
 		%\printglossary[type=acronym,title=List of Acronyms,toctitle=List of Acronyms]

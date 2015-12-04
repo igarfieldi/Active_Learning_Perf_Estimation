@@ -22,8 +22,7 @@ A related approach exports the computational cost to the fitting process. Instea
 	\centering
 	\includegraphics[trim = 0cm 6cm 0cm 5cm, clip = true, width = 0.45\textwidth]{pathExample1}
 	\includegraphics[trim = 0cm 6cm 0cm 5cm, clip = true, width = 0.45\textwidth]{accDemonstration}
-	\caption{Left: Three example paths with superset restriction. The zigzag shape illustrates the difficulties for the fitting\newline
-Right: All possible accuracies for training subsets with $k = 6$}
+	\caption{Left: Three example paths with superset restriction. The zigzag shape illustrates the difficulties for the fitting. Right: All possible accuracies for training subsets with $k = 6$}
 	\label{fig:pathAccExamples}
 \end{figure}
 
@@ -31,9 +30,7 @@ Unfortunately, in order to use the estimations as fitting data, they would have 
 
 Taking a second look at the aforementioned method, something seems to be odd. As it is, randomly taking subsets of each size allows for something counterintuitive to happen: instances present in subsets of smaller size do not necessarily have to be selected for their larger brethren. However, a classifier trained by an active learner does not usually discard previously selected instances. Thus, it seems logical to restrict subsets of larger size to be supersets of their predecessors. This again reduces the possible combinations to $k!$, as the sampling is now done without replacement. This time, however, we do not rely on the final accuracy distribution, as each path is equally likely, meaning that the sub-sampling is applicable even without precomputing the estimates. This assumption only holds in general for random sampling; other active learners may show preferences for some instances which, in their eyes, improves the classifier's performance the most.
 
-\ref{alg:subSampling} contains pseudocode to help explain the different sub-sampling approaches.
-
-\begin{figure}
+\begin{algorithm}
 	\begin{algorithmic}[1]
 		\State {$X_T = \left\{\vec{x}_1,...,\vec{x}_k\right\}$}
 		\Comment {Current training set}
@@ -41,8 +38,8 @@ Taking a second look at the aforementioned method, something seems to be odd. As
 		\State {$subsets \gets powerset(X_T)$}
 		\Comment {Compute all possible subsets}
 		\State {$subsets \gets listBySize(subsets)$}
+		\Comment {Categorize the subsets by size}
 		\State {}
-		\State {DO EITHER}
 		\State {$samples \gets \{\}$}
 		\For {$i \gets 1$ $to$ $|X_T|-1$}
 		\State {$numOfSamples \gets \frac{1}{SAMPLE\_CAP} \cdot {|X_T| \choose i}$}
@@ -52,7 +49,21 @@ Taking a second look at the aforementioned method, something seems to be odd. As
 		\State {$samples \gets {samples, currSample}$}
 		\EndFor
 		\EndFor
-		\State {OR}
+	\end{algorithmic}
+	\caption{Capped sub-sampling}
+	\label{alg:cappedSubSampling}
+\end{algorithm}
+
+\begin{algorithm}
+	\begin{algorithmic}[1]
+		\State {$X_T = \left\{\vec{x}_1,...,\vec{x}_k\right\}$}
+		\Comment {Current training set}
+		\State {}
+		\State {$subsets \gets powerset(X_T)$}
+		\Comment {Compute all possible subsets}
+		\State {$subsets \gets listBySize(subsets)$}
+		\Comment {Categorize the subsets by size}
+		\State {}
 		\State {$paths \gets \{\}$}
 		\For {$i \gets 1$ $to$ $NUM\_OF\_PATHS$}
 		\State {$currPath \gets \{\}$}
@@ -62,7 +73,21 @@ Taking a second look at the aforementioned method, something seems to be odd. As
 		\EndFor
 		\State {$paths \gets \{paths, currPath\}$}
 		\EndFor
-		\State {OR}
+	\end{algorithmic}
+	\caption{Unrestricted path sub-sampling}
+	\label{alg:unresPathSubSampling}
+\end{algorithm}
+
+\begin{algorithm}
+	\begin{algorithmic}[1]
+		\State {$X_T = \left\{\vec{x}_1,...,\vec{x}_k\right\}$}
+		\Comment {Current training set}
+		\State {}
+		\State {$subsets \gets powerset(X_T)$}
+		\Comment {Compute all possible subsets}
+		\State {$subsets \gets listBySize(subsets)$}
+		\Comment {Categorize the subsets by size}
+		\State {}
 		\State {$paths \gets \{\}$}
 		\For {$i \gets 1$ $to$ $NUM\_OF\_PATHS$}
 		\State {$currPath \gets \{\}$}
@@ -74,11 +99,10 @@ Taking a second look at the aforementioned method, something seems to be odd. As
 		\EndFor
 		\State {$paths \gets \{paths, currPath\}$}
 		\EndFor
-		
 	\end{algorithmic}
-	\caption{Pseudocode of the sub-sampling process}
-	\label{alg:subSampling}
-\end{figure}
+	\caption{Restricted path sub-sampling}
+	\label{alg:resPathSubSampling}
+\end{algorithm}
 
 \subsection{Grouping of performance estimates}
 Now that the subsets have been selected, the individual performances have to be estimated. For the cross-validation approach, this requires a classifier being trained on each of them and testing it on the remaining instances $X_T \setminus S_i$. Next in line is the decision which estimates to use for the fitting, and how. Depending on the sub-sampling selected, different options are available:
