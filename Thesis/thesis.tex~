@@ -1,0 +1,191 @@
+\documentclass[
+	%dbse, 		 % include logo of DBSE working group
+    %draft,    % omit title page, listings, and particular chapters selected below using include only
+    %english,
+	%print,    % the printed version does not use colored links
+	%final,    % removes all TODOs
+]{tex/ttthesis}
+
+\input{tex/colorscheme}
+\input{tex/lststyles}
+\input{tex/tikzstyles}
+\input{tex/macros}
+
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{algpseudocode} % enables algorithmic-environment, see pseudo-code example below
+\usepackage[plain]{algorithm}
+
+%*********************************************************************%
+% META                                                                %
+%*********************************************************************%
+\ifgerman{
+  \newcommand{\university}{Otto-von-Guericke-Universität Magdeburg}
+  \newcommand{\school}{Fakultät für Informatik}
+}{
+  \newcommand{\university}{University of Magdeburg}
+  \newcommand{\school}{School of Computer Science}
+}
+\newcommand{\logo}{\includegraphics[trim=0mm 0mm 50mm 0mm,clip,height=3cm]{INF_SIGN_druck}}
+\newcommand{\logodbse}{\includegraphics[scale=.45]{DBSE}}
+
+\newcommand{\advisorone}{Prof.\ \todo{Name}}
+\newcommand{\departmentone}{\ifgerman{Institut für}{Department of}\todots}
+
+\newcommand{\advisortwo}{}
+\newcommand{\departmenttwo}{}
+
+% Thesis kind
+%\ifgerman{\newcommand{\thesiskind}{Masterarbeit}}{\newcommand{\thesiskind}{Master's Thesis}}
+\ifgerman{\newcommand{\thesiskind}{Bachelorarbeit}}{\newcommand{\thesiskind}{Bachelor Thesis}}
+%\newcommand{\thesiskind}{Diplomarbeit} %do not translate
+%\ifgerman{\newcommand{\thesiskind}{Doktorarbeit}}{\newcommand{\thesiskind}{Dissertation}}
+
+\ifgerman{
+	\newcommand{\theforename}{\todo{Vorname}}
+	\newcommand{\thesurname}{\todo{Nachname}}
+	\newcommand{\thetitle}{\todo{Titel der Arbeit}}
+	\newcommand{\thedate}{\todo{13. Monat 2014}}
+}{
+	\newcommand{\theforename}{Florian}
+	\newcommand{\thesurname}{Bethe}
+	\newcommand{\thetitle}{Estimating hold-out-sample Performance for Active Learning}
+	\newcommand{\thedate}{\todo{Month 13, 2014}}
+}
+\newcommand{\theyear}{2015}
+
+%*********************************************************************%
+% SETUP                                                               %
+%*********************************************************************%
+
+% meta informations of the document
+\hypersetup{
+ pdfauthor={\theforename\ \thesurname},
+ pdftitle={\thetitle}
+}
+
+% open index file
+\ifnotdraft{\makeindex}
+
+%*********************************************************************%
+% ACRONYMS                                                            %
+%*********************************************************************%
+
+% HOWTO: \gls{IDE} for singular or \glspl{IDE} for plural with 's
+%\makeglossaries
+\newacronym{IDE}{IDE}{Integrated Development Environment}
+%\glsaddall % use only if you have acronyms that occur only in graphics
+
+%*********************************************************************%
+% THE DOCUMENT                                                        %
+%*********************************************************************%
+
+\begin{document}
+
+\ifgerman{
+	\labelformat{lstlisting}{Quelltext~#1}
+	\renewcommand{\lstlistingname}{Quelltext}
+}{
+	\labelformat{lstlisting}{Listing~#1}
+}
+
+% set the path where graphics are located
+\graphicspath{{pics/}}
+
+\ifnotdraft{
+	\frontmatter
+	\pagenumbering{roman}
+	\include{tex/titlepage}
+
+	\include{chapters/abstract}
+	\blankpage
+
+	%\chapter*{Acknowledgements}
+	%\ldots
+	%\blankpage
+}
+
+%*********************************************************************%
+% LISTINGS                                                            %
+%*********************************************************************%
+
+\ifnotdraft{
+	{\parskip 0pt \pdfbookmark{\contentsname}{\contentsname}\chapterheadfont \tableofcontents} % toc bitte einzeilig
+	\blankpage
+
+	\ifgerman{
+		\listoffigures
+		\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+
+		\listoftables
+		\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+
+		\renewcommand{\lstlistlistingname}{Quelltextverzeichnis}
+		\blankpage
+		\lstlistoflistings
+		\addcontentsline{toc}{chapter}{\lstlistlistingname}
+
+		%\renewcommand*{\firstacronymfont}[1]{\emph{#1}}
+		%\printglossary[type=acronym,title=List of Acronyms,toctitle=Abkürzungsverzeichnis]
+	}{
+		\listoffigures
+		\addcontentsline{toc}{chapter}{List of Figures}
+
+		\listoftables
+		\addcontentsline{toc}{chapter}{List of Tables}
+
+		\renewcommand{\lstlistlistingname}{List of Code Listings}
+		\blankpage
+		\lstlistoflistings
+		\addcontentsline{toc}{chapter}{\lstlistlistingname}
+
+		%\renewcommand*{\firstacronymfont}[1]{\emph{#1}}
+		%\printglossary[type=acronym,title=List of Acronyms,toctitle=List of Acronyms]
+	}
+}
+
+%*********************************************************************%
+% CHAPTERS                                                            %
+%*********************************************************************%
+
+\mainmatter
+\pagenumbering{arabic}
+
+\include{chapters/introduction}
+\include{chapters/background}
+\include{chapters/methods}
+\include{chapters/evaluation}
+\include{chapters/conclusion}
+
+%*********************************************************************%
+% APPENDIX                                                            %
+%*********************************************************************%
+
+\appendix
+\include{chapters/appendix}
+
+%*********************************************************************%
+% LITERATURE                                                          %
+%*********************************************************************%
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname} % 
+\bibliographystyle{apa-good} % plain gerplain abbrvnat unsrtnat alphag alpha
+% in a thesis you have space... use full names
+\bibliography{literature/IEEEfull,literature/MYfull,literature/Bibliography}
+% in a paper, space is limited. use abreviations
+%\bibliography{../literature/IEEEabrv,../literature/MYabrv,../literature/literature}
+
+%*********************************************************************%
+% ERKLÄRUNG                                                           %
+%*********************************************************************%
+
+\ifnotdraft{
+	\cleardoublepage
+	\phantomsection
+	\printindex
+	\include{tex/erklaerung}
+}
+
+\end{document}
