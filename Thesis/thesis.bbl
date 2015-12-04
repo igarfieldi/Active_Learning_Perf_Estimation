@@ -1,4 +1,4 @@
-\begin{thebibliography}{37}
+\begin{thebibliography}{41}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -52,6 +52,20 @@ Brumen, B., Golob, I., Jaakkola, H., Welzer, T., \& Rozman, I. (2004).
   Workshop on Software Internationalisation {(AWSI2004)} . Dunedin, New
   Zealand, January 2004\/}, (pp. 91--96).
 \newline\urlprefix\url{http://crpit.com/confpapers/CRPITV32Brumen.pdf}
+
+\bibitem[{Chapelle(2005)}]{Chapelle2005}
+Chapelle, O. (2005).
+\newblock Active learning for parzen window classifier.
+\newblock In {\em Proceedings of the 10th International Workshop on AI and
+  Statistics\/}.
+
+\bibitem[{Charytanowicz et~al.(2010)Charytanowicz, Niewczas, Kowalski,
+  Kulczycki, Łukasik, \& Zak}]{CharytanowiczEtAl2010}
+Charytanowicz, M., Niewczas, J., Kowalski, P.~A., Kulczycki, P., Łukasik, S.,
+  \& Zak, S. (2010).
+\newblock A complete gradient clustering algorithm for features analysis of
+  x-ray images.
+\newblock {\em Information Technologies in Biomedicine\/}.
 
 \bibitem[{Cortes et~al.(1993)Cortes, Jackel, Solla, Vapnik, \&
   Denker}]{CortesEtal1993}
@@ -137,7 +151,6 @@ Krempl, G., Kottke, D., \& Spiliopoulou, M. (2014).
   optimality and efficiency.
 \newblock In {\em Proceedings of the 17th International Conference on Discovery
   Science\/}.
-\newline\urlprefix\url{https://kmd.cs.ovgu.de/teaching/hli/KremplKottkeSpiliopoulou2014DS_FULL.pdf}
 
 \bibitem[{Krogh \& Vedelsby(1995)}]{KroghVedelsby1995}
 Krogh, A., \& Vedelsby, J. (1995).
@@ -157,6 +170,13 @@ Levenberg, K. (1944).
 \newblock A method for the solution of certain non-linear problems.
 \newblock {\em Quarterly Journal of Applied Mathmatics\/}.
 \newline\urlprefix\url{http://www.researchgate.net/publication/216212779_A_Method_for_The_Solution_of_Certain_Non-Linear_Problem_in_Least_Squares}
+
+\bibitem[{Nash et~al.(1994)Nash, Sellers, Cawthorn, \& Ford}]{NashEtAl1994}
+Nash, W.~J., Sellers, T.~L., Cawthorn, A.~J., \& Ford, W.~B. (1994).
+\newblock The population biology of abalone (haliotis species) in tasmania. i.
+  blacklip abalone (h. rubra) from the north coast and islands of bass strait.
+\newblock Tech. rep., University of Calinfornia, School of Information and
+  Computer Science.
 
 \bibitem[{Pahikkala et~al.(2008)Pahikkala, Airola, Boberg, \&
   Salakoski}]{PahikkalaEtAl2008}
@@ -219,6 +239,11 @@ Singh, S. (2005).
   from the power law.
 \newblock Project Report.
 \newline\urlprefix\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.102.5455&rep=rep1&type=pdf}
+
+\bibitem[{van~der Maaten(2008)}]{vanDerMaaten2008}
+van~der Maaten, L. J.~P. (2008).
+\newblock Visualizing high-dimensional data using t-sne.
+\newblock {\em Journal of Machine Learning Research\/}, (p. November).
 
 \bibitem[{Vapnik(1982)}]{Vapnik1982}
 Vapnik, V. (1982).
