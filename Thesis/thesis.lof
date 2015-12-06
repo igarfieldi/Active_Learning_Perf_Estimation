@@ -3,9 +3,11 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces General appearance of a learning curve. Training set size as x-axis, accuracy as y-axis \cite {FigueroaEtal2012}}}{11}{figure.2.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Left: Three example paths with superset restriction. The zigzag shape illustrates the difficulties for the fitting\newline Right: All possible accuracies for training subsets with $k = 6$}}{15}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Pseudocode of the sub-sampling process}}{17}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Difference between weighted and unweighted curve fitting for exponential functions The accuracies are not capped and averaged for $k = 10$}}{19}{figure.3.3}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Left: Three example paths with superset restriction. The zigzag shape illustrates the difficulties for the fitting. Right: All possible accuracies for training subsets with $k = 6$}}{15}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Difference between weighted and unweighted curve fitting for exponential functions The accuracies are not capped and averaged for $k = 10$}}{19}{figure.3.2}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces PAL illustration showing the weighted probabilistic gain (normed on $[0, 1]$). Since all labeled instances are grouped by their class label, the gain is higher for near the lower label-density group}}{25}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces The estimated kernel density for a grid with one positive and two negative instance; lower Z value indicates lower certainty for the class assignment}}{26}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Visualizations of the datasets checke1, 2dData, seeds and a downsized version of abalone \cite {Chapelle2005,KremplEtAl2014,CharytanowiczEtAl2010,NashEtAl1994}.\newline The illustration of seeds and abalone was done using an implementation of t-SNE \cite {vanDerMaaten2008}}}{28}{figure.4.3}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

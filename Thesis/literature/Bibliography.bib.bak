@@ -5,8 +5,7 @@
 @InProceedings{GuEtal2001,
   Title                    = {Modelling Classification Performance for Large Data Sets},
   Author                   = {Gu, Baohua and Hu, Feifang and Liu, Huan},
-  Booktitle                = {Advances in Web-Age Information Management, Second International Conference,
- {WAIM} 2001, Xi'an, China, July 9-11, 2001, Proceedings},
+  Booktitle                = {Advances in Web-Age Information Management, Second International Conference, {WAIM} 2001, Xi'an, China, July 9-11, 2001, Proceedings},
   Year                     = {2001},
   Pages                    = {317--328},
 
@@ -22,14 +21,11 @@
 @InProceedings{KolachinaEtal2012,
   Title                    = {Prediction of Learning Curves in Machine Translation},
   Author                   = {Kolachina, Prasanth and Cancedda, Nicola and Dymetman, Marc and Venkatapathy, Sriram},
-  Booktitle                = {The 50th Annual Meeting of the Association for Computational Linguistics,
- Proceedings of the Conference, July 8-14, 2012, Jeju Island, Korea
- - Volume 1: Long Papers},
+  Booktitle                = {The 50th Annual Meeting of the Association for Computational Linguistics, Proceedings of the Conference, July 8-14, 2012, Jeju Island, Korea - Volume 1: Long Papers},
   Year                     = {2012},
   Pages                    = {22--30},
 
   Abstract                 = {Parallel data in the domain of interest is the key resource when training a statistical machine translation (SMT) system for a specific purpose. Since ad-hoc manual translation can represent a significant investment in time and money, a prior assesment of the amount of training data required to achieve a satisfactory accuracy level can be very useful. In this work, we show how to predict what the learning curve would look like if we were to manually translate increasing amounts of data.
-
 We consider two scenarios, 1) Monolingual samples in the source and target languages are available and 2) An additional small amount of parallel corpus is also available. We propose methods for predicting learning curves in both these scenarios.},
   Bibsource                = {dblp computer science bibliography, http://dblp.org},
   Biburl                   = {http://dblp.uni-trier.de/rec/bib/conf/acl/KolachinaCDV12},
@@ -66,6 +62,17 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Owner                    = {Florian},
   Timestamp                = {2015.09.12},
   Url                      = {http://link.springer.com/chapter/10.1007/978-1-4612-1694-0_15}
+}
+
+@InProceedings{ArchambeauEtAl2006,
+  Title                    = {Assessment of probability density estimation methods: Parzen window and finite Gaussian mixtures},
+  Author                   = {Archambeau, Cédric and Valle, M. and Assenza, A. and Verleysen, Michel},
+  Booktitle                = {Circuits and Systems, 2006. ISCAS 2006. Proceedings. 2006 IEEE International Symposium},
+  Year                     = {2006},
+  Organization             = {IEEE},
+
+  Owner                    = {fbeth},
+  Timestamp                = {2015.12.02}
 }
 
 @InProceedings{Bach2006,
@@ -117,6 +124,17 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Url                      = {http://papers.nips.cc/paper/2468-no-unbiased-estimator-of-the-variance-of-k-fold-cross-validation.pdf}
 }
 
+@Misc{BetheEtAl2015,
+  Title                    = {Performance Level Estimation without a Hold-out Test Set},
+
+  Author                   = {Bethe, Florian and Kammerhoff, Dennis and Kalle, Sven and Krokotsch, Tilman},
+  HowPublished             = {Project Report},
+  Year                     = {2015},
+
+  Owner                    = {fbeth},
+  Timestamp                = {2015.12.04}
+}
+
 @Article{BorraEtAl2010,
   Title                    = {Measuring the prediction error. A comparison of cross-validation, bootstrap and covariance penalty methods},
   Author                   = {Borra, Simone and Di Ciaccio, Agostino},
@@ -154,11 +172,7 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
 @InProceedings{BrumenEtal2004,
   Title                    = {Early Assessment of Classification Performance},
   Author                   = {Brumen, Bostjan and Golob, Izidor and Jaakkola, Hannu and Welzer, Tatjana and Rozman, Ivan},
-  Booktitle                = {{ACSW} Frontiers 2004, 2004 {ACSW} Workshops - the Australasian Information
- Security Workshop (AISW2004), the Australasian Workshop on Data Mining
- and Web Intelligence (DMWI2004), and the Australasian Workshop on
- Software Internationalisation {(AWSI2004)} . Dunedin, New Zealand,
- January 2004},
+  Booktitle                = {{ACSW} Frontiers 2004, 2004 {ACSW} Workshops - the Australasian Information Security Workshop (AISW2004), the Australasian Workshop on Data Mining and Web Intelligence (DMWI2004), and the Australasian Workshop on Software Internationalisation {(AWSI2004)} . Dunedin, New Zealand, January 2004},
   Year                     = {2004},
   Pages                    = {91--96},
 
@@ -167,6 +181,26 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Biburl                   = {http://dblp.uni-trier.de/rec/bib/conf/acsw/BrumenGJWR04},
   Timestamp                = {2015.08.22},
   Url                      = {http://crpit.com/confpapers/CRPITV32Brumen.pdf}
+}
+
+@InProceedings{Chapelle2005,
+  Title                    = {Active learning for parzen window classifier},
+  Author                   = {Chapelle, O.},
+  Booktitle                = {Proceedings of the 10th International Workshop on AI and Statistics},
+  Year                     = {2005},
+
+  Owner                    = {florian},
+  Timestamp                = {2015.12.03}
+}
+
+@Article{CharytanowiczEtAl2010,
+  Title                    = {A Complete Gradient Clustering Algorithm for Features Analysis of X-ray Images},
+  Author                   = {Charytanowicz, Malgorzata and Niewczas, Jerzy and Kowalski, Piotr A. and Kulczycki, Piotr and Łukasik, Szymon and Zak, Sławomir},
+  Journal                  = {Information Technologies in Biomedicine},
+  Year                     = {2010},
+
+  Owner                    = {florian},
+  Timestamp                = {2015.12.03}
 }
 
 @PhdThesis{Cortes1994,
@@ -255,17 +289,10 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Journal                  = {BMC Medical Informatics and Decision Making},
   Year                     = {2012},
 
-  Abstract                 = {Background
-Supervised learning methods need annotated data in order to generate efficient models. Annotated data, however, is a relatively scarce resource and can be expensive to obtain. For both passive and active learning methods, there is a need to estimate the size of the annotated sample required to reach a performance target.
-
-Methods
-We designed and implemented a method that fits an inverse power law model to points of a given learning curve created using a small annotated training set. Fitting is carried out using nonlinear weighted least squares optimization. The fitted model is then used to predict the classifier's performance and confidence interval for larger sample sizes. For evaluation, the nonlinear weighted curve fitting method was applied to a set of learning curves generated using clinical text and waveform classification tasks with active and passive sampling methods, and predictions were validated using standard goodness of fit measures. As control we used an un-weighted fitting method.
-
-Results
-A total of 568 models were fitted and the model predictions were compared with the observed performances. Depending on the data set and sampling method, it took between 80 to 560 annotated samples to achieve mean average and root mean squared error below 0.01. Results also show that our weighted fitting method outperformed the baseline un-weighted method (p < 0.05).
-
-Conclusions
-This paper describes a simple and effective sample size prediction algorithm that conducts weighted fitting of learning curves. The algorithm outperformed an un-weighted algorithm described in previous literature. It can help researchers determine annotation sample size for supervised machine learning.},
+  Abstract                 = {Background Supervised learning methods need annotated data in order to generate efficient models. Annotated data, however, is a relatively scarce resource and can be expensive to obtain. For both passive and active learning methods, there is a need to estimate the size of the annotated sample required to reach a performance target.
+Methods We designed and implemented a method that fits an inverse power law model to points of a given learning curve created using a small annotated training set. Fitting is carried out using nonlinear weighted least squares optimization. The fitted model is then used to predict the classifier's performance and confidence interval for larger sample sizes. For evaluation, the nonlinear weighted curve fitting method was applied to a set of learning curves generated using clinical text and waveform classification tasks with active and passive sampling methods, and predictions were validated using standard goodness of fit measures. As control we used an un-weighted fitting method.
+Results A total of 568 models were fitted and the model predictions were compared with the observed performances. Depending on the data set and sampling method, it took between 80 to 560 annotated samples to achieve mean average and root mean squared error below 0.01. Results also show that our weighted fitting method outperformed the baseline un-weighted method (p < 0.05).
+Conclusions This paper describes a simple and effective sample size prediction algorithm that conducts weighted fitting of learning curves. The algorithm outperformed an un-weighted algorithm described in previous literature. It can help researchers determine annotation sample size for supervised machine learning.},
   Timestamp                = {2015.08.26},
   Url                      = {http://www.biomedcentral.com/1472-6947/12/8}
 }
@@ -355,6 +382,18 @@ This paper describes a simple and effective sample size prediction algorithm tha
   Url                      = {http://dl.acm.org/citation.cfm?id=1410544}
 }
 
+@InBook{Joyce2011,
+  Title                    = {International Encyclopedia of Statistical Science},
+  Author                   = {Joyce, James M.},
+  Chapter                  = {Kullback-Leibler Divergence},
+  Pages                    = {720-722},
+  Publisher                = {Springer Berlin Heidelberg},
+  Year                     = {2011},
+
+  Owner                    = {fbeth},
+  Timestamp                = {2015.11.30}
+}
+
 @InProceedings{Kääriäinen2005,
   Title                    = {Generalization Error Bounds Using Unlabeled Data},
   Author                   = {Kääriäinen, Matti},
@@ -405,11 +444,9 @@ This paper describes a simple and effective sample size prediction algorithm tha
   Year                     = {2014},
   Month                    = {October},
 
-  Abstract                 = {Mining data with minimal annotation costs requires efficient active approaches, that ideally select the optimal candidate for labelling under a user-specified classification performance measure. Common generic approaches, that are usable with any classifier and any performance measure, are either slow like error reduction, or heuristics like uncertainty sampling. In contrast, our Probabilistic Active Learning (PAL) approach offers versatility, direct optimisation of a performance measure and computational efficiency. Given a labelling candidate from a pool, PAL models both the candidate’s label and the true posterior in its neighbourhood as random variables. By computing the expectation of the gain in classification performance over both random variables, PAL then selects the candidate that in expectation will improve the classification performance the most. Extending our recent poster, we discuss the properties of PAL and perform a thorough experimental evaluation on several synthetic and real-world data sets of different sizes. Results show comparable or better classification performance
-than error reduction and uncertainty sampling, yet PAL has the same asymptotic time complexity as uncertainty sampling and is faster than error reduction.},
+  Abstract                 = {Mining data with minimal annotation costs requires efficient active approaches, that ideally select the optimal candidate for labelling under a user-specified classification performance measure. Common generic approaches, that are usable with any classifier and any performance measure, are either slow like error reduction, or heuristics like uncertainty sampling. In contrast, our Probabilistic Active Learning (PAL) approach offers versatility, direct optimisation of a performance measure and computational efficiency. Given a labelling candidate from a pool, PAL models both the candidate’s label and the true posterior in its neighbourhood as random variables. By computing the expectation of the gain in classification performance over both random variables, PAL then selects the candidate that in expectation will improve the classification performance the most. Extending our recent poster, we discuss the properties of PAL and perform a thorough experimental evaluation on several synthetic and real-world data sets of different sizes. Results show comparable or better classification performance than error reduction and uncertainty sampling, yet PAL has the same asymptotic time complexity as uncertainty sampling and is faster than error reduction.},
   Owner                    = {Florian},
-  Timestamp                = {2015.09.08},
-  Url                      = {https://kmd.cs.ovgu.de/teaching/hli/KremplKottkeSpiliopoulou2014DS_FULL.pdf}
+  Timestamp                = {2015.09.08}
 }
 
 @InCollection{KroghVedelsby1995,
@@ -448,6 +485,27 @@ than error reduction and uncertainty sampling, yet PAL has the same asymptotic t
   Owner                    = {fbeth},
   Timestamp                = {2015.11.26},
   Url                      = {http://www.researchgate.net/publication/216212779_A_Method_for_The_Solution_of_Certain_Non-Linear_Problem_in_Least_Squares}
+}
+
+@Article{vanDerMaaten2008,
+  Title                    = {Visualizing High-Dimensional Data Using t-SNE},
+  Author                   = {van der Maaten, Laurens J. P.},
+  Journal                  = {Journal of Machine Learning Research},
+  Year                     = {2008},
+  Pages                    = {November},
+
+  Owner                    = {fbeth},
+  Timestamp                = {2015.12.04}
+}
+
+@TechReport{NashEtAl1994,
+  Title                    = {The Population Biology of Abalone (Haliotis species) in Tasmania. I. Blacklip Abalone (H. rubra) from the North Coast and Islands of Bass Strait},
+  Author                   = {Nash, Warwick J. and Sellers, Tracy L. and Cawthorn, Andrew J. and Ford, Wes B.},
+  Institution              = {University of Calinfornia, School of Information and Computer Science},
+  Year                     = {1994},
+
+  Owner                    = {florian},
+  Timestamp                = {2015.12.03}
 }
 
 @InProceedings{PahikkalaEtAl2008,
@@ -502,9 +560,7 @@ than error reduction and uncertainty sampling, yet PAL has the same asymptotic t
   Volume                   = {46},
 
   Abstract                 = {Estimating the prediction error of classifiers induced by supervised learning algorithms is important not only to predict its future error, but also to choose a classifier from a given set (model selection). If the goal is to estimate the prediction error of a particular classifier, the desired estimator should have low bias and low variance. However, if the goal is the model selection, in order to make fair comparisons the chosen estimator should have low variance assuming that the bias term is independent from the considered classifier.
-
 This paper follows the analysis proposed in [1] about the statistical properties of k-fold cross-validation estimators and extends it to the most popular error estimators: resubstitution, holdout, repeated holdout, simple bootstrap and 0.632 bootstrap estimators, without and with stratification. We present a general framework to analyze the decomposition of the variance of different error estimators considering the nature of the variance (irreducible/reducible variance) and the different sources of sensitivity (internal/external sensitivity).
-
 An extensive empirical study has been performed for the previously mentioned estimators with naive Bayes and C4.5 classifiers over training sets obtained from assorted probability distributions. The empirical analysis consists of decomposing the variances following the proposed framework and checking the independence assumption between the bias and the considered classifier. Based on the obtained results, we propose the most appropriate error estimations for model selection under different experimental conditions.},
   Owner                    = {Florian},
   Timestamp                = {2015.09.02},
@@ -599,6 +655,30 @@ An extensive empirical study has been performed for the previously mentioned est
   Abstract                 = {Following recent results [10] showing the importance of the fat-shattering dimension in explaining the beneficial effect of a large margin on generalization performance, the current paper investigates how the margin on a test example can be used to give greater certainty of correct classification in the distribution independent model. Hence, generalization analysis is possible at three distinct phases, a priori using a standard pac analysis, after training based on properties of the chosen hypothesis [10], and finally in this paper at testing based on properties of the test example. The results also show that even if the classifier does not classify all of the training examples correctly, the fact that a new example has a larger margin than that on the misclassified test examples, can be used to give very good estimates for the generalization performance in terms of the fat-shattering dimension measured at a scale proportional to the excess margin. The estimate relies on a sufficiently large number of the correctly classified training examples having a margin roughly equal to that used to estimate generalization, indicating that the corresponding output values need to be "well sampled."},
   Timestamp                = {2015.08.22},
   Url                      = {http://link.springer.com/article/10.1007%2FPL00013827#page-1}
+}
+
+@Article{SheatherEtAl1991,
+  Title                    = {A Reliable Data-Based Bandwidth Selection Method for Kernel Density Estimation},
+  Author                   = {Sheather, S. T. and Jones, M. C.},
+  Journal                  = {Journal of the Royal Statistical Society. Series B (Statistical Methodology)},
+  Year                     = {1991},
+  Number                   = {3},
+  Pages                    = {683-690},
+  Volume                   = {53},
+
+  Owner                    = {fbeth},
+  Timestamp                = {2015.12.02},
+  Url                      = {http://www.jstor.org/stable/2345597}
+}
+
+@Book{Silverman1986,
+  Title                    = {Density estimation for statistics and data analysis},
+  Author                   = {Silverman, Bernard W.},
+  Publisher                = {CRC Press},
+  Year                     = {1986},
+
+  Owner                    = {fbeth},
+  Timestamp                = {2015.12.02}
 }
 
 @Misc{Singh2005,

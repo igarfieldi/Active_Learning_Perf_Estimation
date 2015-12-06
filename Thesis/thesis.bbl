@@ -1,4 +1,4 @@
-\begin{thebibliography}{34}
+\begin{thebibliography}{41}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -18,6 +18,14 @@ Akaike, H. (1998).
   and an Extension of the Maximum Likelihood Principle, (pp. 199--213).
 \newblock Springer Series in Statistics. Springer New York.
 \newline\urlprefix\url{http://link.springer.com/chapter/10.1007/978-1-4612-1694-0_15}
+
+\bibitem[{Archambeau et~al.(2006)Archambeau, Valle, Assenza, \&
+  Verleysen}]{ArchambeauEtAl2006}
+Archambeau, C., Valle, M., Assenza, A., \& Verleysen, M. (2006).
+\newblock Assessment of probability density estimation methods: Parzen window
+  and finite gaussian mixtures.
+\newblock In {\em Circuits and Systems, 2006. ISCAS 2006. Proceedings. 2006
+  IEEE International Symposium\/}. IEEE.
 
 \bibitem[{Borra \& Di~Ciaccio(2010)}]{BorraEtAl2010}
 Borra, S., \& Di~Ciaccio, A. (2010).
@@ -44,6 +52,20 @@ Brumen, B., Golob, I., Jaakkola, H., Welzer, T., \& Rozman, I. (2004).
   Workshop on Software Internationalisation {(AWSI2004)} . Dunedin, New
   Zealand, January 2004\/}, (pp. 91--96).
 \newline\urlprefix\url{http://crpit.com/confpapers/CRPITV32Brumen.pdf}
+
+\bibitem[{Chapelle(2005)}]{Chapelle2005}
+Chapelle, O. (2005).
+\newblock Active learning for parzen window classifier.
+\newblock In {\em Proceedings of the 10th International Workshop on AI and
+  Statistics\/}.
+
+\bibitem[{Charytanowicz et~al.(2010)Charytanowicz, Niewczas, Kowalski,
+  Kulczycki, Łukasik, \& Zak}]{CharytanowiczEtAl2010}
+Charytanowicz, M., Niewczas, J., Kowalski, P.~A., Kulczycki, P., Łukasik, S.,
+  \& Zak, S. (2010).
+\newblock A complete gradient clustering algorithm for features analysis of
+  x-ray images.
+\newblock {\em Information Technologies in Biomedicine\/}.
 
 \bibitem[{Cortes et~al.(1993)Cortes, Jackel, Solla, Vapnik, \&
   Denker}]{CortesEtal1993}
@@ -129,7 +151,6 @@ Krempl, G., Kottke, D., \& Spiliopoulou, M. (2014).
   optimality and efficiency.
 \newblock In {\em Proceedings of the 17th International Conference on Discovery
   Science\/}.
-\newline\urlprefix\url{https://kmd.cs.ovgu.de/teaching/hli/KremplKottkeSpiliopoulou2014DS_FULL.pdf}
 
 \bibitem[{Krogh \& Vedelsby(1995)}]{KroghVedelsby1995}
 Krogh, A., \& Vedelsby, J. (1995).
@@ -149,6 +170,13 @@ Levenberg, K. (1944).
 \newblock A method for the solution of certain non-linear problems.
 \newblock {\em Quarterly Journal of Applied Mathmatics\/}.
 \newline\urlprefix\url{http://www.researchgate.net/publication/216212779_A_Method_for_The_Solution_of_Certain_Non-Linear_Problem_in_Least_Squares}
+
+\bibitem[{Nash et~al.(1994)Nash, Sellers, Cawthorn, \& Ford}]{NashEtAl1994}
+Nash, W.~J., Sellers, T.~L., Cawthorn, A.~J., \& Ford, W.~B. (1994).
+\newblock The population biology of abalone (haliotis species) in tasmania. i.
+  blacklip abalone (h. rubra) from the north coast and islands of bass strait.
+\newblock Tech. rep., University of Calinfornia, School of Information and
+  Computer Science.
 
 \bibitem[{Pahikkala et~al.(2008)Pahikkala, Airola, Boberg, \&
   Salakoski}]{PahikkalaEtAl2008}
@@ -192,12 +220,30 @@ Schwarz, G. (1978).
 \newblock {\em The Annals of Statistics\/}, {\em 6\/}(2), 461--464.
 \newline\urlprefix\url{http://projecteuclid.org/euclid.aos/1176344136}
 
+\bibitem[{Sheather \& Jones(1991)}]{SheatherEtAl1991}
+Sheather, S.~T., \& Jones, M.~C. (1991).
+\newblock A reliable data-based bandwidth selection method for kernel density
+  estimation.
+\newblock {\em Journal of the Royal Statistical Society. Series B (Statistical
+  Methodology)\/}, {\em 53\/}(3), 683--690.
+\newline\urlprefix\url{http://www.jstor.org/stable/2345597}
+
+\bibitem[{Silverman(1986)}]{Silverman1986}
+Silverman, B.~W. (1986).
+\newblock {\em Density estimation for statistics and data analysis\/}.
+\newblock CRC Press.
+
 \bibitem[{Singh(2005)}]{Singh2005}
 Singh, S. (2005).
 \newblock Modeling performance of different classification methods: Deviation
   from the power law.
 \newblock Project Report.
 \newline\urlprefix\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.102.5455&rep=rep1&type=pdf}
+
+\bibitem[{van~der Maaten(2008)}]{vanDerMaaten2008}
+van~der Maaten, L. J.~P. (2008).
+\newblock Visualizing high-dimensional data using t-sne.
+\newblock {\em Journal of Machine Learning Research\/}, (p. November).
 
 \bibitem[{Vapnik(1982)}]{Vapnik1982}
 Vapnik, V. (1982).

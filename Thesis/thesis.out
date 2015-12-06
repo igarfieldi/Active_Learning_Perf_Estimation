@@ -1,7 +1,7 @@
 \BOOKMARK [0][]{Contents.0}{Contents}{}% 1
 \BOOKMARK [0][]{chapter*.3}{List of Figures}{}% 2
 \BOOKMARK [0][]{chapter*.4}{List of Tables}{}% 3
-\BOOKMARK [0][]{chapter*.5}{List of Code Listings}{}% 4
+\BOOKMARK [0][]{chapter*.5}{List of Algorithms}{}% 4
 \BOOKMARK [0][]{chapter.1}{1 Introduction}{}% 5
 \BOOKMARK [0][]{chapter.2}{2 Background and Related Work}{}% 6
 \BOOKMARK [1][]{section.2.1}{2.1 Classification and Active Learning}{chapter.2}% 7
@@ -23,6 +23,13 @@
 \BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 Fitting improvements}{section.3.2}% 23
 \BOOKMARK [0][]{chapter.4}{4 Evaluation}{}% 24
 \BOOKMARK [1][]{section.4.1}{4.1 Objective and measurements}{chapter.4}% 25
-\BOOKMARK [0][]{chapter.5}{5 Conclusion and Future Work}{}% 26
-\BOOKMARK [0][]{appendix.A}{A Appendix}{}% 27
-\BOOKMARK [0][]{section*.8}{Bibliography}{}% 28
+\BOOKMARK [1][]{section.4.2}{4.2 Method selection}{chapter.4}% 26
+\BOOKMARK [1][]{section.4.3}{4.3 Test environment}{chapter.4}% 27
+\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 Function models}{section.4.3}% 28
+\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 Active learner}{section.4.3}% 29
+\BOOKMARK [2][-]{subsection.4.3.3}{4.3.3 Classifier}{section.4.3}% 30
+\BOOKMARK [2][-]{subsection.4.3.4}{4.3.4 Datasets}{section.4.3}% 31
+\BOOKMARK [2][-]{subsection.4.3.5}{4.3.5 Parameters}{section.4.3}% 32
+\BOOKMARK [0][]{chapter.5}{5 Conclusion and Future Work}{}% 33
+\BOOKMARK [0][]{appendix.A}{A Appendix}{}% 34
+\BOOKMARK [0][]{section*.8}{Bibliography}{}% 35
