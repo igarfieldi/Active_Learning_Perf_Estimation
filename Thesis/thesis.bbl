@@ -1,0 +1,241 @@
+\begin{thebibliography}{34}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Airola et~al.(2011)Airola, Pahikkala, Waegeman, \&
+  De~Baets}]{AirolaEtAl2001}
+Airola, A., Pahikkala, T., Waegeman, W., \& De~Baets, B. (2011).
+\newblock An experimental comparison of cross-validation techniques for
+  estimating the area under the roc curve.
+\newblock {\em Computational Statistics \& Data Analysis\/}, {\em 55\/}(4),
+  1828--1844.
+
+\bibitem[{Akaike(1998)}]{Akaike1998}
+Akaike, H. (1998).
+\newblock {\em Selected Papers of Hirotugu Akaike\/}, chap. Information Theory
+  and an Extension of the Maximum Likelihood Principle, (pp. 199--213).
+\newblock Springer Series in Statistics. Springer New York.
+\newline\urlprefix\url{http://link.springer.com/chapter/10.1007/978-1-4612-1694-0_15}
+
+\bibitem[{Borra \& Di~Ciaccio(2010)}]{BorraEtAl2010}
+Borra, S., \& Di~Ciaccio, A. (2010).
+\newblock Measuring the prediction error. a comparison of cross-validation,
+  bootstrap and covariance penalty methods.
+\newblock {\em Computational Statistics \& Data Analysis\/}, {\em 54\/}(12),
+  2976--2989.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0167947310001064}
+
+\bibitem[{Bozdogan(1987)}]{Bozdogan1987}
+Bozdogan, H. (1987).
+\newblock Model selection and akaike's information criterion (aic): The general
+  theory and its analytical extensions.
+\newblock {\em Psychometrika\/}, {\em 52\/}(3), 345--370.
+\newline\urlprefix\url{http://link.springer.com/article/10.1007/BF02294361}
+
+\bibitem[{Brumen et~al.(2004)Brumen, Golob, Jaakkola, Welzer, \&
+  Rozman}]{BrumenEtal2004}
+Brumen, B., Golob, I., Jaakkola, H., Welzer, T., \& Rozman, I. (2004).
+\newblock Early assessment of classification performance.
+\newblock In {\em {ACSW} Frontiers 2004, 2004 {ACSW} Workshops - the
+  Australasian Information Security Workshop (AISW2004), the Australasian
+  Workshop on Data Mining and Web Intelligence (DMWI2004), and the Australasian
+  Workshop on Software Internationalisation {(AWSI2004)} . Dunedin, New
+  Zealand, January 2004\/}, (pp. 91--96).
+\newline\urlprefix\url{http://crpit.com/confpapers/CRPITV32Brumen.pdf}
+
+\bibitem[{Cortes et~al.(1993)Cortes, Jackel, Solla, Vapnik, \&
+  Denker}]{CortesEtal1993}
+Cortes, C., Jackel, L.~D., Solla, S.~A., Vapnik, V., \& Denker, J.~S. (1993).
+\newblock Learning curves: Asymptotic values and rate of convergence.
+\newblock In {\em Neural Information Processing Systems\/}.
+\newline\urlprefix\url{http://papers.nips.cc/paper/803-learning-curves-asymptotic-values-and-rate-of-convergence.pdf}
+
+\bibitem[{Dietterich(1995)}]{Dietterich1995}
+Dietterich, T. (1995).
+\newblock Overfitting and undercomputing in machine learning.
+\newblock {\em ACM Computing Surveys\/}, {\em 27\/}(3), 326--327.
+\newline\urlprefix\url{http://dl.acm.org/citation.cfm?id=212114}
+
+\bibitem[{Efron(1983)}]{Efron1983}
+Efron, B. (1983).
+\newblock Estimating the error rate of a prediction rule: Improvement on
+  cross-validation.
+\newblock {\em Journal of the American Statistical Association\/}, {\em
+  78\/}(382), 316--331.
+\newline\urlprefix\url{http://www.cs.berkeley.edu/~jordan/sail/readings/archive/efron-improve_cv.pdf}
+
+\bibitem[{Efron \& Tibshirani(1997)}]{EfronEtAl1997}
+Efron, B., \& Tibshirani, R. (1997).
+\newblock Improvements on cross-validation: The .632+ bootstrap method.
+\newblock {\em Journal of the American Statistical Association\/}, {\em
+  92\/}(438), 548--560.
+\newline\urlprefix\url{http://www.stat.washington.edu/courses/stat527/s13/readings/EfronTibshirani_JASA_1997.pdf}
+
+\bibitem[{Evans et~al.(2015)Evans, Adams, \& Anagnostopoulous}]{EvansEtAl2015}
+Evans, L. P.~G., Adams, N.~M., \& Anagnostopoulous, C. (2015).
+\newblock Estimating optimal active learning via model retraining improvement.
+\newblock {\em Journal of Machine Learning Research\/}.
+\newline\urlprefix\url{http://arxiv.org/abs/1502.01664}
+
+\bibitem[{Figueroa et~al.(2012)Figueroa, Zeng-Treitler, Kandula, \&
+  Ngo}]{FigueroaEtal2012}
+Figueroa, R.~L., Zeng-Treitler, Q., Kandula, S., \& Ngo, L.~H. (2012).
+\newblock Predicting sample size required for classification performance.
+\newblock {\em BMC Medical Informatics and Decision Making\/}.
+\newline\urlprefix\url{http://www.biomedcentral.com/1472-6947/12/8}
+
+\bibitem[{Gupta \& Nadarajah(2004)}]{GuptaEtAl2004}
+Gupta, A.~K., \& Nadarajah, S. (2004).
+\newblock {\em Handbook of beta distribution and its applications\/}.
+\newblock CRC Press.
+
+\bibitem[{Hastie et~al.(2009)Hastie, Tibshirani, \& Friedman}]{HastieEtAl2009}
+Hastie, T., Tibshirani, R., \& Friedman, J. (2009).
+\newblock {\em The Elements of Statistical Learning\/}.
+\newblock Springer Series in Statistics. Springer, 2 ed.
+\newline\urlprefix\url{http://web.stanford.edu/~hastie/local.ftp/Springer/OLD/ESLII_print4.pdf}
+
+\bibitem[{Joyce(2011)}]{Joyce2011}
+Joyce, J.~M. (2011).
+\newblock {\em International Encyclopedia of Statistical Science\/}, chap.
+  Kullback-Leibler Divergence, (pp. 720--722).
+\newblock Springer Berlin Heidelberg.
+
+\bibitem[{Kadie \& Wilkins(1995)}]{KadieEtal1995}
+Kadie, C.~M., \& Wilkins, D.~C. (1995).
+\newblock {\em Seer: Maximum Likelihood Regression for Learning-Speed
+  Curves\/}.
+\newblock Ph.D. thesis, University of Illinois.
+\newline\urlprefix\url{http://research.microsoft.com/en-us/um/people/carlk/papers/kadiephdfull.htm}
+
+\bibitem[{Kohavi(1995)}]{Kohavi1995}
+Kohavi, R. (1995).
+\newblock A study of cross-validation and bootstrap for accuracy estimation and
+  model selection.
+\newblock In {\em International Joint Conference on Artificial Intelligence\/}.
+
+\bibitem[{Kohavi \& Wolpert(1996)}]{KohaviEtAl1996}
+Kohavi, R., \& Wolpert, D.~H. (1996).
+\newblock Bias plus variance decomposition for zero-one loss functions.
+\newblock In {\em Machine Learning: Proceedings of the Thirteenth International
+  Conference\/}.
+\newline\urlprefix\url{ai.stanford.edu/~ronnyk/biasVar.pdf}
+
+\bibitem[{Krempl et~al.(2014)Krempl, Kottke, \& Spiliopoulou}]{KremplEtAl2014}
+Krempl, G., Kottke, D., \& Spiliopoulou, M. (2014).
+\newblock Probabilistic active learning: Toward combining versatility,
+  optimality and efficiency.
+\newblock In {\em Proceedings of the 17th International Conference on Discovery
+  Science\/}.
+\newline\urlprefix\url{https://kmd.cs.ovgu.de/teaching/hli/KremplKottkeSpiliopoulou2014DS_FULL.pdf}
+
+\bibitem[{Krogh \& Vedelsby(1995)}]{KroghVedelsby1995}
+Krogh, A., \& Vedelsby, J. (1995).
+\newblock Neural network ensembles, cross validation, and active learning.
+\newblock In {\em Advances in Neural Information Processing Systems 7\/}.
+  Massachusetts Institute of Technology.
+\newline\urlprefix\url{http://papers.nips.cc/paper/1001-neural-network-ensembles-cross-validation-and-active-learning.pdf}
+
+\bibitem[{Kullback \& Leibler(1951)}]{KullbackEtAl1951}
+Kullback, S., \& Leibler, R.~A. (1951).
+\newblock On information and sufficiency.
+\newblock {\em The Annals of Methematical Statistics\/}, {\em 22\/}(1), 79--86.
+\newline\urlprefix\url{http://projecteuclid.org/euclid.aoms/1177729694}
+
+\bibitem[{Levenberg(1944)}]{Levenberg1944}
+Levenberg, K. (1944).
+\newblock A method for the solution of certain non-linear problems.
+\newblock {\em Quarterly Journal of Applied Mathmatics\/}.
+\newline\urlprefix\url{http://www.researchgate.net/publication/216212779_A_Method_for_The_Solution_of_Certain_Non-Linear_Problem_in_Least_Squares}
+
+\bibitem[{Pahikkala et~al.(2008)Pahikkala, Airola, Boberg, \&
+  Salakoski}]{PahikkalaEtAl2008}
+Pahikkala, T., Airola, A., Boberg, J., \& Salakoski, T. (2008).
+\newblock Exact and efficient leave-pair-out cross validation for ranking rls.
+\newblock In {\em Proceedings of AKRR\/}.
+
+\bibitem[{Perlich et~al.(2003)Perlich, Provost, \& Simonoff}]{PerlichEtAl2003}
+Perlich, C., Provost, F., \& Simonoff, J.~S. (2003).
+\newblock Tree induction vs. logistic regression: a learning-curve analysis.
+\newblock {\em The Journal of Machine Learning Research\/}, {\em 4\/},
+  211--255.
+\newline\urlprefix\url{http://dl.acm.org/citation.cfm?id=945375}
+
+\bibitem[{Rodríguez et~al.(2013)Rodríguez, Pérez, \&
+  Lozano}]{RodriguezEtAl2013}
+Rodríguez, J.~D., Pérez, A., \& Lozano, J.~A. (2013).
+\newblock A general framework for the statistical analysis of the sources of
+  variance for classification error estimators.
+\newblock {\em Pattern Recognition\/}, {\em 46\/}(3), 855--864.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0031320312003998}
+
+\bibitem[{Roy \& McCallum(2001)}]{RoyEtAl2001}
+Roy, N., \& McCallum, A. (2001).
+\newblock Toward optimal active learning through monte carlo estimation of
+  error reduction.
+\newblock In {\em Proceedings of the International Conference on Machine
+  Learning\/}.
+\newline\urlprefix\url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.137.6296}
+
+\bibitem[{Scheffer et~al.(2001)Scheffer, Decomain, \&
+  Wrobel}]{SchefferEtAl2001}
+Scheffer, T., Decomain, C., \& Wrobel, S. (2001).
+\newblock Active hidden markov models for information extraction.
+\newblock In {\em Proceedings of the Internation Symposium on Intelligent Data
+  Analysis\/}.
+
+\bibitem[{Schwarz(1978)}]{Schwarz1978}
+Schwarz, G. (1978).
+\newblock Estimating the dimension of a model.
+\newblock {\em The Annals of Statistics\/}, {\em 6\/}(2), 461--464.
+\newline\urlprefix\url{http://projecteuclid.org/euclid.aos/1176344136}
+
+\bibitem[{Singh(2005)}]{Singh2005}
+Singh, S. (2005).
+\newblock Modeling performance of different classification methods: Deviation
+  from the power law.
+\newblock Project Report.
+\newline\urlprefix\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.102.5455&rep=rep1&type=pdf}
+
+\bibitem[{Vapnik(1982)}]{Vapnik1982}
+Vapnik, V. (1982).
+\newblock {\em Estimation of Dependences Based on Empirical Data\/}.
+\newblock Springer New York.
+\newline\urlprefix\url{http://www.springer.com/us/book/9780387308654}
+
+\bibitem[{Weakliem(1999)}]{Weakliem1999}
+Weakliem, D.~L. (1999).
+\newblock A critique of the bayesian information criterion for model selection.
+\newblock {\em Sociological Methods Research\/}, {\em 27\/}(3), 359--397.
+\newline\urlprefix\url{smr.sagepub.com/content/27/3/359.short}
+
+\bibitem[{Wood et~al.(2007)Wood, Visscher, \& Mengersen}]{WoodEtAl2007}
+Wood, I.~A., Visscher, P.~M., \& Mengersen, K.~L. (2007).
+\newblock Classification based upon gene expression data: bias and precision of
+  error rates.
+\newblock {\em Bioinformatics\/}, {\em 23\/}(11), 1363--1370.
+\newline\urlprefix\url{https://keppel.qimr.edu.au/contents/p/staff/CVPV127.pdf}
+
+\bibitem[{Yelle(1979)}]{Yelle1979}
+Yelle, L.~E. (1979).
+\newblock The learning curve: Historical review and comprehensive survey.
+\newblock {\em Decision Sciences\/}, {\em 10\/}(2), 302--328.
+\newline\urlprefix\url{http://onlinelibrary.wiley.com/doi/10.1111/j.1540-5915.1979.tb00026.x/abstract}
+
+\bibitem[{Zhu et~al.(2008)Zhu, Wang, Yao, \& Tsou}]{ZhuEtAl2008}
+Zhu, J., Wang, H., Yao, T., \& Tsou, B.~K. (2008).
+\newblock Active learning with sampling by uncertainty and density for word
+  sense disambiguation and text classification.
+\newblock In {\em Proceedings of the 22nd International Conference on
+  Computational Linguistics\/}, (pp. 1137--1144).
+\newline\urlprefix\url{https://www.aclweb.org/anthology/C/C08/C08-1143.pdf}
+
+\bibitem[{Zhu \& Goldberg(2009)}]{ZhuEtAl2009}
+Zhu, X., \& Goldberg, A.~B. (2009).
+\newblock Introduction to semi-supervised learning.
+\newblock {\em Synthesis lectures on artificial intelligence and machine
+  learning\/}, {\em 3\/}(1), 1--130.
+
+\end{thebibliography}

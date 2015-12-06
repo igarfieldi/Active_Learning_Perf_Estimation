@@ -1,0 +1,55 @@
+\ifgerman{\chapter{Evaluierung}}{\chapter{Evaluation}}
+\label{evaluation}
+
+In this section, we will briefly discuss our evaluation methodology, which includes the criteria to measure whether the goals of this work were accomplished or not, as well as the structure and results of our testing.
+
+\section{Objective and measurements}
+
+To rate the effectiveness of the proposed methods we need a clearly stated and verifiable goal, including criteria to compare them against other techniques. This is easiest using the same scenario already used to describe the functioning of our methods: suppose we have a classifier, trained by an active learner using $k$ training instances. Then the objective of our methods is to estimate the classification loss of said classifier on data not yet seen, but from the same distribution as the training instances. Then, the bias and variance of the estimation is to be compared against established estimators. The exact methods and the competition will be presented in the next section.
+
+To compare the techniques, we utilize the error measures used in \cite{FigueroaEtal2012}, \textit{root mean squared error} (RMSE) and \textit{mean absolute error} (MAE), defined as
+\begin{equation}
+RMSE = \frac{1}{n} \sum_{i=1}^{n} \left(y_n - y_n^{'}\right)^2
+\end{equation}
+and
+\begin{equation}
+MAE = \frac{1}{n} \sum_{i=1}^{n} \left|y - y_n^{'}\right|,
+\end{equation}
+where $y_i$ is the reference accuracy, $y_i^{'}$ the estimate of a method and $n$ the number of test runs. We also use a third measure, \textit{Mean error} $ME = \frac{1}{n} \sum_{i=1}^{n} \left(y - y_n^{'}\right)$, to check if the estimator is biased or not; for an unbiased one, the expected mean error is zero, which should be approached for larger $n$.
+
+Depending on the method in question, we may have additional measures for comparison. As a by-product of the multiple curves fit when using path sub-sampling, the resulting estimates can be seen as a sample of a distribution. In turn, we can estimate that distribution by estimating the mean and the variance of the sample. Luckily, the choice of the distribution model to assume is fairly simple; most models are not suitable anyway, as they are defined on $\mathbb{R}$. Our estimates, however, are limited to $[0,1]$. Thus, only few distributions come to mind, one of which is the beta distribution, also being used for similar purposes by \cite{KremplEtAl2014}. It is dependent by two parameters, $p, q \in \mathbb{R}_{\le 0}$, with a density function defined as \cite{GuptaEtAl2004}
+\begin{equation}
+f_{p, q}(x) = \frac{x^{p-1}(1-x)^{q-1}}{\int_{0}^{1} u^{p-1}(1-u)^{q-1}}.
+\end{equation}
+The parameters are computable from mean and variance via
+\begin{equation}
+\begin{split}
+E[X] &= \frac{p}{p+q} \\
+var[X] &= \frac{p*q}{(p+q)^2(p+q+1)}
+\end{split}
+\end{equation}
+Having the estimated distribution, we can then compute the difference between it and the "true" distribution via the \textit{Kullback-Leibler divergence} (KLD):
+\begin{equation}
+KLD(P:Q) = \int_{}^{} p(x) \cdot log\left(\frac{p(x)}{q(x)}\right) d\lambda (x),
+\end{equation}
+with $p(x)$ and $q(x)$ are the density functions of their respective distribution \cite{KullbackEtAl1951}. The KL divergence is an information-theoretical measure intended to compare two probability distributions. If the two are equal almost everywhere, the KLD will be zero, otherwise positive. Importantly, it is neither symmetrical nor does it satisfy the triangular inequality, thus the choice of distribution assignment is meaningful and should be equal for all tested methods (i.e. the distribution P is always the reference distribution) \cite{Joyce2011}.
+
+Although not the main focus, we will also keep an eye on the computation time needed for each method, mostly because of the exponential complexity of our proposed methods.
+
+
+TODO: Test methodology; Datasets, what methods used, how did we get the holdout sets, what functions were fitted, what active learners played a role, how many iterations, how many test runs
+TODO: Results
+TODO: diagrams; KL divergences, accuracy plots, computation time, errors
+
+
+
+As stated previously, the primary goal of this work is the creation of a performance estimation method that, via combination of well-tried techniques, outperforms its components. For that, we need criteria to compare the various methods in a way that allows conclusions about their quality. First, it has to be clear for which aspect our methods are supposed to be improvements. Although a decrease in computation time would be nice, we seek to approximate the performance of a classifier trained by an active learner with a training set $X_T$ of size $k$. As the loss function we use \textit{0-1-loss}, the comparing value is the \textit{accuracy}. Orienting on \cite{AirolaEtAl2001}, we select both the \textit{root mean squared error}
+\begin{equation}
+RMSE = \frac{1}{n} \sum_{i=1}^{n} \left(y - y'\right)^2
+\end{equation}
+as well as \textit{absolute mean error}
+\begin{equation}
+AME = \frac{1}{n} \sum_{i=1}^{n} \left|y - y'\right|
+\end{equation}
+as our evaluation errors.
+

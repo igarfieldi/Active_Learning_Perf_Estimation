@@ -1,0 +1,1015 @@
+GNU Octave, version 3.8.2
+Copyright (C) 2014 John W. Eaton and others.
+This is free software; see the source code for copying conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type 'warranty'.
+
+Octave was configured for "x86_64-pc-linux-gnu".
+
+Additional information about Octave is available at http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit http://www.octave.org/get-involved.html
+
+Read http://www.octave.org/bugs.html to learn how to submit bug reports.
+For information about changes from previous versions, type 'news'.
+
+Test run: 1
+Measure iteration: 3
+Measure iteration: 4
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+Measure iteration: 5
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+Measure iteration: 6
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+Measure iteration: 7
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+ CONVERGENCE NOT ACHIEVED! 
+Measure iteration: 8
+Measure iteration: 9
+Measure iteration: 10
+Measure iteration: 11
+Measure iteration: 12
+Measure iteration: 13
+Measure iteration: 14
+Measure iteration: 15
+Measure iteration: 16
+Measure iteration: 17
+Measure iteration: 18
+Measure iteration: 19
+Measure iteration: 20
+Measure iteration: 21
+Measure iteration: 22
+Measure iteration: 23
+Measure iteration: 24
+Measure iteration: 25
+Measure iteration: 26
+Measure iteration: 27
+Measure iteration: 28
+Measure iteration: 29
+Measure iteration: 30
+mus =
+
+ans(:,:,1) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.71564   0.70935   0.72423   0.69621   0.72818   0.74051
+
+ Columns 9 through 16:
+
+   0.74316   0.74637   0.76289   0.75112   0.74582   0.73689   0.73838   0.74107
+
+ Columns 17 through 24:
+
+   0.74495   0.74467   0.74860   0.73146   0.73277   0.74380   0.74981   0.73818
+
+ Columns 25 through 30:
+
+   0.74704   0.74656   0.74663   0.75167   0.74082   0.74011
+
+ans(:,:,2) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.66667   0.75000   0.80000   1.00000   0.80000   0.60000
+
+ Columns 9 through 16:
+
+   0.70000   0.70000   0.73333   0.70000   0.86667   0.70000   0.60000   0.75000
+
+ Columns 17 through 24:
+
+   0.55000   0.45000   0.63333   0.55000   0.62000   0.73000   0.68000   0.58000
+
+ Columns 25 through 30:
+
+   0.64000   0.73333   0.63333   0.68000   0.65333   0.56667
+
+ans(:,:,3) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.75228   0.82909   0.84855   0.81619   0.76088   0.70443
+
+ Columns 9 through 16:
+
+   0.71006   0.74534   0.55703   0.69417   0.70314   0.67862   0.62631   0.64526
+
+ Columns 17 through 24:
+
+   0.72931   0.65949   0.69255   0.64282   0.54189   0.63358   0.66465   0.70479
+
+ Columns 25 through 30:
+
+   0.68152   0.72914   0.60884   0.69341   0.63695   0.59795
+
+ans(:,:,4) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.90891   0.63832   0.72088   0.78794   0.66989   0.66668
+
+ Columns 9 through 16:
+
+   0.62004   0.62139   0.61394   0.63659   0.60426   0.59166   0.60780   0.59880
+
+ Columns 17 through 24:
+
+   0.60393   0.59893   0.61994   0.59971   0.56289   0.58726   0.61536   0.59745
+
+ Columns 25 through 30:
+
+   0.61028   0.63139   0.60352   0.62331   0.59354   0.56225
+
+ans(:,:,5) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   1.00000   0.75000   0.60000   1.00000   0.28571   0.37500
+
+ Columns 9 through 16:
+
+   0.77778   0.60000   0.81818   0.83333   0.84615   0.77778   0.60000   1.00000
+
+ Columns 17 through 24:
+
+   0.50000   0.00000   1.00000   0.00000   0.00000   1.00000   1.00000   1.00000
+
+ Columns 25 through 30:
+
+   1.00000   1.00000   0.00000   1.00000   0.00000   1.00000
+
+ans(:,:,6) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.99939   0.79393   0.70751   0.73281   0.68211   0.58537
+
+ Columns 9 through 16:
+
+   0.59036   0.58517   0.62226   0.62406   0.59699   0.59779   0.58498   0.67196
+
+ Columns 17 through 24:
+
+   0.58069   0.52985   0.63428   0.55535   0.53588   0.61875   0.60557   0.58521
+
+ Columns 25 through 30:
+
+   0.59847   0.64212   0.54475   0.66047   0.58331   0.58796
+
+ans(:,:,7) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.36788   0.88876   0.75303   0.80101   0.79862   0.69753
+
+ Columns 9 through 16:
+
+   0.70031   0.72636   0.68709   0.70294   0.68961   0.67484   0.67660   0.73114
+
+ Columns 17 through 24:
+
+   0.73954   0.72803   0.65097   0.75107   0.73215   0.69384   0.72841   0.68112
+
+ Columns 25 through 30:
+
+   0.73203   0.82632   0.70315   0.66798   0.71357   0.69573
+
+ans(:,:,8) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.91181   0.62444   0.68971   0.72506   0.68280   0.64451
+
+ Columns 9 through 16:
+
+   0.59711   0.62551   0.59415   0.63321   0.59137   0.54601   0.58841   0.59607
+
+ Columns 17 through 24:
+
+   0.60260   0.61175   0.63009   0.62002   0.57302   0.60049   0.61530   0.60383
+
+ Columns 25 through 30:
+
+   0.61594   0.63791   0.60670   0.63074   0.60524   0.56428
+
+ans(:,:,9) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.99929   1.00000   1.00000   1.00000   1.00000   1.00000
+
+ Columns 9 through 16:
+
+   1.00000   1.00000   1.00000   0.99687   0.99430   0.98735   0.98375   0.98108
+
+ Columns 17 through 24:
+
+   0.96513   0.97203   0.96862   0.97069   0.96351   0.96352   0.96456   0.95361
+
+ Columns 25 through 30:
+
+   0.95687   0.95339   0.95148   0.95371   0.95760   0.94323
+
+ans(:,:,10) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.98761   0.79202   0.79030   0.71894   0.69379   0.58132
+
+ Columns 9 through 16:
+
+   0.69091   0.59422   0.58045   0.62587   0.62620   0.51497   0.56208   0.62154
+
+ Columns 17 through 24:
+
+   0.59478   0.59647   0.62245   0.61378   0.56708   0.57936   0.60970   0.60408
+
+ Columns 25 through 30:
+
+   0.63149   0.62738   0.60798   0.66545   0.59478   0.56579
+
+ans(:,:,11) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.36788   0.80832   0.73213   0.78135   0.72299   0.69035
+
+ Columns 9 through 16:
+
+   0.70486   0.70037   0.68639   0.67734   0.62678   0.60705   0.73476   0.65743
+
+ Columns 17 through 24:
+
+   0.66985   0.69991   0.82280   0.69541   0.70192   0.70581   0.72702   0.68232
+
+ Columns 25 through 30:
+
+   0.71408   0.73473   0.71013   0.70101   0.67326   0.68855
+
+ans(:,:,12) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,13) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,14) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,15) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,16) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,17) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.99998   1.00000   1.00000   1.00000   1.00000   1.00000
+
+ Columns 9 through 16:
+
+   1.00000   0.99996   1.00000   0.99792   0.99463   0.98475   0.97713   0.97392
+
+ Columns 17 through 24:
+
+   0.96984   0.95856   0.96245   0.97196   0.96258   0.96382   0.95795   0.95744
+
+ Columns 25 through 30:
+
+   0.95751   0.95622   0.93965   0.95398   0.94848   0.95055
+
+ans(:,:,18) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,19) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+vars =
+
+ans(:,:,1) =
+
+ Columns 1 through 7:
+
+   0.000000   0.000000   0.061143   0.057915   0.032903   0.037062   0.030020
+
+ Columns 8 through 14:
+
+   0.025905   0.028724   0.015647   0.016172   0.017360   0.012232   0.012190
+
+ Columns 15 through 21:
+
+   0.012818   0.014700   0.012183   0.009128   0.011447   0.009851   0.008481
+
+ Columns 22 through 28:
+
+   0.008260   0.009402   0.007635   0.010550   0.006856   0.005563   0.006456
+
+ Columns 29 and 30:
+
+   0.008957   0.008038
+
+ans(:,:,2) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.33333   0.25000   0.20000   0.00000   0.20000   0.17500
+
+ Columns 9 through 16:
+
+   0.07500   0.07500   0.06389   0.20000   0.03333   0.03333   0.07778   0.07639
+
+ Columns 17 through 24:
+
+   0.08889   0.05764   0.01597   0.01250   0.01575   0.00575   0.02700   0.02200
+
+ Columns 25 through 30:
+
+   0.02800   0.04889   0.01222   0.04533   0.04256   0.03611
+
+ans(:,:,3) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,4) =
+
+ Columns 1 through 7:
+
+   0.000000   0.000000   0.061332   0.073886   0.059177   0.022852   0.019487
+
+ Columns 8 through 14:
+
+   0.016105   0.008162   0.010074   0.011995   0.007443   0.006178   0.004874
+
+ Columns 15 through 21:
+
+   0.004285   0.004770   0.003776   0.003125   0.003005   0.002664   0.002739
+
+ Columns 22 through 28:
+
+   0.002756   0.002612   0.002112   0.001974   0.002052   0.001563   0.001834
+
+ Columns 29 and 30:
+
+   0.001633   0.001325
+
+ans(:,:,5) =
+
+ Columns 1 through 6:
+
+   0.0000e+00   0.0000e+00   4.1244e-07   4.1217e-08   2.1952e-17   1.9064e-22
+
+ Columns 7 through 12:
+
+   2.7862e-31   2.0504e-31   9.9692e-30   8.9928e-30   6.1081e-29   4.4557e-29
+
+ Columns 13 through 18:
+
+   4.9482e-17   2.3000e-14   2.4783e-05   3.0576e-08   2.2154e-04   4.1178e-06
+
+ Columns 19 through 24:
+
+   3.1322e-06   3.5591e-05   1.9708e-04   2.9814e-06   1.4543e-08   5.2713e-10
+
+ Columns 25 through 30:
+
+   3.4600e-04   1.2288e-08   7.1681e-06   3.7445e-09   2.1748e-04   1.9549e-09
+
+ans(:,:,6) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,7) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,8) =
+
+ Columns 1 through 7:
+
+   0.000000   0.000000   0.061620   0.069389   0.070029   0.042406   0.024583
+
+ Columns 8 through 14:
+
+   0.019344   0.012028   0.011562   0.012171   0.014751   0.012120   0.008450
+
+ Columns 15 through 21:
+
+   0.009940   0.009424   0.007517   0.007654   0.006989   0.005637   0.005102
+
+ Columns 22 through 28:
+
+   0.006757   0.007199   0.004544   0.006929   0.005335   0.005604   0.004893
+
+ Columns 29 and 30:
+
+   0.003738   0.002247
+
+ans(:,:,9) =
+
+ Columns 1 through 7:
+
+   0.000000   0.000000   0.000003   0.000000   0.000000   0.000000   0.000000
+
+ Columns 8 through 14:
+
+   0.000000   0.000000   0.000000   0.000000   0.000834   0.002327   0.002932
+
+ Columns 15 through 21:
+
+   0.003029   0.003810   0.009520   0.006221   0.007929   0.006286   0.008103
+
+ Columns 22 through 28:
+
+   0.008365   0.006256   0.009664   0.009597   0.010165   0.009041   0.011698
+
+ Columns 29 and 30:
+
+   0.009167   0.012037
+
+ans(:,:,10) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,11) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,12) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,13) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,14) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,15) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,16) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,17) =
+
+ Columns 1 through 7:
+
+   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+
+ Columns 8 through 14:
+
+   0.000000   0.000000   0.000000   0.000000   0.000447   0.001000   0.004175
+
+ Columns 15 through 21:
+
+   0.007057   0.005420   0.007295   0.010723   0.008325   0.006378   0.007734
+
+ Columns 22 through 28:
+
+   0.007812   0.010321   0.009509   0.008820   0.008371   0.015652   0.011039
+
+ Columns 29 and 30:
+
+   0.011991   0.010804
+
+ans(:,:,18) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,19) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+times =
+
+ans(:,:,1) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   2.17782   1.63195   1.29854   1.19445   1.07485   1.08695
+
+ Columns 9 through 16:
+
+   0.94287   0.65824   0.70235   0.71881   0.50440   0.83620   0.69989   0.51560
+
+ Columns 17 through 24:
+
+   0.47058   0.42238   0.40713   0.37666   0.38058   0.44704   0.29467   0.28185
+
+ Columns 25 through 30:
+
+   0.47255   0.42699   0.25987   0.24776   0.24153   0.23092
+
+ans(:,:,2) =
+
+ Columns 1 through 7:
+
+   0.000000   0.000000   0.019318   0.021073   0.027174   0.030185   0.028793
+
+ Columns 8 through 14:
+
+   0.040345   0.029719   0.031019   0.031739   0.032272   0.032797   0.038335
+
+ Columns 15 through 21:
+
+   0.034267   0.037831   0.037002   0.065941   0.067090   0.036648   0.041701
+
+ Columns 22 through 28:
+
+   0.042188   0.038930   0.039652   0.048511   0.075769   0.041566   0.041977
+
+ Columns 29 and 30:
+
+   0.042651   0.043246
+
+ans(:,:,3) =
+
+ Columns 1 through 8:
+
+   0.00000   0.00000   0.22648   0.26789   0.30108   0.33283   0.33064   0.39077
+
+ Columns 9 through 16:
+
+   0.35215   0.36969   0.53715   0.40667   0.38883   0.46753   0.65228   0.44305
+
+ Columns 17 through 24:
+
+   0.48535   0.52694   0.51864   0.55370   0.51251   0.54967   0.46831   0.47749
+
+ Columns 25 through 30:
+
+   0.72337   0.52576   0.71803   0.50857   0.51684   0.52451
+
+ans(:,:,4) =
+
+ Columns 1 through 6:
+
+     0.00000     0.00000     1.00130     8.30704    24.53074    29.72827
+
+ Columns 7 through 12:
+
+    17.68531    21.22354    24.11772    39.03003    36.14476    40.88603
+
+ Columns 13 through 18:
+
+    44.24561    39.09422    55.25648    81.13591    93.94865    99.16447
+
+ Columns 19 through 24:
+
+   121.65591   157.82032   144.26467   143.05474   165.38178   150.54399
+
+ Columns 25 through 30:
+
+   149.72143   153.20500   141.56354   142.41766   139.13756   144.91097
+
+ans(:,:,5) =
+
+ Columns 1 through 7:
+
+    0.00000    0.00000    0.72088    1.49388    2.50219    4.53901    5.14267
+
+ Columns 8 through 14:
+
+    7.30926   11.19416   14.69300   17.51818   17.47893   20.12364   24.48641
+
+ Columns 15 through 21:
+
+   27.68582   33.54952   41.05629   47.80121   55.29803   65.67891   75.10564
+
+ Columns 22 through 28:
+
+   78.96770   83.35169   78.41105   81.36778   82.22931   83.88616   78.37800
+
+ Columns 29 and 30:
+
+   85.91097   79.09759
+
+ans(:,:,6) =
+
+ Columns 1 through 7:
+
+    0.00000    0.00000    0.13989    0.57415    0.24092    0.64149    0.80428
+
+ Columns 8 through 14:
+
+    1.57898    4.04823    5.50662   11.29249   23.28299   45.15728   54.94665
+
+ Columns 15 through 21:
+
+   58.63590   62.01604   64.48254   65.76527   65.32412   65.23550   67.63429
+
+ Columns 22 through 28:
+
+   65.65528   69.56383   63.93950   69.69225   70.82021   72.02064   67.98805
+
+ Columns 29 and 30:
+
+   73.78883   68.71770
+
+ans(:,:,7) =
+
+ Columns 1 through 6:
+
+     0.00000     0.00000     0.31295     1.84951     4.64859    11.80671
+
+ Columns 7 through 12:
+
+    15.18328    20.92521    27.07253    28.71926    36.81178    40.94742
+
+ Columns 13 through 18:
+
+    54.87928    53.27676    51.43036    66.30165    71.50009    71.55119
+
+ Columns 19 through 24:
+
+    87.05529    95.14041   101.02268   121.47008   111.26108   124.20479
+
+ Columns 25 through 30:
+
+   135.16804   156.20803   147.56929   147.02368   166.89167   171.02406
+
+ans(:,:,8) =
+
+ Columns 1 through 6:
+
+     0.00000     0.00000     0.96211    11.26813    18.69596    18.92305
+
+ Columns 7 through 12:
+
+    10.39113    15.30355    21.01445    23.06249    30.25333    45.20850
+
+ Columns 13 through 18:
+
+    47.66619    61.53207    70.22906    82.93703    98.30604   110.45519
+
+ Columns 19 through 24:
+
+   131.10837   131.54127   149.77375   157.29373   164.04286   152.93739
+
+ Columns 25 through 30:
+
+   155.32826   174.69233   150.65121   140.57896   155.55503   141.04015
+
+ans(:,:,9) =
+
+ Columns 1 through 7:
+
+    0.00000    0.00000    0.73902    1.45703    2.78823    3.91711    5.31777
+
+ Columns 8 through 14:
+
+    7.79148   12.20236   11.99040   14.33412   18.96256   21.86980   23.80479
+
+ Columns 15 through 21:
+
+   28.45571   33.20986   44.70157   48.43609   63.50664   65.77177   75.00867
+
+ Columns 22 through 28:
+
+   78.54564   82.64114   76.09853   81.30601   83.56862   82.95039   78.51790
+
+ Columns 29 and 30:
+
+   84.99151   80.14005
+
+ans(:,:,10) =
+
+ Columns 1 through 7:
+
+    0.00000    0.00000    0.19186    0.27003    0.39912    0.90978    0.71236
+
+ Columns 8 through 14:
+
+    1.81495    3.98192    5.41075   11.36626   23.03475   45.52428   55.14657
+
+ Columns 15 through 21:
+
+   58.70498   62.32482   64.78415   65.43578   65.59240   65.43803   67.60182
+
+ Columns 22 through 28:
+
+   65.83518   69.71095   63.86335   69.45792   70.92355   71.85272   67.95218
+
+ Columns 29 and 30:
+
+   74.28991   68.72900
+
+ans(:,:,11) =
+
+ Columns 1 through 6:
+
+     0.00000     0.00000     0.31310     1.94491     4.64216    11.75626
+
+ Columns 7 through 12:
+
+    15.15099    20.78055    26.92908    28.67861    36.58122    40.91365
+
+ Columns 13 through 18:
+
+    54.89065    53.07464    51.61380    66.05061    70.90744    71.53385
+
+ Columns 19 through 24:
+
+    86.91059    94.99137   101.00135   121.76609   111.41848   124.22183
+
+ Columns 25 through 30:
+
+   135.21542   155.94461   147.54178   147.21411   166.91151   171.00968
+
+ans(:,:,12) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,13) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,14) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,15) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,16) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,17) =
+
+ Columns 1 through 7:
+
+    0.00000    0.00000    1.28892    2.02074    3.01005    4.34334    5.50918
+
+ Columns 8 through 14:
+
+    8.07952   11.00542   11.75464   16.09461   17.80092   21.40286   23.22872
+
+ Columns 15 through 21:
+
+   28.81401   33.67091   40.42475   48.16826   58.51003   65.72039   75.15743
+
+ Columns 22 through 28:
+
+   79.15984   82.05668   77.72918   80.93837   84.15533   83.03554   79.04060
+
+ Columns 29 and 30:
+
+   84.06982   79.36038
+
+ans(:,:,18) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
+ans(:,:,19) =
+
+ Columns 1 through 20:
+
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+ Columns 21 through 30:
+
+   0   0   0   0   0   0   0   0   0   0
+
