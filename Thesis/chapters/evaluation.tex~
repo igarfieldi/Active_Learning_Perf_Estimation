@@ -65,13 +65,6 @@ Although nothing in this work is directly dependent of it, the active learner (A
 
 \textit{Probabilistic active learning} (PAL) takes a different approach. It takes a look at each available instance's surroundings and computes the density of unlabeled as well as the amount of already purchased instances. The latter combined with the portion of instances sharing their class label with the original instance is denoted as \textit{label statistics}. Using this, assuming the instance's class label and the overall probability of this class in its neighbourhood was to be known, an optimal selection with regard to the classifier's performance could be made. But since those two quantities are generally unknown, PAL considers them as random variables. This enables the computation of an expected or probabilistic performance gain for each unlabeled instance. When weighted with the instance density in its neighbourhood, it allows an statistically optimal selection for the performance.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[trim = 0cm 6cm 0cm 5cm, clip = true, width = 0.8\textwidth]{PALIllustration}
-	\caption{PAL illustration showing the weighted probabilistic gain (normed on $[0, 1]$). Since all labeled instances are grouped by their class label, the gain is higher for near the lower label-density group}
-	\label{fig:PALIllustration}
-\end{figure}
-
 PAL makes some assumptions, one of which is that the class probability for a neighbourhood can be modeled as a beta distribution. In the original paper, the density computation was also performed with a modified version of kernel density estimation; more about this in \ref{evaluation:classifier}. However, since we use a different estimator for uncertainty sampling, this may hinder the comparability. Thus, instead of the originally intended estimator, we use our classifier for both active learners.
 
 \subsection{Classifier}
@@ -94,61 +87,9 @@ The Parzen window classifier estimates the densities of an instance to be labele
 
 \subsection{Datasets}
 
-The selection of the datasets has to take some considerations into account. Firstly, the datasets should both be realistic and cover most uses; a method that does well on specifically designed test sets but fails in the real world is only interesting as a proof-of-concept. Secondly, PAL was only defined for dichotomous data. Although an extension on multiple-class problems should be possible, we did not want to tamper with the formulas and instead restrict the datasets to binary-class problems.
 
-Considering these constraints we chose the following datasets:
 
-\begin{itemize}
-	\item \textbf{checke1}: This artificial dataset was used in \cite{Chapelle2005} to examine active learning with Parzen window classifiers and contains 400 instances with two features. It has the form of a 4x4 checkerboard, with only every second field containing instances. There is no overlapping of class labels, i.e. the instances can be perfectly separated by class label using decision boundaries. This set may be problematic for uncertainty sampling as it will select instances at its decision boundary, while the set requires \textit{multiple} decision boundaries. Thus, it likely will not label instances from the other fields until it runs out of close ones. Both random sampling and PAL should not have this problem; the former does not care about any structure anyway, while the latter actively explores the "uncharted" instances.
-	\item \textbf{2dData}: Also an artificial, 2-dimensional dataset, it was used in the original PAL paper \cite{KremplEtAl2014}. The 1200 instances are grouped into two clusters of roughly ellipsoid shape, but cannot be perfectly separated as they slightly overlap, making it seem more realistic (real-world datasets tend to have some noisy data). None of the active learners should have inherent problems with this set.
-	\item \textbf{seeds}: A real-world dataset used in \cite{CharytanowiczEtAl2010}. It has seven features which describe different properties of wheat, classifying it into three varieties: Rosa, Kama and Canadian with 70 instances each. To comply with the constraints set earlier, the varieties Kama and Canadian were merged into one class. As it is 7-dimensional, obtaining a visual is difficult; thus we used "t-Distributed Stochastic Neighbor Embedding (t-SNE)", a method for dimensionality reduction of high-dimensional data \cite{vanDerMaaten2008} to project it into $\mathbb{R}^2$ by using Gauss kernels to keep neighboring instances together. Similar to \textit{2dData}, two clusters seem to be present, each containing instances sharing the same class label, albeit a small overlap exists. Due to the similarity, no problems regarding the active learners are to be expected.
-	\item \textbf{abalone}: A real-world dataset using eight predictors associated with predict the age of abalones. Originally, the number of rings (and thus ages) of a specimen were predicted. To create a binary set, all ages below 10 form one class, while the rest forms the other. The set was obtained in the study \cite{NashEtAl1994}. As the original set contained 4177 instances, it had to be reduced to remain a viable option, considering the finite amount of time available for testing. Thus, the number of instances was reduced to 1800, keeping the class ratio intact. The visualization indicates the presence of four separate clusters with partially mixed class labels. While this may hint at problems with uncertainty sampling, the study itself suggests that the predictors are not sufficient for classification, leading to high error rates even with large training sets.
-\end{itemize}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[trim = 0cm 6cm 0cm 5cm, clip = true, width = 0.45\textwidth]{checke1Illustration}
-	\includegraphics[trim = 0cm 6cm 0cm 5cm, clip = true, width = 0.45\textwidth]{2dDataIllustration}
-	\includegraphics[trim = 0cm 6cm 0cm 5cm, clip = true, width = 0.45\textwidth]{seedsIllustration}
-	\includegraphics[trim = 0cm 6cm 0cm 5cm, clip = true, width = 0.45\textwidth]{abaloneReducedIllustration}
-	\caption{Visualizations of the datasets checke1, 2dData, seeds and a downsized version of abalone \cite{Chapelle2005,KremplEtAl2014,CharytanowiczEtAl2010,NashEtAl1994}.\newline The illustration of seeds and abalone was done using an implementation of t-SNE \cite{vanDerMaaten2008}}
-	\label{fig:datasetIllustrations}
-\end{figure}
-
-\subsection{Parameters}
-
-Some of the methods in \ref{methods} require parameters to operate properly. As reading them in text form seems troublesome, the parameters used are listed in 
-
-\begin{table}[htbp]
-	\centering
-	\begin{tabular}{c | c | c}
-		 & \textbf{Parameter} & \textbf{Value} \\
-		\hline
-		\multirow{2}{*}{\textit{Testing}} & \multicolumn{1}{c |}{Iterations} & \multicolumn{1}{c}{30} \\
-		\cline{2-3}
-		& \multicolumn{1}{c |}{Runs} & \multicolumn{1}{c}{100} \\
-		\hline
-		\multirow{2}{*}{\textit{Sub-sampling}} & \multicolumn{1}{c |}{Cap} & \multicolumn{1}{c}{10000} \\
-		\cline{2-3}
-		& \multicolumn{1}{c |}{Paths} & \multicolumn{1}{c}{$|X_T|^2$ (capped at 10000)} \\
-		\hline
-		\multirow{2}{*}{\textit{Subset Estimation}} & \multicolumn{1}{c |}{Folds for CV} & \multicolumn{1}{c}{5} \\
-		\cline{2-3}
-		& \multicolumn{1}{c |}{Bootstrap samples} & \multicolumn{1}{c}{50} \\
-		\hline
-		\multirow{5}{*}{\textit{Function fitting}} & \multicolumn{1}{c |}{Number of iterations} & \multicolumn{1}{c}{300} \\
-		\cline{2-3}
-		& \multicolumn{1}{c |}{Max. parameter change} & \multicolumn{1}{c}{0.0001} \\
-		& \multicolumn{1}{c |}{Initial params. (exp.)} & \multicolumn{1}{c}{$\{[0,1], [-2,0], [-2,0]\}$} \\
-		& \multicolumn{1}{c |}{Initial params. (sig.)} & \multicolumn{1}{c}{$\{[0,1], [0,1], [-4,4]\}$} \\
-		& \multicolumn{1}{c |}{Initial params. (lin.)} & \multicolumn{1}{c}{$\{[0,1], [0,4]\}$} \\
-		\hline
-	\end{tabular}
-	\caption{Parameters used for testing}
-	\label{tab:params}
-\end{table}
-
-TODO: Parameters, Results, Discussion etc.
+TODO: Datasets, Parameters, Results, Discussion etc.
 
 TODO: abstract, introduction, conclusion
 
