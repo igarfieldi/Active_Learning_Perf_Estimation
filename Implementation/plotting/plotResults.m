@@ -30,62 +30,69 @@ matrix, cell");
 	
 	handles = [];
     
-    # plot accuracy averages
-    handles(1) = figure(figures(1));
-    clf;
-    hold on;
-    for i = 1:size(mus, 3)
-        plot(3:size(mus, 2), averMus(:, 3:end, i), "-", "color", colors(i, :));
-    endfor
-    title("Accuracies");
-    xlabel("Training instances");
-    ylabel("Accuracies");
-    legend(names, "location", "southeastoutside");
-    axis([3, size(mus, 2), 0, 1]);
+	if(figures(1) > 0)
+		# plot accuracy averages
+		#handles(1) = figure(figures(1));
+		#clf;
+		#hold on;
+		for i = 1:size(mus, 3)
+			plot(3:size(mus, 2), averMus(:, 3:end, i), "-", "color", colors(i, :));
+		endfor
+		title("Accuracies");
+		xlabel("Training instances");
+		ylabel("Accuracies");
+		#legend(names, "location", "southeastoutside");
+		axis([3, size(mus, 2), 0, 1]);
+	endif
     
-    #{
-    # plot error (simple difference)
-    handles(2) = figure(figures(2));
-    clf;
-    hold on;
-    for i = 2:size(averErrors, 3)
-        plot(3:size(averErrors, 2), averErrors(:, 3:end, i), "-", "color", colors(i, :));
-    endfor
-    title("Differences to hold-out");
-    xlabel("Training instances");
-    ylabel("Differences");
-    legend(names(2:end), "location", "southeastoutside");
-    axis([3, size(averErrors, 2)]);
+	if(figures(2) > 0)
+		figures(2)
+		# plot error (simple difference)
+		handles(2) = figure(figures(2));
+		clf;
+		hold on;
+		for i = 2:size(averErrors, 3)
+			plot(3:size(averErrors, 2), averErrors(:, 3:end, i), "-", "color", colors(i, :));
+		endfor
+		title("Differences to hold-out");
+		xlabel("Training instances");
+		ylabel("Differences");
+		legend(names(2:end), "location", "southeastoutside");
+		axis([3, size(averErrors, 2)]);
+	endif
     
-    # plot squared error
-    handles(3) = figure(figures(3));
-    clf;
-    hold on;
-    for i = 2:size(averSquErrors, 3)
-        plot(3:size(averSquErrors, 2), averSquErrors(:, 3:end, i),
-            "-", "color", colors(i, :));
-    endfor
-    title("Squared error");
-    xlabel("Training instances");
-    ylabel("err²");
-    legend(names(2:end), "location", "southeastoutside");
-    axis([3, size(averSquErrors, 2)]);
+	if(figures(3) > 0)
+		# plot squared error
+		handles(3) = figure(figures(3));
+		clf;
+		hold on;
+		for i = 2:size(averSquErrors, 3)
+			plot(3:size(averSquErrors, 2), averSquErrors(:, 3:end, i),
+				"-", "color", colors(i, :));
+		endfor
+		title("Squared error");
+		xlabel("Training instances");
+		ylabel("err²");
+		legend(names(2:end), "location", "southeastoutside");
+		axis([3, size(averSquErrors, 2)]);
+	endif
     
-    # plot variance
-    if(size(mus, 1) > 1)
-        handles(4) = figure(figures(4));
-        clf;
-        hold on;
-        for i = 1:size(variance, 3)
-            plot(3:size(variance, 2), variance(:, 3:end, i),
-                "-", "color", colors(i, :));
-        endfor
-        title("Variance");
-        xlabel("Training instances");
-        ylabel("Variance");
-        legend(names(2:end), "location", "southeastoutside");
-        axis([3, size(variance, 2)]);
-    endif
-    #}
+	if(figures(4) > 0)
+		# plot variance
+		if(size(mus, 1) > 1)
+			handles(4) = figure(figures(4));
+			clf;
+			hold on;
+			for i = 1:size(variance, 3)
+				plot(3:size(variance, 2), variance(:, 3:end, i),
+					"-", "color", colors(i, :));
+			endfor
+			title("Variance");
+			xlabel("Training instances");
+			ylabel("Variance");
+			legend(names(2:end), "location", "southeastoutside");
+			axis([3, size(variance, 2)]);
+		endif
+	endif
 
 endfunction

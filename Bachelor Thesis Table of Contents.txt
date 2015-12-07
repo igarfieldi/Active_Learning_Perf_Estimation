@@ -1,0 +1,72 @@
+Bachelor thesis structure:
+
+1. Introduction
+	- Some things concerning the "point" of this work
+    - What is the potential use of this work
+2. Literature / Background (Done)
+3. Proposed methods
+	3.1 Combining accuracy estimation and curve fitting
+        - How/Why could this be benefitial
+        3.1.1 Estimating accuracies
+            - Leave-X-out CV (partially covered in Background)
+            - .632 bootstrap (covered in Background)
+        3.1.2 Fitting the learning curve
+            - Potential function models
+            - Different algorithms for fitting
+            - Linear vs. non-linear
+            - Potential problems
+	3.2 Strategies for sampling estimated accuracies
+        - Averaging
+        - Selecting one sample per iteration
+        - Selecting one sample per iteration with restriction to supersets in following iterations
+	3.3 Fitting improvements
+        - Using statistical weights for fitting
+        - Borrowing the no-information rate as 0th-iteration sample
+    
+    Method names:
+        - SampledEstFit
+        - SampledEstRestrictedFit
+        - AveragedCVFit
+        - Averaged632Fit
+        Each with or without weighting
+        SampledEstRestrictedFit with weighting also with NI-rate as 0th-iteration sample
+4. Experimental evaluation
+	4.1 Goal and methodology (hopefully a better title will come to me when writing ._.)
+        - Difference between holdout and tested methods
+        - Does a combination of traditional estimation (CV, .632+ BS) and curve fitting bring improvements?
+            - Average squared error as comparison
+            - KL-Divergence (only where possible, ie. between the sample based approaches)
+        - Estimation bias
+        - Estimation variance
+        - Computational effort
+	4.2 Evaluation settings
+        4.2.1 Active learners
+            - PAL, Uncertainty Sampling, Random Sampling
+            - Short description of each (in part already done in Background section)
+            - Potential influence on learning progression
+        4.2.2 Accuracy estimation and fitting parameters
+            - What sample sizes were chosen for the methods
+                - Bootstrapping: 50
+                - Sampled fitting: iteration ^ 2 individual curves (out of potentially factorial(iteration))
+                - Averaged fitting (both CV and BS): all available (iteration ^ 2), max. 10000
+            - Function used for fitting: exponential
+                - Algorithm used for fitting (Levenberg-Marquardt)
+                - What bounds for the fitting
+                - Number of iterations, statistical weights when weighted, initial parameters...
+        4.2.3 Datasets
+            - checke1, 2dData, seeds, reduced abalone (stratified selection)
+            - Properties (dimensions, synthetic or real etc.)
+            - Interaction with active learners and classifier
+    4.3 Evaluation results
+        - Graphs of the results grouped for the respective methods (traditional, fitting, weighted fitting)
+            - Accuracy curves
+            - Average squared error
+            - Averaged error (for bias check)
+            - For sampled methods, K-fold CV and holdout: KL-divergence and summed squared error
+    4.4 Discussion
+        - Results as expected or not
+        - What may have caused the behaviour etc.
+        - Method-specific problems (e.g. the "unfittable" samples)
+5. Conclusion and Future Work
+    - Did the proposed methods do as we wanted or not
+    - What could/should be done in other works to get better results
