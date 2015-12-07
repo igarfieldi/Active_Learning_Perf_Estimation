@@ -7,15 +7,15 @@ In this section, we will briefly discuss our evaluation methodology, which inclu
 
 To rate the effectiveness of the proposed methods we need a clearly stated and verifiable goal, including criteria to compare them against other techniques. This is easiest using the same scenario already used to describe the functioning of our methods: suppose we have a classifier, trained by an active learner using $k$ training instances. Then the objective of our methods is to estimate the classification loss of said classifier on data not yet seen, but from the same distribution as the training instances. Then, the bias and variance of the estimation is to be compared against established estimators. The exact methods and the competition will be presented in the next section.
 
-To compare the techniques, we utilize the error measures used in \cite{FigueroaEtal2012}, \textit{root mean squared error} (RMSE) and \textit{mean absolute error} (MAE), defined as
+To compare the techniques, we utilize the error measures used in \cite{FigueroaEtal2012}, \textit{root mean squared error} (RMSE) and \textit{mean error} (ME), defined as
 \begin{equation}
 RMSE = \frac{1}{n} \sum_{i=1}^{n} \left(y_n - y_n^{'}\right)^2
 \end{equation}
 and
 \begin{equation}
-MAE = \frac{1}{n} \sum_{i=1}^{n} \left|y - y_n^{'}\right|,
+ME = \frac{1}{n} \sum_{i=1}^{n} y - y_n^{'},
 \end{equation}
-where $y_i$ is the reference accuracy, $y_i^{'}$ the estimate of a method and $n$ the number of test runs. We also use a third measure, \textit{Mean error} $ME = \frac{1}{n} \sum_{i=1}^{n} \left(y - y_n^{'}\right)$, to check if the estimator is biased or not; for an unbiased one, the expected mean error is zero, which should be approached for larger $n$.
+where $y_i$ is the reference accuracy, $y_i^{'}$ the estimate of a method and $n$ the number of test runs. $RMSE$ will tell us how wide the error is spread (variance), while the raw mean error gives an estimate of the bias each technique carries.
 
 Depending on the method in question, we may have additional measures for comparison. As a by-product of the multiple curves fit when using path sub-sampling, the resulting estimates can be seen as a sample of a distribution. In turn, we can estimate that distribution by estimating the mean and the variance of the sample. Luckily, the choice of the distribution model to assume is fairly simple; most models are not suitable anyway, as they are defined on $\mathbb{R}$. Our estimates, however, are limited to $[0,1]$. Thus, only few distributions come to mind, one of which is the beta distribution, also being used for similar purposes by \cite{KremplEtAl2014}. It is dependent by two parameters, $p, q \in \mathbb{R}_{\le 0}$, with a density function defined as \cite{GuptaEtAl2004}
 \begin{equation}
@@ -117,36 +117,60 @@ Considering these constraints we chose the following datasets:
 
 \subsection{Parameters}
 
-Some of the methods in \ref{methods} require parameters to operate properly. As reading them in text form seems troublesome, the parameters used are listed in 
+Some of the methods as well as the fitting requires the specification of parameters like the number of iterations or error tolerance. As their choice may influence the results, all parameters used will be stated in this section.
 
-\begin{table}[htbp]
-	\centering
-	\begin{tabular}{c | c | c}
-		 & \textbf{Parameter} & \textbf{Value} \\
-		\hline
-		\multirow{2}{*}{\textit{Testing}} & \multicolumn{1}{c |}{Iterations} & \multicolumn{1}{c}{30} \\
-		\cline{2-3}
-		& \multicolumn{1}{c |}{Runs} & \multicolumn{1}{c}{100} \\
-		\hline
-		\multirow{2}{*}{\textit{Sub-sampling}} & \multicolumn{1}{c |}{Cap} & \multicolumn{1}{c}{10000} \\
-		\cline{2-3}
-		& \multicolumn{1}{c |}{Paths} & \multicolumn{1}{c}{$|X_T|^2$ (capped at 10000)} \\
-		\hline
-		\multirow{2}{*}{\textit{Subset Estimation}} & \multicolumn{1}{c |}{Folds for CV} & \multicolumn{1}{c}{5} \\
-		\cline{2-3}
-		& \multicolumn{1}{c |}{Bootstrap samples} & \multicolumn{1}{c}{50} \\
-		\hline
-		\multirow{5}{*}{\textit{Function fitting}} & \multicolumn{1}{c |}{Number of iterations} & \multicolumn{1}{c}{300} \\
-		\cline{2-3}
-		& \multicolumn{1}{c |}{Max. parameter change} & \multicolumn{1}{c}{0.0001} \\
-		& \multicolumn{1}{c |}{Initial params. (exp.)} & \multicolumn{1}{c}{$\{[0,1], [-2,0], [-2,0]\}$} \\
-		& \multicolumn{1}{c |}{Initial params. (sig.)} & \multicolumn{1}{c}{$\{[0,1], [0,1], [-4,4]\}$} \\
-		& \multicolumn{1}{c |}{Initial params. (lin.)} & \multicolumn{1}{c}{$\{[0,1], [0,4]\}$} \\
-		\hline
+For each combination of dataset, active learner and function model, 100 runs were simulated, each with 30 total instances purchased. A slight oversight in test design resulted in (likely) different purchase sequences for different function models, although its influence should be mitigated by the amount of runs.
+
+For the path-based methods, $|X_T|^2$ paths were randomly selected. The required subset performance estimations were computed afterwards. Both averaging methods make use of all subsets up to ~10000 (due to rounding not exact); the bootstrap variant was allowed 50 bootstrap samples per subset. This cap was placed due to memory limitations. The modified variants with weighting/no-information rate use the same subsets/paths for any given test run. The cross-validation competitor used 5 folds; its bootstrapping counterpart also got 50 bootstrap samples per estimation.
+
+All curves were fit with the Levenberg-Marquardt algorithm, even the linear model; this was done to normalize the testing environment. The ranges for initial parameters as well as their bounds can be seen in \ref{tab:functionParams}. Each fitting can use up to 300 iterations with a scalar tolerance of $10^{-4}$, i.e. if the sum of squared errors is lower than $0.0001$, the fitting is considered done and will not use the remaining iterations. The partial derivatives were provided, thus numeric derivation was not necessary.
+
+\begin{table}[h]
+	\begin{tabular}{c | c | c | c}
+	\textbf{Function model} & \textbf{Equation} & \textbf{Parameter bounds} & \textbf{Initial parameter range} \\
+	\hline
+	3-Exponential & $f_E(x) = a + b \cdot e^{c \cdot x}$ & \begin{tabular}{l}$a \in [0,1]$ \\ $b \in [-\infty, 0]$ \\ $c \in [-\infty, 0]$\end{tabular} & \begin{tabular}{l}$a \in [0,1]$ \\ $b \in [-2, 0]$ \\ $c \in [-2, 0]$\end{tabular} \\
+	\hline
+	Sigmoid & $f_S(x) = a + b \cdot e^{c \cdot x}$ & \begin{tabular}{l}$a \in [0,1]$ \\ $b \in [-\infty, 0]$ \\ $c \in [-\infty, 0]$\end{tabular} & \begin{tabular}{l}$a \in [0,1]$ \\ $b \in [-2, 0]$ \\ $c \in [-2, 0]$\end{tabular} \\
+	\hline
+	Linear & $f_L(x) = a + b \cdot x$ & \begin{tabular}{l}$a \in [0,1]$ \\ $b \in [0, \infty]$\end{tabular} & \begin{tabular}{l}$a \in [0,1]$ \\ $b \in [0, 4]$\end{tabular} \\
 	\end{tabular}
-	\caption{Parameters used for testing}
-	\label{tab:params}
+	\caption{Function-specific parameters for model fitting}
+	\label{tab:functionParams}
 \end{table}
+
+As Levenberg-Marquardt may be stuck in local minima or not converge at all, each fitting was done 5 times with random parameters drawn from their respective ranges to attempt to circumvent these hazards. Then, the fit with the lowest sum of squared errors w.r.t. the data given was selected. Unfortunately, the experiments were done with a faulty version; while the fitting itself makes use of the provided statistical weights, the fit selection does not, leading to potentially wrong fits. Future tests on this matter should avoid this.
+
+The reference accuracy was obtained by using holdout test sets, each randomly selected with the same size as the classifier's training set. The classifier in question then assigned a class label and the accuracy is computed for each of the holdout sets. Both variance and mean are obtained from the accuracies of all holdout sets and then used to construct a beta distribution; the mean is also used in the traditional error computation.
+
+\section{Test results}
+
+Due to the sheer amount of data, we will only cover a portion of the generated graphs; the rest can be found in the \nameref{appedixa}. To help keeping an overview, we structure the evaluation into various parts: first, we take a look at the squared and absolute error measures to get an idea of the variance each methods brings with it. Then we evaluate the bias by inspecting the mean error. Last are the distribution comparisons; they are limited to a subset of methods anyway. After that, we will go into more detail for some selected methods, breaking their estimation down to the individual iterations, as well as providing some information about the average execution time.
+
+\subsection{Squared and absolute error}
+
+The graphs \ref{fig:squaredErrorBars} and \ref{fig:meanErrorBars} display the squared error and the mean error for the individual datasets summed over the active learning iterations. They show that the variance and absolute bias seem to be larger when using non-random active learners. It also reveals a high variance for \texit{pathSuper}, sometimes doubling that of the next highest method. The only time another method has a higher RMSE is for the abalone dataset with TODO ohne iter 12
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{squErrBarchecke1}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{squErrBar2dData}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{squErrBarseeds}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{squErrBarabaloneReduced}
+	\caption{Summed squared errors for the different active learners, function models and }
+	\label{fig:squaredErrorBars}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{diffErrBarchecke1}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{diffErrBar2dData}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{diffErrBarseeds}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{diffErrBarabaloneReduced}
+	\caption{Summed squared errors for the different active learners, function models and }
+	\label{fig:meanErrorBars}
+\end{figure}
+
 
 TODO: Parameters, Results, Discussion etc.
 
