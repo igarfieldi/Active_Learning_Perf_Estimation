@@ -34,9 +34,12 @@ allVars = cell(length(files), 3, 3);
 allTimes = cell(length(files), 3, 3);
 
 for f = 1:4
+	disp(f);
 	for al = 1:3
+		disp(al);
 		for func = 1:3
-			for i = 1:10
+			disp(func);
+			for i = 1:100
 				load([resDir, files{f}, "_", num2str(al), "_", num2str(func), "_", num2str(i), ".mat"],
 					"mus", "vars", "times");
 				allMus{f, al, func} = cat(1, allMus{f, al, func}, mus);
@@ -47,4 +50,6 @@ for f = 1:4
 	endfor
 endfor
 
-plotResults(allMus{2, 3, 3}, allVars{2, 3, 3}, 1:4, testParams.useMethod, colors, methodNames);
+save("results/allResults.mat", "allMus", "allVars", "allTimes");
+
+#plotResults(allMus{2, 3, 3}, allVars{2, 3, 3}, 1:4, testParams.useMethod, colors, methodNames);
