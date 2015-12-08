@@ -1,0 +1,4 @@
+syntax: glob
+
+Implementation/results/
+Implementation/resultsRaw/
