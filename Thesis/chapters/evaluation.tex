@@ -5,7 +5,7 @@ In this section, we will briefly discuss our evaluation methodology, which inclu
 
 \section{Objective and measurements}
 
-To rate the effectiveness of the proposed methods we need a clearly stated and verifiable goal, including criteria to compare them against other techniques. This is easiest using the same scenario already used to describe the functioning of our methods: suppose we have a classifier, trained by an active learner using $k$ training instances. Then the objective of our methods is to estimate the classification loss of said classifier on data not yet seen, but from the same distribution as the training instances. Then, the bias and variance of the estimation is to be compared against established estimators. The exact methods and the competition will be presented in the next section.
+To rate the effectiveness of the proposed methods we need a clearly stated and verifiable goal, including criteria to compare them against other techniques. This is easiest using the same scenario already used to describe the functioning of our methods: suppose we have a classifier, trained by an active learner using $k$ training instances. Then the objective of our methods is to estimate the classification loss of said classifier on data not yet seen, but from the same distribution as the training instances. Then, the bias and error of the estimation is to be compared against established estimators. The exact methods and the competition will be presented in the next section.
 
 To compare the techniques, we utilize the error measures used in \cite{FigueroaEtal2012}, \textit{root mean squared error} (RMSE) and \textit{mean error} (ME), defined as
 \begin{equation}
@@ -15,7 +15,7 @@ and
 \begin{equation}
 ME = \frac{1}{n} \sum_{i=1}^{n} y - y_n^{'},
 \end{equation}
-where $y_i$ is the reference accuracy, $y_i^{'}$ the estimate of a method and $n$ the number of test runs. $RMSE$ will tell us how wide the error is spread (variance), while the raw mean error gives an estimate of the bias each technique carries.
+where $y_i$ is the reference accuracy, $y_i^{'}$ the estimate of a method and $n$ the number of test runs. $RMSE$ will tell us how wide the error is spread, while the raw mean error gives an estimate of the bias each technique carries.
 
 Depending on the method in question, we may have additional measures for comparison. As a by-product of the multiple curves fit when using path sub-sampling, the resulting estimates can be seen as a sample of a distribution. In turn, we can estimate that distribution by estimating the mean and the variance of the sample. Luckily, the choice of the distribution model to assume is fairly simple; most models are not suitable anyway, as they are defined on $\mathbb{R}$. Our estimates, however, are limited to $[0,1]$. Thus, only few distributions come to mind, one of which is the beta distribution, also being used for similar purposes by \cite{KremplEtAl2014}. It is dependent by two parameters, $p, q \in \mathbb{R}_{\le 0}$, with a density function defined as \cite{GuptaEtAl2004}
 \begin{equation}
@@ -145,11 +145,15 @@ The reference accuracy was obtained by using holdout test sets, each randomly se
 
 \section{Test results}
 
-Due to the sheer amount of data, we will only cover a portion of the generated graphs; the rest can be found in the \nameref{appedixa}. To help keeping an overview, we structure the evaluation into various parts: first, we take a look at the squared and absolute error measures to get an idea of the variance each methods brings with it. Then we evaluate the bias by inspecting the mean error. Last are the distribution comparisons; they are limited to a subset of methods anyway. After that, we will go into more detail for some selected methods, breaking their estimation down to the individual iterations, as well as providing some information about the average execution time.
+Due to the sheer amount of data, we will only cover a portion of the generated graphs; the rest can be found in the \nameref{appedixa}. To help keeping an overview, we structure the evaluation into various parts: first, we take a look at the squared and absolute error measures to get an idea of the error spread each methods brings with it. Then we evaluate the bias by inspecting the mean error. Last are the distribution comparisons; they are limited to a subset of methods anyway. After that, we will go into more detail for some selected methods, breaking their estimation down to the individual iterations, as well as providing some information about the average execution time.
 
 \subsection{Squared and absolute error}
 
-The graphs \ref{fig:squaredErrorBars} and \ref{fig:meanErrorBars} display the squared error and the mean error for the individual datasets summed over the active learning iterations. They show that the variance and absolute bias seem to be larger when using non-random active learners. It also reveals a high variance for \texit{pathSuper}, sometimes doubling that of the next highest method. The only time another method has a higher RMSE is for the abalone dataset with TODO ohne iter 12
+The graphs \ref{fig:squaredErrorBars} and \ref{fig:meanErrorBars} display the squared error and the mean error for the individual datasets summed over the active learning iterations. Some things catch our eye here: In almost all test scenarios, \textit{pathSuper} has the largest squared error, which expresses how far away from the holdout accuracy the estimate may stray, of all methods, while its weighted variant is in line with the rest of them. Also, aside from some isolated cases, the \textit{.632+ bootstrap} generally has a lower squared error than its rivals, while strays \textit{k-fold CV} roughly equal or slightly further than our methods aside from \textit{pathSuper}.
+
+Interestingly, all performance estimators seem to stray in their results more heavily when a non-random active learner is used; the largest penalty occurs with uncertainty sampling, while PAL only brings slight increases and even a decrease when applied to the abalone dataset. The difference between function models seems to follow no particular pattern, which means that either the summed squared error is independent of the chosen function model or some conditional dependence exists, perhaps with the data distribution. We recommend further testing on this matter.
+
+It should also be noted that some \textit{.632+ BS} estimates were absurdly large (in the range of 30-40). These estimates were taken out, as they were considered outliers which seem to have been a result of the insufficient bounding of function parameters.
 
 \begin{figure}[h]
 	\centering
@@ -157,18 +161,48 @@ The graphs \ref{fig:squaredErrorBars} and \ref{fig:meanErrorBars} display the sq
 	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{squErrBar2dData}
 	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{squErrBarseeds}
 	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{squErrBarabaloneReduced}
-	\caption{Summed squared errors for the different active learners, function models and }
+	\caption{Summed squared errors for the different active learners, function models and datasets}
 	\label{fig:squaredErrorBars}
 \end{figure}
 
+Similarly to the squared error, most methods show a higher mean error, which is an estimation of the bias, for PAL and even more for uncertainty sampling. However, unlike previously, the \textit{superPath} method offers a fairly low bias when used with random sampling, roughly on the same level as \textit{.632+ BS}. Also, there is a fairly significant difference between the linear and the non-linear models: the former tends to have negative mean errors, meaning that the estimated accuracies are higher than the holdout. To evaluate the influence of the statistical weights used for fitting, \ref{fig:meanErrorDiffBars} showcases the absolute difference in the mean error between each method weighted and unweighted. A larger value means a lower absolute bias for the weighted variant. However, this is rarely the case for random sampling, not even for the averaged sub-sampling where we predicted its necessity. For the other active learners, the \textit{pathSuper} and \textit{path} methods occasionally achieve lower bias with weighting, but it does not seem to be predictable where weighting is beneficial and where not.
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{diffErrBarchecke1}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{diffErrBar2dData}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{diffErrBarseeds}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{diffErrBarabaloneReduced}
-	\caption{Summed squared errors for the different active learners, function models and }
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrBarchecke1}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrBar2dData}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrBarseeds}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrBarabaloneReduced}
+	\caption{Summed mean errors for the different active learners, function models and datasets}
 	\label{fig:meanErrorBars}
+\end{figure}
+
+Back in the summed mean error graph, we can observe that using the no-information rate as an additional fitting point has no beneficial influence, as the mean error of \textit{pathSuperWNI} is equal or higher than that of \textit{pathSuperW} in almost all cases, which was to be expected, as its main influence should be for small training sets. However, as \ref{fig:meanErrorLowIter} hints, there is no unanimous advantage of using \textit{pathSuperWNI}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrLowIterchecke1}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrLowIter2dData}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrLowIterseeds}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrLowIterabaloneReduced}
+	\caption{Mean error of the three \textit{pathSuper}-methods for small training sets (random sampling, exponential function model)}
+	\label{fig:meanErrorLowIter}
+\end{figure}
+
+Next on our list is the Kullback-Leibler divergence. As not all methods provide multiple estimates, we are stuck with using a limited subset of them. Also, as the training set gets larger, the variance of the \textit{pathSuper} method gets lower, eventually results in beta distribution parameters lower than zero. Since these do not define a valid beta distribution, we cannot compute the divergence for these cases. The other path-based methods also suffer from this, but not to the same extend; 
+
+In summary, the least biased methods seem to be the two classical ones, \textit{k-fold CV} and \textit{.632+ BS}, as well as \textit{superPath} without weighting. A bit further behind appears to be \textit{averaged}. Generally, neither statistical weighting proportional to the number of subsets nor adding the no-information rate seem to benefit the estimation over all training sizes significantly. Thus, we will focus 
+
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrDiffBarchecke1}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrDiffBar2dData}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrDiffBarseeds}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrDiffBarabaloneReduced}
+	\caption{Absolute difference in summed mean error for the various methods}
+	\label{fig:meanErrorDiffBars}
 \end{figure}
 
 
