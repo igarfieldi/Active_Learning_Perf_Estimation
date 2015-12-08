@@ -189,7 +189,7 @@ activeLearner,struct, struct");
 				t1 = time();
                 [mus(r, i, 5), vars(r, i, 5)] = estSampleFit(SMCsamples,
                                                             functionParams);
-				times(r, i, 5) = SMCt + CVt*prod(size(SMCsamples))/length(uniqueCVSamples)...
+                times(r, i, 5) = SMCt + CVt*prod(size(SMCsamples))/length(uniqueCVSamples)...
 									+ (time() - t1);
             endif
             

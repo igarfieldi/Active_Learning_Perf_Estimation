@@ -34,7 +34,6 @@ provided as a struct");
         accs = [ones(size(accs, 1), 1) .* niRate, accs];
         weights = [1, weights];
         fitX = [0, fitX];
-		
     endif
     
     funcs = fitFunctions(fitX, accs, functionParams, weights);

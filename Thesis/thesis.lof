@@ -9,7 +9,8 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces PAL illustration showing the weighted probabilistic gain (normed on $[0, 1]$). Since all labeled instances are grouped by their class label, the gain is higher for near the lower label-density group}}{25}{figure.4.1}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces The estimated kernel density for a grid with one positive and two negative instance; lower Z value indicates lower certainty for the class assignment}}{26}{figure.4.2}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Visualizations of the datasets checke1, 2dData, seeds and a downsized version of abalone \cite {Chapelle2005,KremplEtAl2014,CharytanowiczEtAl2010,NashEtAl1994}.\newline The illustration of seeds and abalone was done using an implementation of t-SNE \cite {vanDerMaaten2008}}}{28}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Summed squared errors for the different active learners, function models and }}{30}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Summed squared errors for the different active learners, function models and }}{31}{figure.4.5}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Summed squared errors for the different active learners, function models and }}{31}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Summed squared errors for the different active learners, function models and }}{32}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Summed squared errors for the different active learners, function models and }}{33}{figure.4.6}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

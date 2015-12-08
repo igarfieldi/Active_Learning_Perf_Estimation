@@ -16,6 +16,10 @@ matrix, scalar");
     pVal = betapdf(X, repmat(P(:, 1), 1, res), repmat(P(:, 2), 1, res));
     qVal = betapdf(X, repmat(Q(:, 1), 1, res), repmat(Q(:, 2), 1, res));
     
+    # make sure that the integral is 1
+    pVal = res .* pVal ./ sum(pVal);
+    qVal = res .* qVal ./ sum(qVal);
+    
     zeroInd = find(pVal == 0);
     pVal(zeroInd) = 1;
     qVal(zeroInd) = 1;
@@ -23,6 +27,6 @@ matrix, scalar");
     pVal(zeroInd) = 1;
     qVal(zeroInd) = 1;
     
-    KLD = sum(pVal .* log2(pVal ./ qVal), 2);
+    KLD = sum(pVal .* log2(pVal ./ qVal), 2) ./ length(pVal);
 
 endfunction
