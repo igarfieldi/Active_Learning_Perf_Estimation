@@ -2,3 +2,4 @@ syntax: glob
 
 Implementation/results/
 Implementation/resultsRaw/
+Implementation/octave-workspace
