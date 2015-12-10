@@ -35,7 +35,6 @@ activeLearner,struct, struct");
 		endif
         
 		currOracle = oracle;
-        bsAccs = cell(2, 1);
 		
 		# select initial 2 instances before any performance estimation can be applied
 		for i = 1:min(testParams.iterations, 2)
@@ -95,7 +94,7 @@ activeLearner,struct, struct");
             
             
             # use sampled fitting
-            if(sum(testParams.useMethod([4,8,12,16])) > 0)
+            if(sum(testParams.useMethod([4,8,13,17,22,26])) > 0)
 				MCt = time();
                 [MCsamples, MCpos, CVSamples] = getFittingSamplesLXO(i,
                                                         testParams.samples(i),
@@ -104,7 +103,7 @@ activeLearner,struct, struct");
             endif
             
             # use sampled fitting with Supersets
-            if(sum(testParams.useMethod([5,9,13,17])) > 0)
+            if(sum(testParams.useMethod([5,9,12,14,18,21,23,27,30])) > 0)
 				SMCt = time();
                 [SMCsamples, SMCpos, CVSamples] = getFittingSamplesSuperLXO(i,
                                                         testParams.samples(i),
@@ -114,7 +113,7 @@ activeLearner,struct, struct");
             
             
             # use averaged fitting (only subset of all)
-            if(sum(testParams.useMethod([6,10,14,18])) > 0)
+            if(sum(testParams.useMethod([6,10,15,19,24,28])) > 0)
 				AVt = time();
                 [averSamples, averSizes, averPos, CVSamples]...
                                                 = getFittingSamplesAver(i,
@@ -124,7 +123,7 @@ activeLearner,struct, struct");
             endif
             
             # use .632 bootstrap fitting (only subset of all)
-            if(sum(testParams.useMethod([7,11,15,19])) > 0)
+            if(sum(testParams.useMethod([7,11,16,20,25,29])) > 0)
 				BSAt = time();
                 [BS632Samples, BS632sizes, BS632Pos, BSSamples]...
                                         = getFittingSamples632(i,
@@ -151,19 +150,19 @@ activeLearner,struct, struct");
 			BSt = time() - BSt;
             
             # get the requested accuracies and shape them as before
-            if(sum(testParams.useMethod([4,8,12,16])) > 0)
+            if(sum(testParams.useMethod([4,8,13,17,22,26])) > 0)
                 MCsamples = reshape(CVAccs(CVpos(MCpos)), size(MCsamples));
             endif
             
-            if(sum(testParams.useMethod([5,9,13,17])) > 0)
+            if(sum(testParams.useMethod([5,9,12,14,18,21,23,27,30])) > 0)
                 SMCsamples = reshape(CVAccs(CVpos(SMCpos)), size(SMCsamples));
             endif
             
-            if(sum(testParams.useMethod([6,10,14,18])) > 0)
+            if(sum(testParams.useMethod([6,10,15,19,24,28])) > 0)
                 averSamples = CVAccs(CVpos(averPos));
             endif
             
-            if(sum(testParams.useMethod([7,11,15,19])) > 0)
+            if(sum(testParams.useMethod([7,11,16,20,25,29])) > 0)
                 BS632Samples = BSAccs(BSpos(BS632Pos));
             endif
             
@@ -175,130 +174,79 @@ activeLearner,struct, struct");
             #
             # Third stage
             #
-            
-            # Normal methods
-            if(testParams.useMethod(4))
-				t1 = time();
-                [mus(r, i, 4), vars(r, i, 4)] = estSampleFit(MCsamples,
-                                                            functionParams);
-				times(r, i, 4) = MCt + CVt*prod(size(MCsamples))/length(uniqueCVSamples)...
-									+ (time() - t1);
-            endif
-            
-            if(testParams.useMethod(5))
-				t1 = time();
-                [mus(r, i, 5), vars(r, i, 5)] = estSampleFit(SMCsamples,
-                                                            functionParams);
-                times(r, i, 5) = SMCt + CVt*prod(size(SMCsamples))/length(uniqueCVSamples)...
-									+ (time() - t1);
-            endif
-            
-            if(testParams.useMethod(6))
-				t1 = time();
-                [mus(r, i, 6), ~, averages] = estAverFit(averSamples, averSizes, functionParams);
-				times(r, i, 6) = AVt + CVt*prod(size(averSamples))/length(uniqueCVSamples)...
-									+ (time() - t1);
-				mus(r, i, 5) = averages(end);
-            endif
-            
-            if(testParams.useMethod(7))
-				t1 = time();
-                mus(r, i, 7) = est632Fit(BS632Samples, BS632sizes, functionParams);
-				times(r, i, 7) = BSAt + BSt + (time() - t1);
-            endif
-            
-            # Weighted fitting
-            if(testParams.useMethod(8))
-				t1 = time();
-                [mus(r, i, 8), vars(r, i, 8)] = estSampleFit(MCsamples,
-                                                            functionParams, true);
-				times(r, i, 8) = MCt + CVt*prod(size(MCsamples))/length(uniqueCVSamples)...
-									+ (time() - t1);
-            endif
-            
-            if(testParams.useMethod(9))
-				t1 = time();
-                [mus(r, i, 9), vars(r, i, 9)] = estSampleFit(SMCsamples,
-                                                            functionParams, true);
-				times(r, i, 9) = SMCt + CVt*prod(size(SMCsamples))/length(uniqueCVSamples)...
-									+ (time() - t1);
-            endif
-            
-            if(testParams.useMethod(10))
-				t1 = time();
-                mus(r, i, 10) = estAverFit(averSamples, averSizes,
-                                            functionParams, true);
-				times(r, i, 10) = AVt + CVt*prod(size(averSamples))/length(uniqueCVSamples)...
-									+ (time() - t1);
-            endif
-            
-            if(testParams.useMethod(11))
-				t1 = time();
-                mus(r, i, 11) = est632Fit(BS632Samples, BS632sizes,
-                                            functionParams, true);
-				times(r, i, 11) = BSAt + BSt + (time() - t1);
-            endif
-            
-            # No-information fitting
-            if(testParams.useMethod(12))
-				t1 = time();
-                [mus(r, i, 12), vars(r, i, 12)] = estSampleFit(MCsamples,
-                                                functionParams, false, niRate);
-				times(r, i, 12) = MCt + CVt*prod(size(MCsamples))/length(uniqueCVSamples)...
-									+ NIt + (time() - t1);
-            endif
-            
-            if(testParams.useMethod(13))
-				t1 = time();
-                [mus(r, i, 13), vars(r, i, 13)] = estSampleFit(SMCsamples,
-                                                functionParams, false, niRate);
-				times(r, i, 13) = SMCt + CVt*prod(size(SMCsamples))/length(uniqueCVSamples)...
-									+ NIt + (time() - t1);
-            endif
-            
-            if(testParams.useMethod(14))
-				t1 = time();
-                mus(r, i, 14) = estAverFit(averSamples, averSizes,
-                                            functionParams, false, niRate);
-				times(r, i, 14) = AVt + CVt*prod(size(averSamples))/length(uniqueCVSamples)...
-									+ NIt + (time() - t1);
-            endif
-            
-            if(testParams.useMethod(15))
-				t1 = time();
-                mus(r, i, 15) = est632Fit(BS632Samples, BS632sizes,
-                                            functionParams, false, niRate);
-				times(r, i, 15) = BSAt + BSt + NIt + (time() - t1);
-            endif
-            
-            # No-information and weighted fitting
-            if(testParams.useMethod(16))
-                [mus(r, i, 16), vars(r, i, 16)] = estSampleFit(MCsamples,
-                                                functionParams, true, niRate);
-				times(r, i, 16) = MCt + CVt*prod(size(MCsamples))/length(uniqueCVSamples)...
-									+ NIt + (time() - t1);
-            endif
-            
-            if(testParams.useMethod(17))
-                [mus(r, i, 17), vars(r, i, 17)] = estSampleFit(SMCsamples,
-                                                functionParams, true, niRate);
-				times(r, i, 17) = SMCt + CVt*prod(size(SMCsamples))/length(uniqueCVSamples)...
-									+ NIt + (time() - t1);
-            endif
-            
-            if(testParams.useMethod(18))
-                mus(r, i, 18) = estAverFit(averSamples, averSizes,
-                                            functionParams, true, niRate);
-				times(r, i, 18) = AVt + CVt*prod(size(averSamples))/length(uniqueCVSamples)...
-									+ NIt + (time() - t1);
-            endif
-            
-            if(testParams.useMethod(19))
-                mus(r, i, 19) = est632Fit(BS632Samples, BS632sizes,
-                                            functionParams, true, niRate);
-				times(r, i, 19) = BSAt + BSt + NIt + (time() - t1);
-            endif
-            
+			for funcs = 1:length(functionParams)
+				# Normal methods
+				if(testParams.useMethod(4+(funcs-1)*9))
+					t1 = time();
+					[mus(r, i, 4+(funcs-1)*9), vars(r, i, 4+(funcs-1)*9)] = estSampleFit(MCsamples,
+																functionParams(funcs));
+					times(r, i, 4+(funcs-1)*9) = MCt + CVt*prod(size(MCsamples))/length(uniqueCVSamples)...
+										+ (time() - t1);
+				endif
+				
+				if(testParams.useMethod(5+(funcs-1)*9))
+					t1 = time();
+					[mus(r, i, 5+(funcs-1)*9), vars(r, i, 5+(funcs-1)*9)] = estSampleFit(SMCsamples,
+																functionParams(funcs));
+					times(r, i, 5+(funcs-1)*9) = SMCt + CVt*prod(size(SMCsamples))/length(uniqueCVSamples)...
+										+ (time() - t1);
+				endif
+				
+				if(testParams.useMethod(6+(funcs-1)*9))
+					t1 = time();
+					[mus(r, i, 6+(funcs-1)*9), ~, averages] = estAverFit(averSamples, averSizes, functionParams(funcs));
+					times(r, i, 6+(funcs-1)*9) = AVt + CVt*prod(size(averSamples))/length(uniqueCVSamples)...
+										+ (time() - t1);
+				endif
+				
+				if(testParams.useMethod(7+(funcs-1)*9))
+					t1 = time();
+					mus(r, i, 7+(funcs-1)*9) = est632Fit(BS632Samples, BS632sizes, functionParams(funcs));
+					times(r, i, 7+(funcs-1)*9) = BSAt + BSt + (time() - t1);
+				endif
+				
+				# Weighted fitting
+				if(testParams.useMethod(8+(funcs-1)*9))
+					t1 = time();
+					[mus(r, i, 8+(funcs-1)*9), vars(r, i, 8+(funcs-1)*9)] = estSampleFit(MCsamples,
+																functionParams(funcs), true);
+					times(r, i, 8+(funcs-1)*9) = MCt + CVt*prod(size(MCsamples))/length(uniqueCVSamples)...
+										+ (time() - t1);
+				endif
+				
+				if(testParams.useMethod(9+(funcs-1)*9))
+					t1 = time();
+					[mus(r, i, 9+(funcs-1)*9), vars(r, i, 9+(funcs-1)*9)] = estSampleFit(SMCsamples,
+																functionParams(funcs), true);
+					times(r, i, 9+(funcs-1)*9) = SMCt + CVt*prod(size(SMCsamples))/length(uniqueCVSamples)...
+										+ (time() - t1);
+				endif
+				
+				if(testParams.useMethod(10+(funcs-1)*9))
+					t1 = time();
+					mus(r, i, 10+(funcs-1)*9) = estAverFit(averSamples, averSizes,
+												functionParams(funcs), true);
+					times(r, i, 10+(funcs-1)*9) = AVt + CVt*prod(size(averSamples))/length(uniqueCVSamples)...
+										+ (time() - t1);
+				endif
+				
+				if(testParams.useMethod(11+(funcs-1)*9))
+					t1 = time();
+					mus(r, i, 11+(funcs-1)*9) = est632Fit(BS632Samples, BS632sizes,
+												functionParams(funcs), true);
+					times(r, i, 11+(funcs-1)*9) = BSAt + BSt + (time() - t1);
+				endif
+				
+				# No-information fitting
+				if(testParams.useMethod(12+(funcs-1)*9))
+					t1 = time();
+					[mus(r, i, 12+(funcs-1)*9), vars(r, i, 12+(funcs-1)*9)] = estSampleFit(SMCsamples,
+													functionParams(funcs), false, niRate);
+					times(r, i, 12+(funcs-1)*9) = SMCt + CVt*prod(size(SMCsamples))/length(uniqueCVSamples)...
+										+ NIt + (time() - t1);
+				endif
+			
+			endfor
 		endfor
 	endfor
     

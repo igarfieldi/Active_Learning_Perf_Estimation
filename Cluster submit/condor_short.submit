@@ -11,113 +11,41 @@ log = ../log/logfilename_$(Process)
 #### tests:
 
 #  abalone
-Arguments = mainCmd.m abaloneReduced.mat 1 1
+Arguments = mainCmd.m abaloneReduced.mat 1
 Queue 10
 
-Arguments = mainCmd.m abaloneReduced.mat 1 2
+Arguments = mainCmd.m abaloneReduced.mat 2
 Queue 10
 
-Arguments = mainCmd.m abaloneReduced.mat 1 3
-Queue 10
-
-Arguments = mainCmd.m abaloneReduced.mat 2 1
-Queue 10
-
-Arguments = mainCmd.m abaloneReduced.mat 2 2
-Queue 10
-
-Arguments = mainCmd.m abaloneReduced.mat 2 3
-Queue 10
-
-Arguments = mainCmd.m abaloneReduced.mat 3 1
-Queue 10
-
-Arguments = mainCmd.m abaloneReduced.mat 3 2
-Queue 10
-
-Arguments = mainCmd.m abaloneReduced.mat 3 3
+Arguments = mainCmd.m abaloneReduced.mat 3
 Queue 10
 
 #  2dData
-Arguments = mainCmd.m 2dData.mat 1 1
+Arguments = mainCmd.m 2dData.mat 1
 Queue 10
 
-Arguments = mainCmd.m 2dData.mat 1 2
+Arguments = mainCmd.m 2dData.mat 2
 Queue 10
 
-Arguments = mainCmd.m 2dData.mat 1 3
-Queue 10
-
-Arguments = mainCmd.m 2dData.mat 2 1
-Queue 10
-
-Arguments = mainCmd.m 2dData.mat 2 2
-Queue 10
-
-Arguments = mainCmd.m 2dData.mat 2 3
-Queue 10
-
-Arguments = mainCmd.m 2dData.mat 3 1
-Queue 10
-
-Arguments = mainCmd.m 2dData.mat 3 2
-Queue 10
-
-Arguments = mainCmd.m 2dData.mat 3 3
+Arguments = mainCmd.m 2dData.mat 3
 Queue 10
 
 #  seeds
-Arguments = mainCmd.m seeds.mat 1 1
+Arguments = mainCmd.m seeds.mat 1
 Queue 10
 
-Arguments = mainCmd.m seeds.mat 1 2
+Arguments = mainCmd.m seeds.mat 2
 Queue 10
 
-Arguments = mainCmd.m seeds.mat 1 3
-Queue 10
-
-Arguments = mainCmd.m seeds.mat 2 1
-Queue 10
-
-Arguments = mainCmd.m seeds.mat 2 2
-Queue 10
-
-Arguments = mainCmd.m seeds.mat 2 3
-Queue 10
-
-Arguments = mainCmd.m seeds.mat 3 1
-Queue 10
-
-Arguments = mainCmd.m seeds.mat 3 2
-Queue 10
-
-Arguments = mainCmd.m seeds.mat 3 3
+Arguments = mainCmd.m seeds.mat 3
 Queue 10
 
 #  checke1
-Arguments = mainCmd.m checke1.mat 1 1
+Arguments = mainCmd.m checke1.mat 1
 Queue 10
 
-Arguments = mainCmd.m checke1.mat 1 2
+Arguments = mainCmd.m checke1.mat 2
 Queue 10
 
-Arguments = mainCmd.m checke1.mat 1 3
-Queue 10
-
-Arguments = mainCmd.m checke1.mat 2 1
-Queue 10
-
-Arguments = mainCmd.m checke1.mat 2 2
-Queue 10
-
-Arguments = mainCmd.m checke1.mat 2 3
-Queue 10
-
-Arguments = mainCmd.m checke1.mat 3 1
-Queue 10
-
-Arguments = mainCmd.m checke1.mat 3 2
-Queue 10
-
-Arguments = mainCmd.m checke1.mat 3 3
+Arguments = mainCmd.m checke1.mat 3
 Queue 10

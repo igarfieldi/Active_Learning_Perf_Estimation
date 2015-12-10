@@ -14,23 +14,21 @@ addpath(genpath(basePath));
 
 global debug = 1;
 
-args = argv()
-useFile = args{1};
-useAL = str2num(args{2});
-useFunc = str2num(args{3});
+args = argv();
+useFile = args{1}
+useAL = str2num(args{2})
 
 testParams.iterations = 30;
 testParams.runs = 1;
 testParams.samples = @(i) min(i^2, ceil(10000 / i));
-testParams.averMaxSamples = 10000;
+testParams.averMaxSamples = 50;
 testParams.bsMaxSamples = 50;
 testParams.foldSize = 5;
 testParams.bsSamples = 50;
-testParams.useMethod = [1, 1, 1,...
-                        1, 1, 1, 1,...
-                        1, 1, 1, 1,...
-                        0, 0, 0, 0,...
-                        0, 1, 0, 0];
+testParams.useMethod = [1,1,1,...
+						1,1,1,1, 1,1,1,1, 1,...
+						1,1,1,1, 1,1,1,1, 1,...
+						1,1,1,1, 1,1,1,1, 1];
 
 functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
 						"derivative", @(x, f, p, dp, F, bounds) [ones(length(x), 1),...
@@ -65,11 +63,11 @@ classifier = estimateSigma(classifier, getFeatureVectors(data));
 orac = oracle(getFeatureVectors(data), getLabels(data), length(unique(getLabels(data))));
 
 [~, mus, vars, times] = evaluatePerformanceMeasures(classifier, orac, ALs{useAL},
-                                            testParams, functionParams(useFunc));
+                                            testParams, functionParams);
 
 mus = mus
 vars = vars
 times = times
-
-storeResults([resDir, strsplit(useFile, "."){1}, "_", num2str(useAL), "_", num2str(useFunc), "_",...
+				
+storeResults([resDir, strsplit(useFile, "."){1}, "_", num2str(useAL), "_",...
 				num2str(time()), "_", num2str(randi(20000000)), ".mat"], mus, vars, times);

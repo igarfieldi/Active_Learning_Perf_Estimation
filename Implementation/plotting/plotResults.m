@@ -36,7 +36,11 @@ matrix, cell");
 		clf;
 		hold on;
 		for i = 1:size(mus, 3)
-			plot(3:size(mus, 2), averMus(:, 3:end, i), "-", "color", colors(i, :));
+			if(i == 1)
+				plot(3:size(mus, 2), averMus(:, 3:end, i), "-", "color", colors(i, :), "linewidth", 4);
+			else
+				plot(3:size(mus, 2), averMus(:, 3:end, i), "-", "color", colors(i, :));
+			endif
 		endfor
 		title("Accuracies");
 		xlabel("Training instances");
@@ -46,7 +50,6 @@ matrix, cell");
 	endif
     
 	if(figures(2) > 0)
-		figures(2)
 		# plot error (simple difference)
 		handles(2) = figure(figures(2));
 		clf;

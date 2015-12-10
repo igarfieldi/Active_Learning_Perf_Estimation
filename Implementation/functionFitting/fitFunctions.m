@@ -26,7 +26,7 @@ as struct");
     
     # default weights
     weights = ones(length(iterations), 1);
-    trials = 5;
+    trials = 4;
     
     if((nargin == 4) && !isempty(sampleWeights))
         if(!isvector(sampleWeights))
@@ -75,7 +75,7 @@ to be scalar");
 				# For linear fit, we can compute the best parameters directly
 				[values, fittedParams] = leasqr(X, Y, init,
 											functionParams.template, 0.0001,
-											300, weights, 0.001 * ones (size (init)),
+											80, weights, 0.001 * ones (size (init)),
 											functionParams.derivative, options);
 			catch
 				# If we encounter an error, simply select new initial parameters
@@ -83,7 +83,7 @@ to be scalar");
 				continue;
 			end_try_catch
             
-			currMSE = sum((values .- Y) .^ 2);
+			currMSE = sum((values .- Y) .^ 2 .* weights);
 			counter++;
 			
 			if((currMSE < MSE) || isempty(bestParams))
