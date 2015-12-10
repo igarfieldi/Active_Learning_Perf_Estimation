@@ -64,7 +64,7 @@ function [mu, bsSamples] = estBS632p(classifier, oracle, totalSamples)
     endif
     
     # .632+ rule
-    mu = 1- ((1/e * trainingErr + (1-1/e) * bsErr)...
-            + (min(bsErr, gammaHat) - trainingErr) * 1/e*(1-1/e)*R / (1 - 1/e*R));
+    mu = min(1, max(0, 1- ((1/e * trainingErr + (1-1/e) * bsErr)...
+            + (min(bsErr, gammaHat) - trainingErr) * 1/e*(1-1/e)*R / (1 - 1/e*R))));
 
 endfunction
