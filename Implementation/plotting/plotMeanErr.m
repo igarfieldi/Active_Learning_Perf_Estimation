@@ -16,23 +16,25 @@ colors = [1,0,0;
 		  0.3,0.3,0.7;
 		  0,0.7,0.7;
 		  0,0.7,0;
-		  0.7,0.7,0;
+		  0.8,0.8,0;
 		  0.5,0,0;
 		  0.5,0,0.5;
 		  0,0,0.5;
 		  0,0.5,0.5;
 		  0,0.5,0;
-		  0.5,0.5,0];
+		  0.6,0.6,0];
 
 use = [2,3,4,5,6,7];
 files = {"checke1", "2dData", "seeds", "abalone"};
 
+func = 1;
+
 for fi = 1:4
 	barData = [];
 	for al = 1:3
-		barData = [barData; vec(mean(mean(allMus{fi, al, 1}(:, 1:7, 1) .- allMus{fi, al, 1}(:, 1:7, use))))'];
-		barData = [barData; vec(mean(mean(allMus{fi, al, 1}(:, 8:15, 1) .- allMus{fi, al, 1}(:, 8:15, use))))'];
-		barData = [barData; vec(mean(mean(allMus{fi, al, 1}(:, 16:30, 1) .- allMus{fi, al, 1}(:, 16:30, use))))'];
+		barData = [barData; vec(mean(mean(allMus{fi, al, func}(:, 1:7, 1) .- allMus{fi, al, func}(:, 1:7, use))))'];
+		barData = [barData; vec(mean(mean(allMus{fi, al, func}(:, 8:15, 1) .- allMus{fi, al, func}(:, 8:15, use))))'];
+		barData = [barData; vec(mean(mean(allMus{fi, al, func}(:, 16:30, 1) .- allMus{fi, al, func}(:, 16:30, use))))'];
 	endfor
 	
 	figure(1);
@@ -81,7 +83,7 @@ for fi = 1:4
 	
 	
 	if(fi == 1)
-		legend([hRSP(:, 1)], "K-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS",
+		legend([hRSP(:, 2)], "K-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS",
 					"location", "southwest");
 	endif
 	
