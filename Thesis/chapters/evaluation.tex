@@ -42,7 +42,7 @@ The methods we described in section \ref{methods} mostly conform to a three-step
 
 Of course there are some intuitive limitations to what can be combined. When using all or a capped amount of subsets, applying some kind of path-like grouping seems much weirder than using averaging. Likewise, when path sub-sampling has been chosen, the intuitive option is to fit individual curves instead of only one with prior averaging. Also, some pre-screening suggested that the usage of the no-information rate as 0th data point is not as effective as hoped. Causes seem to be both high variance, leading to worsened fitting with low amounts of sub-samples, as well as its expendability for larger sub-sample sizes, which come naturally with larger training set sizes.
 
-As a result of this, we designed tests for four different methods: path sub-sampling with as well as without superset restriction and one curve per path, which will be abbreviated as \textit{pathNormal} and \textit{pathSuper}, and capped sub-sampling with averaging and one curve fit, \textit{averaged}. While the estimation technique for the two path-based methods will be exclusively cross-validation, we elected \textit{averaging} to also be tested with .632 bootstrapping to assess whether it has any impact on the quality of the methods. Additionally, we will evaluate each of them using both weighted and unweighted fitting, with the former being designated by a trailing \textit{W}. And although the pre-screening made the usage of the no-information rate questionable, not testing it at all would be a waste. Thus, \textit{pathSuperW} will also participate in a modified version with a 0th data point for each path/curve, named \textit{pathSuperWNI}.
+As a result of this, we designed tests for four different methods: path sub-sampling with as well as without superset restriction and one curve per path, which will be abbreviated as \textit{pathNormal} and \textit{pathSuper}, and capped sub-sampling with averaging and one curve fit, \textit{averaged}. While the estimation technique for the two path-based methods will be exclusively cross-validation, we elected \textit{averaging} to also be tested with .632 bootstrapping to assess whether it has any impact on the quality of the methods. Additionally, we will evaluate each of them using both weighted and unweighted fitting, with the former being designated by a trailing \textit{W}. And although the pre-screening made the usage of the no-information rate questionable, not testing it at all would be a waste. Thus, \textit{pathSuper} also does participate in a modified version with a 0th data point for each path/curve, named \textit{pathSuperNI}.
 
 \section{Test environment}
 
@@ -57,7 +57,9 @@ As kind of belonging to the estimation methods but not really, we separated the 
 	\end{align}
 \end{subequations}
 
-As the first two are not linearizable, we have to use the Levenberg-Marquardt algorithm, which, amongst others, requires the specification of initial parameters. Also, as we do have a preconceived image of a learning curve as monotone rising and limited to the interval $[0, 1]$, providing constraints to fulfill these requirements seems proper. This is trivial for the sigmoid function, as it was specifically designed to allow this kind of modification: $y_0$ and $S$, as representations of the y-intercept and the function's asymptote, are limited to $[0,1]$ with $y_0 \leq S$, and $m$ has to be in $\mathbb{R}_{\geq 0}$. For the other functions it is not as easy to find suitable bounds: while both have parameters directly affecting the y-intercept and slope, their asymptote for $x \mapsto \inf$ is either affected by two parameters or is not a constant (linear). Both would require polynomial equality constraints, which were not taken into account for this work. Thus, it is good to keep in mind that these functions might violate the learning curve constraints.
+Since a linear curve cannot accommodate for the bent shape of a typical learning curve we will only use the estimates corresponding to the subset sizes $k-4,...,k-1$ for its fitting, rather trying to predict the learning curves gradient and using the linear function as a tangent.
+
+As the first two functions, exp and sig, are not linearizable, we have to use the Levenberg-Marquardt algorithm, which, amongst others, requires the specification of initial parameters. Also, as we do have a preconceived image of a learning curve as monotone rising and limited to the interval $[0, 1]$, providing constraints to fulfill these requirements seems proper. This is trivial for the sigmoid function, as it was specifically designed to allow this kind of modification: $y_0$ and $S$, as representations of the y-intercept and the function's asymptote, are limited to $[0,1]$ with $y_0 \leq S$, and $m$ has to be in $\mathbb{R}_{\geq 0}$. For the other functions it is not as easy to find suitable bounds: while both have parameters directly affecting the y-intercept and slope, their asymptote for $x \mapsto \inf$ is either affected by two parameters or is not a constant (linear). Both would require polynomial equality constraints, which were not taken into account for this work. Thus, it is good to keep in mind that these functions might violate the learning curve constraints.
 
 \subsection{Active learner}
 
@@ -119,9 +121,9 @@ Considering these constraints we chose the following datasets:
 
 Some of the methods as well as the fitting requires the specification of parameters like the number of iterations or error tolerance. As their choice may influence the results, all parameters used will be stated in this section.
 
-For each combination of dataset, active learner and function model, 100 runs were simulated, each with 30 total instances purchased. A slight oversight in test design resulted in (likely) different purchase sequences for different function models, although its influence should be mitigated by the amount of runs.
+For each combination of dataset, active learner and function model, 50 runs were simulated, each with 30 total instances purchased. All function models were fit on the same data.
 
-For the path-based methods, $|X_T|^2$ paths were randomly selected. The required subset performance estimations were computed afterwards. Both averaging methods make use of all subsets up to ~10000 (due to rounding not exact); the bootstrap variant was allowed 50 bootstrap samples per subset. This cap was placed due to memory limitations. The modified variants with weighting/no-information rate use the same subsets/paths for any given test run. The cross-validation competitor used 5 folds; its bootstrapping counterpart also got 50 bootstrap samples per estimation.
+For the path-based methods, $|X_T|^2$ paths were randomly selected. The required subset performance estimations were computed afterwards. Both averaging methods make use of all subsets up to ~10000 (due to rounding not exact); the bootstrap variant was allowed 50 samples per subset. This cap was placed due to memory limitations. The modified variants with weighting/no-information rate use the same subsets/paths for any given test run. The cross-validation competitor used 5 folds; its bootstrapping counterpart also got 50 bootstrap samples per estimation.
 
 All curves were fit with the Levenberg-Marquardt algorithm, even the linear model; this was done to normalize the testing environment. The ranges for initial parameters as well as their bounds can be seen in \ref{tab:functionParams}. Each fitting can use up to 300 iterations with a scalar tolerance of $10^{-4}$, i.e. if the sum of squared errors is lower than $0.0001$, the fitting is considered done and will not use the remaining iterations. The partial derivatives were provided, thus numeric derivation was not necessary.
 
@@ -139,21 +141,29 @@ All curves were fit with the Levenberg-Marquardt algorithm, even the linear mode
 	\label{tab:functionParams}
 \end{table}
 
-As Levenberg-Marquardt may be stuck in local minima or not converge at all, each fitting was done 5 times with random parameters drawn from their respective ranges to attempt to circumvent these hazards. Then, the fit with the lowest sum of squared errors w.r.t. the data given was selected. Unfortunately, the experiments were done with a faulty version; while the fitting itself makes use of the provided statistical weights, the fit selection does not, leading to potentially wrong fits. Future tests on this matter should avoid this.
+As Levenberg-Marquardt may be stuck in local minima or not converge at all, each fitting was done 5 times with random parameters drawn from their respective ranges to attempt to circumvent these hazards. Then, the fit with the lowest sum of squared errors w.r.t. the data given was selected. If the fitting used statistical weights, they were also used in this selection.
 
 The reference accuracy was obtained by using holdout test sets, each randomly selected with the same size as the classifier's training set. The classifier in question then assigned a class label and the accuracy is computed for each of the holdout sets. Both variance and mean are obtained from the accuracies of all holdout sets and then used to construct a beta distribution; the mean is also used in the traditional error computation.
 
 \section{Test results}
 
-Due to the sheer amount of data, we will only cover a portion of the generated graphs; the rest can be found in the \nameref{appedixa}. To help keeping an overview, we structure the evaluation into various parts: first, we take a look at the squared and absolute error measures to get an idea of the error spread each methods brings with it. Then we evaluate the bias by inspecting the mean error. Last are the distribution comparisons; they are limited to a subset of methods anyway. After that, we will go into more detail for some selected methods, breaking their estimation down to the individual iterations, as well as providing some information about the average execution time.
+Due to the sheer amount of data, we will only cover a portion of the generated graphs. To help keeping an overview, we structure the evaluation into various parts: first, we take a look at the summed mean error for unweighted fitting with the exponential model and the traditional ones to get an idea of the bias each methods brings with it. Then we evaluate the spread of the estimates by inspecting the summed squared error. Then we take a look at the influence of the weighting on each method as well as that of the different function models. Next come the distribution comparisons; they are limited to a subset of methods anyway and will not cover every setting of the tests. Last, we will take a look at the computation time required for each method.
 
-\subsection{Squared and absolute error}
+\subsection{Error measures}
 
-The graphs \ref{fig:squaredErrorBars} and \ref{fig:meanErrorBars} display the squared error and the mean error for the individual datasets summed over the active learning iterations. Some things catch our eye here: In almost all test scenarios, \textit{pathSuper} has the largest squared error, which expresses how far away from the holdout accuracy the estimate may stray, of all methods, while its weighted variant is in line with the rest of them. Also, aside from some isolated cases, the \textit{.632+ bootstrap} generally has a lower squared error than its rivals, while strays \textit{k-fold CV} roughly equal or slightly further than our methods aside from \textit{pathSuper}.
+To inspect whether our estimators carry a bias and if yes, how large it is, we compute the mean error between the holdout accuracy and that of our methods for each training set size and test run. Since some stages of the learning process may be easier for the estimators than others we group the error by the set size they were measured for. \ref{fig:meanErrorBars} shows the summed mean error for the training set sizes from $3-7$, $8-15$ and $16-30$.
 
-Interestingly, all performance estimators seem to stray in their results more heavily when a non-random active learner is used; the largest penalty occurs with uncertainty sampling, while PAL only brings slight increases and even a decrease when applied to the abalone dataset. The difference between function models seems to follow no particular pattern, which means that either the summed squared error is independent of the chosen function model or some conditional dependence exists, perhaps with the data distribution. We recommend further testing on this matter.
+\begin{figure}[h]
+	\centering
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrchecke1}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErr2dData}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrseeds}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrabalone}
+	\caption{Summed mean errors for the different active learners and datasets using the exponential model}
+	\label{fig:meanErrorBars}
+\end{figure}
 
-It should also be noted that some \textit{.632+ BS} estimates were absurdly large (in the range of 30-40). These estimates were taken out, as they were considered outliers which seem to have been a result of the insufficient bounding of function parameters.
+
 
 \begin{figure}[h]
 	\centering
@@ -165,19 +175,6 @@ It should also be noted that some \textit{.632+ BS} estimates were absurdly larg
 	\label{fig:squaredErrorBars}
 \end{figure}
 
-Similarly to the squared error, most methods show a higher mean error, which is an estimation of the bias, for PAL and even more for uncertainty sampling. However, unlike previously, the \textit{superPath} method offers a fairly low bias when used with random sampling, roughly on the same level as \textit{.632+ BS}. Also, there is a fairly significant difference between the linear and the non-linear models: the former tends to have negative mean errors, meaning that the estimated accuracies are higher than the holdout. To evaluate the influence of the statistical weights used for fitting, \ref{fig:meanErrorDiffBars} showcases the absolute difference in the mean error between each method weighted and unweighted. A larger value means a lower absolute bias for the weighted variant. However, this is rarely the case for random sampling, not even for the averaged sub-sampling where we predicted its necessity. For the other active learners, the \textit{pathSuper} and \textit{path} methods occasionally achieve lower bias with weighting, but it does not seem to be predictable where weighting is beneficial and where not.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrchecke1}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErr2dData}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrseeds}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrabalone}
-	\caption{Summed mean errors for the different active learners, function models and datasets}
-	\label{fig:meanErrorBars}
-\end{figure}
-
-Back in the summed mean error graph, we can observe that using the no-information rate as an additional fitting point has no beneficial influence, as the mean error of \textit{pathSuperWNI} is equal or higher than that of \textit{pathSuperW} in almost all cases, which was to be expected, as its main influence should be for small training sets. However, as \ref{fig:meanErrorLowIter} hints, there is no unanimous advantage of using \textit{pathSuperWNI}.
 
 \begin{figure}[h]
 	\centering
@@ -189,22 +186,19 @@ Back in the summed mean error graph, we can observe that using the no-informatio
 	\label{fig:meanErrorLowIter}
 \end{figure}
 
-Next on our list is the Kullback-Leibler divergence. As not all methods provide multiple estimates, we are stuck with using a limited subset of them. Also, as the training set gets larger, the variance of the \textit{pathSuper} method gets lower, eventually results in beta distribution parameters lower than zero. Since these do not define a valid beta distribution, we cannot compute the divergence for these cases. The other path-based methods also suffer from this, but not to the same extend; 
-
-In summary, the least biased methods seem to be the two classical ones, \textit{k-fold CV} and \textit{.632+ BS}, as well as \textit{superPath} without weighting. A bit further behind appears to be \textit{averaged}. Generally, neither statistical weighting proportional to the number of subsets nor adding the no-information rate seem to benefit the estimation over all training sizes significantly. Thus, we will focus 
-
-
+subsection{Kullback-Leibler divergence}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrDiffBarchecke1}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrDiffBar2dData}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrDiffBarseeds}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrDiffBarabaloneReduced}
-	\caption{Absolute difference in summed mean error for the various methods}
-	\label{fig:meanErrorDiffBars}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDivchecke1}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDiv2dData}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDivseeds}
+	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDivabalone}
+	\caption{Kullback-Leibler divergence }
+	\label{fig:klDiv}
 \end{figure}
 
+\subsection{Computation Time}
 
 TODO: Parameters, Results, Discussion etc.
 

@@ -36,17 +36,17 @@ methodNames = {"Holdout", "CV", ".632+",...
                     "MCFitNI", "SuperMCFitNI", "AverFitNI", "632FitNI",...
                     "MCFitWNI", "SuperMCFitWNI", "AverFitWNI", "632FitWNI"};
 
-testParams.iterations = 22;
-testParams.runs = 1;
-testParams.samples = @(i) 3;#min(i^2, ceil(10000 / i));
+testParams.iterations = 12;
+testParams.runs = 20;
+testParams.samples = @(i) min(i^2, ceil(10000 / i));
 testParams.averMaxSamples = 100;
 testParams.bsMaxSamples = 50;
 testParams.foldSize = 5;
 testParams.bsSamples = 50;
-testParams.useMethod = [1,1,1,...
-						1,1,1,1, 1,1,1,1, 1,...
-						1,1,1,1, 1,1,1,1, 1,...
-						1,1,1,1, 1,1,1,1, 1];
+testParams.useMethod = [1,0,0,...
+						0,1,0,0, 0,0,0,0, 0,...
+						0,0,0,0, 0,0,0,0, 0,...
+						0,0,0,0, 0,0,0,0, 0];
 
 functionParams = [struct("template", @(x, p) p(1) .+ p(2) .* exp(x .* p(3)),
 						"derivative", @(x, f, p, dp, F, bounds) [ones(length(x), 1),...
@@ -75,7 +75,7 @@ dataFiles = {"checke1.mat", "2dData.mat", "seeds.mat", "abaloneReduced.mat"};
 #		2		22				53			63.6			111.6
 #		3		80.9			79.8		125.83			300.28
 
-useFile = 1;
+useFile = 3;
 useAL = 1;
 useFunc = 1;
 
@@ -99,4 +99,4 @@ orac = oracle(getFeatureVectors(data), getLabels(data), length(unique(getLabels(
 #addResults([resDir, "res_AL_", num2str(useAL), "_Func_", num2str(useFunc), "_",...
 #        dataFiles{useFile}], mus, vars);
 
-#plotResults(mus, vars, 1:4, testParams.useMethod, colors, methodNames);
+plotResults(mus, vars, 1:4, testParams.useMethod, colors, methodNames);
