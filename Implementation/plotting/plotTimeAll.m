@@ -5,7 +5,7 @@ if(!exist("allMus") || isempty(allMus))
 	load("results/allResults.mat", "allMus", "allVars", "allTimes");
 endif
 
-use = [2,3,4,5,6,7,17];
+use = [2,3,4,5,6,7,12];
 colors = [1,0,0;
 		  1,0,1;
 		  0.5,0.5,1;
@@ -21,9 +21,7 @@ t = zeros(4,length(use));
 
 for fi = 1:4
 	for al = 1:3
-		for func = 1:3
-			t(fi,:) += vec(mean(mean(allTimes{fi,al,func}(:,:,use))))';
-		endfor
+        t(fi,:) += vec(mean(mean(allTimes{fi,al}(:,:,use))))';
 	endfor
 endfor
 

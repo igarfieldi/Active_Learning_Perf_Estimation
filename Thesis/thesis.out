@@ -32,6 +32,8 @@
 \BOOKMARK [2][-]{subsection.4.3.5}{4.3.5 Parameters}{section.4.3}% 32
 \BOOKMARK [1][]{section.4.4}{4.4 Test results}{chapter.4}% 33
 \BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Error measures}{section.4.4}% 34
-\BOOKMARK [0][]{chapter.5}{5 Conclusion and Future Work}{}% 35
-\BOOKMARK [0][]{appendix.A}{A Appendix}{}% 36
-\BOOKMARK [0][]{section*.8}{Bibliography}{}% 37
+\BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Kullback-Leibler divergence}{section.4.4}% 35
+\BOOKMARK [2][-]{subsection.4.4.3}{4.4.3 Computation Time}{section.4.4}% 36
+\BOOKMARK [0][]{chapter.5}{5 Conclusion and Future Work}{}% 37
+\BOOKMARK [0][]{appendix.A}{A Appendix}{}% 38
+\BOOKMARK [0][]{section*.8}{Bibliography}{}% 39

@@ -10,3 +10,5 @@ endif
 plotMeanErr;
 plotSquErr;
 plotKLD;
+plotTimeAll;
+plotTimeHist;
