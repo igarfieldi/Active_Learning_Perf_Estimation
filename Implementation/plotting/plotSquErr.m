@@ -33,11 +33,7 @@ func = 1;
 for fi = 4:4
 	barData = [];
 	for al = 1:3
-		A = 1:100;
-		if((fi == 4) && (al == 1))
-			A(7) = [];
-			A(69) = [];
-		endif
+		A = 1:size(allMus{fi, al}, 1);
 		barData = [barData; vec(mean(mean((allMus{fi, al, func}(A, 1:7, 1) .- allMus{fi, al, func}(A, 1:7, use)).^2)))'];
 		barData = [barData; vec(mean(mean((allMus{fi, al, func}(A, 8:15, 1) .- allMus{fi, al, func}(A, 8:15, use)).^2)))'];
 		barData = [barData; vec(mean(mean((allMus{fi, al, func}(A, 16:30, 1) .- allMus{fi, al, func}(A, 16:30, use)).^2)))'];
