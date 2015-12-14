@@ -1,4 +1,10 @@
 \ifgerman{\chapter{Fazit und weiterführende Arbeit}}{\chapter{Conclusion and Future Work}}
 \label{conclusion}
 
-\todots
+In the scope of this work we introduced four estimators making use of both cross-validation and bootstrap techniques as well as curve fitting to estimate a classifier's performance. As part of the evaluation framework they were tested on four different datasets with three active learners and three function models and compared to both k-fold cross-validation as well as -632+ bootstrapping with regard to their error against holdout accuracy.
+
+The results of this are somewhat mixed. On the one side, using not only the current classifier state for performance estimation appears to be a promising approach. Fitting a single learning curve as well as simulating multiple possible ways the classifier's training set could have been build both show bias and error spread similar to that of k-fold cross-validation and .632+ bootstrapping. On the other side, this comes at a hefty price; the times necessary to perform the estimation is order of magnitudes larger. The evaluation also showed that a complex function model may not be the best for fitting a learning curve, seeing as the simple linear model accomplished the lowest bias.
+
+In the light of active learning, the path-based estimator also offers a potential advantage. In this work, it was assumed that every one of these paths to the current classifier state would be equally likely. However, using a non-random active learner like PAL, this is not true. Taking the probability of each path into account as well as using bootstrapping instead of cross-validation may lead to an improvement in classifier performance and should be looked into in further research.
+
+A large impact also has the curve fitting itself. Using statistical weights to place higher importance on certain fitting points turned out to be a good addition, but not to the method it was expected to. Investigation into why the weights improved the path-based linear method is suggested; this in combination with a better function model could further decrease its bias.

@@ -126,6 +126,7 @@ title(["Two-dimensional t-SNE repesentation of the ", dataset, " set (", num2str
 legend({"positive instances", "negative instances"}, "location", "southeast");
 print(["../Thesis/pics/", dataset, "Illustration.pdf"]);
 #}
+#{
 figure(1);
 clf;
 hold on;
@@ -139,3 +140,4 @@ ylabel("f(x)");
 legend({"f(x) = x^2", "f(x) = x!"}, "location", "northwest");
 title("Curve progression");
 print("../Thesis/pics/squareFacDiff.pdf");
+#}

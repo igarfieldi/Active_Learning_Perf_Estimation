@@ -1,27 +1,7 @@
 \ifgerman{\chapter{Einführung}}{\chapter{Introduction}}
-%- Hintergrund
-%- Motivation
-%- Ziele
-%- Aufgaben
-%- Allgemeine Beschreibung des Projektes
-%- Worum geht es in dieser Arbeit?
-%- Wer hat die Arbeit veranlasst und wozu?
-%- Wer soll von den Ergebnissen profitieren?
-%- Welches Problem soll gelöst werden? Warum?
-%- Unter welchen Umständen braucht man eine Verbesserung?
-%- Was ist der Stand der Technik?
-%- Welche noch offenen Probleme gibt es?
-%- Worin unterscheidet sich mein Ansatz von den bisherigen?
-%- Welche Ziele hat die Arbeit?
-%- Wie will ich diese Ziele erreichen?
-%- Was habe ich im Einzelnen vor?
 
-\todots
+The field of machine learning has changed quite a bit in the past couple of decades. While it was difficult in the past to gather enough data on some characteristic to create reliable automatic classification, todays processing speed and memory capacities as well as the global connectivity via the Internet allow for large databases available for use. However, often only the part of the data which will be used to predict the characteristic is abundant, which is fittingly called \textit{predictors}. The other part, in case of a discrete characteristic going by the name \textit{class label}, has to be assigned by an annotator. This can result in errors and be costly, especially if the annotator is a human. Using the field of speech recognition as an example, spoken words are easy to obtain from videos, radio or phone calls, what words exactly were spoken is usually unknown. To be able to use the data, a human would have to listen to it and write the correct words down, which is a boring and time-consuming, but necessary, work.
 
-\ifgerman{\paragraph{Zielstellung der Arbeit}}{\paragraph{Goal of this Thesis}}
+Due to this, a class of algorithms called \textit{active learners} as formed to help minimize the work necessary. As a rule of thumb, the more annotated data is used for the classification, the better it will perform, i.e. less misclassifications occur. But the order in which the data is used for training also plays a role, as some instances, the combination of predictors and class label, are more informative as others. Thus, annotating the useful instances first and the rest later or not at all minimizes the impairment of the classifier's performance while saving work/time/money. In order to stop the annotation when it is no longer sensible or wanted, we need some way of estimating the current performance. Traditionally, this is done one of three ways: either some part of the annotated data is set aside for so-called holdout testing, which is unwanted since it wastes precious annotated data, some kind of partitioning to create artificial test sets is done, or the classifier's performance in the past in conjuncture with a suitable function model is used to extrapolate to the current situation. The second option struggles with systematic deviation of their estimations from the true performance, while the third heavily depends on the model chosen as well as a number of already present estimates.
 
-\todots
-
-\ifgerman{\paragraph{Gliederung der Arbeit}}{\paragraph{Structure of the Thesis}}
-
-\todots
+The goal of this thesis is to evaluate the properties of a method combining both partitioning and model extrapolation to predict the performance of a classifier trained with few labeled data, especially in the context of active learning. The focus lies upon the systematic error, also known as \textit{bias}, of these estimators. First we will give an overview of existing estimators of both kinds, followed by the definition of several combined estimators building the foundation of our evaluation framework, which will then be tested on multiple dataset, using different active learners to guide the annotation process. These tests will be the basis for the evaluation, investigating how the combined estimators fare against the traditional, partition-based ones with regard to the bias.
