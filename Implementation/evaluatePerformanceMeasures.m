@@ -28,6 +28,8 @@ activeLearner,struct, struct");
     mus = zeros(testParams.runs, testParams.iterations, length(testParams.useMethod));
     vars = zeros(testParams.runs, testParams.iterations, length(testParams.useMethod));
     times = zeros(testParams.runs, testParams.iterations, length(testParams.useMethod));
+	figure(1);
+	hold on;
 
 	for r = 1:testParams.runs
 		if(debug)
@@ -41,7 +43,8 @@ activeLearner,struct, struct");
 			[activeLearner, currOracle, ~, ~] = selectInstance(activeLearner,
 															classifier, currOracle);
 		endfor
-		
+		c = 1;
+		figure(1);
 		for i = 3:testParams.iterations
 			if(debug)
 				disp(sprintf("Measure iteration: %d", i));
@@ -53,6 +56,10 @@ activeLearner,struct, struct");
             [feat, lab] = getQueriedInstances(currOracle);
             classifier = setTrainingData(classifier, feat, lab,
                                 getNumberOfLabels(currOracle));
+			
+			if((i == 3) || (i == 8) || (i == 16) || (i == 21))
+				plotClassPrediction(classifier, feat, lab, c++);
+			endif
             # get the holdout accuracies
             if(testParams.useMethod(1))
                 # train the classifier with the currently labeled instances
@@ -136,18 +143,20 @@ activeLearner,struct, struct");
             # Second stage
             #
             
-            # cross-validation accuracy estimation
-            [uniqueCVSamples, ~, CVpos] = unique(CVSamples);
-			CVt = time();
-			CVAccs = estimateAccuracies(classifier, currOracle, uniqueCVSamples);
-			CVt = time() - CVt;
-            
-            # .632 bootstrap accuracy estimation
-            [uniqueBSSamples, ~, BSpos] = unique(BSSamples);
-			BSt = time();
-            BSAccs = estimate632Bootstrap(classifier, currOracle, uniqueBSSamples,
-                                                testParams.bsSamples);
-			BSt = time() - BSt;
+			if(sum(testParams.useMethod) > 0)
+				# cross-validation accuracy estimation
+				[uniqueCVSamples, ~, CVpos] = unique(CVSamples);
+				CVt = time();
+				CVAccs = estimateAccuracies(classifier, currOracle, uniqueCVSamples);
+				CVt = time() - CVt;
+				
+				# .632 bootstrap accuracy estimation
+				[uniqueBSSamples, ~, BSpos] = unique(BSSamples);
+				BSt = time();
+				BSAccs = estimate632Bootstrap(classifier, currOracle, uniqueBSSamples,
+													testParams.bsSamples);
+				BSt = time() - BSt;
+			endif
             
             # get the requested accuracies and shape them as before
             if(sum(testParams.useMethod([4,8,13,17,22,26])) > 0)

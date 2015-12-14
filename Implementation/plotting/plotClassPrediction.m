@@ -16,7 +16,7 @@ matrix, scalar");
     
     res = classifyInstances(classifier, features);
         
-    figure(fig);
+	h = subplot(1,4,fig);
     hold on;
 
     X = linspace(0, 1, colorRes)';
@@ -44,5 +44,8 @@ matrix, scalar");
         "color", [0, 0, 1]);
     
     axis("square");
+	axis([0,1,0,1]);
+	set(h, "xtick", [0, 0.5, 1]);
+	set(h, "ytick", [0, 0.5, 1]);
     
 endfunction

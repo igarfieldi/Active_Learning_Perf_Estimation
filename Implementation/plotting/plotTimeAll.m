@@ -12,16 +12,32 @@ colors = [1,0,0;
 		  0,1,1;
 		  0,1,0;
 		  1,1,0;
-		  0,0,1];
+		  0.4,0.8,0.9;
+		  0.7,0,0;
+		  0.7,0,0.7;
+		  0.3,0.3,0.7;
+		  0,0.7,0.7;
+		  0,0.7,0;
+		  0.8,0.8,0;
+		  0.25,0.5,0.7;
+		  0.5,0,0;
+		  0.5,0,0.5;
+		  0,0,0.5;
+		  0,0.5,0.5;
+		  0,0.5,0;
+		  0.6,0.6,0;
+		  0.1,0.2,0.5];
 
 files = {"checke1", "2dData", "seeds", "abalone"};
 names = {"K-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS", "pathSuperW"};
 
-t = zeros(4,length(use));
+t = zeros(4,length(use),3);
 
 for fi = 1:4
 	for al = 1:3
-        t(fi,:) += vec(mean(mean(allTimes{fi,al}(:,:,use))))';
+        t(fi,:,1) += vec(mean(mean(allTimes{fi,al}(:,1:7,use))))';
+        t(fi,:,2) += vec(mean(mean(allTimes{fi,al}(:,8:15,use))))';
+        t(fi,:,3) += vec(mean(mean(allTimes{fi,al}(:,16:30,use))))';
 	endfor
 endfor
 
@@ -29,25 +45,30 @@ figure(1);
 clf;
 hold on;
 
-caxis([1,length(use)]);
+caxis([1,size(colors, 1)]);
 colormap(colors);
 
-h = bar(t ./ 9, "histc", 0.95);
+h = zeros(length(use), 4, 3);
 
-for i = 1:length(h)
-	set(get(h(i), "children"), "cdata", i);
+for i = 1:length(use)
+	for fi = 1:4
+		h(i, fi, :) = bar([(fi-1)*(length(use)+1)+i-1,(fi-1)*(length(use)+1)+i], [0,0,0; vec(t(fi,i,:))'], "stacked", 1);
+		for j = 1:3
+			set(get(h(i,fi,j), 'children'),'cdata', (j-1)*length(use)+i);
+		endfor
+	endfor
 endfor
 
 ax = axis();
-ax(1) = 0.9;
-ax(2) = 5.05;
+ax(1) = 0.4;
+ax(2) = length(use)*4+4.6;
 axis(ax);
 
 ylabel("Time in s");
 title("Average computation time per dataset");
-set(gca, "xtick", [1.455:1:4.455]);
+set(gca, "xtick", [5:8:30]);
 set(gca, "xticklabel", files);
 
-legend(names);
+legend(h(:,1,2), names);
 
 print("../Thesis/pics/timeAll.pdf");

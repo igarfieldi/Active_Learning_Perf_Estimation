@@ -8,7 +8,9 @@ if(!exist("allMus") || isempty(allMus))
 endif
 
 plotMeanErr;
-plotSquErr;
-plotKLD;
-plotTimeAll;
-plotTimeHist;
+#plotMeanErrW;
+#plotSquErr;
+#plotPathLowIter;
+#plotKLD;
+#plotTimeAll;
+#plotTimeHist;

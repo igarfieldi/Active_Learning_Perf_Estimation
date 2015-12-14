@@ -24,13 +24,13 @@ colors = [1,0,0;
 		  0,0.5,0;
 		  0.6,0.6,0];
 
-use = [2,3,4,5,6,7];
-names = {"K-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS"};
+use = [2,3,13,27,15,29];
+names = {"K-Fold CV", ".632+ BS", "path", "pathSuperW", "averaged", "averagedBSW"};
 files = {"checke1", "2dData", "seeds", "abalone"};
 
 func = 1;
 
-for fi = 4:4
+for fi = 1:4
 	barData = [];
 	for al = 1:3
 		A = 1:size(allMus{fi, al}, 1);
@@ -79,7 +79,7 @@ for fi = 4:4
 	ax(1) = 0.2;
 	ax(2) = length(use)*3+2.8;
 	axis(ax);
-	ylabel("Summed Squared Error");
+	ylabel("Average Squared Error");
 	title(["Spread for ", files{fi}, " w. exp. function; darker = larger training sets"]);
     set(gca, "xtick", [(1+length(use))/2, (8+2*length(use)+1)/2, (15+2*length(use)+2)/2]);
     set(gca, "xticklabel", {"Random", "Uncertainty", "PAL"});

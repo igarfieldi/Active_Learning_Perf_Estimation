@@ -1,10 +1,9 @@
 \select@language {english}
-\contentsline {chapter}{List of Figures}{vii}{chapter*.3}
-\contentsline {chapter}{List of Tables}{ix}{chapter*.4}
-\contentsline {chapter}{List of Algorithms}{xi}{chapter*.5}
+\contentsline {chapter}{Acknowledgements}{v}{chapter*.2}
+\contentsline {chapter}{List of Figures}{x}{chapter*.4}
+\contentsline {chapter}{List of Tables}{xi}{chapter*.5}
+\contentsline {chapter}{List of Algorithms}{xiii}{chapter*.6}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
-\contentsline {paragraph}{Goal of this Thesis}{1}{section*.6}
-\contentsline {paragraph}{Structure of the Thesis}{1}{section*.7}
 \contentsline {chapter}{\numberline {2}Background and Related Work}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Classification and Active Learning}{3}{section.2.1}
 \contentsline {section}{\numberline {2.2}Generalization Performance}{5}{section.2.2}
@@ -16,13 +15,13 @@
 \contentsline {section}{\numberline {2.3}Learning Curves and Regression Models}{10}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Function families}{11}{subsection.2.3.1}
 \contentsline {section}{\numberline {2.4}Miscellaneous}{12}{section.2.4}
-\contentsline {chapter}{\numberline {3}Proposed Methods}{13}{chapter.3}
-\contentsline {section}{\numberline {3.1}Performance estimation on training sub-sets}{13}{section.3.1}
+\contentsline {chapter}{\numberline {3}Improving performance estimation by merging cross-validation and learning curve fitting}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Performance estimation on training sub-sets}{14}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Sub-sampling of fitting points}{14}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Grouping of performance estimates}{16}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.2}Grouping of performance estimates}{17}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}Combining sub-estimates with curve fitting}{17}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Function models and fitting algorithms}{17}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Fitting improvements}{18}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.2}Fitting improvements}{19}{subsection.3.2.2}
 \contentsline {chapter}{\numberline {4}Evaluation}{21}{chapter.4}
 \contentsline {section}{\numberline {4.1}Objective and measurements}{21}{section.4.1}
 \contentsline {section}{\numberline {4.2}Method selection}{22}{section.4.2}
@@ -33,9 +32,9 @@
 \contentsline {subsection}{\numberline {4.3.4}Datasets}{26}{subsection.4.3.4}
 \contentsline {subsection}{\numberline {4.3.5}Parameters}{28}{subsection.4.3.5}
 \contentsline {section}{\numberline {4.4}Test results}{29}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Error measures}{30}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Kullback-Leibler divergence}{30}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Computation Time}{30}{subsection.4.4.3}
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{35}{chapter.5}
-\contentsline {chapter}{\numberline {A}Appendix}{37}{appendix.A}
-\contentsline {chapter}{Bibliography}{39}{section*.8}
+\contentsline {subsection}{\numberline {4.4.1}Average Mean Error}{29}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Average squared error}{33}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Kullback-Leibler divergence}{35}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Computation Time}{35}{subsection.4.4.4}
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{39}{chapter.5}
+\contentsline {chapter}{Bibliography}{41}{section*.7}

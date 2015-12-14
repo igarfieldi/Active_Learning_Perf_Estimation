@@ -4,7 +4,7 @@ more off;
 warning("off");
 
 dataDir = "./data/";
-resDir = "./results/";
+resDir = "./results2/";
 
 addpath(genpath(pwd()));
 
@@ -50,6 +50,6 @@ for f = 1:4
 	endfor
 endfor
 
-save("results/allResults.mat", "allMus", "allVars", "allTimes");
+#save("results/allResults.mat", "allMus", "allVars", "allTimes");
 
 #plotResults(allMus{2, 3, 3}, allVars{2, 3, 3}, 1:4, testParams.useMethod, colors, methodNames);

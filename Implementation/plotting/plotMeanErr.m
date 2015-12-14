@@ -24,17 +24,16 @@ colors = [1,0,0;
 		  0,0.5,0;
 		  0.6,0.6,0];
 
-use = [2,3,4,5,6,7];
+use = [2,3,13,14,15,16];
 files = {"checke1", "2dData", "seeds", "abalone"};
-
-func = 1;
+names = {"K-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS"};
 
 for fi = 1:4
 	barData = [];
 	for al = 1:3
-		barData = [barData; vec(mean(mean(allMus{fi, al, func}(:, 1:7, 1) .- allMus{fi, al, func}(:, 1:7, use))))'];
-		barData = [barData; vec(mean(mean(allMus{fi, al, func}(:, 8:15, 1) .- allMus{fi, al, func}(:, 8:15, use))))'];
-		barData = [barData; vec(mean(mean(allMus{fi, al, func}(:, 16:30, 1) .- allMus{fi, al, func}(:, 16:30, use))))'];
+		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 1:7, 1) .- allMus{fi, al}(:, 1:7, use))))'];
+		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 8:15, 1) .- allMus{fi, al}(:, 8:15, use))))'];
+		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 16:30, 1) .- allMus{fi, al}(:, 16:30, use))))'];
 	endfor
 	
 	figure(1);
@@ -76,16 +75,15 @@ for fi = 1:4
 	ax(1) = 0.2;
 	ax(2) = 20.8;
 	axis(ax);
-	ylabel("Summed Mean Error");
-	title(["Bias for ", files{fi}, " w. exp. function; darker = larger training sets"]);
+	ylabel("Average Mean Error");
+	title(["Bias for ", files{fi}, " w. sig. function; darker = larger training sets"]);
     set(gca, "xtick", [3.5, 10.5, 17.5]);
     set(gca, "xticklabel", {"Random", "Uncertainty", "PAL"});
 	
 	
 	if(fi == 1)
-		legend([hRSP(:, 2)], "K-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS",
-					"location", "southwest");
+		legend([hRSP(:, 2)], names, "location", "southwest");
 	endif
 	
-	print(["../Thesis/pics/meanErr", files{fi}, ".pdf"]);
+	print(["../Thesis/pics/meanErrSigW", files{fi}, ".pdf"]);
 endfor

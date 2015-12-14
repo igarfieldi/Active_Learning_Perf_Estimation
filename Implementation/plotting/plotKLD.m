@@ -6,26 +6,23 @@ if(!exist("allMus") || isempty(allMus))
 endif
 
 colors = [1,0,0;
-		  1,0,1;
 		  0.5,0.5,1;
+		  0.8,0.8,1;
 		  0,1,1;
-		  0,1,0;
-		  1,1,0;
+		  0.4,1,0.8;
 		  0.7,0,0;
-		  0.7,0,0.7;
 		  0.3,0.3,0.7;
+		  0.6,0.6,0.8;
 		  0,0.7,0.7;
-		  0,0.7,0;
-		  0.8,0.8,0;
+		  0.25,0.8,0.6;
 		  0.5,0,0;
-		  0.5,0,0.5;
 		  0,0,0.5;
+		  0.2,0.2,0.5;
 		  0,0.5,0.5;
-		  0,0.5,0;
-		  0.6,0.6,0];
+		  0.1,0.5,0.3];
 
-use = [2,4,5,8,9];
-names = {"K-Fold CV", "path", "pathSuper", "pathW", "pathSuperW"};
+use = [2,13,17,23,27];
+names = {"K-Fold CV", "path sig.", "pathW sig.", "pathSuper lin.", "pathSuperW lin."};
 files = {"checke1", "2dData", "seeds", "abalone"};
 
 func = 1;
@@ -85,8 +82,8 @@ for fi = 1:4
 	clf;
 	hold on;
 	
-	caxis([1,15]);
-	colormap(colors([1,3,4,5,6,7,9,10,11,12,13,15,16,17,18], :));
+	caxis([1,size(colors, 1)]);
+	colormap(colors);
 	
 	hRS = zeros(length(use), 3);
 	hUC = zeros(length(use), 3);
@@ -108,9 +105,9 @@ for fi = 1:4
 	ax(1) = 0.2;
 	ax(2) = length(use)*3+2.8;
 	axis(ax);
-	ylabel("Summed Squared Error");
-	title(["Spread for ", files{fi}, " w. exp. function; darker = larger training sets"]);
-    set(gca, "xtick", [(1+length(use))/2, (8+2*length(use)+1)/2, (15+2*length(use)+2)/2]);
+	ylabel("Average KL divergence");
+	title(["KL divergence for ", files{fi}, "; darker = larger training sets"]);
+    set(gca, "xtick", [(1+length(use))/2, (8+2*length(use)+1)/2, (17+2*length(use)+2)/2]);
     set(gca, "xticklabel", {"Random", "Uncertainty", "PAL"});
 	
 	if(fi == 2)
