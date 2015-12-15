@@ -36,7 +36,7 @@ parzenWindowClassifier, oracle, matrix");
             nextLabelIndex = floor(rand(1) * unlabeledSize) + 1;
         else
             # get labeled instances and sort them using the classifier's setTrainingData
-            [labFeat, labLab] = getLabeledInstances(PAL);
+            [labFeat, labLab] = getQueriedInstances(oracle);
             pwc = setTrainingData(pwc, labFeat, labLab,
                                         getNumberOfLabels(oracle));
             [labFeat, ~, labLabInd] = getTrainingInstances(pwc);
@@ -44,48 +44,22 @@ parzenWindowClassifier, oracle, matrix");
             [unlabFeat, unlabLab] = getUnlabeledInstances(oracle);
 			
             # calculate label statistics
-            nx = estimateKernelFrequencies(unlabFeat, labFeat);
+            nx = estimateKernelDensities(unlabFeat, labFeat, 0.1, false);
+			
             py = [];
             old = 1;
             for i = 1:getNumberOfLabels(oracle)
-                py = [py; estimateKernelFrequencies(unlabFeat,...
-                            labFeat(old:labLabInd(i), :))];
+                py = [py; estimateKernelDensities(unlabFeat,...
+                            labFeat(old:labLabInd(i), :), 0.1, false)];
                 old = labLabInd(i) + 1;
             endfor
             
             pmax = (max(py)+10^(-30)) ./ (nx+2*10^(-30));
             
             if(nargin < 4)
-                dx = estimateKernelFrequencies(unlabFeat, [labFeat; unlabFeat]);
+                dx = estimateKernelDensities(unlabFeat, [labFeat; unlabFeat], 0.1, false);
 				dx ./ sum(dx);
             endif
-            
-			#{
-            # compute pgain
-			# TODO: find vectorized version without NaN errors
-			betaP = nx .* pmax .+ 1;
-			betaQ = nx .* (1 .- pmax) .+ 1;
-			gainFunc = @(p, y) computeError(p, pmax) .- computeError(p, (nx...
-                                    .* pmax .+ y) ./ (nx .+ 1));
-			pgainFunc = @(p) betapdf(repmat(p, 1, length(betaP)),...
-                                    repmat(betaP, length(p), 1),...
-                                    repmat(betaQ, length(p), 1)) .*...
-                                ((1 .- repmat(p, 1, length(betaP)))...
-									.* gainFunc(p, 0) .+ repmat(p, 1, length(betaP))...
-                                .* gainFunc(p, 1));
-			
-			evalPoints = linspace(0.0001, 0.9999, 10000);
-			pgain = trapz(evalPoints', pgainFunc(evalPoints'), 1) .* dx;
-			
-            # Octave's default precision isn't enough to distinguish small
-            # nx from zero, so we get a bunch of NaNs (which screws with the index search).
-            # Since we cannot make out the maximum pgain for these cases anyway,
-            # set them to zero (makes no difference if we have any values != NaN,
-            # if we don't, well... sucks, but unless somebody has the nerve to 
-            # rewrite everything with either symbolic evaluation or 128+ bit precision,
-            # there's no way around it)
-            pgain(find(isnan(pgain))) = 0;
-			#}
 			
 			pgain = OPALgain(nx, pmax, 0.5, 1) .* dx;
             
