@@ -35,7 +35,7 @@ samples must have same number of columns");
 							 columns(sampleMat), rows(sampleMat))';
 		
 		# estimate the frequencies using the kernel provided
-		frequencies = kernel(instanceMat .- sampleMat);
+		frequencies = kernel((instanceMat .- sampleMat) ./ 0.1);
 		frequencies = reshape(frequencies, rows(samples), rows(instances));
 		frequencies = sum(frequencies, 1);
 	endif

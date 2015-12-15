@@ -36,7 +36,7 @@ must be at least 1x1");
 									features(old:labelInd(i), :), kernel);
 			else
 				densities(i, :) = estimateKernelDensities(instances,
-									features(old:labelInd(i), :), getSigma(pwc));
+									features(old:labelInd(i), :), 0.1, false);
 			endif
         endif
         

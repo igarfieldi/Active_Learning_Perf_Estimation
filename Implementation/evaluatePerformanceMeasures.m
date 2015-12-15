@@ -28,8 +28,6 @@ activeLearner,struct, struct");
     mus = zeros(testParams.runs, testParams.iterations, length(testParams.useMethod));
     vars = zeros(testParams.runs, testParams.iterations, length(testParams.useMethod));
     times = zeros(testParams.runs, testParams.iterations, length(testParams.useMethod));
-	figure(1);
-	hold on;
 
 	for r = 1:testParams.runs
 		if(debug)
@@ -37,14 +35,15 @@ activeLearner,struct, struct");
 		endif
         
 		currOracle = oracle;
+		classifier = parzenWindowClassifier();
+		activeLearner = setLabeledInstances(activeLearner, [], []);
 		
 		# select initial 2 instances before any performance estimation can be applied
 		for i = 1:min(testParams.iterations, 2)
 			[activeLearner, currOracle, ~, ~] = selectInstance(activeLearner,
 															classifier, currOracle);
 		endfor
-		c = 1;
-		figure(1);
+		
 		for i = 3:testParams.iterations
 			if(debug)
 				disp(sprintf("Measure iteration: %d", i));
@@ -57,9 +56,9 @@ activeLearner,struct, struct");
             classifier = setTrainingData(classifier, feat, lab,
                                 getNumberOfLabels(currOracle));
 			
-			if((i == 3) || (i == 8) || (i == 16) || (i == 21))
-				plotClassPrediction(classifier, feat, lab, c++);
-			endif
+			#if((i == 3) || (i == 5) || (i == 7) || (i == 9))
+				#plotClassPrediction(classifier, feat, lab, c++);
+			#endif
             # get the holdout accuracies
             if(testParams.useMethod(1))
                 # train the classifier with the currently labeled instances
@@ -70,6 +69,7 @@ activeLearner,struct, struct");
                 times(r, i, 1) = time() - t1;
             endif
             
+			
             # use adaptive incremental K-fold cross-validation
             if(testParams.useMethod(2))
                 t1 = time();
