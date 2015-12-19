@@ -13,7 +13,7 @@ matrix, scalar");
     
     colorRes = 256;
     meshRes = 100;
-    
+	
     res = classifyInstances(classifier, features);
         
 	#h = subplot(1,4,fig);
@@ -46,8 +46,9 @@ matrix, scalar");
     
     axis("square");
 	axis([0,1,0,1]);
-	#set(h, "xtick", [0, 0.5, 1]);
-	#set(h, "ytick", [0, 0.5, 1]);
-	xlabel([num2str(fig*2+1), " instances"]);
+	xlabel([num2str(size(features, 1)), " instances"], "fontsize", 16);
+	title("Classification for PAL", "fontsize", 16);
+	set(gca, "fontsize", 14);
+	print("../Thesis/pics/PAL16inst.pdf");
     
 endfunction

@@ -2,20 +2,21 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces General appearance of a learning curve. Training set size as x-axis, accuracy as y-axis \cite {FigueroaEtal2012}}}{11}{figure.2.1}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Classifier state for random and uncertainty sampling as well as PAL for 16 purchased labels on checke1}}{6}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces General appearance of a learning curve. Training set size as x-axis, accuracy as y-axis \cite {FigueroaEtal2012}}}{13}{figure.2.2}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Left: Three example paths with superset restriction. The zigzag shape illustrates the difficulties for the fitting. Right: All possible accuracies for training subsets with $k = 6$}}{15}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Difference between weighted and unweighted curve fitting for exponential functions The accuracies are not capped and averaged for $k = 10$}}{19}{figure.3.2}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Left: Three example paths with superset restriction. The zigzag shape illustrates the difficulties for the fitting. Right: All possible accuracies for training subsets with $k = 6$}}{17}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Difference between weighted and unweighted curve fitting for exponential functions The accuracies are not capped and averaged for $k = 10$}}{21}{figure.3.2}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces PAL illustration showing the weighted probabilistic gain (normed on $[0, 1]$). Since all labeled instances are grouped by their class label, the gain is higher for near the lower label-density group}}{25}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces The estimated kernel density for a grid with one positive and two negative instance; lower Z value indicates lower certainty for the class assignment}}{26}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Visualizations of the datasets checke1, 2dData, seeds and a downsized version of abalone \cite {Chapelle2005,KremplEtAl2014,CharytanowiczEtAl2010,NashEtAl1994}.\newline The illustration of seeds and abalone was done using an implementation of t-SNE \cite {vanDerMaaten2008}}}{28}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Average mean errors for the different active learners and datasets using the exponential model. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}}{30}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Average mean errors for the different active learners and datasets using the sigmoid model. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}}{31}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Average mean errors for the different active learners and datasets using the linear model. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}}{32}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Average mean errors for different datasets with random sampling. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}}{34}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Average squared errors for the different active learners, function models and datasets}}{35}{figure.4.8}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Kernel density estimations from the learning process of PAL for checke1 at 3, 8, 16 and 21 training instances}}{36}{figure.4.9}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Average Kullback-Leibler divergence for selected methods}}{37}{figure.4.10}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Left: Average computation times for the estimators. Right: Histogram of computation time for pathSuper}}{37}{figure.4.11}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces PAL illustration showing the weighted probabilistic gain (normed on $[0, 1]$). Since all labeled instances are grouped by their class label, the gain is higher for near the lower label-density group}}{27}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces The estimated kernel density for a grid with one positive and two negative instance; lower Z value indicates lower certainty for the class assignment}}{28}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Visualizations of the datasets checke1, 2dData, seeds and a downsized version of abalone \cite {Chapelle2005,KremplEtAl2014,CharytanowiczEtAl2010,NashEtAl1994}.\newline The illustration of seeds and abalone was done using an implementation of t-SNE \cite {vanDerMaaten2008}}}{30}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Average mean errors for the different active learners and datasets using the exponential model. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}}{32}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Average mean errors for the different active learners and datasets using the sigmoid model. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}}{33}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Average mean errors for the different active learners and datasets using the linear model. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}}{34}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Average mean errors for different datasets with random sampling. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}}{36}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Average squared errors for the different active learners, function models and datasets}}{37}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Kernel density estimations from the learning process of PAL for checke1 at 3, 8, 16 and 21 training instances}}{38}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Average Kullback-Leibler divergence for selected methods}}{39}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Left: Average computation times for the estimators. Right: Histogram of computation time for pathSuper}}{39}{figure.4.11}
 \addvspace {10\p@ }

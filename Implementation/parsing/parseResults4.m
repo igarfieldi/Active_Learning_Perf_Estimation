@@ -4,7 +4,7 @@ more off;
 warning("off");
 
 dataDir = "./data/";
-resDir = "./results2/";
+resDir = "./results/";
 
 addpath(genpath(pwd()));
 
@@ -22,7 +22,7 @@ testParams.useMethod = [1, 1, 0,...
                         0, 0, 0, 0,...
                         0, 0, 0, 0,...
                         0, 0, 0, 0];
-list = readdir("results2")(3:end);
+list = readdir("results")(3:end);
 
 files = {"checke1", "2dData", "seeds", "abaloneReduced"};
 lists = cell(length(files), 3);
@@ -49,8 +49,6 @@ for i = 1:length(list)
     endfor
 endfor
 
-allMus2 = allMus;
-allVars2 = allVars;
-allTimes2 = allTimes;
+save([resDir, "allResults.mat"], "allMus", "allVars", "allTimes");
 
 #plotResults(allMus{1, 1, 1}, allVars{1, 1, 1}, 1:4, testParams.useMethod, colors, methodNames);
