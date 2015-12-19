@@ -14,7 +14,7 @@
 
 The main focus of this work is the estimation of classifier performance in the special case of an active learning scenario. To help better understand the problem setting, we will give a brief overview of the concepts of active learning as well as an in-depth look of existing methods for said estimation. We also establish parts of the notation that will be used for the remainder of this work.
 
-\section{Classification and Active Learning}
+\section{Classification}
 Many problems to be solved encompass the differentiation between certain "classes" to which their inputs can be assigned. To explain the concept of \textbf{classification}, we assume the example of a thermostat. Its purpose is to monitor the temperature in a certain area and fire up a heating unit to raise the temperature if necessary. But for that to happen, the thermostat has to \textit{classify} the measured temperature in the categories "too cold" and "warm enough". In this special case a simple threshold usually suffices. Generally, however, a \textit{classifier} $C$ is defined as a mapping of a \textit{feature vector}, also called an \textit{instance}, to its corresponding \textit{class label} $y \in Y = \{y_1, ..., y_m\}$. It is convenient to describe said vector as an n-tuple of \textit{feature values}: $\vec{x} = (x_1, ..., x_n)$ with $x_i \in F_i$ $\forall i=\{1,...,n\}$ and $F_i$ as a \textit{feature}. The goal of a classifier is to approximate the underlying "true" association of a feature vector to its class label $f(\vec{x}) = y$, which can be written as
 \begin{equation}
 C: F_1 \times ... \times F_n \rightarrow Y
@@ -35,7 +35,52 @@ As a compromise of the two extremes, semi-supervised techniques operate with a m
 
 Regardless of their category, all learning methods make assumptions about the distribution of the data: feature vectors close to each other tend to belong to the same class and, consequently, data points are likely to form group-like structures.
 
-\textbf{Active learning} is the name of a subgroup of semi-supervised methods which will be a center point of this work. To reduce the amount of labeled data needed, they choose one or more data points to be labeled, commonly with the intent to incrementally improve the built classifier's performance by adding more labeled data every iteration. Various methods to select the next data point(s) to be labeled exist; we will briefly introduce two of them: \textit{Uncertainty sampling} and \textit{Probabilistic Active Learning (PAL)}. The \textit{uncertainty} of a classifier with regard to a data point describes how unsure it is about its assigned class label. This can be either seen as the distance to a \textit{decision boundary}, that is the entity separating data points of different classes \cite{SchefferEtAl2001}, or as the posterior probability estimation for the class assignment of your classifier \cite{ZhuEtAl2008}. The probabilistic approach doesn't rely on uncertainty, instead it maximizes the expected performance gain over all data point neighbourhoods \cite{KremplEtAl2014}. A more in-depth description is given in \ref{evaluation}.
+\section{Active learning}
+As a subgroup of semi-supervised learning, active learners try to optimize the performance of a classifier when using a fixed amount of class labels. To achieve this, they make the training an iterative process, selecting one or more instances for labeling that the believe will benefit the performance the most in each iteration. While more exist, we will touch on three of them here:
+
+\subsection{Random sampling}
+This active learner is the baseline for all other ones. It does not show a preference for any instance, hence its name, making at is good or bad as not using active learning at all.
+
+\subsection{Uncertainty sampling}
+The \textit{uncertainty} of a classifier with regard to an instance describes how sure it is about the class label it would assign. This can be measured in various ways, three of which are:
+
+\begin{itemize}
+\item \textbf{Least confidence}:
+This measure assumes that the instance for which the classifier produces the lowest probability estimate for its most likely class label $\hat{y}$ has the highest uncertainty $u$ \cite{CulottaEtAl2004}:
+\begin{equation}
+u_{LC}(\vec{x}) = 1 - P_c(\hat{y} | \vec{x})
+\end{equation}
+\item \textbf{Smallest margin}:
+Here the difference in probability between the \textit{two} most likely class labels $y_1, y_2$ for an instance is used as the uncertainty measure \cite{SchefferEtAl2001}:
+\begin{equation}
+u_{SM}(\vec{x}) = P_c(y_1 | \vec{x}) - P_c(y_2 | \vec{x})
+\end{equation}
+\item \textbf{Maximum entropy}:
+Instead of only using the probability of a few class labels, the entropy takes all of them into account \cite{DaganEtAl1995}:
+\begin{equation}
+u_{ME}(\vec{x}) = -\sum_{y}^{} P_c(y | \vec{x}) \cdot log_2(P_c(y | \vec{x}))
+\end{equation}
+It should be noted that, while they possibly select different instances in multi-class problems, the first two are numerically identical for dichotomous data and all three will select the same instance \cite{ZhuEtAl2008}. In any case, they all assume what is called a \textit{decision boundary}, an entity which spatially separates groups of instances sharing the same class label. This can problematic if multiple clusters of the same label exist, as they are likely to be regarded as if they would belong to a different group.
+\end{itemize}
+
+\subsection{Probabilistic Active Learning (PAL)}
+PAL takes a different approach. It takes a look at each available instance's surroundings and computes the density of unlabeled as well as the amount of already purchased instances. The latter combined with the portion of instances sharing their class label with the original instance is denoted as \textit{label statistics}. Using this, assuming the instance's class label and the overall probability of this class in its neighbourhood was to be known, an optimal selection with regard to the classifier's performance could be made. But since those two quantities are generally unknown, PAL considers them as random variables. This enables the computation of an expected or probabilistic performance gain for each unlabeled instance. When weighted with the instance density in its neighbourhood, it allows an statistically optimal selection for the performance \cite{KremplEtAl2014}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[trim = 4cm 6cm 4cm 4cm, clip = true, width = 0.253\textwidth]{RS16inst}
+	\includegraphics[trim = 4cm 6cm 4cm 4cm, clip = true, width = 0.253\textwidth]{UC16inst}
+	\includegraphics[trim = 2.4cm 6.25cm 0cm 5cm, clip = true, width = 0.37\textwidth]{PAL16inst}
+	\caption{Classifier state for random and uncertainty sampling as well as PAL for 16 purchased labels on checke1}
+	\label{fig:ALillustration}
+\end{figure}
+
+\ref{fig:ALillustration} shows the state of a Parzen-Window classifier (see \ref{evaluation:classifier}) with 16 purchased labels for random sampling, uncertainty sampling and PAL on a 4x4 checkerboard-like dataset with every second field without instances. This structure can be seen fairly well with PAL, which correctly spreads out its purchases over the entire board, while the classifications for random sampling at least resemble its true structure. Uncertainty sampling, however, only purchased labels at the first decision boundary it found and did not bother to look beyond that, resulting in a model that looks nothing like a checkerboard.
+
+\subsection{Model Retraining Improvement and Monte-Carlo-Sampling}
+Introduced in \cite{EvansEtAl2015}, \textbf{Model Retraining Improvement (MRI)} is originally intended as a statistically optimal criteria for instance selection in active learning. It does so by selecting the instance which reduces the future loss the most. However, for this it needs an (ideally unbiased) estimate of the future and the initial loss, which the algorithm itself does not provide. Instead, the paper provides a theoretical background for potential future estimators.
+
+Ray and McCallum \cite{RoyEtAl2001} also presents a method to estimate current and future loss of a classifier in an active learning setting, similarly to MRI. They, however, use \textit{Monte-Carlo-Sampling}, resulting in a process comparable to the techniques explained in the next section.
 
 \section{Generalization Performance}
 When a learning algorithm is used to induce a classifier, an obvious question is how well said classifier performs or how well it approximates the true target function $f(\vec{x})$. This can be used to select an algorithm when multiple are available or to simply get an estimate on how often the classifier will misclassify data.
@@ -60,7 +105,10 @@ For regression problems squared or absolute error loss are more effective, since
 \begin{equation}
 Err_{T} = \frac{1}{N}\sum_{i=1}^{n} L(y_i, \hat{f}(\vec{x}_i))
 \end{equation}
-If used with the 0-1-loss function, $1 - Err$ is also known as \textit{accuracy}: $acc = 1 - err = \frac{|Correct Classifications|}{|Total Classifications|}$.
+If used with the 0-1-loss function, $1 - Err$ is also known as \textit{accuracy}:
+\begin{equation}
+acc = 1 - err = \frac{|Correct Classifications|}{|Total Classifications|}
+\end{equation}
 
 Unfortunately, using the measure to judge a classifier produces a side effect. A learning algorithm which creates a complex classifier that perfectly classifies all training instances will yield a training error of zero. If used on different data points from the same data set, however, an increase in misclassifications will be noted, likely more than for a less complex classifier with a few misclassifications on training data. This phenomenon is known as \textit{overfitting}, resulting from the memorization of $X_T$ by the classifier while a generalization onto the whole data set was wanted \cite{Dietterich1995}.
 
@@ -120,6 +168,8 @@ with $i = \{1, ..., k\}$ \cite{Kohavi1995}. These estimations can be seen as sam
 
 More expensive variants are \textbf{complete} and \textbf{leave-pair-out} cross-validation. The former uses every possible two-set split of $X_T$ as basis of the estimation, while the latter only regards the possible pairs of data points. Complete cross-validation is rarely used due to its computational complexity \cite{Kohavi1995}, while leave-pair-out seems to strike an acceptable mix of effort and accuracy \cite{PahikkalaEtAl2008}.
 
+\textbf{Leave-p-out} cross-validation generalizes the other variants. Here, every subset of size $p \in \{1, ..., |X_T|-1\}$ is used as a test set, resulting in $|X_T| \choose p$ estimates which are then averaged \cite{ArlotEtAl2010}. Leave-one-out and leave-pair-out are equivalent to leave-p-out with $p = 1$ and $2$, respectively.0
+
 An algorithm specifically designed to work with iterative labeling was introduced by \cite{BrumenEtal2004} under the name of \textit{adaptive incremental k-fold cross validation}. It performs k-fold cross-validation after each increase of the training set size and stops when a certain performance threshold is reached. \cite{AirolaEtAl2001} perform an empirical study of the behaviour for different cross-validation techniques as well as \textit{bootstrapping}, which will be described in the next section. Their findings indicate leave-pair-out and k-fold with $k = 5$ or $10$ with averaged results as the most robust approaches. They also find them to be unbiased performance estimators, which is also stated in \cite{Kohavi1995}. \cite{RodriguezEtAl2013} clarifies that this only holds true for the performance estimation of classifier trained with $n - \frac{n}{k}$ instances. The estimation of classifier performance trained with $n$ samples is afflicted with a \textit{positive error bias}, i.e. the value of the estimated error rate is higher than the true error rate. \cite{EfronEtAl1997}  reinforce this argument with experiments and provide assessment of the variance as well.
 
 \subsection{Bootstrapping}
@@ -170,9 +220,5 @@ Functions families fitting this description are \textbf{power} \cite{FigueroaEta
 
 A related approach is described in \cite{CortesEtal1993}. Here, instead of modeling the prediction error directly, an exponential model is assumed for the optimism of the training error: $Err_S - Err_T = \frac{2b}{|X_T|^\alpha}$ and $Err_S + Err_T = 2a$. Using already acquired (true) error rates, the parameters are estimated from the gradient and amplitude of the data after being transformed into a logarithmic scale and fitted linearly. Extrapolating the function then gives an estimate of the expected error rate for a given $|X_T|$.
 
-\section{Miscellaneous}
-Introduced in \cite{EvansEtAl2015}, \textbf{Model Retraining Improvement} is originally intended as a statistically optimal criteria for instance selection in active learning. However, it does so by performing an unbiased estimate of the loss improvement a new labeled instance would yield. While the algorithm itself does not provide a way to estimate the future loss (or current, either), the paper provides a theoretical background for potential future estimators.
-
-Similar to the extrapolation of fitted learning curves is the \textit{maximum-likelihood-regression} presented in \cite{KadieEtal1995}. While the former has a fixed model to regress on, their method finds the most probable model for the given data.
-
-\cite{RoyEtAl2001} also presents a method to estimate current and future loss of a classifier in an active learning setting, similarly to model retraining improvement. They, however, use \textit{Monte-Carlo-Sampling}, resulting in a process comparable to the techniques already discussed in this chapter.
+\subsection{Maximum-likelihood regression}
+Similar to the extrapolation of fitted learning curves, the \textit{maximum-likelihood-regression} presented in \cite{KadieEtal1995}, aims to find the most likely model to explain the given data. Based on this, the model is then extrapolated to obtain an estimate.

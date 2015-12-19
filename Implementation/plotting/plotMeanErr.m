@@ -24,7 +24,7 @@ colors = [1,0,0;
 		  0,0.5,0;
 		  0.6,0.6,0];
 
-use = [2,3,13,14,15,16];
+use = [2,3,4,5,6,7];
 files = {"checke1", "2dData", "seeds", "abalone"};
 names = {"K-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS"};
 
@@ -76,7 +76,7 @@ for fi = 1:4
 	ax(2) = 20.8;
 	axis(ax);
 	ylabel("Average Mean Error");
-	title(["Bias for ", files{fi}, " w. sig. function; darker = larger training sets"]);
+	title(["Bias for ", files{fi}, " w. exp. function; darker = larger training sets"]);
     set(gca, "xtick", [3.5, 10.5, 17.5]);
     set(gca, "xticklabel", {"Random", "Uncertainty", "PAL"});
 	
@@ -85,5 +85,5 @@ for fi = 1:4
 		legend([hRSP(:, 2)], names, "location", "southwest");
 	endif
 	
-	print(["../Thesis/pics/meanErrSigW", files{fi}, ".pdf"]);
+	print(["../Thesis/pics/meanErrExp", files{fi}, ".pdf"]);
 endfor

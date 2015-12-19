@@ -1,4 +1,4 @@
-\begin{thebibliography}{41}
+\begin{thebibliography}{44}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -26,6 +26,11 @@ Archambeau, C., Valle, M., Assenza, A., \& Verleysen, M. (2006).
   and finite gaussian mixtures.
 \newblock In {\em Circuits and Systems, 2006. ISCAS 2006. Proceedings. 2006
   IEEE International Symposium\/}. IEEE.
+
+\bibitem[{Arlot \& Celisse(2010)}]{ArlotEtAl2010}
+Arlot, S., \& Celisse, A. (2010).
+\newblock A survey of cross-validation procedures for model selection.
+\newblock {\em Statistics Surveys\/}, {\em 4\/}, 40--79.
 
 \bibitem[{Borra \& Di~Ciaccio(2010)}]{BorraEtAl2010}
 Borra, S., \& Di~Ciaccio, A. (2010).
@@ -73,6 +78,17 @@ Cortes, C., Jackel, L.~D., Solla, S.~A., Vapnik, V., \& Denker, J.~S. (1993).
 \newblock Learning curves: Asymptotic values and rate of convergence.
 \newblock In {\em Neural Information Processing Systems\/}.
 \newline\urlprefix\url{http://papers.nips.cc/paper/803-learning-curves-asymptotic-values-and-rate-of-convergence.pdf}
+
+\bibitem[{Culotta \& McCallum(2004)}]{CulottaEtAl2004}
+Culotta, A., \& McCallum, A. (2004).
+\newblock Confidence estimation for information extraction.
+\newblock In {\em Proceedings of HLT-NAACL\/}, (pp. 109--112).
+
+\bibitem[{Dagan \& Engelson(1995)}]{DaganEtAl1995}
+Dagan, I., \& Engelson, S.~P. (1995).
+\newblock Committee-based sampling for training probabilistic classifiers.
+\newblock In {\em Proceedings of the Twelfth International Conference on
+  Machine Learning\/}, (pp. 150--157).
 
 \bibitem[{Dietterich(1995)}]{Dietterich1995}
 Dietterich, T. (1995).

@@ -5,36 +5,41 @@
 \contentsline {chapter}{List of Algorithms}{xiii}{chapter*.6}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Background and Related Work}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Classification and Active Learning}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}Generalization Performance}{5}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}(Expected) prediction error, training error and loss}{5}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Bias and variance}{6}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Classifier-based estimators}{7}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Cross-Validation}{8}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Bootstrapping}{9}{subsection.2.2.5}
-\contentsline {section}{\numberline {2.3}Learning Curves and Regression Models}{10}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Function families}{11}{subsection.2.3.1}
-\contentsline {section}{\numberline {2.4}Miscellaneous}{12}{section.2.4}
-\contentsline {chapter}{\numberline {3}Improving performance estimation by merging cross-validation and learning curve fitting}{13}{chapter.3}
-\contentsline {section}{\numberline {3.1}Performance estimation on training sub-sets}{14}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Sub-sampling of fitting points}{14}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Grouping of performance estimates}{17}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Combining sub-estimates with curve fitting}{17}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Function models and fitting algorithms}{17}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Fitting improvements}{19}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Evaluation}{21}{chapter.4}
-\contentsline {section}{\numberline {4.1}Objective and measurements}{21}{section.4.1}
-\contentsline {section}{\numberline {4.2}Method selection}{22}{section.4.2}
-\contentsline {section}{\numberline {4.3}Test environment}{23}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Function models}{23}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Active learner}{24}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Classifier}{25}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Datasets}{26}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Parameters}{28}{subsection.4.3.5}
-\contentsline {section}{\numberline {4.4}Test results}{29}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Average Mean Error}{29}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Average squared error}{33}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Kullback-Leibler divergence}{35}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Computation Time}{35}{subsection.4.4.4}
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{39}{chapter.5}
-\contentsline {chapter}{Bibliography}{41}{section*.7}
+\contentsline {section}{\numberline {2.1}Classification}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Active learning}{4}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Random sampling}{4}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Uncertainty sampling}{5}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Probabilistic Active Learning (PAL)}{5}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Model Retraining Improvement and Monte-Carlo-Sampling}{6}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}Generalization Performance}{6}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}(Expected) prediction error, training error and loss}{7}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Bias and variance}{8}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Classifier-based estimators}{9}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Cross-Validation}{10}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Bootstrapping}{11}{subsection.2.3.5}
+\contentsline {section}{\numberline {2.4}Learning Curves and Regression Models}{12}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Function families}{13}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Maximum-likelihood regression}{14}{subsection.2.4.2}
+\contentsline {chapter}{\numberline {3}Modeling performance estimation as a learning task}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}Performance estimation on training sub-sets}{15}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Sub-sampling of fitting points}{16}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Grouping of performance estimates}{18}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Combining sub-estimates with curve fitting}{19}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Function models and fitting algorithms}{19}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Fitting improvements}{20}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Evaluation}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Objective and measurements}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Method selection}{24}{section.4.2}
+\contentsline {section}{\numberline {4.3}Test environment}{25}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Function models}{25}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Active learner}{26}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Classifier}{27}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Datasets}{28}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Parameters}{30}{subsection.4.3.5}
+\contentsline {section}{\numberline {4.4}Test results}{31}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Average Mean Error}{31}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Average squared error}{35}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Kullback-Leibler divergence}{37}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Computation Time}{37}{subsection.4.4.4}
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{41}{chapter.5}
+\contentsline {chapter}{Bibliography}{43}{section*.7}

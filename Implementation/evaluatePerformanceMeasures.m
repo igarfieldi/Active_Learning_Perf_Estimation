@@ -56,8 +56,9 @@ activeLearner,struct, struct");
             classifier = setTrainingData(classifier, feat, lab,
                                 getNumberOfLabels(currOracle));
 			
-			#if((i == 3) || (i == 5) || (i == 7) || (i == 9))
-				#plotClassPrediction(classifier, feat, lab, c++);
+			
+			#if(i == 16)
+			#	plotClassPrediction(classifier, feat, lab, 3);
 			#endif
             # get the holdout accuracies
             if(testParams.useMethod(1))
