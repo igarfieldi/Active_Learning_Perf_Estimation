@@ -1,3 +1,3 @@
-\contentsline {algorithm}{\numberline {1}{\ignorespaces Capped sub-sampling}}{18}{algorithm.1}
-\contentsline {algorithm}{\numberline {2}{\ignorespaces Unrestricted path sub-sampling}}{18}{algorithm.2}
-\contentsline {algorithm}{\numberline {3}{\ignorespaces Restricted path sub-sampling}}{19}{algorithm.3}
+\contentsline {algorithm}{\numberline {1}{\ignorespaces Pseudocode for capped sub-sampling}}{17}{algorithm.1}
+\contentsline {algorithm}{\numberline {2}{\ignorespaces Pseudocode for path sub-sampling}}{19}{algorithm.2}
+\contentsline {algorithm}{\numberline {3}{\ignorespaces Pseudocode for path-superset sub-sampling}}{20}{algorithm.3}

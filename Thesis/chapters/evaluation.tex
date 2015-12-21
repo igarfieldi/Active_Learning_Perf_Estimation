@@ -1,15 +1,16 @@
 \ifgerman{\chapter{Evaluierung}}{\chapter{Evaluation}}
 \label{evaluation}
 
-In this section, we will briefly discuss our evaluation methodology, which includes the criteria to measure whether the goals of this work were accomplished or not, as well as the structure and results of our testing.
+This chapter contains the discussion of the evaluation methodology, which comprises of different measure to determine the quality of estimation, as well as the structure and results of our testing.
 
-\section{Objective and measurements}
+\section{Objectives and measurements}
+\label{evaluation:objective}
 
 To rate the effectiveness of the proposed methods we need a clearly stated and verifiable goal, including criteria to compare them against other techniques. This is easiest using the same scenario already used to describe the functioning of our methods: suppose we have a classifier, trained by an active learner using $k$ training instances. Then the objective of our methods is to estimate the classification loss of said classifier on data not yet seen, but from the same distribution as the training instances. Then, the bias and error of the estimation is to be compared against established estimators. The exact methods and the competition will be presented in the next section.
 
-To compare the techniques, we utilize the error measures used in \cite{FigueroaEtal2012}, \textit{root mean squared error} (RMSE) and \textit{mean error} (ME), defined as
+To compare the techniques, we oriented on the error measures used in \cite{FigueroaEtal2012}, \textit{mean squared error} (MSE) and \textit{mean error} (ME), defined as
 \begin{equation}
-RMSE = \frac{1}{n} \sum_{i=1}^{n} \left(y_n - y_n^{'}\right)^2
+MSE = \frac{1}{n} \sum_{i=1}^{n} \left(y_n - y_n^{'}\right)^2
 \end{equation}
 and
 \begin{equation}ME = \frac{1}{n} \sum_{i=1}^{n} y - y_n^{'},
@@ -23,15 +24,26 @@ f_{p, q}(x) = \frac{x^{p-1}(1-x)^{q-1}}{\int_{0}^{1} u^{p-1}(1-u)^{q-1}}.
 The parameters are computable from mean and variance via
 \begin{equation}
 \begin{split}
-E[X] &= \frac{p}{p+q} \\
-var[X] &= \frac{p*q}{(p+q)^2(p+q+1)}
+E[X] &= \mu = \frac{p}{p+q} \\
+var[X] &= \sigma^2 = \frac{pq}{(p+q)^2(p+q+1)}
+\end{split}
+\end{equation}
+Solving for $p$ and $q$ results in
+\begin{equation}
+\begin{split}
+p &= \frac{\mu^2(1-\mu)}{\sigma^2} - \mu \\
+q &= p\left(\frac{1}{\mu}-1\right)
 \end{split}
 \end{equation}
 Having the estimated distribution, we can then compute the difference between it and the "true" distribution via the \textit{Kullback-Leibler divergence} (KLD):
 \begin{equation}
-KLD(P:Q) = \int_{}^{} p(x) \cdot log\left(\frac{p(x)}{q(x)}\right) d\lambda (x),
+KLD(P:Q) = \int_{}^{} p(x) \cdot log_2\left(\frac{p(x)}{q(x)}\right) d\lambda (x),
 \end{equation}
-with $p(x)$ and $q(x)$ are the density functions of their respective distribution \cite{KullbackEtAl1951}. The KL divergence is an information-theoretical measure intended to compare two probability distributions. If the two are equal almost everywhere, the KLD will be zero, otherwise positive. Importantly, it is neither symmetrical nor does it satisfy the triangular inequality, thus the choice of distribution assignment is meaningful and should be equal for all tested methods (i.e. the distribution P is always the reference distribution) \cite{Joyce2011}.
+with $p(x)$ and $q(x)$ are the density functions of their respective distribution \cite{KullbackEtAl1951}. The KL divergence is an information-theoretical measure intended to compare two probability distributions. If the two are equal almost everywhere, the KLD will be zero, otherwise positive. Importantly, it is neither symmetrical nor does it satisfy the triangular inequality, thus the choice of distribution assignment is meaningful and should be equal for all tested methods (i.e. the distribution P is always the reference distribution) \cite{Joyce2011}. As the integral likely cannot be evaluated in closed form, numerical integration is used instead:
+\begin{equation}
+KLD(P:Q) = \frac{1}{|N|} \sum_{n \in N}^{} p(n) \cdot log_2\left(\frac{p(n)}{q(n)}\right)
+\end{equation}
+with $N = \{\frac{1}{10000},...,\frac{9999}{10000}$. Due to the lack of floating point precision in Octave, which was used to implement the framework, the edge cases 0 and 1 had to be omitted.
 
 Although not the main focus, we will also keep an eye on the computation time needed for each method, mostly because of the exponential complexity of our proposed methods.
 
@@ -40,6 +52,27 @@ Although not the main focus, we will also keep an eye on the computation time ne
 The methods we described in section \ref{methods} mostly conform to a three-step process: First, some sort of sub-sampling is performed (whether this actually reduces the amount of subsets is irrelevant). Then, the performance for the selected subsets is estimated and grouped. Last, the function of choice is fit on the groups and the final performance estimate obtained by evaluating and then averaging the functions at the point $f(k)$. Including the possibility of using fitting improvements like weighting and the no-information rate as well as different function models, we get a lot of combinations available. Unfortunately, we cannot test all of them as it is quite time consuming, which necessitates the selection of some combinations.
 
 Of course there are some intuitive limitations to what can be combined. When using all or a capped amount of subsets, applying some kind of path-like grouping seems much weirder than using averaging. Likewise, when path sub-sampling has been chosen, the intuitive option is to fit individual curves instead of only one with prior averaging. Also, some pre-screening suggested that the usage of the no-information rate as 0th data point is not as effective as hoped. Causes seem to be both high variance, leading to worsened fitting with low amounts of sub-samples, as well as its expendability for larger sub-sample sizes, which come naturally with larger training set sizes.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c | c}
+Method name & Description\\
+\hline
+5-Fold CV & 5-Fold cross-validation\\
+.632+ BS & .632+ bootstrapping with 50 bootstrap samples\\
+path & Path sub-sampling with path grouping\\
+pathSuper & Path-superset sub-sampling with path grouping\\
+averaged & Capped sub-sampling with averaged grouping; cross-validation for estimation\\
+averagedBS & Capped sub-sampling with averaged grouping; .632 bootstrap for estimation\\
+pathW & path with statistical weighting for fitting\\
+pathSuperW & pathSuper with statistical weighting for fitting\\
+averagedW & averaged with statistical weighting for fitting\\
+averagedBSW & averagedBS with statistical weighting for fitting\\
+pathSuperNI & pathSuper with the no-information rate as estimate for subset size 0
+\end{tabular}
+\caption{Summary of all estimators evaluated in the tests}
+\label{tab:allEstimators}
+\end{table}
 
 As a result of this, we designed tests for four different methods: path sub-sampling with as well as without superset restriction and one curve per path, which will be abbreviated as \textit{pathNormal} and \textit{pathSuper}, and capped sub-sampling with averaging and one curve fit, \textit{averaged}. While the estimation technique for the two path-based methods will be exclusively cross-validation, we elected \textit{averaging} to also be tested with .632 bootstrapping to assess whether it has any impact on the quality of the methods. Additionally, we will evaluate each of them using both weighted and unweighted fitting, with the former being designated by a trailing \textit{W}. And although the pre-screening made the usage of the no-information rate questionable, not testing it at all would be a waste. Thus, \textit{pathSuper} also does participate in a modified version with a 0th data point for each path/curve, named \textit{pathSuperNI}.
 
@@ -127,8 +160,9 @@ For the path-based methods, $|X_T|^2$ but not more than $\frac{10000}{|X_T|}$ pa
 All curves were fit with the Levenberg-Marquardt algorithm, even the linear model; this was done to normalize the testing environment. The ranges for initial parameters as well as their bounds can be seen in \ref{tab:functionParams}. Each fitting can use up to 300 iterations with a scalar tolerance of $10^{-4}$, i.e. if the sum of squared errors is lower than $0.0001$, the fitting is considered done and will not use the remaining iterations. The partial derivatives were provided, thus numeric derivation was not necessary.
 
 \begin{table}[h]
+	\small
 	\begin{tabular}{c | c | c | c}
-	\textbf{Function model} & \textbf{Equation} & \textbf{Parameter bounds} & \textbf{Initial parameter range} \\
+	\textbf{Function model} & \textbf{Equation} & \textbf{Parameter bounds} & \textbf{Initial parameters} \\
 	\hline
 	3-Exponential & $f_E(x) = a + b \cdot e^{c \cdot x}$ & \begin{tabular}{l}$a \in [0,1]$ \\ $b \in [-\infty, 0]$ \\ $c \in [-\infty, 0]$\end{tabular} & \begin{tabular}{l}$a \in [0,1]$ \\ $b \in [-2, 0]$ \\ $c \in [-2, 0]$\end{tabular} \\
 	\hline

@@ -39,12 +39,12 @@ methodNames = {"Holdout", "CV", ".632+",...
 testParams.iterations = 16;
 testParams.runs = 1;
 testParams.samples = @(i) i;#min(i^2, ceil(10000 / i));
-testParams.averMaxSamples = 100;
+testParams.averMaxSamples = 10000;
 testParams.bsMaxSamples = 50;
 testParams.foldSize = 5;
 testParams.bsSamples = 50;
 testParams.useMethod = [1,0,0,...
-						0,0,0,0, 0,0,0,0, 0,...
+						0,0,1,0, 0,0,0,0, 0,...
 						0,0,0,0, 0,0,0,0, 0,...
 						0,0,0,0, 0,0,0,0, 0];
 
@@ -75,8 +75,8 @@ dataFiles = {"checke1.mat", "2dData.mat", "seeds.mat", "abaloneReduced.mat"};
 #		2		22				53			63.6			111.6
 #		3		80.9			79.8		125.83			300.28
 
-useFile = 1;
-useAL = 3;
+useFile = 3;
+useAL = 1;
 useFunc = 1;
 
 data = dataReader();

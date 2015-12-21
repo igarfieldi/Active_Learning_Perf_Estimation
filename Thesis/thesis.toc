@@ -20,26 +20,26 @@
 \contentsline {section}{\numberline {2.4}Learning Curves and Regression Models}{12}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Function families}{13}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Maximum-likelihood regression}{14}{subsection.2.4.2}
-\contentsline {chapter}{\numberline {3}Modeling performance estimation as a learning task}{15}{chapter.3}
+\contentsline {chapter}{\numberline {3}Modeling performance estimation as a learning process}{15}{chapter.3}
 \contentsline {section}{\numberline {3.1}Performance estimation on training sub-sets}{15}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Sub-sampling of fitting points}{16}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Grouping of performance estimates}{18}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Combining sub-estimates with curve fitting}{19}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Function models and fitting algorithms}{19}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Fitting improvements}{20}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Evaluation}{23}{chapter.4}
-\contentsline {section}{\numberline {4.1}Objective and measurements}{23}{section.4.1}
-\contentsline {section}{\numberline {4.2}Method selection}{24}{section.4.2}
-\contentsline {section}{\numberline {4.3}Test environment}{25}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Function models}{25}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Active learner}{26}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Classifier}{27}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Datasets}{28}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Parameters}{30}{subsection.4.3.5}
-\contentsline {section}{\numberline {4.4}Test results}{31}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Average Mean Error}{31}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Average squared error}{35}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Kullback-Leibler divergence}{37}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Computation Time}{37}{subsection.4.4.4}
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{41}{chapter.5}
-\contentsline {chapter}{Bibliography}{43}{section*.7}
+\contentsline {subsection}{\numberline {3.1.1}Sub-sampling of fitting points}{17}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Extracting learning curves from performance estimates}{19}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Combining sub-estimates with curve fitting}{20}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Function models and fitting algorithms}{20}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Tuning the model fitting}{21}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Evaluation}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Objectives and measurements}{25}{section.4.1}
+\contentsline {section}{\numberline {4.2}Method selection}{27}{section.4.2}
+\contentsline {section}{\numberline {4.3}Test environment}{28}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Function models}{28}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Active learner}{28}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Classifier}{29}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Datasets}{31}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Parameters}{32}{subsection.4.3.5}
+\contentsline {section}{\numberline {4.4}Test results}{34}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Average Mean Error}{34}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Average squared error}{39}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Kullback-Leibler divergence}{40}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Computation Time}{40}{subsection.4.4.4}
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{43}{chapter.5}
+\contentsline {chapter}{Bibliography}{45}{section*.7}

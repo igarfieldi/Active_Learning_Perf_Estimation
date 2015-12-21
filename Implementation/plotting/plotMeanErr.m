@@ -24,14 +24,14 @@ colors = [1,0,0;
 		  0,0.5,0;
 		  0.6,0.6,0];
 
-use = [2,3,4,5,6,7];
+use = [2,3,13,14,15,16];
 files = {"checke1", "2dData", "seeds", "abalone"};
-names = {"K-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS"};
+names = {"5-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS"};
 
 for fi = 1:4
 	barData = [];
 	for al = 1:3
-		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 1:7, 1) .- allMus{fi, al}(:, 1:7, use))))'];
+		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 3:7, 1) .- allMus{fi, al}(:, 3:7, use))))'];
 		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 8:15, 1) .- allMus{fi, al}(:, 8:15, use))))'];
 		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 16:30, 1) .- allMus{fi, al}(:, 16:30, use))))'];
 	endfor
@@ -47,43 +47,59 @@ for fi = 1:4
 	barDataPos(barDataPos < 0) = 0;
 	barDataNeg(barDataNeg >= 0) = 0;
 	
-	hRSP = zeros(6, 3);
-	hUCP = zeros(6, 3);
-	hPALP = zeros(6, 3);
-	hRSN = zeros(6, 3);
-	hUCN = zeros(6, 3);
-	hPALN = zeros(6, 3);
+	hLowP = zeros(6, 3);
+	hMidP = zeros(6, 3);
+	hHighP = zeros(6, 3);
+	hLowN = zeros(6, 3);
+	hMidN = zeros(6, 3);
+	hHighN = zeros(6, 3);
 	
 	for j = 1:6
-		hRSP(j, :) = bar([j-1, j], [0, 0, 0; barDataPos(1:3, j)'], "stacked", 1);
-		hUCP(j, :) = bar([j+6, j+7], [0, 0, 0; barDataPos(4:6, j)'], "stacked", 1);
-		hPALP(j, :) = bar([j+13, j+14], [0, 0, 0; barDataPos(7:9, j)'], "stacked", 1);
-		hRSN(j, :) = bar([j-1, j], [0, 0, 0; barDataNeg(1:3, j)'], "stacked", 1);
-		hUCN(j, :) = bar([j+6, j+7], [0, 0, 0; barDataNeg(4:6, j)'], "stacked", 1);
-		hPALN(j, :) = bar([j+13, j+14], [0, 0, 0; barDataNeg(7:9, j)'], "stacked", 1);
-		for i = 1:3
-			set(get(hRSP(j, i),'children'),'cdata', (i-1)*6+j);
-			set(get(hUCP(j, i),'children'),'cdata', (i-1)*6+j);
-			set(get(hPALP(j, i),'children'),'cdata', (i-1)*6+j);
-			set(get(hRSN(j, i),'children'),'cdata', (i-1)*6+j);
-			set(get(hUCN(j, i),'children'),'cdata', (i-1)*6+j);
-			set(get(hPALN(j, i),'children'),'cdata', (i-1)*6+j);
+		for k = 1:3
+			hLowP(j, k) = bar([(j-1)*3+(k-1)*20,(j-1)*3+(k-1)*20+1], [0,barDataPos((k-1)*3+1, j)], "histc", 1);
+			hMidP(j, k) = bar([(j-1)*3+(k-1)*20+1,(j-1)*3+(k-1)*20+2], [0,barDataPos((k-1)*3+2, j)], "histc", 1);
+			hHighP(j, k) = bar([(j-1)*3+(k-1)*20+2,(j-1)*3+(k-1)*20+3], [0,barDataPos((k-1)*3+3, j)], "histc", 1);
+			hLowN(j, k) = bar([(j-1)*3+(k-1)*20,(j-1)*3+(k-1)*20+1], [0,barDataNeg((k-1)*3+1, j)], "histc", 1);
+			hMidN(j, k) = bar([(j-1)*3+(k-1)*20+1,(j-1)*3+(k-1)*20+2], [0,barDataNeg((k-1)*3+2, j)], "histc", 1);
+			hHighN(j, k) = bar([(j-1)*3+(k-1)*20+2,(j-1)*3+(k-1)*20+3], [0,barDataNeg((k-1)*3+3, j)], "histc", 1);
+			
+			set(get(hLowP(j, k),'children'),'cdata', (1-1)*6+j);
+			set(get(hMidP(j, k),'children'),'cdata', (1-1)*6+j);
+			set(get(hHighP(j, k),'children'),'cdata', (1-1)*6+j);
+			set(get(hLowN(j, k),'children'),'cdata', (1-1)*6+j);
+			set(get(hMidN(j, k),'children'),'cdata', (1-1)*6+j);
+			set(get(hHighN(j, k),'children'),'cdata', (1-1)*6+j);
 		endfor
 	endfor
 	
 	ax = axis();
 	ax(1) = 0.2;
-	ax(2) = 20.8;
+	ax(2) = 60.2;
+	plot([20,20], [-1,1], "--", "color", [0,0,0]);
+	plot([40,40], [-1,1], "--", "color", [0,0,0]);
 	axis(ax);
 	ylabel("Average Mean Error");
-	title(["Bias for ", files{fi}, " w. exp. function; darker = larger training sets"]);
-    set(gca, "xtick", [3.5, 10.5, 17.5]);
+	title(["Bias for ", files{fi}, " w. sig. function"]);
+	
+	for j = 1:6
+		for k = 1:3
+			hatch(get(hMidP(j,k), "children"), 40, [0.1,0.1,0.1], '-', 6,1);
+			hatch(get(hMidN(j,k), "children"), 40, [0.1,0.1,0.1], '-', 6,1);
+			hatch(get(hHighP(j,k), "children"), 40, [0.1,0.1,0.1], '-', 4,1);
+			hatch(get(hHighN(j,k), "children"), 40, [0.1,0.1,0.1], '-', 4,1);
+			hatch(get(hHighP(j,k), "children"), -40, [0.1,0.1,0.1], '-', 4,1);
+			hatch(get(hHighN(j,k), "children"), -40, [0.1,0.1,0.1], '-', 4,1);
+		endfor
+	endfor
+	
+    set(gca, "xtick", [10, 30, 50]);
     set(gca, "xticklabel", {"Random", "Uncertainty", "PAL"});
 	
 	
 	if(fi == 1)
-		legend([hRSP(:, 2)], names, "location", "southwest");
+		legend([hMidP(:, 1)], names, "location", "northwest");
 	endif
 	
-	print(["../Thesis/pics/meanErrExp", files{fi}, ".pdf"]);
+	print(["../Thesis/pics/meanErrSig", files{fi}, ".pdf"]);
+	
 endfor
