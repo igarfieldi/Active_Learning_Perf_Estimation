@@ -47,7 +47,7 @@ names = {"K-Fold CV", ".632+ BS", "path Sig", "pathSuper Lin", "averaged Sig", "
 for fi = 1:4
 	barData = [];
 	for al = 1:1
-		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 1:7, 1) .- allMus{fi, al}(:, 1:7, use))))'];
+		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 3:7, 1) .- allMus{fi, al}(:, 3:7, use))))'];
 		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 8:15, 1) .- allMus{fi, al}(:, 8:15, use))))'];
 		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 16:30, 1) .- allMus{fi, al}(:, 16:30, use))))'];
 	endfor

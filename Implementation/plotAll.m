@@ -7,9 +7,9 @@ if(!exist("allMus") || isempty(allMus))
 	load("results/allResults.mat", "allMus", "allVars", "allTimes");
 endif
 
-plotMeanErr;
+#plotMeanErr;
 #plotMeanErrW;
-#plotSquErr;
+plotSquErr;
 #plotPathLowIter;
 #plotKLD;
 #plotTimeAll;

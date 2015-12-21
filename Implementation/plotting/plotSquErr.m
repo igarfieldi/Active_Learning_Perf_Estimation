@@ -30,13 +30,13 @@ files = {"checke1", "2dData", "seeds", "abalone"};
 
 func = 1;
 
-for fi = 1:4
+for fi = 2:2
 	barData = [];
 	for al = 1:3
 		A = 1:size(allMus{fi, al}, 1);
-		low = vec(mean(mean((allMus{fi, al}(A, 1:7, 1) .- allMus{fi, al}(A, 1:7, use)).^2)));
-		mid = vec(mean(mean((allMus{fi, al}(A, 1:15, 1) .- allMus{fi, al}(A, 1:15, use)).^2)));
-		high = vec(mean(mean((allMus{fi, al}(A, 1:30, 1) .- allMus{fi, al}(A, 1:30, use)).^2)));
+		low = vec(sum(mean((allMus{fi, al}(A, 3:7, 1) .- allMus{fi, al}(A, 3:7, use)).^2)));
+		mid = vec(sum(mean((allMus{fi, al}(A, 8:15, 1) .- allMus{fi, al}(A, 8:15, use)).^2)));
+		high = vec(sum(mean((allMus{fi, al}(A, 16:30, 1) .- allMus{fi, al}(A, 16:30, use)).^2)));
 		barData = [barData; low'];
 		barData = [barData; mid'];
 		barData = [barData; high'];

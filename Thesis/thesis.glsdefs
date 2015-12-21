@@ -1,0 +1,30 @@
+\ifglsentryexists{trainingset}{}%
+{%
+\gls@defglossaryentry{trainingset}%
+{%
+name={$X$},%
+sort={$X$},%
+type={main},%
+first={$X$},%
+firstplural={$X$s},%
+text={$X$},%
+plural={$X$s},%
+description={Current training set of classifier},%
+descriptionplural={Current training set of classifier},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

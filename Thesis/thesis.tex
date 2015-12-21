@@ -12,6 +12,7 @@
 \input{tex/macros}
 
 \usepackage{natbib}
+\usepackage{array}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{algpseudocode} % enables algorithmic-environment, see pseudo-code example below
@@ -71,6 +72,8 @@
 % open index file
 \ifnotdraft{\makeindex}
 
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 %*********************************************************************%
 % ACRONYMS                                                            %
 %*********************************************************************%
@@ -78,6 +81,8 @@
 % HOWTO: \gls{IDE} for singular or \glspl{IDE} for plural with 's
 %\makeglossaries
 \newacronym{IDE}{IDE}{Integrated Development Environment}
+
+\makeglossaries
 %\glsaddall % use only if you have acronyms that occur only in graphics
 
 %*********************************************************************%
@@ -139,7 +144,7 @@
 		
 		\listofalgorithms
 		\addcontentsline{toc}{chapter}{List of Algorithms}
-
+		
 		%\renewcommand*{\firstacronymfont}[1]{\emph{#1}}
 		%\printglossary[type=acronym,title=List of Acronyms,toctitle=List of Acronyms]
 	}
