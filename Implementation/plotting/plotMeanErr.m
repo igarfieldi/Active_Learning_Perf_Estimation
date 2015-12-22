@@ -22,11 +22,15 @@ colors = [1,0,0;
 		  0,0,0.5;
 		  0,0.5,0.5;
 		  0,0.5,0;
-		  0.6,0.6,0];
+		  0.6,0.6,0;
+		  0.9,0.9,0.9;
+		  0.7,0.7,0.7;
+		  0.4,0.4,0.4];
 
 use = [2,3,13,14,15,16];
 files = {"checke1", "2dData", "seeds", "abalone"};
-names = {"5-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS"};
+names = {"5-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS", "3 - 7", "8 - 15", "16 - 30"};
+
 
 for fi = 1:4
 	barData = [];
@@ -40,7 +44,10 @@ for fi = 1:4
 	clf;
 	hold on;
 	
-	caxis([1,18]);
+	set(gca, "fontname", "roman");
+	set(gca, "fontsize", 17);
+	
+	caxis([1,21]);
 	colormap(colors);
 	barDataPos = barData;
 	barDataNeg = barData;
@@ -63,12 +70,12 @@ for fi = 1:4
 			hMidN(j, k) = bar([(j-1)*3+(k-1)*20+1,(j-1)*3+(k-1)*20+2], [0,barDataNeg((k-1)*3+2, j)], "histc", 1);
 			hHighN(j, k) = bar([(j-1)*3+(k-1)*20+2,(j-1)*3+(k-1)*20+3], [0,barDataNeg((k-1)*3+3, j)], "histc", 1);
 			
-			set(get(hLowP(j, k),'children'),'cdata', (1-1)*6+j);
-			set(get(hMidP(j, k),'children'),'cdata', (1-1)*6+j);
-			set(get(hHighP(j, k),'children'),'cdata', (1-1)*6+j);
-			set(get(hLowN(j, k),'children'),'cdata', (1-1)*6+j);
-			set(get(hMidN(j, k),'children'),'cdata', (1-1)*6+j);
-			set(get(hHighN(j, k),'children'),'cdata', (1-1)*6+j);
+			set(get(hLowP(j, k),'children'),'cdata', j);
+			set(get(hMidP(j, k),'children'),'cdata', 6+j);
+			set(get(hHighP(j, k),'children'),'cdata', 12+j);
+			set(get(hLowN(j, k),'children'),'cdata', j);
+			set(get(hMidN(j, k),'children'),'cdata', 6+j);
+			set(get(hHighN(j, k),'children'),'cdata', 12+j);
 		endfor
 	endfor
 	
@@ -81,23 +88,18 @@ for fi = 1:4
 	ylabel("Average Mean Error");
 	title(["Bias for ", files{fi}, " w. sig. function"]);
 	
-	for j = 1:6
-		for k = 1:3
-			hatch(get(hMidP(j,k), "children"), 40, [0.1,0.1,0.1], '-', 6,1);
-			hatch(get(hMidN(j,k), "children"), 40, [0.1,0.1,0.1], '-', 6,1);
-			hatch(get(hHighP(j,k), "children"), 40, [0.1,0.1,0.1], '-', 4,1);
-			hatch(get(hHighN(j,k), "children"), 40, [0.1,0.1,0.1], '-', 4,1);
-			hatch(get(hHighP(j,k), "children"), -40, [0.1,0.1,0.1], '-', 4,1);
-			hatch(get(hHighN(j,k), "children"), -40, [0.1,0.1,0.1], '-', 4,1);
-		endfor
-	endfor
-	
     set(gca, "xtick", [10, 30, 50]);
     set(gca, "xticklabel", {"Random", "Uncertainty", "PAL"});
 	
+	hLow = bar(7, 0, "histc");
+	hMid = bar(7, 0, "histc");
+	hHigh = bar(7, 0, "histc");
+	set(get(hLow, "children"), "cdata", 19);
+	set(get(hMid, "children"), "cdata", 20);
+	set(get(hHigh, "children"), "cdata", 21);
 	
 	if(fi == 1)
-		legend([hMidP(:, 1)], names, "location", "northwest");
+		legend([hLowP(:, 1); hLow; hMid; hHigh], names, "location", "northwest");
 	endif
 	
 	print(["../Thesis/pics/meanErrSig", files{fi}, ".pdf"]);

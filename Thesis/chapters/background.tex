@@ -36,6 +36,7 @@ As a compromise of the two extremes, semi-supervised techniques operate with a m
 Regardless of their category, all learning methods make assumptions about the distribution of the data: feature vectors close to each other tend to belong to the same class and, consequently, data points are likely to form group-like structures.
 
 \section{Active learning}
+\label{background:AL}
 As a subgroup of semi-supervised learning, active learners try to optimize the performance of a classifier when using a fixed amount of class labels. To achieve this, they make the training an iterative process, selecting one or more instances for labeling that the believe will benefit the performance the most in each iteration. While more exist, we will touch on three of them here:
 
 \subsection{Random sampling}
@@ -63,14 +64,21 @@ u_{ME}(\vec{x}) = -\sum_{y}^{} P_c(y | \vec{x}) \cdot log_2(P_c(y | \vec{x}))
 It should be noted that, while they possibly select different instances in multi-class problems, the first two are numerically identical for dichotomous data and all three will select the same instance \cite{ZhuEtAl2008}. In any case, they all assume what is called a \textit{decision boundary}, an entity which spatially separates groups of instances sharing the same class label. This can problematic if multiple clusters of the same label exist, as they are likely to be regarded as if they would belong to a different group.
 \end{itemize}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[trim = 0cm 7cm 0cm 6cm, clip = true, width = 0.7\textwidth]{PALIllustration}
+	\caption{PAL illustration showing the weighted probabilistic gain (normed on $[0, 1]$). The pgain is highest in areas where no labels have been purchased yet}
+	\label{fig:PALIllustration}
+\end{figure}
+
 \subsection{Probabilistic Active Learning (PAL)}
-PAL takes a different approach. It takes a look at each available instance's surroundings and computes the density of unlabeled as well as the amount of already purchased instances. The latter combined with the portion of instances sharing their class label with the original instance is denoted as \textit{label statistics}. Using this, assuming the instance's class label and the overall probability of this class in its neighbourhood was to be known, an optimal selection with regard to the classifier's performance could be made. But since those two quantities are generally unknown, PAL considers them as random variables. This enables the computation of an expected or probabilistic performance gain for each unlabeled instance. When weighted with the instance density in its neighbourhood, it allows an statistically optimal selection for the performance \cite{KremplEtAl2014}.
+PAL takes a different approach. It takes a look at each available instance's surroundings and computes the density of unlabeled as well as the amount of already purchased instances. The latter combined with the portion of instances sharing their class label with the original instance is denoted as \textit{label statistics}. Using this, assuming the instance's class label and the overall probability of this class in its neighbourhood was to be known, an optimal selection with regard to the classifier's performance could be made. But since those two quantities are generally unknown, PAL considers them as random variables. This enables the computation of an expected or probabilistic performance gain for each unlabeled instance. When weighted with the instance density in its neighbourhood, it allows an statistically optimal selection for the performance \cite{KremplEtAl2014}. \ref{fig:PALIllustration} show the probabilistic gain for the remaining instances, with the highest gain in the area with a low label density which is also the border region between both classes.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[trim = 4cm 6cm 4cm 4cm, clip = true, width = 0.253\textwidth]{RS16inst}
-	\includegraphics[trim = 4cm 6cm 4cm 4cm, clip = true, width = 0.253\textwidth]{UC16inst}
-	\includegraphics[trim = 2.4cm 6.25cm 0cm 5cm, clip = true, width = 0.37\textwidth]{PAL16inst}
+	\includegraphics[trim = 4cm 6cm 4cm 6cm, clip = true, width = 0.253\textwidth]{RS16inst}
+	\includegraphics[trim = 4cm 6cm 4cm 6cm, clip = true, width = 0.253\textwidth]{UC16inst}
+	\includegraphics[trim = 2cm 7.6cm 0.5cm 6cm, clip = true, width = 0.44\textwidth]{PAL16inst}
 	\caption{Classifier state for random and uncertainty sampling as well as PAL for 16 purchased labels on checke1}
 	\label{fig:ALillustration}
 \end{figure}

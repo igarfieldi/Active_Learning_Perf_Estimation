@@ -55,7 +55,8 @@ for fi = 1:4
 	figure(1);
 	clf;
 	hold on;
-	
+	set(gca, "fontname", "roman");
+	set(gca, "fontsize", 17);
 	caxis([1,size(colors,1)]);
 	colormap(colors);
 	barDataPos = barData;
@@ -66,9 +67,13 @@ for fi = 1:4
 	hRSP = zeros(length(use), 3);
 	hRSN = zeros(length(use), 3);
 	
+	plot([4.5,4.5], [-1,0], "--", "color", [0,0,0]);
+	plot([9.5,9.5], [-1,0], "--", "color", [0,0,0]);
+	plot([12.5,12.5], [-1,0], "--", "color", [0,0,0]);
+	
 	for j = 1:length(use)
-		hRSP(j, :) = bar([xc(j)-1, xc(j)], [0, 0, 0; barDataPos(1:3, j)'], "stacked", 1);
-		hRSN(j, :) = bar([xc(j)-1, xc(j)], [0, 0, 0; barDataNeg(1:3, j)'], "stacked", 1);
+		hRSP(j, :) = bar([xc(j)-1, xc(j)], [0, 0, 0; barDataPos(1:3, j)'], "histc", 1);
+		hRSN(j, :) = bar([xc(j)-1, xc(j)], [0, 0, 0; barDataNeg(1:3, j)'], "histc", 1);
 		for i = 1:3
 			set(get(hRSP(j, i),'children'),'cdata', (i-1)*length(use)+j);
 			set(get(hRSN(j, i),'children'),'cdata', (i-1)*length(use)+j);
@@ -76,16 +81,15 @@ for fi = 1:4
 	endfor
 	
 	ax = axis();
-	ax(1) = 0.2;
-	ax(2) = 15.8;
-	plot([4,4], [-1,0], "--", "color", [0,0,0]);
-	plot([9,9], [-1,0], "--", "color", [0,0,0]);
-	plot([12,12], [-1,0], "--", "color", [0,0,0]);
+	ax(1) = 0.5;
+	ax(2) = 16.5;
+	ax(3) = min(min(barData))*1.2;
+	ax(4) = max(max(barData))*1.2;
 	axis(ax);
 	ylabel("Average Mean Error");
 	title(["Bias for ", files{fi}, "; darker = larger training sets"]);
-    set(gca, "xtick", [4,9,12]);
-    set(gca, "xticklabel", {"unweighted", "NI rate", "weighted"});
+    set(gca, "xtick", [4.5,9.5,12.5]);
+    set(gca, "xticklabel", {"unweighted", "NI-rate", "weighted"});
 	
 	
 	if(fi == 1)

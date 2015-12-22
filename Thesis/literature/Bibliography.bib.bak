@@ -75,6 +75,18 @@ We consider two scenarios, 1) Monolingual samples in the source and target langu
   Timestamp                = {2015.12.02}
 }
 
+@Article{ArlotEtAl2010,
+  Title                    = {A survey of cross-validation procedures for model selection},
+  Author                   = {Arlot, Sylvain and Celisse, Alain},
+  Journal                  = {Statistics Surveys},
+  Year                     = {2010},
+  Pages                    = {40-79},
+  Volume                   = {4},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.12.18}
+}
+
 @InProceedings{Bach2006,
   Title                    = {Active Learning for misspecified generalized linear models},
   Author                   = {Bach, Francis R.},
@@ -446,6 +458,18 @@ Conclusions This paper describes a simple and effective sample size prediction a
   Owner                    = {Florian},
   Timestamp                = {2015.09.11},
   Url                      = {ai.stanford.edu/~ronnyk/biasVar.pdf}
+}
+
+@Article{KremplEtAl2015,
+  Title                    = {Optimised probabilistic active learning (OPAL)},
+  Author                   = {Krempl, Georg and Kottke, Daniel and Lemaire, Vincent},
+  Journal                  = {Machine Learning},
+  Year                     = {2015},
+  Pages                    = {449-476},
+  Volume                   = {100},
+
+  Owner                    = {Florian},
+  Timestamp                = {2015.12.22}
 }
 
 @InProceedings{KremplEtAl2014,

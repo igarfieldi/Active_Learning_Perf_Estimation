@@ -11,13 +11,13 @@
 \contentsline {subsection}{\numberline {2.2.2}Uncertainty sampling}{5}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Probabilistic Active Learning (PAL)}{5}{subsection.2.2.3}
 \contentsline {subsection}{\numberline {2.2.4}Model Retraining Improvement and Monte-Carlo-Sampling}{6}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}Generalization Performance}{6}{section.2.3}
+\contentsline {section}{\numberline {2.3}Generalization Performance}{7}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}(Expected) prediction error, training error and loss}{7}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Bias and variance}{8}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Classifier-based estimators}{9}{subsection.2.3.3}
 \contentsline {subsection}{\numberline {2.3.4}Cross-Validation}{10}{subsection.2.3.4}
 \contentsline {subsection}{\numberline {2.3.5}Bootstrapping}{11}{subsection.2.3.5}
-\contentsline {section}{\numberline {2.4}Learning Curves and Regression Models}{12}{section.2.4}
+\contentsline {section}{\numberline {2.4}Learning Curves and Regression Models}{13}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Function families}{13}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Maximum-likelihood regression}{14}{subsection.2.4.2}
 \contentsline {chapter}{\numberline {3}Modeling performance estimation as a learning process}{15}{chapter.3}
@@ -28,18 +28,19 @@
 \contentsline {subsection}{\numberline {3.2.1}Function models and fitting algorithms}{20}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Tuning the model fitting}{21}{subsection.3.2.2}
 \contentsline {chapter}{\numberline {4}Evaluation}{25}{chapter.4}
-\contentsline {section}{\numberline {4.1}Objectives and measurements}{25}{section.4.1}
+\contentsline {section}{\numberline {4.1}Performance criteria}{25}{section.4.1}
 \contentsline {section}{\numberline {4.2}Method selection}{27}{section.4.2}
 \contentsline {section}{\numberline {4.3}Test environment}{28}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Function models}{28}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Active learner}{28}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Classifier}{29}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Datasets}{31}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Parameters}{32}{subsection.4.3.5}
-\contentsline {section}{\numberline {4.4}Test results}{34}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Average Mean Error}{34}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Average squared error}{39}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Kullback-Leibler divergence}{40}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Computation Time}{40}{subsection.4.4.4}
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{43}{chapter.5}
-\contentsline {chapter}{Bibliography}{45}{section*.7}
+\contentsline {subsection}{\numberline {4.3.1}Reference accuracy}{28}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Function fitting}{28}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Active learner}{28}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Classifier}{29}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Datasets}{29}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Parameters}{31}{subsection.4.3.6}
+\contentsline {section}{\numberline {4.4}Test results}{32}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Average Mean Error}{33}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Average squared error}{36}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Kullback-Leibler divergence}{38}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Computation Time}{39}{subsection.4.4.4}
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{41}{chapter.5}
+\contentsline {chapter}{Bibliography}{43}{section*.7}

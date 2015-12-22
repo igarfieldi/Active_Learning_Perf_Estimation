@@ -82,6 +82,9 @@ for fi = 1:4
 	clf;
 	hold on;
 	
+	set(gca, "fontname", "roman");
+	set(gca, "fontsize", 17);
+	
 	caxis([1,size(colors, 1)]);
 	colormap(colors);
 	
@@ -104,6 +107,8 @@ for fi = 1:4
 	ax = axis();
 	ax(1) = 0.2;
 	ax(2) = length(use)*3+2.8;
+	plot([6,6], [0,30], "color", [0,0,0], "--");
+	plot([12,12], [0,30], "color", [0,0,0], "--");
 	axis(ax);
 	ylabel("Average KL divergence");
 	title(["KL divergence for ", files{fi}, "; darker = larger training sets"]);

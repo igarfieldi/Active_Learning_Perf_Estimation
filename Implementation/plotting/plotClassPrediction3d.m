@@ -7,7 +7,9 @@ function plotClassPrediction3d(posFeats, negFeats, sigma, fig)
         
     figure(fig);
     hold on;
-
+	
+	set(gca, "fontname", "roman");
+	set(gca, "fontsize", 18);
     X = linspace(0, 1, colorRes)';
     colors = [max(1 .- 1.5*X, 0), zeros(colorRes, 1), max(1.5*X .- 0.5, 0)];
     cmap = colormap(colors);
