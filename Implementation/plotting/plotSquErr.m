@@ -22,15 +22,18 @@ colors = [1,0,0;
 		  0,0,0.5;
 		  0,0.5,0.5;
 		  0,0.5,0;
-		  0.6,0.6,0];
+		  0.6,0.6,0;
+		  0.9,0.9,0.9;
+		  0.7,0.7,0.7;
+		  0.4,0.4,0.4];
 
 use = [2,3,13,27,15,29];
-names = {"K-Fold CV", ".632+ BS", "path", "pathSuperW", "averaged", "averagedBSW"};
+names = {"5-Fold CV", ".632+ BS", "path", "pathSuperW", "averaged", "averagedBSW", "3 - 7", "8 - 15", "16 - 30"};
 files = {"checke1", "2dData", "seeds", "abalone"};
 
 func = 1;
 
-for fi = 2:2
+for fi = 1:4
 	barData = [];
 	for al = 1:3
 		A = 1:size(allMus{fi, al}, 1);
@@ -46,50 +49,50 @@ for fi = 2:2
 	clf;
 	hold on;
 	
-	caxis([1,18]);
+	set(gca, "fontname", "roman");
+	set(gca, "fontsize", 17);
+	
+	caxis([1,21]);
 	colormap(colors);
-	barDataPos = barData;
-	barDataNeg = barData;
-	barDataPos(barDataPos < 0) = 0;
-	barDataNeg(barDataNeg >= 0) = 0;
 	
-	hRSP = zeros(length(use), 3);
-	hUCP = zeros(length(use), 3);
-	hPALP = zeros(length(use), 3);
-	hRSN = zeros(length(use), 3);
-	hUCN = zeros(length(use), 3);
-	hPALN = zeros(length(use), 3);
+	hRS = zeros(6, 3);
+	hUC = zeros(6, 3);
+	hPAL = zeros(6, 3);
 	
-	
-	for j = 1:length(use)
-		hRSP(j, :) = bar([j-1, j], [0, 0, 0; barDataPos(1:3, j)'], "stacked", 1);
-		hUCP(j, :) = bar([j+length(use), j+length(use)+1], [0, 0, 0; barDataPos(4:6, j)'], "stacked", 1);
-		hPALP(j, :) = bar([j+2*length(use)+1, j+2*length(use)+2], [0, 0, 0; barDataPos(7:9, j)'], "stacked", 1);
-		hRSN(j, :) = bar([j-1, j], [0, 0, 0; barDataNeg(1:3, j)'], "stacked", 1);
-		hUCN(j, :) = bar([j+length(use), j+7], [0, 0, 0; barDataNeg(4:6, j)'], "stacked", 1);
-		hPALN(j, :) = bar([j+2*length(use)+1, j+2*length(use)+2], [0, 0, 0; barDataNeg(7:9, j)'], "stacked", 1);
-		for i = 1:3
-			set(get(hRSP(j, i),'children'),'cdata', (i-1)*length(use)+j);
-			set(get(hUCP(j, i),'children'),'cdata', (i-1)*length(use)+j);
-			set(get(hPALP(j, i),'children'),'cdata', (i-1)*length(use)+j);
-			set(get(hRSN(j, i),'children'),'cdata', (i-1)*length(use)+j);
-			set(get(hUCN(j, i),'children'),'cdata', (i-1)*length(use)+j);
-			set(get(hPALN(j, i),'children'),'cdata', (i-1)*length(use)+j);
+	for j = 1:6
+		hRS(j, :) = bar([j-1, j], [0,0,0;barData(1:3, j)'], "stacked", 1);
+		hUC(j, :) = bar([j+6, j+7], [0,0,0;barData(4:6, j)'], "stacked", 1);
+		hPAL(j, :) = bar([j+13, j+14], [0,0,0;barData(7:9, j)'], "stacked", 1);
+		
+		for k = 1:3
+			set(get(hRS(j, k),'children'),'cdata', j+(k-1)*6);
+			set(get(hUC(j, k),'children'),'cdata', j+(k-1)*6);
+			set(get(hPAL(j, k),'children'),'cdata', j+(k-1)*6);
 		endfor
 	endfor
+	
+	hLow = bar(7, 0, "histc");
+	hMid = bar(7, 0, "histc");
+	hHigh = bar(7, 0, "histc");
+	set(get(hLow, "children"), "cdata", 19);
+	set(get(hMid, "children"), "cdata", 20);
+	set(get(hHigh, "children"), "cdata", 21);
 	
 	ax = axis();
 	ax(1) = 0.2;
 	ax(2) = length(use)*3+2.8;
+	plot([7,7], [-20,20], "color", [0,0,0], "--");
+	plot([14,14], [-20,20], "color", [0,0,0], "--");
+	
+	ylabel("Summed Squared Error");
+	title(["Spread for ", files{fi}, ""]);
+	
 	axis(ax);
-	ylabel("Average Squared Error");
-	title(["Spread for ", files{fi}, " w. exp. function; darker = larger training sets"]);
-    set(gca, "xtick", [(1+length(use))/2, (8+2*length(use)+1)/2, (15+2*length(use)+2)/2]);
+    set(gca, "xtick", [(1+length(use))/2, 7+(length(use)+1)/2, 14+(length(use)+1)/2]);
     set(gca, "xticklabel", {"Random", "Uncertainty", "PAL"});
 	
-	
 	if(fi == 2)
-		legend([hRSP(:, 2)], names, "location", "northwest");
+		legend([hRS(:, 1); hLow; hMid; hHigh], names, "location", "northwest");
 	endif
 	
 	print(["../Thesis/pics/squErr", files{fi}, ".pdf"]);

@@ -19,6 +19,8 @@ matrix, scalar");
 	#h = subplot(1,4,fig);
     h = figure(fig);
 	hold on;
+	set(gca, "fontname", "roman");
+	set(gca, "fontsize", 16);
 
     X = linspace(0, 1, colorRes)';
     colors = [1 .- X, zeros(colorRes, 1), X];
@@ -46,9 +48,7 @@ matrix, scalar");
     
     axis("square");
 	axis([0,1,0,1]);
-	xlabel([num2str(size(features, 1)), " instances"], "fontsize", 16);
-	title("Classification for PAL", "fontsize", 16);
-	set(gca, "fontsize", 14);
-	print("../Thesis/pics/PAL16inst.pdf");
+	title("Uncertainty sampling", "fontsize", 22);
+	print("../Thesis/pics/UC16inst.pdf");
     
 endfunction

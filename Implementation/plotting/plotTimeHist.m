@@ -9,6 +9,9 @@ figure(1);
 clf;
 hold on;
 
+set(gca, "fontname", "roman");
+set(gca, "fontsize", 17);
+
 caxis([1,25]);
 colormap(jet(25));
 
@@ -20,7 +23,7 @@ h = plot([0, 2*max(vec(allTimes{1,1}(:,:,5)))], repmat(mean(vec(allTimes{1,1}(:,
 axis(ax);
 ylabel("Amount");
 xlabel("Time in s");
-title("Example histogram of computation time for pathSuper on checke1");
+title("Histogram of computation time for pathSuper");
 legend(h, "Average time", "location", "northeast");
 
 print("../Thesis/pics/timeHistExample.pdf");

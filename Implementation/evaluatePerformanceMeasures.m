@@ -41,7 +41,7 @@ activeLearner,struct, struct");
 		# select initial 2 instances before any performance estimation can be applied
 		for i = 1:min(testParams.iterations, 2)
 			[activeLearner, currOracle, ~, ~] = selectInstance(activeLearner,
-															classifier, currOracle);
+														classifier, currOracle);
 		endfor
 		
 		for i = 3:testParams.iterations
@@ -207,41 +207,6 @@ activeLearner,struct, struct");
 					[mus(r, i, 6+(funcs-1)*9), ~, averages] = estAverFit(averSamples, averSizes, functionParams(funcs));
 					times(r, i, 6+(funcs-1)*9) = AVt + CVt*prod(size(averSamples))/length(uniqueCVSamples)...
 										+ (time() - t1);
-					
-					if(i == 9)
-						figure(1);
-						hold on;
-						plot(1:i-1, averages, "*", "color", [0,0,0]);
-						options.bounds = functionParams(1).bounds;
-						[~, fp1] = leasqr((1:i-1)', averages', rand(1, functionParams(1).params),
-											functionParams(1).template, 0.0001,
-											400, ones(i-1,1), 0.001 * ones(1, functionParams(1).params),
-											functionParams(1).derivative, options);
-						options.bounds = functionParams(2).bounds;
-						[~, fp2] = leasqr((1:i-1)', averages', rand(1, functionParams(2).params),
-											functionParams(2).template, 0.0001,
-											400, ones(i-1,1), 0.001 * ones(1, functionParams(2).params),
-											functionParams(2).derivative, options);
-						options.bounds = functionParams(3).bounds;
-						[~, fp3] = leasqr((i-4:i-1)', averages(end-3:end)', rand(1, functionParams(3).params),
-											functionParams(3).template, 0.0001,
-											400, ones(4,1), 0.001 * ones(1, functionParams(3).params),
-											functionParams(3).derivative, options);
-						z = linspace(0, i, 10000);
-						plot(z, functionParams(1).template(z, fp1), "-", "color", [0,0,1]);
-						plot(z, functionParams(2).template(z, fp2), "-", "color", [0,1,0]);
-						plot(z, functionParams(3).template(z, fp3), "-", "color", [1,0,0]);
-						legend("accuracy estimates", "exponential function",...
-								"sigmoid function", "linear function",...
-								"location", "southeast");
-						axis([0, i, 0, 1]);
-						title("Difference in shape of different function models");
-						xlabel("Subset size");
-						ylabel("Accuracy");
-						keyboard;
-					endif
-					
-					
 				endif
 				
 				if(testParams.useMethod(7+(funcs-1)*9))

@@ -45,6 +45,9 @@ figure(1);
 clf;
 hold on;
 
+set(gca, "fontname", "roman");
+set(gca, "fontsize", 17);
+
 caxis([1,size(colors, 1)]);
 colormap(colors);
 
@@ -62,6 +65,9 @@ endfor
 ax = axis();
 ax(1) = 0.4;
 ax(2) = length(use)*4+4.6;
+plot([8,8], [0,3000], "color", [0,0,0], "--");
+plot([16,16], [0,3000], "color", [0,0,0], "--");
+plot([24,24], [0,3000], "color", [0,0,0], "--");
 axis(ax);
 
 ylabel("Time in s");

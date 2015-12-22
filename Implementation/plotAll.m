@@ -9,8 +9,8 @@ endif
 
 #plotMeanErr;
 #plotMeanErrW;
-plotSquErr;
+#plotSquErr;
 #plotPathLowIter;
-#plotKLD;
+plotKLD;
 #plotTimeAll;
 #plotTimeHist;
