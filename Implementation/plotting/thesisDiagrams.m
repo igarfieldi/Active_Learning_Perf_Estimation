@@ -28,7 +28,7 @@ plot(dataX, dataY, "*", "markersize", 8);
 print("../Thesis/pics/accDemonstration.pdf");
 #}
 
-#{
+
 plotClassPrediction3d([1, 1], [0, 0; 1.3, 0], 0.4, 2);
 xlabel("X");
 ylabel("Y");
@@ -37,7 +37,7 @@ title("KDEs and classification for instances");
 caxis([0, 256]);
 colorbar("ytick", [0, 128, 256], "yticklabel", {"Neg. instance", "Ambiguous", "Pos. instance"}, "fontsize", 16);
 print("../Thesis/pics/KDE3inst.pdf");
-#}
+
 
 #{
 load("data/2dData.mat", "X", "Y");
@@ -116,7 +116,7 @@ title([dataset, " set (", num2str(size(X, 1)), " Instances)"]);
 print(["../Thesis/pics/", dataset, "Illustration.pdf"]);
 #}
 
-
+#{
 dataset = "abaloneReduced";
 load(["data/", dataset, ".mat"], "X", "Y");
 posInd = find(Y == 1);
@@ -140,7 +140,7 @@ ylabel("Y");
 title([dataset, " set (", num2str(size(X, 1)), " instances)"]);
 #legend({"positive instances", "negative instances"}, "location", "southeast");
 print(["../Thesis/pics/", dataset, "Illustration.pdf"]);
-
+#}
 #{
 figure(1);
 clf;

@@ -1,7 +1,6 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces PAL illustration showing the weighted probabilistic gain (normed on $[0, 1]$). The pgain is highest in areas where no labels have been purchased yet; the present ones have been selected at random}}{6}{figure.2.1}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Classifier state for random and uncertainty sampling as well as PAL for 16 purchased labels on checke1}}{7}{figure.2.2}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces General appearance of a learning curve. Training set size as x-axis, accuracy as y-axis \cite {FigueroaEtal2012}}}{14}{figure.2.3}
