@@ -27,22 +27,22 @@ colors = [1,0,0;
 		  0.7,0.7,0.7;
 		  0.4,0.4,0.4];
 
-use = [2,3,13,27,15,29];
-names = {"5-Fold CV", ".632+ BS", "path", "pathSuperW", "averaged", "averagedBSW", "3 - 7", "8 - 15", "16 - 30"};
+use = [2,3,13,5,15,25];
+names = {"5-Fold CV", ".632+ BS", "path Sig", "pathSuper Exp", "averaged Sig", "averagedBS Lin", "3 - 7", "8 - 15", "16 - 30"};
 files = {"checke1", "2dData", "seeds", "abalone"};
 
 func = 1;
 
-for fi = 1:4
+for fi = 1:1
 	barData = [];
 	for al = 1:3
 		A = 1:size(allMus{fi, al}, 1);
-		low = vec(sum(mean((allMus{fi, al}(A, 3:7, 1) .- allMus{fi, al}(A, 3:7, use)).^2)));
-		mid = vec(sum(mean((allMus{fi, al}(A, 8:15, 1) .- allMus{fi, al}(A, 8:15, use)).^2)));
-		high = vec(sum(mean((allMus{fi, al}(A, 16:30, 1) .- allMus{fi, al}(A, 16:30, use)).^2)));
-		barData = [barData; low'];
-		barData = [barData; mid'];
-		barData = [barData; high'];
+		low = vec(mean(mean((allMus{fi, al}(A, 3:7, 1) .- allMus{fi, al}(A, 3:7, use)).^2)));
+		mid = vec(mean(mean((allMus{fi, al}(A, 8:15, 1) .- allMus{fi, al}(A, 8:15, use)).^2)));
+		high = vec(mean(mean((allMus{fi, al}(A, 16:30, 1) .- allMus{fi, al}(A, 16:30, use)).^2)));
+		barData = [barData; 5/28*(low')];
+		barData = [barData; 8/28*(mid')];
+		barData = [barData; 15/28*(high')];
 	endfor
 	
 	figure(1);
@@ -81,18 +81,20 @@ for fi = 1:4
 	ax = axis();
 	ax(1) = 0.2;
 	ax(2) = length(use)*3+2.8;
-	plot([7,7], [-20,20], "color", [0,0,0], "--");
+	plot([7,7], [-20,0.202], "color", [0,0,0], "--");
 	plot([14,14], [-20,20], "color", [0,0,0], "--");
 	
-	ylabel("Summed Squared Error");
+	ylabel("Average Squared Error");
 	title(["Spread for ", files{fi}, ""]);
 	
 	axis(ax);
     set(gca, "xtick", [(1+length(use))/2, 7+(length(use)+1)/2, 14+(length(use)+1)/2]);
     set(gca, "xticklabel", {"Random", "Uncertainty", "PAL"});
 	
-	if(fi == 2)
-		legend([hRS(:, 1); hLow; hMid; hHigh], names, "location", "northwest");
+	if(fi == 1)
+		legend([hRS(:, 1)], names{1:length(use)}, "location", "northwest");
+	elseif(fi == 2)
+		legend([hLow; hMid; hHigh], names{length(use)+1:end}, "location", "northwest");
 	endif
 	
 	print(["../Thesis/pics/squErr", files{fi}, ".pdf"]);

@@ -19,15 +19,18 @@ colors = [1,0,0;
 		  0,0,0.5;
 		  0.2,0.2,0.5;
 		  0,0.5,0.5;
-		  0.1,0.5,0.3];
+		  0.1,0.5,0.3;
+		  0.9,0.9,0.9;
+		  0.7,0.7,0.7;
+		  0.4,0.4,0.4];
 
-use = [2,13,17,23,27];
-names = {"K-Fold CV", "path sig.", "pathW sig.", "pathSuper lin.", "pathSuperW lin."};
+use = [2,13,17,5,9];
+names = {"5-Fold CV", "path sig.", "pathW sig.", "pathSuper lin.", "pathSuperW lin."};
 files = {"checke1", "2dData", "seeds", "abalone"};
 
 func = 1;
 
-for fi = 1:4
+for fi = 1:1
 	barData = zeros(9, length(use));
 	for al = 1:3
 		KLD = zeros(30, length(use), 3);
@@ -93,9 +96,9 @@ for fi = 1:4
 	hPAL = zeros(length(use), 3);
 	
 	for j = 1:length(use)
-		hRS(j, :) = bar([j-1, j], [0, 0, 0; barData(1:3, j)'], "stacked", 1);
-		hUC(j, :) = bar([j+length(use), j+length(use)+1], [0, 0, 0; barData(4:6, j)'], "stacked", 1);
-		hPAL(j, :) = bar([j+2*length(use)+1, j+2*length(use)+2], [0, 0, 0; barData(7:9, j)'], "stacked", 1);
+		hRS(j, :) = bar([j-1, j], [0, 0, 0; barData(1:3, j)'], "histc", 1);
+		hUC(j, :) = bar([j+length(use), j+length(use)+1], [0, 0, 0; barData(4:6, j)'], "histc", 1);
+		hPAL(j, :) = bar([j+2*length(use)+1, j+2*length(use)+2], [0, 0, 0; barData(7:9, j)'], "histc", 1);
 		for i = 1:3
 			set(get(hRS(j, i),'children'),'cdata', (i-1)*length(use)+j);
 			set(get(hUC(j, i),'children'),'cdata', (i-1)*length(use)+j);
@@ -103,20 +106,28 @@ for fi = 1:4
 		endfor
 	endfor
 	
+	hLow = bar(7, 0, "histc");
+	hMid = bar(7, 0, "histc");
+	hHigh = bar(7, 0, "histc");
+	set(get(hLow, "children"), "cdata", 16);
+	set(get(hMid, "children"), "cdata", 17);
+	set(get(hHigh, "children"), "cdata", 18);
 	
 	ax = axis();
-	ax(1) = 0.2;
-	ax(2) = length(use)*3+2.8;
-	plot([6,6], [0,30], "color", [0,0,0], "--");
-	plot([12,12], [0,30], "color", [0,0,0], "--");
+	ax(1) = 0.6;
+	ax(2) = length(use)*3+3.4;
+	plot([6.5,6.5], [0,5.1], "color", [0,0,0], "--");
+	plot([12.5,12.5], [0,30], "color", [0,0,0], "--");
 	axis(ax);
 	ylabel("Average KL divergence");
-	title(["KL divergence for ", files{fi}, "; darker = larger training sets"]);
-    set(gca, "xtick", [(1+length(use))/2, (8+2*length(use)+1)/2, (17+2*length(use)+2)/2]);
+	title(["KL divergence for ", files{fi}]);
+    set(gca, "xtick", [(1+length(use))/2, 6+(2*length(use)+1)/2, 12+(2*length(use)+1)/2]);
     set(gca, "xticklabel", {"Random", "Uncertainty", "PAL"});
 	
-	if(fi == 2)
+	if(fi == 1)
 		legend([hRS(:, 2)], names, "location", "northwest");
+	elseif(fi == 2)
+		legend([hLow; hMid; hHigh], "3 - 7", "8 - 15", "16 - 30", "location", "northwest");
 	endif
 	
 	print(["../Thesis/pics/klDiv", files{fi}, ".pdf"]);

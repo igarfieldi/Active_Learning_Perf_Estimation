@@ -57,9 +57,9 @@ activeLearner,struct, struct");
                                 getNumberOfLabels(currOracle));
 			
 			
-			#if(i == 16)
-			#	plotClassPrediction(classifier, feat, lab, 3);
-			#endif
+			if(i == 8)
+				plotClassPrediction(classifier, feat, lab, 3);
+			endif
             # get the holdout accuracies
             if(testParams.useMethod(1))
                 # train the classifier with the currently labeled instances

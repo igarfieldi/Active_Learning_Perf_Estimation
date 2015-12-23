@@ -11,7 +11,7 @@ The selection of measurements for comparison should be guided by what is expecte
 The estimation of bias and spread are done, based on measures used in \cite{FigueroaEtal2012}, by computing the \textit{mean error (ME)} and the \textit{mean squared error (MSE)}:
 \begin{subequations}
 \begin{equation}
-ME(k) = \frac{1}{n} \sum_{X \in \mathcal{X}^k}^{} \left(acc_c(X,\mathcal{D}) - \widehat{acc}_c(X,\mathcal{D})\right)^2
+ME(k) = \frac{1}{n} \sum_{X \in \mathcal{X}^k}^{} \left(acc_c(X,\mathcal{D}) - \widehat{acc}_c(X,\mathcal{D})\right)
 \end{equation}
 \begin{equation}
 MSE(k) = \frac{1}{n} \sum_{X \in \mathcal{X}^k}^{} \left(acc_c(X,\mathcal{D}) - \widehat{acc}_c(X,\mathcal{D})\right)^2
@@ -130,13 +130,22 @@ Considering these constraints the selection contains the following datasets:
 
 \begin{figure}[h]
 	\centering
+	\includegraphics[trim = 1cm 6cm 2cm 6cm, clip = true, width = 0.6\textwidth]{holdoutAccs}
+	\caption{Visualizations of the datasets checke1, 2dData, seeds and a downsized version of abalone \cite{Chapelle2005,KremplEtAl2014,CharytanowiczEtAl2010,NashEtAl1994}.\newline The illustration of seeds and abalone was done using an implementation of t-SNE \cite{vanDerMaaten2008}}
+	\label{fig:holdoutAccs}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
 	\includegraphics[trim = 1cm 6cm 2cm 6cm, clip = true, width = 0.45\textwidth]{checke1Illustration}
 	\includegraphics[trim = 1cm 6cm 2cm 6cm, clip = true, width = 0.45\textwidth]{2dDataIllustration}
-	\includegraphics[trim = 1cm 6cm 2cm 6cm, clip = true, width = 0.45\textwidth]{seedsIllustration}
-	\includegraphics[trim = 1cm 6cm 2cm 6cm, clip = true, width = 0.45\textwidth]{abaloneReducedIllustration}
+	\includegraphics[trim = 0cm 6cm 2cm 6cm, clip = true, width = 0.475\textwidth]{seedsIllustration}
+	\includegraphics[trim = 1cm 6.6cm 2cm 6cm, clip = true, width = 0.475\textwidth]{abaloneReducedIllustration}
 	\caption{Visualizations of the datasets checke1, 2dData, seeds and a downsized version of abalone \cite{Chapelle2005,KremplEtAl2014,CharytanowiczEtAl2010,NashEtAl1994}.\newline The illustration of seeds and abalone was done using an implementation of t-SNE \cite{vanDerMaaten2008}}
 	\label{fig:datasetIllustrations}
 \end{figure}
+
+\ref{fig:datasetIllustrations} shows the two-dimensional visualization, while \ref{fig:holdoutAccs} illustrates the rough learning curve of a Parzen window classifier with random sampling of each dataset.
 
 \subsection{Parameters}
 
@@ -167,106 +176,110 @@ As Levenberg-Marquardt may be stuck in local minima or not converge at all, each
 
 \section{Test results}
 \label{evaluation:results}
-Due to the sheer amount of data, this section contains only the most expressive graphs. To help keeping an overview, we structure the evaluation into various parts: first, we take a look at the mean error for the traditional and unweighted methods using the exponential function model. After that, we evaluate if using a different function model for fitting improves the bias as well as the influence of statistical weighting. Then we look at the average squared error and the Kullback-Leibler divergence where possible. Lastly, an analysis of the computation time necessary for each method follows.
+Due to the sheer amount of data, this section contains only the most expressive graphs. To help keeping an overview, the evaluation is structured into the following parts: first, we take a look at the mean error for the traditional and unweighted estimators using the exponential function model. After that follows a survey on whether the different models for fitting improve the bias or not, as well as what influence statistical weighting has. Then comes the comparison of the mean squared error for some selected estimators as well as the Kullback-Leibler divergence, for those it is available for. An analysis of the computation time necessary for each method finalizes the evaluation.
 
-\subsection{Average Mean Error}
+\subsection{Average Estimation Bias}
 
-To inspect whether our estimators carry a bias and if yes, how large it is, we compute the mean error between the holdout accuracy and that of our methods for each training set size and test run. Since some stages of the learning process may be easier for the estimators than others we group the error by the set size they were measured for. \ref{fig:meanErrorsExp} shows the average mean error for the training set sizes from $3-7$, $8-15$ and $16-30$, marked by decreasing color brightness.
+The evaluation results for the estimation bias is split into three figures. Each is comprised of four graphs, containing the mean estimation bias for the first six estimators of \ref{tab:allEstimators} used with the stated active learner and dataset. They are furthermore split into three adjacent bars, visualizing the bias of the estimator with training sets of the size $3 - 7$, $8 - 15$ and $16 - 30$, respectively. This is indicated by the darkened color for the larger set estimates. \ref{fig:meanErrorsExp} shows the results for estimators (except \textit{5-Fold CV} and\textit{.632+ BS}, as they do not utilize function model fitting) using the exponential model, while for \ref{fig:meanErrorsSig} and \ref{fig:meanErrorsLin} the sigmoid and linear ones have been used.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[trim = 1.5cm 7cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrExpchecke1}
-	\includegraphics[trim = 1.5cm 7cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrExp2dData}
-	\includegraphics[trim = 1.5cm 7cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrExpseeds}
-	\includegraphics[trim = 1.5cm 7cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrExpabalone}
-	\caption{Average mean errors for the different active learners and datasets using the exponential model. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrExpchecke1}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrExp2dData}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrExpseeds}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrExpabalone}
+	\caption{Average mean errors for the different active learners and datasets using the exponential model. The darker colored bars mark the errors of later learning stages}
 	\label{fig:meanErrorsExp}
 \end{figure}
 
-Generally, all performance estimators show less bias for random sampling, with the worst bias for uncertainty sampling except for the checke1 dataset. Overall, the least biased estimator seems to be \textit{.632+ BS}, with \textit{k-fold CV} close second. The only time they show a higher bias than our methods for random sampling is on the abalone dataset, which is not to be attributed to a failure of them as much as to a better performance of the combined estimators. The .632+ estimator also seems to have trouble when used with PAL, leaving it with a higher bias for both checke1 and abalone than both k-fold and our methods. It is to be kept in mind that, although they are displayed as a stacked bar, the mean errors for the different learning stages do not accumulate, e.g. the average mean error for averagedBS with uncertainty sampling on 2dData is not ~0.8 for the latest stage but rather ~0.35.
+Generally, which estimators coupled with a function model show the least bias is both dependent on the dataset as well as the active learner used. That said, some tendencies emerge. For random sampling and training sets of size 16 to 30, \textit{.632+ BS} has the upper hand. Only on the checke1 dataset does it not have the lowest bias; \textit{path} and \textit{pathSuper} with both sigmoid and linear function model as well as \textit{averaged} with the sigmoid model show lower ones. A similar picture can be painted for $k \in [8, 15]$, the difference being it is the abalone set which falls out of line. Here, every other estimator used has a lower or at least equal bias. I attribute this at least partially to an overall increase of estimation performance of the other estimators; the classifier's accuracy hovers around $0.6$ for abalone, only slightly rising for larger training sets. As the study noted, it is possible that the features used are not adequate to predict the age of an abalone. The accuracy estimates thus form some sort of tunnel around $0.6$, giving the function fitting less room, making large mistakes less likely. However, the linear model is only fit with the estimates of the largest four subset sizes; any jitter is picked up by the fitter. As a result, the bias with the linear model, at least for middle-sized training sets, is larger.
 
-Interestingly, most of the time the estimators predict a lower classifier performance than it actually has. Only \textit{.632+ BS} seems to show no preference with random sampling, hinting at a reasonable unbiasedness. For uncertainty sampling, however, all estimators underestimate the performance, at least for the later stages. When using PAL, no clear pattern for the bias sign can be made out, but the estimators mostly share the sign for the same dataset.
+The supremacy of \textit{.632+ BS} is broken when regarding the very first few estimates. Here, even the standard \textit{5-Fold CV} shows a lower bias. Whether and which of the other estimators is an improvement differs; the dataset is the most deciding factor. For the 2dData set, both \textit{path} and \textit{pathSuper} with the linear model come close to \textit{.632+ BS}, but do not beat it. They do however beat the \textit{5-Fold CV}. With the sigmoid and exponential model, all shown estimators at least triple the bias of \textit{.632 BS}.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrSigchecke1}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrSig2dData}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrSigseeds}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrSigabalone}
-	\caption{Average mean errors for the different active learners and datasets using the sigmoid model. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrSigchecke1}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrSig2dData}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrSigseeds}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrSigabalone}
+	\caption{Average mean errors for the different active learners and datasets using the sigmoid model}
 	\label{fig:meanErrorsSig}
 \end{figure}
 
-Looking at the average mean error with the sigmoid function model in \ref{fig:meanErrorsSig}, we can see that it does offer improvements over its exponential counterpart. While the general trends regarding the bias sign and relations between the active learners is roughly the same, our methods seem to benefit greatly from using the sigmoid model. All of them show lower biases for random sampling, now roughly equal to that of \textit{k-fold CV} but still worse than \textit{.632+ BS}. This time, a hierarchy seems to manifest, with \textit{averaged} exhibiting the least bias and \textit{averagedBS} marking the upper end. A slightly different picture is painted when using non-random active learning: although the bias rarely deteriorates, neither does it improve significantly, mostly staying on the same level. Also, no real hierarchy seems to be present; which method does best depends on the dataset and the active learner, although \textit{averagedBS} is mostly still the tail light.
+On the flipside, \textit{.632+ BS} is worse than all used estimators for $k \in [3,7]$ with the $checke1$ set, regardless of the function model; the same goes for abalone. What is common to all datasets is the sign of the bias: \textit{.632+ BS} always overestimates the classifier's performance for the first few random label purchases.
+
+For \textit{path} and \textit{pathSuper}, the optimal choice of function is dependent on the training set size. When estimating a classifier with $k \in [3, 7]$, the exponential model is favorable for all sets except 2dData, where the linear model does better. In the later stages, however, the sigmoid model takes over. This is also the case for \textit{averaged}, which overall shows less bias with it. \textit{AveragedBS}, on the other hand, prefers the linear model, with which it offers the lowest overall bias for the first learning stage (with the exception of 2dData).
+
+Shifting the view onto estimation with \textit{uncertainty sampling}, it is obvious that all estimators perform generally worse than they did with random sampling. This discrepancy is caused by the different ways instances are selected: with random sampling, the training instances can be collected from anywhere in the dataset, while uncertainty sampling chooses those that are close to the decision boundary (or what it deems as such). In the case of 2dData, where a fairly clear border exists, this leads to a quick improvement of the classifier's accuracy. However, this poses a difficulty for the estimators, as they keep some of these instances out and test the remaining classifier on them. Since they are close to the border, they also tend to be somewhat noisy, i.e. their class label may be wrong or they are on the wrong sign of the border. This is the case for 2dData, where single outliers (wrongly) drag down the performance estimate. For abalone it is the other way around: using uncertainty sampling results in a relatively poor classifier since there are no two label groups separable by a hyperplane, and the estimation $\widehat{acc}_c$ at the alleged decision boundary is still better than the classifier's true accuracy $acc_c$.
+
+The story is a bit different for the checke1 dataset, where the estimation bias is surprisingly low. Here, uncertainty sampling also imagines a single border that is not real (as it is not the only border). However, the label groups near this border are very uneven in size: looking at \ref{fig:ALillustration}, one checker field is on the inside of a tip-like boundary, and two are close by on the other side. Since the Parzen window classifier also takes into account the total ratio of class labels, instances near the border will be misclassified and thus cross-validation turns up a fairly low estimate, which is close to the similarly low true accuracy $acc_c$. None of the performs consistently better than its peers; that said, \textit{.632+ BS} does especially poorly for $k \in [3,7]$, whereas \textit{averagedBS} with any function model performs best in that category. $k \in [8, 30]$ is very dependent on the dataset and the model, there is no clear victor.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrLinchecke1}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrLin2dData}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrLinseeds}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrLinabalone}
-	\caption{Average mean errors for the different active learners and datasets using the linear model. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrLinchecke1}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrLin2dData}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrLinseeds}
+	\includegraphics[trim = 1cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrLinabalone}
+	\caption{Average mean errors for the different active learners and datasets using the linear model}
 	\label{fig:meanErrorsLin}
 \end{figure}
 
-Very differently from its two brothers is the linear model. As depicted in \ref{fig:meanErrorsLin}, most of our estimators \textit{over}estimate the classifier's performance, except for the use-case of uncertainty sampling. For random sampling, \textit{averagedBS} is actually an improvement over \textit{k-fold CV} and seems to be roughly on the same level as \textit{.632+ BS}. \textit{pathSuper} is close behind, but in most cases a bit worse, while the "normal" \textit{averaged} actually deteriorated in comparison to the exponential and sigmoid functions. Similar statements are true when using PAL, but it seems a bit more random; on the seeds dataset, \textit{averagedBS} shows a higher bias than the other estimators, while on the rest of the datasets it even outperforms \textit{.632+ BS}. This hierarchy is reversed for uncertainty sampling, with \textit{averaged} apparently being the least biased.
+With PAL, the estimators face a similar problem as with uncertainty sampling. With its preference to spread the purchases out to areas with low label, but high instance density, as well as those with unsettled disputes about the predominant class label, it causes steep discrepancies in knowledge between a classifier trained on all $k$ instances and one that only gets $k-1$. Taking a look at the checke1 dataset and \ref{fig:ALillustration} again, it becomes clear that taking away only one instance, the knowledge of a whole checker field may vanish. Of course, a Parzen window classifier would then classify the left-out instance wrong. Since this is the case for most of the instances, the resulting estimation is absurdly low. This effect is not as bad for the seeds and abalone sets as both have fairly flat learning curves. For seeds, very few instances are enough to almost perfectly classify any instance of the dataset, which is due to its very clean label groups. After that, adding new instances provides little additional information, but the first few labels are still important, which is why the bias of all estimators is much higher for $k \in [3,7]$. In the case of abalone, the dependence between features and class label is rather weak, thus an increase in training set size is not that effective.
 
-An interesting phenomenon shows when using uncertainty sampling. While the bias for the first seven training set sizes usually makes up more than 30\% for the other two active learners, its share otherwise is incredibly small. In other words, the bias increases with training set size. We suspect that this is caused by the way the next instance is selected: since the class probabilities predicted by the classifier will be close to 0.5 each, we will get an error near 0.5 on average with cross-validation. As all of the estimators are based on the principle of leaving instances out of the training set, they all carry this flaw.
-
-In summary, the best estimators (besides the traditional ones) seem to be \textit{averaged} with the sigmoid model and \textit{averagedBS} with linear fitting. To see what influence statistical weighting has on the bias, \ref{fig:meanErrorsWeighted} compares the average mean errors of our estimators for random sampling. For the linear model, weighting mainly affects the early learning stages positively, with the rest stays more or less the same, while the bias gets worse when using the sigmoid model. The greatest improvement can be observed for the \textit{pathSuper} method, where weighting consistently reduces the bias, in part even below that of \textit{.632+ BS}. Contrary, the inclusion of the no-information rate has almost no influence whatsoever.
+Which estimator offers the lowest bias is not clear; \textit{.632+ BS} performs the most consistent, but is occasionally overshadowed. Also, using linear fit at least decreases the bias in the early learning stage to levels below that of \textit{5-Fold CV}. The exception is, again, abalone, where it actually offers the lowest bias.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrWeightingchecke1}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrWeighting2dData}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrWeightingseeds}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{meanErrWeightingabalone}
-	\caption{Average mean errors for different datasets with random sampling. The darker colors of a bar mark the errors of later learning stages (bright -> dark: $[3,7]$, $[8,15]$, $[16,30]$ training set size)}
+	\includegraphics[trim = 0.8cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrWeightingchecke1}
+	\includegraphics[trim = 0.8cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrWeighting2dData}
+	\includegraphics[trim = 0.8cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrWeightingseeds}
+	\includegraphics[trim = 0.8cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{meanErrWeightingabalone}
+	\caption{Average mean errors for different datasets with random sampling}
 	\label{fig:meanErrorsWeighted}
 \end{figure}
 
+\paragraph{Statistical weighting}
+To identify what role the addition of weights or no-information rate to the fitting have, \ref{fig:meanErrorsWeighted} shows a direct comparison of four of the estimators: \textit{pathSuper} with exponential, \textit{path} and \textit{averaged} with sigmoid and \textit{averagedBS} with the linear function model.
+
+The obvious first: adding an estimate for set size zero corresponding to the estimated no-information rate does not benefit the \textit{pathSuper} method with exponential model at all. On the contrary, it worsens the bias across all datasets and learning stages. This effect is not as distinctive for the other function models, but \textit{pathSuper} synergizes more with $f_{exp.}$, yielding a lower bias especially for the early learning stage. Thus, the results are not depicted here.
+
+Statistical weighting produces more mixed results. \textit{path} does not benefit at all, while \textit{pathSuper} and \textit{averaged} show reduced bias for the later learning stage with $k \in [16,30]$. The former also mostly improves for $k \in [8,15]$, while \textit{averaged} slightly worsens there. The exact opposite is the case for \textit{averagedBS}: its bias reduces for the early stage but worsens later on. A possible explanation is the different function model; \textit{averagedBS} definitely performs better with the linear model.
+
 \subsection{Average squared error}
 
-Next in line is the evaluation of the spread of error. As an overly biased estimator is of little use, we limit our testing for this to the six best ones: the two traditional estimators, \textit{k-fold CV} and \textit{.632+ BS}, \textit{path} and \textit{averaged} with the sigmoid model, as well as \textit{pathSuperW} and \textit{averagedBSW} with the linear model (\ref{fig:squaredErrors}).
+The error spread is quite a bit lower on the priority list than the estimation bias. To keep the evaluation within a reasonable frame, \ref{fig:squaredErrors} only shows the average squared error for the estimators and associated function models already used in \ref{fig:meanErrorsWeighted}. Each bar holds the error of one estimator, while its subsections indicate the share each learning stage brings to the total mean.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{squErrchecke1}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{squErr2dData}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{squErrseeds}
-	\includegraphics[trim = 1.5cm 6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{squErrabalone}
-	\caption{Average squared errors for the different active learners, function models and datasets}
+	\includegraphics[trim = 0.8cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{squErrchecke1}
+	\includegraphics[trim = 0.8cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{squErr2dData}
+	\includegraphics[trim = 0.8cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{squErrseeds}
+	\includegraphics[trim = 0.8cm 6.5cm 2.5cm 6.5cm, clip = true, width = 0.48\textwidth]{squErrabalone}
+	\caption{Average squared errors for the different active learners and datasets with the respective share of each learning stage}
 	\label{fig:squaredErrors}
 \end{figure}
 
-Similar to the mean error, the squared error is generally higher for the non-random active learners, the only exception is for the abalone data. For the most part, \textit{k-fold CV} and the two averaging methods have the highest spread while \textit{.632+ BS} and \textit{pathSuperW} mark the lower end. Something all estimators share is the reduction of spread for later learning stages; this seems natural, considering that more estimates are available then. As always, this is not the case for uncertainty sampling, where the spread, just like the bias, increases for the most part with training set size. Puzzling is also the increase and following drop-off for PAL on the checke1 set, a phenomenon that could already be observed when investigating the mean error. A possible explanation lies within both the structure of the dataset as well as the instance selection of PAL: checke1 consists of several separated groups of equally labeled instances. \ref{fig:PALKDEs} shows that, albeit more consistent than uncertainty sampling, PAL takes some iterations to explore the whole dataset.
+Similarly to the estimation bias, both non-random active learners tend to come with an increase in spread. This is to be expected, as a high error implies a high squared error. For the most part, \textit{.632+ BS} has the lowest spread, while \textit{averaged}, \textit{averagedBS} and \textit{5-Fold CV} mark the upper end. With random sampling, the spread drops for larger $k$ for all estimators, as it is to be expected: more training instances mean more subsets, which increases the amount of accuracy estimates available for the model fitting. This is not the case for uncertainty sampling, as the additional estimates are obtained from more instances at a (likely) noisy decision boundary.
 
-Noteworthy is the reduction of estimations and paths used from their possible upper limit, especially for \textit{averagedBS} which only uses a maximum of 50 subset estimates. Increasing these caps would likely result in a reduction of the average squared error, but only for the later learning stages. However, this would also increase the (already quite high) computation time and should not reduce the bias, considering that the subsets were randomly selected with respect to their size frequency.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[trim = 2.5cm 11cm 2.5cm 10cm, clip = true, width = 0.9\textwidth]{PALKDE}
-	\caption{Kernel density estimations from the learning process of PAL for checke1 at 3, 8, 16 and 21 training instances}
-	\label{fig:PALKDEs}
-\end{figure}
+PAL, on the other hand, does not induce this behavior except for the special case of checke1, where the spread doubles from the early to middle learning stage and then drops again. The reason for this peak lies again in checke1's checkerboard structure. When $k \in [3,7]$, not every checker field has been covered by a purchase, fusing some of them together from the classifier's point of view. In the middle stage, every field should have at least one training instance, but not yet two. Where there was the chance that a left out instance's field was covered by an instance with equal class label because an adjacent field did not have an instance yet, this possibility is now excluded. It will only not be a misclassification if a second instance has already been purchased for the field, and even then it is not completely excluded, e.g. if both instances lie at the borders of the field. When $k \in [16,30]$, however, every field should be covered by at least two or three instances, steadily decreasing the misclassifications in estimation. And since a high bias implies a higher spread (not variance!), this explanation is valid for both.
 
 \subsection{Kullback-Leibler divergence}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[trim = 1.5cm 7.6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDivchecke1}
-	\includegraphics[trim = 1.5cm 7.6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDiv2dData}
-	\includegraphics[trim = 1.5cm 7.6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDivseeds}
-	\includegraphics[trim = 1.5cm 7.6cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDivabalone}
+	\includegraphics[trim = 1cm 7cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDivchecke1}
+	\includegraphics[trim = 1cm 7cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDiv2dData}
+	\includegraphics[trim = 1cm 7cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDivseeds}
+	\includegraphics[trim = 1cm 7cm 2.5cm 6cm, clip = true, width = 0.48\textwidth]{klDivabalone}
 	\caption{Average Kullback-Leibler divergence for selected methods}
 	\label{fig:klDiv}
 \end{figure}
 
-The average Kullback-Leibler divergences shown in \ref{fig:klDiv} do not hold any real surprises. For random sampling, \textit{k-fold CV} offers the smallest divergence, while both \textit{pathSuper} estimators excel for the non-random learners. Neither of the \textit{path} methods seem to be suitable to model the holdout accuracy distribution, as their divergences are quite high. Surprisingly, the average divergence rises across the board for larger training sets, which is quite in contrast to the average mean error. However, we do not read too much into this; after all, the estimators are supposed to estimate the value of the accuracy, not its underlying distribution.
+\ref{fig:klDiv} depicts the average Kullback-Leibler divergences of selected estimators. \textit{5-Fold CV} offers the smallest divergence across the board, while neither of the \textit{path} nor the \textit{pathSuper} methods provide distributions with a lower KLD than that in a recognizable order. Surprisingly, the average divergence rises across the board for larger training sets, which is quite in contrast to the bias. However, its meaning should not be rated too high; after all, the performance estimators are meant to estimate the accuracy, which is only the mean of the accuracy's distribution, while its variance is not part of the estimation itself. Also, since it is not always possible to obtain a variance estimate, it is ill-advised to use the KLD as a primary comparison tool.
 
 \subsection{Computation Time}
 
-Bringing the evaluation to an end, \ref{fig:compTimeAll} shows the average computation time needed for each method with the exponential function model. As statistical weights should not alter the time too much, we omitted these variants. It gets clear immediately that none of our methods are anywhere near as fast as either \textit{k-fold CV} or \textit{.632+ BS}. In fact, if all available estimates/paths would be used, all of them would scale exponentially with the training set size. Especially expensive is the bootstrap averaging, as bootstrapping itself is quite a bit more complex than cross-validation. It also has to be said that the choice of programming language may play a big role; Octave is not exactly known for its high performance and is even worse when not using properly vectorized data.
+To finish the evaluation, \ref{fig:compTimeAll} shows the average computation time needed for each method with the exponential function model. As statistical weights should not alter the time too much, these variants were omitted. It shows immediately that none of the methods illustrated in \ref{methods} are anywhere near as fast as either \textit{5-Fold CV} or \textit{.632+ BS}. In fact, if all available estimates/paths were to be used, every one of these estimators would scale exponentially with the training set size. Especially expensive is the bootstrap averaging, as bootstrapping itself is more complex than cross-validation. Although it is not shown, the linear function model allows for slightly faster fitting, which could be improved more if the parameters would be computed directly instead of approximated with Levenberg-Marquardt. It also has to be said that the choice of programming language may play a big role; since it uses an interpreter, Octave usually runs slower than other high-level languages like C++, with even more penalties to its execution speed when the code is not properly vectorized.
 
 \begin{figure}[h]
 	\centering
@@ -276,4 +289,4 @@ Bringing the evaluation to an end, \ref{fig:compTimeAll} shows the average compu
 	\label{fig:compTimeAll}
 \end{figure}
 
-The computation time also seems to be independent of the used dataset, which is unexpected; the used classifier, parzen-window, scales with the dimension of the instances. Apparently this additional effort is negligible in relation to the cost of the fitting and subset generation and selection. Also pictured in \ref{fig:compTimeAll} is a histogram for the computation times for \textit{pathSuper} using exponential fitting on checke1. Its spread is partly due to the variability in number of iterations for the fitting, but mostly because estimations for all training set sizes were used.
+The computation time is also independent of the used dataset and, as implicated by the absence of a distinction, the active learner, although the Parzen window classifier does scale with the data's dimensionality. However, the model fitting and subset creation take up significantly more resources. Pictured in \ref{fig:compTimeAll} is a histogram for the computation times for \textit{pathSuper} with the exponential model on checke1. Its spread is partly due to the variability in number of iterations for the fitting, but also because estimations for all training set sizes were utilized in its creation.

@@ -39,10 +39,10 @@ colors = [1,0,0;
 		  0.6,0.6,0;
 		  0.6,0.6,0];
 
-use = [2,3,13,17,23,27,30,15,19,25,29];
-xc = [1,2,4,5,7,8,9,11,12,14,15];
+use = [2,3,13,17,5,9,12,15,19,25,29];
+xc = [1,2.1,3.9,5.1,6.8,8,9.2,10.9,12.1,13.9,15.1];
 files = {"checke1", "2dData", "seeds", "abalone"};
-names = {"K-Fold CV", ".632+ BS", "path Sig", "pathSuper Lin", "averaged Sig", "averagedBS Lin."};
+names = {"5-Fold CV", ".632+ BS", "path Sig", "pathSuper Exp", "averaged Sig", "averagedBS Lin"};
 
 for fi = 1:4
 	barData = [];
@@ -86,14 +86,14 @@ for fi = 1:4
 	ax(3) = min(min(barData))*1.2;
 	ax(4) = max(max(barData))*1.2;
 	axis(ax);
-	ylabel("Average Mean Error");
-	title(["Bias for ", files{fi}, "; darker = larger training sets"]);
+	ylabel("Average Estimation Bias");
+	title(["Bias for ", files{fi}, ""]);
     set(gca, "xtick", [4.5,9.5,12.5]);
     set(gca, "xticklabel", {"unweighted", "NI-rate", "weighted"});
 	
 	
-	if(fi == 1)
-		legend([hRSP([1,2,3,5,8,10], 2)], names, "location", "northeast");
+	if(fi == 3)
+		legend([hRSP([1,2,3,5,8,10], 1)], names, "location", "northeast");
 	endif
 	
 	print(["../Thesis/pics/meanErrWeighting", files{fi}, ".pdf"]);
