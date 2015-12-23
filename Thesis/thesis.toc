@@ -1,8 +1,8 @@
 \select@language {english}
-\contentsline {chapter}{Acknowledgements}{v}{chapter*.2}
-\contentsline {chapter}{List of Figures}{x}{chapter*.4}
-\contentsline {chapter}{List of Tables}{xi}{chapter*.5}
-\contentsline {chapter}{List of Algorithms}{xiii}{chapter*.6}
+\contentsline {chapter}{Acknowledgements}{vii}{chapter*.3}
+\contentsline {chapter}{List of Figures}{xii}{chapter*.5}
+\contentsline {chapter}{List of Tables}{xiii}{chapter*.6}
+\contentsline {chapter}{List of Algorithms}{xv}{chapter*.7}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Background and Related Work}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Classification}{3}{section.2.1}
@@ -36,11 +36,12 @@
 \contentsline {subsection}{\numberline {4.3.3}Active learner}{28}{subsection.4.3.3}
 \contentsline {subsection}{\numberline {4.3.4}Classifier}{29}{subsection.4.3.4}
 \contentsline {subsection}{\numberline {4.3.5}Datasets}{29}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Parameters}{31}{subsection.4.3.6}
-\contentsline {section}{\numberline {4.4}Test results}{32}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Average Mean Error}{33}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Average squared error}{36}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Kullback-Leibler divergence}{38}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Computation Time}{39}{subsection.4.4.4}
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{41}{chapter.5}
-\contentsline {chapter}{Bibliography}{43}{section*.7}
+\contentsline {subsection}{\numberline {4.3.6}Parameters}{32}{subsection.4.3.6}
+\contentsline {section}{\numberline {4.4}Test results}{33}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Average Estimation Bias}{33}{subsection.4.4.1}
+\contentsline {paragraph}{Statistical weighting}{37}{section*.8}
+\contentsline {subsection}{\numberline {4.4.2}Average squared error}{38}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Kullback-Leibler divergence}{40}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Computation Time}{41}{subsection.4.4.4}
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{43}{chapter.5}
+\contentsline {chapter}{Bibliography}{45}{section*.9}

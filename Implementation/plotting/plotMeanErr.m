@@ -27,7 +27,7 @@ colors = [1,0,0;
 		  0.7,0.7,0.7;
 		  0.4,0.4,0.4];
 
-use = [2,3,13,14,15,16];
+use = [2,3,22,23,24,25];
 files = {"checke1", "2dData", "seeds", "abalone"};
 names = {"5-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS", "3 - 7", "8 - 15", "16 - 30"};
 
@@ -35,6 +35,8 @@ names = {"5-Fold CV", ".632+ BS", "path", "pathSuper", "averaged", "averagedBS",
 for fi = 1:4
 	barData = [];
 	for al = 1:3
+		A = 1:100;
+		
 		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 3:7, 1) .- allMus{fi, al}(:, 3:7, use))))'];
 		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 8:15, 1) .- allMus{fi, al}(:, 8:15, use))))'];
 		barData = [barData; vec(mean(mean(allMus{fi, al}(:, 16:30, 1) .- allMus{fi, al}(:, 16:30, use))))'];
@@ -85,8 +87,8 @@ for fi = 1:4
 	plot([20,20], [-1,1], "--", "color", [0,0,0]);
 	plot([40,40], [-1,1], "--", "color", [0,0,0]);
 	axis(ax);
-	ylabel("Average Mean Error");
-	title(["Bias for ", files{fi}, " w. sig. function"]);
+	ylabel("Average Estimation Bias");
+	title(["Bias for ", files{fi}, " with lin. function"]);
 	
     set(gca, "xtick", [10, 30, 50]);
     set(gca, "xticklabel", {"Random", "Uncertainty", "PAL"});
@@ -99,9 +101,12 @@ for fi = 1:4
 	set(get(hHigh, "children"), "cdata", 21);
 	
 	if(fi == 1)
-		legend([hLowP(:, 1); hLow; hMid; hHigh], names, "location", "northwest");
+		legend([hLowP(:, 1)], names{1:length(use)}, "location", "northwest");
+	elseif(fi == 2)
+		
+		legend([hLow; hMid; hHigh], names{length(use)+1:end}, "location", "northwest");
 	endif
 	
-	print(["../Thesis/pics/meanErrSig", files{fi}, ".pdf"]);
+	print(["../Thesis/pics/meanErrLin", files{fi}, ".pdf"]);
 	
 endfor

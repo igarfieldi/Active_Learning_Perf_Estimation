@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.4.23)  22 DEC 2015 05:13
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.4.23)  23 DEC 2015 09:10
 entering extended mode
 **thesis.tex
 (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\thesis.tex
@@ -1586,46 +1586,48 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 56.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [2])
-(C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\chapters/abstract.tex) [3
+(C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\chapters/abstract.tex [3
 
 
 
 ]
 [4
 
+]) [5] [6
+
 
 
 ]
 (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\chapters/acknowledgement.tex)
-[5
+[7
 
 
-] [6
+] [8
 
 
 
-] (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\thesis.toc [7
+] (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\thesis.toc [9
 
 ])
 \tf@toc=\write9
 
-[8] (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\thesis.lof [9
+[10] (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\thesis.lof [11
 
 
 
 ])
 \tf@lof=\write10
- [10]
+ [12]
 (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\thesis.lot)
 \tf@lot=\write11
- [11
+ [13
 
-] [12
+] [14
 
 ]
 (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\thesis.loa)
 \tf@loa=\write12
- [13] [14
+ [15] [16
 
 ]
 (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\chapters/introduction.tex
@@ -1648,7 +1650,7 @@ File: omsaer.fd 1999/12/27
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
  [4]
-<pics/PALIllustration.pdf, id=433, 614.295pt x 794.97pt>
+<pics/PALIllustration.pdf, id=445, 614.295pt x 794.97pt>
 File: pics/PALIllustration.pdf Graphic file (type pdf)
 
 <use pics/PALIllustration.pdf>
@@ -1658,19 +1660,19 @@ Package pdftex.def Info: pics/PALIllustration.pdf used on input line 69.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/RS16inst.pdf, id=437, 614.295pt x 794.97pt>
+<pics/RS16inst.pdf, id=449, 614.295pt x 794.97pt>
 File: pics/RS16inst.pdf Graphic file (type pdf)
  <use pics/RS16inst.pdf>
 Package pdftex.def Info: pics/RS16inst.pdf used on input line 79.
 (pdftex.def)             Requested size: 112.228pt x 131.63307pt.
 
-<pics/UC16inst.pdf, id=439, 614.295pt x 794.97pt>
+<pics/UC16inst.pdf, id=451, 614.295pt x 794.97pt>
 File: pics/UC16inst.pdf Graphic file (type pdf)
  <use pics/UC16inst.pdf>
 Package pdftex.def Info: pics/UC16inst.pdf used on input line 80.
 (pdftex.def)             Requested size: 112.228pt x 131.63307pt.
 
-<pics/PAL16inst.pdf, id=441, 614.295pt x 794.97pt>
+<pics/PAL16inst.pdf, id=453, 614.295pt x 794.97pt>
 File: pics/PAL16inst.pdf Graphic file (type pdf)
  <use pics/PAL16inst.pdf>
 Package pdftex.def Info: pics/PAL16inst.pdf used on input line 81.
@@ -1706,7 +1708,7 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 179.
 
-[11] [12] <pics/learning_curve_general.png, id=585, 782.17218pt x 578.16pt>
+[11] [12] <pics/learning_curve_general.png, id=596, 782.17218pt x 578.16pt>
 File: pics/learning_curve_general.png Graphic file (type png)
 
 <use pics/learning_curve_general.png>
@@ -1743,14 +1745,14 @@ l.43
      ]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 67.
- [17] <pics/pathExample1.pdf, id=628, 614.295pt x 794.97pt>
+ [17] <pics/pathExample1.pdf, id=639, 614.295pt x 794.97pt>
 File: pics/pathExample1.pdf Graphic file (type pdf)
 
 <use pics/pathExample1.pdf>
 Package pdftex.def Info: pics/pathExample1.pdf used on input line 75.
 (pdftex.def)             Requested size: 199.60895pt x 156.61537pt.
 
-<pics/accDemonstration.pdf, id=630, 614.295pt x 794.97pt>
+<pics/accDemonstration.pdf, id=641, 614.295pt x 794.97pt>
 File: pics/accDemonstration.pdf Graphic file (type pdf)
 
 <use pics/accDemonstration.pdf>
@@ -1776,7 +1778,7 @@ OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 ([][]([]\OML/cmm/m/it/12 ; [
 ]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; m\OT1/cmr/m/n/12 ) :$
  []
 
-[19] [20] <pics/allFunctions.pdf, id=666, 614.295pt x 794.97pt>
+[19] [20] <pics/allFunctions.pdf, id=677, 614.295pt x 794.97pt>
 File: pics/allFunctions.pdf Graphic file (type pdf)
 
 <use pics/allFunctions.pdf>
@@ -1786,18 +1788,18 @@ Package pdftex.def Info: pics/allFunctions.pdf used on input line 176.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[21] <pics/weightingDiff.pdf, id=677, 614.295pt x 794.97pt>
+[21] <pics/weightingDiff.pdf, id=689, 614.295pt x 794.97pt>
 File: pics/weightingDiff.pdf Graphic file (type pdf)
 
 <use pics/weightingDiff.pdf>
 Package pdftex.def Info: pics/weightingDiff.pdf used on input line 190.
-(pdftex.def)             Requested size: 212.91577pt x 180.84326pt.
+(pdftex.def)             Requested size: 212.91577pt x 162.37689pt.
 
-<pics/fitNIRate.pdf, id=679, 614.295pt x 794.97pt>
+<pics/fitNIRate.pdf, id=691, 614.295pt x 794.97pt>
 File: pics/fitNIRate.pdf Graphic file (type pdf)
  <use pics/fitNIRate.pdf>
 Package pdftex.def Info: pics/fitNIRate.pdf used on input line 191.
-(pdftex.def)             Requested size: 212.91577pt x 180.84326pt.
+(pdftex.def)             Requested size: 212.91577pt x 162.37689pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1831,7 +1833,7 @@ table.4.1}) has been already used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.83 
-     ] [28] <pics/KDE3inst.pdf, id=749, 614.295pt x 794.97pt>
+     ] [28] <pics/KDE3inst.pdf, id=761, 614.295pt x 794.97pt>
 File: pics/KDE3inst.pdf Graphic file (type pdf)
 
 <use pics/KDE3inst.pdf>
@@ -1849,365 +1851,337 @@ e.4.1}) has been already used, duplicate ignored
 l.128 	\item \textbf
                     {abalone}: A real-world dataset using eight features ass...
  <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/KDE3inst.pdf>]
-<pics/checke1Illustration.pdf, id=777, 614.295pt x 794.97pt>
+<pics/holdoutAccs.pdf, id=788, 614.295pt x 794.97pt>
+File: pics/holdoutAccs.pdf Graphic file (type pdf)
+
+<use pics/holdoutAccs.pdf>
+Package pdftex.def Info: pics/holdoutAccs.pdf used on input line 133.
+(pdftex.def)             Requested size: 266.14978pt x 228.22122pt.
+
+<pics/checke1Illustration.pdf, id=800, 614.295pt x 794.97pt>
 File: pics/checke1Illustration.pdf Graphic file (type pdf)
 
 <use pics/checke1Illustration.pdf>
-Package pdftex.def Info: pics/checke1Illustration.pdf used on input line 133.
+Package pdftex.def Info: pics/checke1Illustration.pdf used on input line 140.
 (pdftex.def)             Requested size: 199.60895pt x 171.15553pt.
 
-<pics/2dDataIllustration.pdf, id=779, 614.295pt x 794.97pt>
+<pics/2dDataIllustration.pdf, id=802, 614.295pt x 794.97pt>
 File: pics/2dDataIllustration.pdf Graphic file (type pdf)
 
 <use pics/2dDataIllustration.pdf>
-Package pdftex.def Info: pics/2dDataIllustration.pdf used on input line 134.
+Package pdftex.def Info: pics/2dDataIllustration.pdf used on input line 141.
 (pdftex.def)             Requested size: 199.60895pt x 171.15553pt.
 
-<pics/seedsIllustration.pdf, id=781, 614.295pt x 794.97pt>
+<pics/seedsIllustration.pdf, id=804, 614.295pt x 794.97pt>
 File: pics/seedsIllustration.pdf Graphic file (type pdf)
 
 <use pics/seedsIllustration.pdf>
-Package pdftex.def Info: pics/seedsIllustration.pdf used on input line 135.
-(pdftex.def)             Requested size: 199.60895pt x 171.15553pt.
+Package pdftex.def Info: pics/seedsIllustration.pdf used on input line 142.
+(pdftex.def)             Requested size: 210.70247pt x 171.44618pt.
 
-<pics/abaloneReducedIllustration.pdf, id=783, 614.295pt x 794.97pt>
+<pics/abaloneReducedIllustration.pdf, id=806, 614.295pt x 794.97pt>
 File: pics/abaloneReducedIllustration.pdf Graphic file (type pdf)
 
 <use pics/abaloneReducedIllustration.pdf>
 Package pdftex.def Info: pics/abaloneReducedIllustration.pdf used on input line
- 136.
-(pdftex.def)             Requested size: 199.60895pt x 171.15553pt.
+ 143.
+(pdftex.def)             Requested size: 210.70247pt x 173.87035pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[31] [32pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.4.2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.175 
-       <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/checke1Illustration
-.pdf> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/2dDataIllustration.p
-df> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/seedsIllustration.pdf>
- <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/abaloneReducedIllustratio
-n.pdf>] <pics/meanErrExpchecke1.pdf, id=821, 614.295pt x 794.97pt>
-File: pics/meanErrExpchecke1.pdf Graphic file (type pdf)
-
-<use pics/meanErrExpchecke1.pdf>
-Package pdftex.def Info: pics/meanErrExpchecke1.pdf used on input line 178.
-(pdftex.def)             Requested size: 212.91577pt x 174.79094pt.
-
-<pics/meanErrExp2dData.pdf, id=823, 614.295pt x 794.97pt>
-File: pics/meanErrExp2dData.pdf Graphic file (type pdf)
-
-<use pics/meanErrExp2dData.pdf>
-Package pdftex.def Info: pics/meanErrExp2dData.pdf used on input line 179.
-(pdftex.def)             Requested size: 212.91577pt x 174.79094pt.
-
-<pics/meanErrExpseeds.pdf, id=825, 614.295pt x 794.97pt>
-File: pics/meanErrExpseeds.pdf Graphic file (type pdf)
-
-<use pics/meanErrExpseeds.pdf>
-Package pdftex.def Info: pics/meanErrExpseeds.pdf used on input line 180.
-(pdftex.def)             Requested size: 212.91577pt x 174.79094pt.
-
-<pics/meanErrExpabalone.pdf, id=827, 614.295pt x 794.97pt>
-File: pics/meanErrExpabalone.pdf Graphic file (type pdf)
-
-<use pics/meanErrExpabalone.pdf>
-Package pdftex.def Info: pics/meanErrExpabalone.pdf used on input line 181.
-(pdftex.def)             Requested size: 212.91577pt x 174.79094pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<pics/meanErrSigchecke1.pdf, id=829, 614.295pt x 794.97pt>
-File: pics/meanErrSigchecke1.pdf Graphic file (type pdf)
-
-<use pics/meanErrSigchecke1.pdf>
-Package pdftex.def Info: pics/meanErrSigchecke1.pdf used on input line 192.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-<pics/meanErrSig2dData.pdf, id=831, 614.295pt x 794.97pt>
-File: pics/meanErrSig2dData.pdf Graphic file (type pdf)
-
-<use pics/meanErrSig2dData.pdf>
-Package pdftex.def Info: pics/meanErrSig2dData.pdf used on input line 193.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-<pics/meanErrSigseeds.pdf, id=833, 614.295pt x 794.97pt>
-File: pics/meanErrSigseeds.pdf Graphic file (type pdf)
-
-<use pics/meanErrSigseeds.pdf>
-Package pdftex.def Info: pics/meanErrSigseeds.pdf used on input line 194.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-<pics/meanErrSigabalone.pdf, id=835, 614.295pt x 794.97pt>
-File: pics/meanErrSigabalone.pdf Graphic file (type pdf)
-
-<use pics/meanErrSigabalone.pdf>
-Package pdftex.def Info: pics/meanErrSigabalone.pdf used on input line 195.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[33pdfTeX warning (ext4): destination with the same identifier (name{table.4.2}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.201 
-      ] <pics/meanErrLinchecke1.pdf, id=844, 614.295pt x 794.97pt>
-File: pics/meanErrLinchecke1.pdf Graphic file (type pdf)
-
-<use pics/meanErrLinchecke1.pdf>
-Package pdftex.def Info: pics/meanErrLinchecke1.pdf used on input line 204.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-<pics/meanErrLin2dData.pdf, id=846, 614.295pt x 794.97pt>
-File: pics/meanErrLin2dData.pdf Graphic file (type pdf)
-
-<use pics/meanErrLin2dData.pdf>
-Package pdftex.def Info: pics/meanErrLin2dData.pdf used on input line 205.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-<pics/meanErrLinseeds.pdf, id=848, 614.295pt x 794.97pt>
-File: pics/meanErrLinseeds.pdf Graphic file (type pdf)
-
-<use pics/meanErrLinseeds.pdf>
-Package pdftex.def Info: pics/meanErrLinseeds.pdf used on input line 206.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-<pics/meanErrLinabalone.pdf, id=850, 614.295pt x 794.97pt>
-File: pics/meanErrLinabalone.pdf Graphic file (type pdf)
-
-<use pics/meanErrLinabalone.pdf>
-Package pdftex.def Info: pics/meanErrLinabalone.pdf used on input line 207.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[34pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3
+[31pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.215 
+l.154 F
+       or each combination of dataset, active learner and function model, 10...
+ <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/holdoutAccs.pdf>]
+[32pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.158 A
+       ll functions were fit with the Levenberg-Marquardt algorithm, even th...
+ <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/checke1Illustration.pdf> 
+<C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/2dDataIllustration.pdf> <C
+:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/seedsIllustration.pdf> <C:/U
+sers/Florian/Desktop/Bachelorarbeit/Thesis/pics/abaloneReducedIllustration.pdf>
+] <pics/meanErrExpchecke1.pdf, id=853, 614.295pt x 794.97pt>
+File: pics/meanErrExpchecke1.pdf Graphic file (type pdf)
+
+<use pics/meanErrExpchecke1.pdf>
+Package pdftex.def Info: pics/meanErrExpchecke1.pdf used on input line 187.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+
+<pics/meanErrExp2dData.pdf, id=855, 614.295pt x 794.97pt>
+File: pics/meanErrExp2dData.pdf Graphic file (type pdf)
+
+<use pics/meanErrExp2dData.pdf>
+Package pdftex.def Info: pics/meanErrExp2dData.pdf used on input line 188.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+
+<pics/meanErrExpseeds.pdf, id=857, 614.295pt x 794.97pt>
+File: pics/meanErrExpseeds.pdf Graphic file (type pdf)
+
+<use pics/meanErrExpseeds.pdf>
+Package pdftex.def Info: pics/meanErrExpseeds.pdf used on input line 189.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+
+<pics/meanErrExpabalone.pdf, id=859, 614.295pt x 794.97pt>
+File: pics/meanErrExpabalone.pdf Graphic file (type pdf)
+
+<use pics/meanErrExpabalone.pdf>
+Package pdftex.def Info: pics/meanErrExpabalone.pdf used on input line 190.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+ [33pdfTeX warning (ext4): destination with the same identifier (name{table.4.2
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.193 \end{figure}
+                  ] [34pdfTeX warning (ext4): destination with the same identif
+ier (name{figure.4.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.196 
        <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrExpchecke1.p
 df> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrExp2dData.pdf> 
 <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrExpseeds.pdf> <C:/U
 sers/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrExpabalone.pdf>]
-Underfull \vbox (badness 1142) has occurred while \output is active []
+<pics/meanErrSigchecke1.pdf, id=888, 614.295pt x 794.97pt>
+File: pics/meanErrSigchecke1.pdf Graphic file (type pdf)
 
+<use pics/meanErrSigchecke1.pdf>
+Package pdftex.def Info: pics/meanErrSigchecke1.pdf used on input line 201.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+
+<pics/meanErrSig2dData.pdf, id=890, 614.295pt x 794.97pt>
+File: pics/meanErrSig2dData.pdf Graphic file (type pdf)
+
+<use pics/meanErrSig2dData.pdf>
+Package pdftex.def Info: pics/meanErrSig2dData.pdf used on input line 202.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+
+<pics/meanErrSigseeds.pdf, id=892, 614.295pt x 794.97pt>
+File: pics/meanErrSigseeds.pdf Graphic file (type pdf)
+
+<use pics/meanErrSigseeds.pdf>
+Package pdftex.def Info: pics/meanErrSigseeds.pdf used on input line 203.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+
+<pics/meanErrSigabalone.pdf, id=894, 614.295pt x 794.97pt>
+File: pics/meanErrSigabalone.pdf Graphic file (type pdf)
+
+<use pics/meanErrSigabalone.pdf>
+Package pdftex.def Info: pics/meanErrSigabalone.pdf used on input line 204.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
  [35pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
-4}) has been already used, duplicate ignored
+5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.217 
+l.212 
        <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrSigchecke1.p
 df> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrSig2dData.pdf> 
 <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrSigseeds.pdf> <C:/U
 sers/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrSigabalone.pdf>]
-<pics/meanErrWeightingchecke1.pdf, id=895, 614.295pt x 794.97pt>
+<pics/meanErrLinchecke1.pdf, id=917, 614.295pt x 794.97pt>
+File: pics/meanErrLinchecke1.pdf Graphic file (type pdf)
+
+<use pics/meanErrLinchecke1.pdf>
+Package pdftex.def Info: pics/meanErrLinchecke1.pdf used on input line 219.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+
+<pics/meanErrLin2dData.pdf, id=919, 614.295pt x 794.97pt>
+File: pics/meanErrLin2dData.pdf Graphic file (type pdf)
+
+<use pics/meanErrLin2dData.pdf>
+Package pdftex.def Info: pics/meanErrLin2dData.pdf used on input line 220.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+
+<pics/meanErrLinseeds.pdf, id=921, 614.295pt x 794.97pt>
+File: pics/meanErrLinseeds.pdf Graphic file (type pdf)
+
+<use pics/meanErrLinseeds.pdf>
+Package pdftex.def Info: pics/meanErrLinseeds.pdf used on input line 221.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+
+<pics/meanErrLinabalone.pdf, id=923, 614.295pt x 794.97pt>
+File: pics/meanErrLinabalone.pdf Graphic file (type pdf)
+
+<use pics/meanErrLinabalone.pdf>
+Package pdftex.def Info: pics/meanErrLinabalone.pdf used on input line 222.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[36] <pics/meanErrWeightingchecke1.pdf, id=930, 614.295pt x 794.97pt>
 File: pics/meanErrWeightingchecke1.pdf Graphic file (type pdf)
 
 <use pics/meanErrWeightingchecke1.pdf>
-Package pdftex.def Info: pics/meanErrWeightingchecke1.pdf used on input line 22
-0.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
+Package pdftex.def Info: pics/meanErrWeightingchecke1.pdf used on input line 23
+3.
+(pdftex.def)             Requested size: 212.91577pt x 173.91594pt.
 
-<pics/meanErrWeighting2dData.pdf, id=897, 614.295pt x 794.97pt>
+<pics/meanErrWeighting2dData.pdf, id=932, 614.295pt x 794.97pt>
 File: pics/meanErrWeighting2dData.pdf Graphic file (type pdf)
 
 <use pics/meanErrWeighting2dData.pdf>
-Package pdftex.def Info: pics/meanErrWeighting2dData.pdf used on input line 221
+Package pdftex.def Info: pics/meanErrWeighting2dData.pdf used on input line 234
 .
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
+(pdftex.def)             Requested size: 212.91577pt x 173.91594pt.
 
-<pics/meanErrWeightingseeds.pdf, id=899, 614.295pt x 794.97pt>
+<pics/meanErrWeightingseeds.pdf, id=934, 614.295pt x 794.97pt>
 File: pics/meanErrWeightingseeds.pdf Graphic file (type pdf)
 
 <use pics/meanErrWeightingseeds.pdf>
-Package pdftex.def Info: pics/meanErrWeightingseeds.pdf used on input line 222.
+Package pdftex.def Info: pics/meanErrWeightingseeds.pdf used on input line 235.
 
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
+(pdftex.def)             Requested size: 212.91577pt x 173.91594pt.
 
-<pics/meanErrWeightingabalone.pdf, id=901, 614.295pt x 794.97pt>
+<pics/meanErrWeightingabalone.pdf, id=936, 614.295pt x 794.97pt>
 File: pics/meanErrWeightingabalone.pdf Graphic file (type pdf)
 
 <use pics/meanErrWeightingabalone.pdf>
-Package pdftex.def Info: pics/meanErrWeightingabalone.pdf used on input line 22
-3.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
+Package pdftex.def Info: pics/meanErrWeightingabalone.pdf used on input line 23
+6.
+(pdftex.def)             Requested size: 212.91577pt x 173.91594pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/squErrchecke1.pdf, id=904, 614.295pt x 794.97pt>
-File: pics/squErrchecke1.pdf Graphic file (type pdf)
-
-<use pics/squErrchecke1.pdf>
-Package pdftex.def Info: pics/squErrchecke1.pdf used on input line 234.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-<pics/squErr2dData.pdf, id=906, 614.295pt x 794.97pt>
-File: pics/squErr2dData.pdf Graphic file (type pdf)
-
-<use pics/squErr2dData.pdf>
-Package pdftex.def Info: pics/squErr2dData.pdf used on input line 235.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-<pics/squErrseeds.pdf, id=908, 614.295pt x 794.97pt>
-File: pics/squErrseeds.pdf Graphic file (type pdf)
-
-<use pics/squErrseeds.pdf>
-Package pdftex.def Info: pics/squErrseeds.pdf used on input line 236.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-<pics/squErrabalone.pdf, id=910, 614.295pt x 794.97pt>
-File: pics/squErrabalone.pdf Graphic file (type pdf)
-
-<use pics/squErrabalone.pdf>
-Package pdftex.def Info: pics/squErrabalone.pdf used on input line 237.
-(pdftex.def)             Requested size: 212.91577pt x 192.94789pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[36pdfTeX warning (ext4): destination with the same identifier (name{figure.4.5
+[37pdfTeX warning (ext4): destination with the same identifier (name{figure.4.6
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.243 
+l.245 
        <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrLinchecke1.p
 df> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrLin2dData.pdf> 
 <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrLinseeds.pdf> <C:/U
 sers/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrLinabalone.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+<pics/squErrchecke1.pdf, id=962, 614.295pt x 794.97pt>
+File: pics/squErrchecke1.pdf Graphic file (type pdf)
 
- [37pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
-6}) has been already used, duplicate ignored
+<use pics/squErrchecke1.pdf>
+Package pdftex.def Info: pics/squErrchecke1.pdf used on input line 254.
+(pdftex.def)             Requested size: 212.91577pt x 173.91594pt.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.244 N
-       oteworthy is the reduction of estimations and paths used from their p...
- <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrWeightingchecke1.p
-df> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrWeighting2dData
-.pdf> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrWeightingseed
-s.pdf> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErrWeightingaba
-lone.pdf>] <pics/PALKDE.pdf, id=953, 614.295pt x 794.97pt>
-File: pics/PALKDE.pdf Graphic file (type pdf)
+<pics/squErr2dData.pdf, id=964, 614.295pt x 794.97pt>
+File: pics/squErr2dData.pdf Graphic file (type pdf)
 
-<use pics/PALKDE.pdf>
-Package pdftex.def Info: pics/PALKDE.pdf used on input line 248.
-(pdftex.def)             Requested size: 399.21791pt x 167.01204pt.
+<use pics/squErr2dData.pdf>
+Package pdftex.def Info: pics/squErr2dData.pdf used on input line 255.
+(pdftex.def)             Requested size: 212.91577pt x 173.91594pt.
 
+<pics/squErrseeds.pdf, id=966, 614.295pt x 794.97pt>
+File: pics/squErrseeds.pdf Graphic file (type pdf)
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+<use pics/squErrseeds.pdf>
+Package pdftex.def Info: pics/squErrseeds.pdf used on input line 256.
+(pdftex.def)             Requested size: 212.91577pt x 173.91594pt.
 
-<pics/klDivchecke1.pdf, id=955, 614.295pt x 794.97pt>
-File: pics/klDivchecke1.pdf Graphic file (type pdf)
+<pics/squErrabalone.pdf, id=968, 614.295pt x 794.97pt>
+File: pics/squErrabalone.pdf Graphic file (type pdf)
 
-<use pics/klDivchecke1.pdf>
-Package pdftex.def Info: pics/klDivchecke1.pdf used on input line 257.
-(pdftex.def)             Requested size: 212.91577pt x 173.58041pt.
-
-<pics/klDiv2dData.pdf, id=957, 614.295pt x 794.97pt>
-File: pics/klDiv2dData.pdf Graphic file (type pdf)
-
-<use pics/klDiv2dData.pdf>
-Package pdftex.def Info: pics/klDiv2dData.pdf used on input line 258.
-(pdftex.def)             Requested size: 212.91577pt x 173.58041pt.
- <pics/klDivseeds.pdf, id=959, 614.295pt x 794.97pt>
-File: pics/klDivseeds.pdf Graphic file (type pdf)
-
-<use pics/klDivseeds.pdf>
-Package pdftex.def Info: pics/klDivseeds.pdf used on input line 259.
-(pdftex.def)             Requested size: 212.91577pt x 173.58041pt.
-
-<pics/klDivabalone.pdf, id=961, 614.295pt x 794.97pt>
-File: pics/klDivabalone.pdf Graphic file (type pdf)
-
-<use pics/klDivabalone.pdf>
-Package pdftex.def Info: pics/klDivabalone.pdf used on input line 260.
-(pdftex.def)             Requested size: 212.91577pt x 173.58041pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[38pdfTeX warning (ext4): destination with the same identifier (name{figure.4.7
-}) has been already used, duplicate ignored
+<use pics/squErrabalone.pdf>
+Package pdftex.def Info: pics/squErrabalone.pdf used on input line 257.
+(pdftex.def)             Requested size: 212.91577pt x 173.91594pt.
+ [38pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.266 
+l.260 \end{figure}
+                   <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/meanErr
+Weightingchecke1.pdf> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/mean
+ErrWeighting2dData.pdf> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/me
+anErrWeightingseeds.pdf> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/m
+eanErrWeightingabalone.pdf>] [39pdfTeX warning (ext4): destination with the sam
+e identifier (name{figure.4.8}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.265 
        <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/squErrchecke1.pdf> 
 <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/squErr2dData.pdf> <C:/User
 s/Florian/Desktop/Bachelorarbeit/Thesis/pics/squErrseeds.pdf> <C:/Users/Florian
 /Desktop/Bachelorarbeit/Thesis/pics/squErrabalone.pdf>]
-<pics/timeAll.pdf, id=985, 614.295pt x 794.97pt>
-File: pics/timeAll.pdf Graphic file (type pdf)
- <use pics/timeAll.pdf>
-Package pdftex.def Info: pics/timeAll.pdf used on input line 273.
-(pdftex.def)             Requested size: 212.91577pt x 180.84326pt.
+<pics/klDivchecke1.pdf, id=1011, 614.295pt x 794.97pt>
+File: pics/klDivchecke1.pdf Graphic file (type pdf)
 
-<pics/timeHistExample.pdf, id=987, 614.295pt x 794.97pt>
-File: pics/timeHistExample.pdf Graphic file (type pdf)
+<use pics/klDivchecke1.pdf>
+Package pdftex.def Info: pics/klDivchecke1.pdf used on input line 270.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
 
-<use pics/timeHistExample.pdf>
-Package pdftex.def Info: pics/timeHistExample.pdf used on input line 274.
-(pdftex.def)             Requested size: 212.91577pt x 180.84326pt.
+<pics/klDiv2dData.pdf, id=1013, 614.295pt x 794.97pt>
+File: pics/klDiv2dData.pdf Graphic file (type pdf)
 
+<use pics/klDiv2dData.pdf>
+Package pdftex.def Info: pics/klDiv2dData.pdf used on input line 271.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+<pics/klDivseeds.pdf, id=1015, 614.295pt x 794.97pt>
+File: pics/klDivseeds.pdf Graphic file (type pdf)
+ <use pics/klDivseeds.pdf>
+Package pdftex.def Info: pics/klDivseeds.pdf used on input line 272.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
 
-) [39pdfTeX warning (ext4): destination with the same identifier (name{figure.4
-.8}) has been already used, duplicate ignored
+<pics/klDivabalone.pdf, id=1017, 614.295pt x 794.97pt>
+File: pics/klDivabalone.pdf Graphic file (type pdf)
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.163 \include{chapters/evaluation}
-                                    <C:/Users/Florian/Desktop/Bachelorarbeit/Th
-esis/pics/PALKDE.pdf>] [40pdfTeX warning (ext4): destination with the same iden
-tifier (name{figure.4.9}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.163 \include{chapters/evaluation}
-                                   pdfTeX warning (ext4): destination with the 
-same identifier (name{figure.4.10}) has been already used, duplicate ignored
+<use pics/klDivabalone.pdf>
+Package pdftex.def Info: pics/klDivabalone.pdf used on input line 273.
+(pdftex.def)             Requested size: 212.91577pt x 175.84236pt.
+ [40pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.163 \include{chapters/evaluation}
-                                    <C:/Users/Florian/Desktop/Bachelorarbeit/Th
+l.280 \subsection
+                 {Computation Time} <C:/Users/Florian/Desktop/Bachelorarbeit/Th
 esis/pics/klDivchecke1.pdf> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pic
 s/klDiv2dData.pdf> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/klDivse
 eds.pdf> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/klDivabalone.pdf>
- <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/timeAll.pdf> <C:/Users/Fl
-orian/Desktop/Bachelorarbeit/Thesis/pics/timeHistExample.pdf>]
+] <pics/timeAll.pdf, id=1042, 614.295pt x 794.97pt>
+File: pics/timeAll.pdf Graphic file (type pdf)
+ <use pics/timeAll.pdf>
+Package pdftex.def Info: pics/timeAll.pdf used on input line 286.
+(pdftex.def)             Requested size: 212.91577pt x 180.84326pt.
+
+<pics/timeHistExample.pdf, id=1044, 614.295pt x 794.97pt>
+File: pics/timeHistExample.pdf Graphic file (type pdf)
+
+<use pics/timeHistExample.pdf>
+Package pdftex.def Info: pics/timeHistExample.pdf used on input line 287.
+(pdftex.def)             Requested size: 212.91577pt x 180.84326pt.
+) [41pdfTeX warning (ext4): destination with the same identifier (name{figure.4
+.10}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.163 \include{chapters/evaluation}
+                                    <C:/Users/Florian/Desktop/Bachelorarbeit/Th
+esis/pics/timeAll.pdf> <C:/Users/Florian/Desktop/Bachelorarbeit/Thesis/pics/tim
+eHistExample.pdf>]
 (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\chapters/conclusion.tex
+[42
+
+
+
+]
 Chapter 5.
-) [41
-
-
-
-] [42
-
-
-] (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\thesis.bbl
+[43]) [44] (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\thesis.bbl
 (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\thesis.brf)
 \tf@brf=\write13
- [43
+ [45
+
+
 
 ]
 Overfull \hbox (83.21465pt too wide) in paragraph at lines 81--81
@@ -2227,7 +2201,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 113--113
 at527 / s13 / readings /$
  []
 
-[44]
+[46]
 Underfull \hbox (badness 1137) in paragraph at lines 137--137
 \T1/aer/m/n/12 URL [][]$http : / / web . stanford . edu / ~hastie / local . ftp
  / Springer / OLD / ESLII _ print4 . pdf$[][]
@@ -2245,22 +2219,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 194--194
 212779 _ A _ Method _ for _ The _$
  []
 
-[45]
+[47]
 Underfull \hbox (badness 6758) in paragraph at lines 263--263
 \T1/aer/m/n/12 URL [][]$http : / / citeseerx . ist . psu . edu / viewdoc / down
 load ? doi = 10 . 1 . 1 . 102 . 5455 & rep =$
  []
 
-[46]
+[48]
 Underfull \hbox (badness 10000) in paragraph at lines 293--293
 \T1/aer/m/n/12 URL [][]$http : / / onlinelibrary . wiley . com / doi / 10 . 111
 1 / j . 1540-[]5915 . 1979 . tb00026 . x /$
  []
 
-) [47] [48
+) [49] [50
 
 ] (C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\thesis.ind)
-(C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\tex/erklaerung.tex [49
+(C:\Users\Florian\Desktop\Bachelorarbeit\Thesis\tex/erklaerung.tex [51
 
 ])
 
@@ -2282,14 +2256,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 197.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 197.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 93ACDCB093C2A7558C87D773AA3691FD;3491.
+(rerunfilecheck)             Checksum: 6459EF6EEB67AF9847A6C08078180718;3496.
 Package rerunfilecheck Info: File `thesis.brf' has not changed.
-(rerunfilecheck)             Checksum: D95050FB38843C1B61D3E7E7145ECC60;5366.
+(rerunfilecheck)             Checksum: 1247BD8B71FDBC730C66B5C7EBD11C01;5951.
  ) 
 Here is how much of TeX's memory you used:
- 32275 strings out of 493921
- 658673 string characters out of 3147276
- 867164 words of memory out of 3000000
+ 32281 strings out of 493921
+ 658753 string characters out of 3147276
+ 866922 words of memory out of 3000000
  34461 multiletter control sequences out of 15000+200000
  48655 words of font info for 101 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -2312,9 +2286,9 @@ blic/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 mti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm
 10.pfb>
-Output written on thesis.pdf (63 pages, 1673407 bytes).
+Output written on thesis.pdf (67 pages, 1676918 bytes).
 PDF statistics:
- 1287 PDF objects out of 1440 (max. 8388607)
- 213 named destinations out of 1000 (max. 500000)
+ 1327 PDF objects out of 1440 (max. 8388607)
+ 219 named destinations out of 1000 (max. 500000)
  944 words of extra memory for PDF output out of 10000 (max. 10000000)
 
